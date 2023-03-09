@@ -1,4 +1,4 @@
-FROM mhubai/totalsegmentator:nocuda
+FROM mhubai/totalsegmentator:cuda11.4
 
 # Install some basic system utilities
 RUN apt update \
