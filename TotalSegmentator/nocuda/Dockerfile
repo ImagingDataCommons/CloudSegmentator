@@ -1,4 +1,3 @@
-# Specify the base image for the environment
 FROM mhubai/totalsegmentator:nocuda
 
 # Install some basic system utilities
@@ -6,9 +5,7 @@ RUN apt update \
   && apt install -y --no-install-recommends \
     apt-transport-https \
     ca-certificates \
-    curl \
     gnupg \
-    subversion \
     zip \
   && rm -rf /var/lib/apt/lists/*
 
@@ -20,7 +17,7 @@ RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.c
 
 # Install Jupyter utilities
 RUN pip3 install --no-cache-dir \
-    dask\
+    modin\
     db_dtypes \
     google-cloud-bigquery \
     google-cloud-storage \
@@ -29,13 +26,12 @@ RUN pip3 install --no-cache-dir \
     ipywidgets \
     jupyter \
     papermill \
-    thedicomsort \
     yamlmagic
 
 # Copy a script for downloading pre-trained model weights and make it executable
-COPY weights_download.sh /root/weights_download.sh
-RUN chmod +x /root/weights_download.sh
-RUN /root/weights_download.sh
+#COPY weights_download.sh /root/weights_download.sh
+#RUN chmod +x /root/weights_download.sh
+#RUN /root/weights_download.sh
 
 # Download and install s5cmd for interacting with cloud storage
 ENV S5CMD_URL="https://github.com/peak/s5cmd/releases/download/v2.0.0/s5cmd_2.0.0_Linux-64bit.tar.gz"
