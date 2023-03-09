@@ -17,7 +17,7 @@ RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.c
 
 # Install Jupyter utilities
 RUN pip3 install --no-cache-dir \
-    modin\
+    modin[all]\
     db_dtypes \
     google-cloud-bigquery \
     google-cloud-storage \
