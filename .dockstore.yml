@@ -1,5 +1,5 @@
 version: 1.2
 workflows:
-   - name: Total Segmentator_GPU
+   - name: TotalSegmentator_GPU
      subclass: WDL
      primaryDescriptorPath: /Terra/TotalSegmentator/GPU/v7.wdl
