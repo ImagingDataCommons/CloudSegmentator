@@ -4,6 +4,7 @@ WITH
     SeriesInstanceUID,
     SOPInstanceUID,
     SliceThickness,
+    SAFE_CAST(Exposure AS FLOAT64) Exposure,
     SAFE_CAST(ipp AS FLOAT64) AS zImagePosition,
     lead (SAFE_CAST(ipp AS FLOAT64)) OVER (PARTITION BY SeriesInstanceUID ORDER BY SAFE_CAST(ipp AS FLOAT64)) nextZImagePosition,
     lead (SAFE_CAST(ipp AS FLOAT64)) OVER (PARTITION BY SeriesInstanceUID ORDER BY SAFE_CAST(ipp AS FLOAT64)) -SAFE_CAST(ipp AS FLOAT64) AS slice_interval,
@@ -29,14 +30,16 @@ WITH
   SELECT
     SeriesInstanceUID,
     ARRAY_AGG(DISTINCT(slice_interval) ignore nulls) AS sliceIntervalDifferences,
+    ARRAY_AGG(DISTINCT(Exposure) ignore nulls) AS distinctExposures,
     COUNT(DISTINCT iop) iopCount,
     COUNT(DISTINCT pixelSpacing) pixelSpacingCount,
     COUNT(Distinct zImagePosition) positionCount,
     COUNT(Distinct SOPInstanceUID) sopInstanceCount,
     COUNT(Distinct SliceThickness) sliceThicknessCount,
+    COUNT(Distinct Exposure) exposureCount,
     viewerUrl,
     sum(instanceSize)/1000000 seriesSizeInMB,
-    string_agg (CONCAT("cp ",REPLACE(sopInstanceUrl, "gs://", "s3://"), " idc_data/",SeriesInstanceUID,'/' ), "\n") as s5cmdUrls 
+    string_agg (CONCAT("cp ",REPLACE(sopInstanceUrl, "gs://", "s3://"), " idc_data/"), "\n") as s5cmdUrls 
   FROM
     nonLocalizerRawData
   GROUP BY
@@ -46,7 +49,9 @@ WITH
     iopCount=1
     AND pixelSpacingCount=1
     AND sopInstanceCount=positionCount
-    --AND ARRAY_LENGTH(sliceIntervalDifferences) >1 
+    AND sliceThicknessCount=1
+    --AND exposureCount=1
+
 )
 SELECT
   SeriesInstanceUID,
@@ -57,14 +62,21 @@ SELECT
   sliceThicknessCount,
   max(sid) as maxSliceIntervalDifference,
   min(sid) as minSliceIntervalDifference,
-  max(sid) -min (sid) as tolerance,
+  max(sid) -min (sid) as sliceIntervalifferenceTolerance,
+  exposureCount,
+  max(de) as maxExposure,
+  min(de) as minExposure,
+  max(de) -min (de) as maxExposureDifference,
   seriesSizeInMB,
-  viewerUrl,
+  --viewerUrl,
   s5cmdUrls 
 FROM
   geometryChecks
 LEFT JOIN
   UNNEST(sliceIntervalDifferences) sid
+LEFT JOIN
+  UNNEST(distinctExposures) de
+
 GROUP BY
   SeriesInstanceUID,
   iopCount,
@@ -72,10 +84,14 @@ GROUP BY
   positionCount,
   sopInstanceCount,
   sliceThicknessCount,
+  exposureCount,
   seriesSizeInMB,
-  viewerUrl,
+  --viewerUrl,
   s5cmdUrls
-HAVING tolerance<0.1 --and tolerance>0.01
+
+
+HAVING sliceIntervalifferenceTolerance<0.01
 ORDER BY
-tolerance desc,
+sliceIntervalifferenceTolerance desc,
+maxExposureDifference desc,
 SeriesInstanceUID
