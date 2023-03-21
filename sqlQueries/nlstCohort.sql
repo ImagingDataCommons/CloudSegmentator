@@ -1,97 +1,134 @@
+#standardSQL
+
+-- The point of this query is to remove the CT Image Series from nlst study which do not conform to
+-- geometrical checks generally required for NIFTI file converison
+
+-- The assumptions made here are
+  -- consider only those series that have CT modality and belong to the NLST collection
+
+  -- do not contain LOCALIZER in ImageType
+
+  -- all instances have identical values for ImageOrientationPatient (converted to string for the purposes of comparison)
+  -- have number of instances in the series equal to the number of distinct values of ImagePositionPatient attribute
+  -- (converted to string for the purposes of comparison)
+
+  -- all instances have identical values of PixelSpacing (converted to string for the purposes of comparison)
+
+  -- all instances have identical values of SliceThickness
+
+  -- with sliceIntervalDifference defined as the difference between the values of the 3rd component of ImagePositionPatient,
+  -- after sorting all instances by that third component, having the difference between the largest and smallest 
+  --values of sliceIntervalDifference less than 0.01
+
 WITH
-  nonLocalizerRawData AS (
+  -- Create a common table expression (CTE) named nonLocalizerRawData
+  nonlocalizerrawdata AS (
   SELECT
-    SeriesInstanceUID,
-    SOPInstanceUID,
-    SliceThickness,
-    SAFE_CAST(Exposure AS FLOAT64) Exposure,
-    SAFE_CAST(ipp AS FLOAT64) AS zImagePosition,
-    --lead (SAFE_CAST(ipp AS FLOAT64)) OVER (PARTITION BY SeriesInstanceUID ORDER BY SAFE_CAST(ipp AS FLOAT64)) nextZImagePosition,
-    lead (SAFE_CAST(ipp AS FLOAT64)) OVER (PARTITION BY SeriesInstanceUID ORDER BY SAFE_CAST(ipp AS FLOAT64)) -SAFE_CAST(ipp AS FLOAT64) AS slice_interval,
-    ARRAY_TO_STRING(ImageOrientationPatient, "/") iop,
-    ARRAY_TO_STRING(PixelSpacing, "/") pixelSpacing,
-    gcs_url sopInstanceUrl,
-    instance_size instanceSize,
-    CONCAT("https://viewer.imaging.datacommons.cancer.gov/viewer/",StudyInstanceUID,"?seriesInstanceUID=",SeriesInstanceUID) AS viewerUrl,
+    seriesinstanceuid,
+    sopinstanceuid,
+    slicethickness,
+    -- Cast Exposure column as FLOAT64 data type 
+    safe_cast(exposure AS float64) exposure,
+    -- Cast unnested Image Patient Position column as FLOAT64 data type and rename it as zImagePosition as we filter for z-axis
+    safe_cast(ipp AS float64) AS zimageposition,
+    -- Calculate the difference between the current and next zImagePosition for each SeriesInstanceUID for slice_interval
+    lead (safe_cast(ipp AS float64)) over (partition BY seriesinstanceuid ORDER BY safe_cast(ipp AS float64)) -safe_cast(ipp AS float64) AS slice_interval,
+    -- Convert ImageOrientationPatient array to string separated by "/" 
+    array_to_string(imageorientationpatient, "/") iop,
+    -- Convert PixelSpacing array to string separated by "/" 
+    array_to_string(pixelspacing, "/") pixelspacing,
+    gcs_url sopinstanceurl,
+    instance_size instancesize,
+    -- Concatenate viewer URL with StudyInstanceUID and SeriesInstanceUID parameters 
+    concat("https://viewer.imaging.datacommons.cancer.gov/viewer/",studyinstanceuid,"?seriesInstanceUID=",seriesinstanceuid) AS viewerurl,
   FROM
-    `bigquery-public-data.idc_current.dicom_all` bid
+     `bigquery-public-data.idc_current.dicom_all` bid
   LEFT JOIN
-    UNNEST(bid.ImagePositionPatient) ipp
-  WITH
-  OFFSET
-    AS axes
+     unnest(bid.imagepositionpatient) ipp
+  WITH offset
+  --Using offset creates a column and with the index of the elements(starting from 1) in the array in order
+     AS axes
   WHERE
-    collection_id = "nlst"
-    AND Modality = "CT"
-    AND axes=2
-    AND "LOCALIZER" NOT IN UNNEST(ImageType)
+     collection_id = "nlst" AND modality = "CT" AND axes=2 AND "LOCALIZER" NOT IN unnest(imagetype)
  ),
-  geometryChecks AS (
+geometrychecks AS (
   SELECT
-    SeriesInstanceUID,
-    ARRAY_AGG(DISTINCT(slice_interval) ignore nulls) AS sliceIntervalDifferences,
-    ARRAY_AGG(DISTINCT(Exposure) ignore nulls) AS distinctExposures,
-    COUNT(DISTINCT iop) iopCount,
-    COUNT(DISTINCT pixelSpacing) pixelSpacingCount,
-    COUNT(Distinct zImagePosition) positionCount,
-    COUNT(Distinct SOPInstanceUID) sopInstanceCount,
-    COUNT(Distinct SliceThickness) sliceThicknessCount,
-    COUNT(Distinct Exposure) exposureCount,
-    viewerUrl,
-    sum(instanceSize)/1000000 seriesSizeInMB,
-    string_agg (CONCAT("cp ",REPLACE(sopInstanceUrl, "gs://", "s3://"), " idc_data/"), "\n") as s5cmdUrls 
+    seriesinstanceuid,
+    -- Aggregate distinct slice_interval values into an array 
+    array_agg(DISTINCT(slice_interval) IGNORE nulls) AS sliceintervaldifferences,
+    -- Aggregate distinct Exposure values into an array 
+    array_agg(DISTINCT(exposure) IGNORE nulls) AS distinctexposures,
+    -- Count the number of distinct Image Orientation Patient values 
+    count(DISTINCT iop) iopcount,
+    -- Count the number of distinct pixelSpacing values 
+    count(DISTINCT pixelspacing) pixelspacingcount,
+    -- Count the number of distinct zImagePosition values 
+    count(DISTINCT zimageposition) positioncount,
+     -- Count the number of distinct SOPInstanceUIDs 
+     count(DISTINCT sopinstanceuid) sopinstancecount,
+     -- Count the number of distinct SliceThickness values 
+     count(DISTINCT slicethickness) slicethicknesscount,
+     -- Count the number of distinct Exposure values 
+     count(DISTINCT exposure) exposurecount,
+     viewerurl,
+     -- Calculate sum of instanceSize divided by 1024*1024 to get te size in MB
+     sum(instancesize)/1024/1024 seriessizeinmb,
+      -- Concatenate "cp ", replace "gs://" with "s3://" in sopInstanceUrl to make the urls work with s5cmd,
+      -- add " idc_data/" which acts as destination folder for s5cmd and
+      -- at end for each row separated by new line character "\n" so it will be
+      -- ready for creating a manifest file later in the workflow
+      string_agg (concat("cp ",REPLACE(sopinstanceurl, "gs://", "s3://"), " idc_data/"), "\n") AS s5cmdurls
   FROM
-    nonLocalizerRawData
+      nonlocalizerrawdata
   GROUP BY
-    SeriesInstanceUID,
-    viewerUrl
+      seriesinstanceuid, viewerurl
   HAVING
-    iopCount=1
-    AND pixelSpacingCount=1
-    AND sopInstanceCount=positionCount
-    AND sliceThicknessCount=1
+    iopcount=1 --we expect only one image orientation in a series
+    AND pixelspacingcount=1  --we expect identical pixel spacing in a series
+    AND sopinstancecount=positioncount --we expect position counts are same as sopInstances count. this would also allow us to filter 4D series
+    AND slicethicknesscount=1 --we expect identical slice thickness in a series
     --AND exposureCount=1
 
 )
+#finally displaying the attributes that we would be interested
 SELECT
-  SeriesInstanceUID,
-  iopCount,
-  pixelSpacingCount,
-  positionCount,
-  sopInstanceCount,
-  sliceThicknessCount,
-  max(sid) as maxSliceIntervalDifference,
-  min(sid) as minSliceIntervalDifference,
-  max(sid) -min (sid) as sliceIntervalifferenceTolerance,
-  exposureCount,
-  max(de) as maxExposure,
-  min(de) as minExposure,
-  max(de) -min (de) as maxExposureDifference,
-  seriesSizeInMB,
+  seriesinstanceuid,
+  iopcount,
+  pixelspacingcount,
+  positioncount,
+  sopinstancecount,
+  slicethicknesscount,
+  max(sid) AS maxsliceintervaldifference,
+  min(sid) AS minsliceintervaldifference,
+  max(sid) -min (sid) AS sliceintervalifferencetolerance,
+  exposurecount,
+  max(de) AS maxexposure,
+  min(de) AS minexposure,
+  max(de) -min (de) AS maxexposuredifference,
+  seriessizeinmb,
   --viewerUrl,
-  s5cmdUrls 
+  s5cmdurls
 FROM
-  geometryChecks
+  geometrychecks
 LEFT JOIN
-  UNNEST(sliceIntervalDifferences) sid
+  unnest(sliceintervaldifferences) sid
 LEFT JOIN
-  UNNEST(distinctExposures) de
+  unnest(distinctexposures) de
 
 GROUP BY
-  SeriesInstanceUID,
-  iopCount,
-  pixelSpacingCount,
-  positionCount,
-  sopInstanceCount,
-  sliceThicknessCount,
-  exposureCount,
-  seriesSizeInMB,
+  seriesinstanceuid,
+  iopcount,
+  pixelspacingcount,
+  positioncount,
+  sopinstancecount,
+  slicethicknesscount,
+  exposurecount,
+  seriessizeinmb,
   --viewerUrl,
-  s5cmdUrls
+  s5cmdurls
 
-
-HAVING sliceIntervalifferenceTolerance<0.01
+HAVING sliceintervalifferencetolerance<0.01
 ORDER BY
-sliceIntervalifferenceTolerance desc,
-maxExposureDifference desc,
-SeriesInstanceUID
+sliceintervalifferencetolerance DESC,
+maxexposuredifference DESC,
+seriesinstanceuid
