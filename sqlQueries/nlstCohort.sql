@@ -6,7 +6,7 @@ WITH
     SliceThickness,
     SAFE_CAST(Exposure AS FLOAT64) Exposure,
     SAFE_CAST(ipp AS FLOAT64) AS zImagePosition,
-    lead (SAFE_CAST(ipp AS FLOAT64)) OVER (PARTITION BY SeriesInstanceUID ORDER BY SAFE_CAST(ipp AS FLOAT64)) nextZImagePosition,
+    --lead (SAFE_CAST(ipp AS FLOAT64)) OVER (PARTITION BY SeriesInstanceUID ORDER BY SAFE_CAST(ipp AS FLOAT64)) nextZImagePosition,
     lead (SAFE_CAST(ipp AS FLOAT64)) OVER (PARTITION BY SeriesInstanceUID ORDER BY SAFE_CAST(ipp AS FLOAT64)) -SAFE_CAST(ipp AS FLOAT64) AS slice_interval,
     ARRAY_TO_STRING(ImageOrientationPatient, "/") iop,
     ARRAY_TO_STRING(PixelSpacing, "/") pixelSpacing,
