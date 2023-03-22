@@ -131,8 +131,8 @@ task downloadAndConvert {
   
  output {
    File downloadDicomAndConvertOutputJupyterNotebook = "downloadDicomAndConvertNotebookOutput.ipynb"
-   File downloadDicomAndConvertUsageMetrics = "downloadDicomAndConvertUsageMetrics.zip"
-   File downloadDicomAndConvertNiftiFiles = "downloadDicomAndConvertNiftiFiles.zip"
+   File downloadDicomAndConvertUsageMetrics = "downloadDicomAndConvertUsageMetrics.lz4"
+   File downloadDicomAndConvertNiftiFiles = "downloadDicomAndConvertNiftiFiles.tar.lz4"
    File dcm2niix_errors = "dcm2niix_errors.csv"
  }
 }
