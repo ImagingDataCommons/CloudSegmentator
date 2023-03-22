@@ -12,7 +12,7 @@ workflow TotalSegmentator {
    File itkimage2segimageNotebook
 
    #Docker Images for each task
-   String downloadDicomAndConvertDocker = "vamsithiriveedhi/totalsegmentator:nocuda_v1"
+   String downloadDicomAndConvertDocker = "vamsithiriveedhi/totalsegmentator:task1_v1"
    String inferenceTotalSegmentatorDocker = "vamsithiriveedhi/totalsegmentator:cuda12.0_v1"
    String itkimage2segimageDocker = "vamsithiriveedhi/totalsegmentator:nocuda_v1"
 
