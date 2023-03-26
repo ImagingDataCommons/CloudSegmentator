@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-dev=3.10.6-1~22.04\
     python3-pip=22.0.2+dfsg-1ubuntu0.2\
     xvfb=2:21.1.3-2ubuntu2.8 \
+    unzip\
   && rm -rf /var/lib/apt/lists/*
 
 RUN pip install --no-cache-dir \
