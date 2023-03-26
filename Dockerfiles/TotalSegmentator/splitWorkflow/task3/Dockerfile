@@ -3,7 +3,6 @@ FROM python:3.11.2-slim-buster
 # Install some basic system utilities
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
-    lz4=1.8.3-1+deb10u1\
     wget=1.20.1-1.1\
   && rm -rf /var/lib/apt/lists/*
 
@@ -24,14 +23,11 @@ RUN wget ${S5CMD_URL} \
   && tar -xvzf ${S5CMD_FN} \
   && rm ${S5CMD_FN} \
   && mv s5cmd /usr/local/bin/s5cmd
-  
-  
-ENV DCMQI_RELEASE_URL="https://github.com/QIICR/dcmqi/releases/download/v1.2.4/dcmqi-1.2.5-linux.tar.gz"
-ENV DCMQI_DOWNLOAD_PATH="/app/dcmqi-1.2.5-linux.tar.gz"
-ENV DCMQI_PATH="/app/dcmqi-1.2.5-linux"
 
-RUN wget -O $DCMQI_DOWNLOAD_PATH $DCMQI_RELEASE_URL --no-check-certificate \
- && tar -xvf $DCMQI_DOWNLOAD_PATH \
- && sudo mv ${DCMQI_PATH}/bin/* /bin \
- && rm $DCMQI_DOWNLOAD_PATH  \
- && rm -r $DCMQI_PATH
+# Download dcmqi for itkimage2segimage
+ENV DCMQI_URL="https://github.com/QIICR/dcmqi/releases/download/v1.2.5/dcmqi-1.2.5-linux.tar.gz"
+ENV DCMQI_FN="dcmqi-1.2.5-linux.tar.gz"
+RUN wget ${DCMQI_URL} \
+  && tar -xvzf ${DCMQI_FN} \
+  && rm ${DCMQI_FN} \
+  && mv dcmqi-1.2.5-linux/bin/* /bin
