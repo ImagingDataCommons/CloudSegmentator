@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.1.0-runtime-ubuntu22.04
+FROM nvidia/cuda:12.1.0-base-ubuntu22.04
 
 # Set noninteractive mode to avoid geographic area prompt during package installation
 ENV DEBIAN_FRONTEND noninteractive
