@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     lz4=1.9.3-2build2\
     python3-dev=3.10.6-1~22.04\
     python3-pip=22.0.2+dfsg-1ubuntu0.2\
-    wget=1.21.2-2ubuntu1
+    wget=1.21.2-2ubuntu1\
     unzip=6.0-26ubuntu3.1\
     xvfb=2:21.1.3-2ubuntu2.8\
   && rm -rf /var/lib/apt/lists/*
