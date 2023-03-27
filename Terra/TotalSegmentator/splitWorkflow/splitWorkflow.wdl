@@ -98,7 +98,7 @@ workflow TotalSegmentator {
 
    File itkimage2segimageZipFile = itkimage2segimage.itkimage2segimageZipFile
    
-   File dcm2niix_errors = downloadAndConvert.dcm2niix_errors
+   File? dcm2niix_errors = downloadAndConvert.dcm2niix_errors
   
  }
 
@@ -137,7 +137,7 @@ task downloadAndConvert {
    File downloadDicomAndConvertOutputJupyterNotebook = "downloadAndConvertOutputJupyterNotebook.ipynb"
    File downloadDicomAndConvertUsageMetrics = "downloadDicomAndConvertUsageMetrics.lz4"
    File downloadDicomAndConvertNiftiFiles = "downloadDicomAndConvertNiftiFiles.tar.lz4"
-   File dcm2niix_errors = "dcm2niix_errors.csv"
+   File? dcm2niix_errors = "dcm2niix_errors.csv"
  }
 }
 
