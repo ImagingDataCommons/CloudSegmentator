@@ -4,12 +4,15 @@ workflow TotalSegmentator {
  input {
    #all the inputs entered here but not hardcoded will appear in the UI as required fields
    #And the hardcoded inputs will appear as optional to override the values entered here
-   File yamlParameters
+   #File yamlParameters
    File seriesInstanceS5cmdUrls
    #JupyterNotebooks containing the code
    File downloadDicomAndConvertNotebook
    File inferenceTotalSegmentatorNotebook
    File itkimage2segimageNotebook
+   
+   #Parameters
+   String dicomToNiftiConverterTool
 
    #Docker Images for each task
    String downloadDicomAndConvertDocker = "vamsithiriveedhi/totalsegmentator:task1_v1"
@@ -44,7 +47,7 @@ workflow TotalSegmentator {
  #calling Papermill Task with the inputs
  call downloadAndConvert{
    input :
-        yamlParameters = yamlParameters,
+        #yamlParameters = yamlParameters,
         seriesInstanceS5cmdUrls = seriesInstanceS5cmdUrls,
         downloadDicomAndConvertNotebook = downloadDicomAndConvertNotebook,
         downloadDicomAndConvertDocker = downloadDicomAndConvertDocker,
@@ -69,7 +72,7 @@ workflow TotalSegmentator {
  }
  call itkimage2segimage{
    input:
-    yamlParameters = yamlParameters,
+    #yamlParameters = yamlParameters,
     seriesInstanceS5cmdUrls = seriesInstanceS5cmdUrls,
     itkimage2segimageNotebook = itkimage2segimageNotebook,
     itkimage2segimageDocker = itkimage2segimageDocker,
@@ -103,7 +106,8 @@ workflow TotalSegmentator {
 #Task Definitions
 task downloadAndConvert {
  input {
-    File yamlParameters
+    #File yamlParameters
+    String dicomToNiftiConverterTool
     File seriesInstanceS5cmdUrls
     File downloadDicomAndConvertNotebook 
     String downloadDicomAndConvertDocker
@@ -115,7 +119,7 @@ task downloadAndConvert {
  }
  command {
    set -e
-   papermill -f ~{yamlParameters}  ~{downloadDicomAndConvertNotebook} downloadAndConvertOutputJupyterNotebook.ipynb 
+   papermill -p converter ~{dicomToNiftiConverterTool} -p csvFilePath ~{seriesInstanceS5cmdUrls}  ~{downloadDicomAndConvertNotebook} downloadAndConvertOutputJupyterNotebook.ipynb 
  }
  #Run time attributes:
  runtime {
@@ -187,7 +191,7 @@ task itkimage2segimage {
  input {
    #Just like the workflow inputs, any new inputs entered here but not hardcoded will appear in the UI as required fields
    #And the hardcoded inputs will appear as optional to override the values entered here
-    File yamlParameters
+    #File yamlParameters
     File seriesInstanceS5cmdUrls
     File itkimage2segimageNotebook 
     String itkimage2segimageDocker
@@ -201,7 +205,7 @@ task itkimage2segimage {
  }
  command {
    set -e
-   papermill ~{itkimage2segimageNotebook} itkimage2segimageOutputJupyterNotebook.ipynb || (>&2 echo "Killed" && exit 1)
+   papermill -p csvFilePath ~{seriesInstanceS5cmdUrls} ~{itkimage2segimageNotebook} itkimage2segimageOutputJupyterNotebook.ipynb || (>&2 echo "Killed" && exit 1)
  }
 
  #Run time attributes:
