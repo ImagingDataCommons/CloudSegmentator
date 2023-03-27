@@ -26,9 +26,9 @@ workflow TotalSegmentator {
    Int inferenceTotalSegmentatorCpus = 2
    Int itkimage2segimageCpus = 2
 
-   Int downloadAndConvertRAM = 4
-   Int inferenceTotalSegmentatorRAM = 4
-   Int itkimage2segimageRAM = 4
+   Int downloadAndConvertRAM = 1
+   Int inferenceTotalSegmentatorRAM = 8
+   Int itkimage2segimageRAM = 2
 
    String downloadAndConvertCpuFamily = 'AMD Rome'
    #String inferenceTotalSegmentatorCpuFamily = 'Intel Skylake' Because GPUs are available only with N1 family
@@ -176,9 +176,9 @@ task inference {
   
  output {
    File inferenceOutputJupyterNotebook = "inferenceOutputJupyterNotebook.ipynb"
-   File inferenceZipFile = "inferenceNiftiFiles.zip"
-   File inferenceUsageMetrics = "inferenceUsageMetrics.zip"
-   File inferenceMetaData = "inferencemetaData.zip"
+   File inferenceZipFile = "inferenceNiftiFiles.tar.lz4"
+   File inferenceUsageMetrics = "inferenceUsageMetrics.lz4"
+   #File inferenceMetaData = "inferencemetaData.zip"
  }
 }
 
@@ -217,7 +217,7 @@ task itkimage2segimage {
  }
  output {
    File itkimage2segimageOutputJupyterNotebook = "itkimage2segimageOutputJupyterNotebook.ipynb"
-   File itkimage2segimageZipFile = "itkimage2segimageDICOMsegFiles.zip"
-   File itkimage2segimageUsageMetrics = "itkimage2segimageUsageMetrics.zip"
+   File itkimage2segimageZipFile = "itkimage2segimageDICOMsegFiles.tar.lz4"
+   File itkimage2segimageUsageMetrics = "itkimage2segimageUsageMetrics.lz4"
  }
 }
