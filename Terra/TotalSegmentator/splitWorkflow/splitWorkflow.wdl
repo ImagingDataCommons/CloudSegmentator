@@ -119,7 +119,7 @@ task downloadAndConvert {
  }
  command {
    set -e
-   papermill -p converter ~{dicomToNiftiConverterTool} -p csvFilePath ~{seriesInstanceS5cmdUrls}  ~{downloadDicomAndConvertNotebook} downloadAndConvertOutputJupyterNotebook.ipynb 
+   papermill -p converterType ~{dicomToNiftiConverterTool} -p csvFilePath ~{seriesInstanceS5cmdUrls}  ~{downloadDicomAndConvertNotebook} downloadAndConvertOutputJupyterNotebook.ipynb 
  }
  #Run time attributes:
  runtime {
