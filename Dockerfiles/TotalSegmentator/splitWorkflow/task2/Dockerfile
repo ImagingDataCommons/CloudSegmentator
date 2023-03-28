@@ -6,6 +6,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # Install some basic system utilities
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential=12.9ubuntu3\
+    ffmpeg=7:4.4.2-0ubuntu0.22.04.1\
     lz4=1.9.3-2build2\
     python3-dev=3.10.6-1~22.04\
     python3-pip=22.0.2+dfsg-1ubuntu0.2\
