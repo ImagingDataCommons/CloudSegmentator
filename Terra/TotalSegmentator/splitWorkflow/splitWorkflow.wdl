@@ -48,6 +48,7 @@ workflow TotalSegmentator {
  call downloadAndConvert{
    input :
         #yamlParameters = yamlParameters,
+        dicomToNiftiConverterTool = dicomToNiftiConverterTool,
         seriesInstanceS5cmdUrls = seriesInstanceS5cmdUrls,
         downloadDicomAndConvertNotebook = downloadDicomAndConvertNotebook,
         downloadDicomAndConvertDocker = downloadDicomAndConvertDocker,
@@ -60,6 +61,7 @@ workflow TotalSegmentator {
  call inference{
    input :
      inferenceTotalSegmentatorNotebook= inferenceTotalSegmentatorNotebook,
+     dicomToNiftiConverterTool = dicomToNiftiConverterTool,
      inferenceTotalSegmentatorDocker = inferenceTotalSegmentatorDocker ,
      inferenceTotalSegmentatorPreemptibleTries = inferenceTotalSegmentatorPreemptibleTries ,
      inferenceTotalSegmentatorCpus = inferenceTotalSegmentatorCpus ,
@@ -148,6 +150,7 @@ task inference {
    #And the hardcoded inputs will appear as optional to override the values entered here
    # Command parameters
     File inferenceTotalSegmentatorNotebook 
+    String dicomToNiftiConverterTool
     String inferenceTotalSegmentatorDocker 
     Int inferenceTotalSegmentatorPreemptibleTries 
     Int inferenceTotalSegmentatorCpus 
@@ -162,7 +165,7 @@ task inference {
 
  command {
    set -e
-   papermill ~{inferenceTotalSegmentatorNotebook} inferenceOutputJupyterNotebook.ipynb
+   papermill -p converterType ~{dicomToNiftiConverterTool}  -p niftiFilePath ~{NiftiFiles} ~{inferenceTotalSegmentatorNotebook} inferenceOutputJupyterNotebook.ipynb
  }
  #Run time attributes:
  runtime {
@@ -205,7 +208,7 @@ task itkimage2segimage {
  }
  command {
    set -e
-   papermill -p csvFilePath ~{seriesInstanceS5cmdUrls} ~{itkimage2segimageNotebook} itkimage2segimageOutputJupyterNotebook.ipynb || (>&2 echo "Killed" && exit 1)
+   papermill -p csvFilePath ~{seriesInstanceS5cmdUrls} -p inferenceNiftiFilePath ~{inferenceZipFile}  ~{itkimage2segimageNotebook} itkimage2segimageOutputJupyterNotebook.ipynb || (>&2 echo "Killed" && exit 1)
  }
 
  #Run time attributes:
