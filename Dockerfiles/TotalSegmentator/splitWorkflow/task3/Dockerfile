@@ -3,6 +3,7 @@ FROM python:3.11.2-slim-buster
 # Install some basic system utilities
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
+    lz4=1.8.3-1+deb10u1\
     wget=1.20.1-1.1\
   && rm -rf /var/lib/apt/lists/*
 
