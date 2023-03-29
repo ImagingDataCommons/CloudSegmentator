@@ -16,8 +16,8 @@ workflow TotalSegmentator {
 
    #Docker Images for each task
    String downloadDicomAndConvertDocker = "vamsithiriveedhi/totalsegmentator:task1_v1"
-   String inferenceTotalSegmentatorDocker = "vamsithiriveedhi/totalsegmentator:task2_v1"
-   String itkimage2segimageDocker = "vamsithiriveedhi/totalsegmentator:task3_v1"
+   String inferenceTotalSegmentatorDocker = "vamsithiriveedhi/totalsegmentator:task2_v2"
+   String itkimage2segimageDocker = "vamsithiriveedhi/totalsegmentator:task3_v2"
 
    #Preemptible retries
    Int downloadAndConvertPreemptibleTries = 3
@@ -39,10 +39,9 @@ workflow TotalSegmentator {
 
    String inferenceTotalSegmentatorGpuType = 'nvidia-tesla-t4'
 
-   String downloadAndConvertZones = "us-central1-a us-central1-b us-central1-c us-central1-f us-east1-b us-east1-c us-east1-d us-east5-a us-east5-b us-east5-c us-west1-a us-west1-b us-west1-c"
-   String inferenceTotalSegmentatorZones = 'us-west4-a us-west4-b asia-east1-a asia-east1-c australia-southeast1-a australia-southeast1-c asia-northeast1-a asia-northeast1-c'
-   String itkimage2segimageZones = "us-central1-a us-central1-b us-central1-c us-central1-f us-east1-b us-east1-c us-east1-d us-east5-a us-east5-b us-east5-c us-west1-a us-west1-b us-west1-c"
-
+   String downloadAndConvertZones = "us-central1-a us-central1-b us-central1-c us-central1-f"
+   String inferenceTotalSegmentatorZones = "us-central1-a us-central1-b us-central1-c us-central1-f"
+   String itkimage2segimageZones = "us-central1-a us-central1-b us-central1-c us-central1-f"
  }
  #calling Papermill Task with the inputs
  call downloadAndConvert{
@@ -176,7 +175,7 @@ task inference {
    memory: inferenceTotalSegmentatorRAM + " GB"
    disks: "local-disk 50 SSD"  #ToDo: Dynamically calculate disk space using the no of bytes of yaml file size. 64 characters is the max size I found in a seriesInstanceUID
    preemptible: inferenceTotalSegmentatorPreemptibleTries
-   maxRetries: 2
+   maxRetries: 1
    gpuType: inferenceTotalSegmentatorGpuType
    gpuCount: 1
  }
@@ -208,7 +207,7 @@ task itkimage2segimage {
  }
  command {
    set -e
-   papermill -p csvFilePath ~{seriesInstanceS5cmdUrls} -p inferenceNiftiFilePath ~{inferenceZipFile}  ~{itkimage2segimageNotebook} itkimage2segimageOutputJupyterNotebook.ipynb || (>&2 echo "Killed" && exit 1)
+   papermill -p csvFilePath ~{seriesInstanceS5cmdUrls} -p inferenceNiftiFilePath ~{inferenceZipFile}  ~{itkimage2segimageNotebook} itkimage2segimageOutputJupyterNotebook.ipynb 
  }
 
  #Run time attributes:
