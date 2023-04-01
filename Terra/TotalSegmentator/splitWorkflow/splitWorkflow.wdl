@@ -1,4 +1,3 @@
-version 1.0
 #WORKFLOW DEFINITION
 workflow TotalSegmentator {
  input {
@@ -30,11 +29,11 @@ workflow TotalSegmentator {
    Int itkimage2segimageCpus = 2
 
    Int downloadAndConvertRAM = 1
-   Int inferenceTotalSegmentatorRAM = 8
+   Int inferenceTotalSegmentatorRAM = 13
    Int itkimage2segimageRAM = 2
 
    String downloadAndConvertCpuFamily = 'AMD Rome'
-   #String inferenceTotalSegmentatorCpuFamily = 'Intel Skylake' Because GPUs are available only with N1 family
+   #String inferenceTotalSegmentatorCpuFamily = 'Intel Cascade Lake' #Because GPUs are available only with N1 family
    String itkimage2segimageCpuFamily = 'AMD Rome'   
 
    String inferenceTotalSegmentatorGpuType = 'nvidia-tesla-t4'
@@ -100,7 +99,7 @@ workflow TotalSegmentator {
    File itkimage2segimageZipFile = itkimage2segimage.itkimage2segimageZipFile
    
    File? dcm2niix_errors = downloadAndConvert.dcm2niix_errors
-  
+   File inferenceMetaData = inference.inferenceMetaData
  }
 
 }
@@ -128,7 +127,7 @@ task downloadAndConvert {
    cpu: downloadAndConvertCpus
    cpuPlatform: downloadAndConvertCpuFamily
    zones: downloadAndConvertZones
-   memory: downloadAndConvertRAM + " GB"
+   memory: downloadAndConvertRAM + " GiB"
    disks: "local-disk 50 SSD"  #ToDo: Dynamically calculate disk space using the no of bytes of yaml file size. 64 characters is the max size I found in a seriesInstanceUID
    preemptible: downloadAndConvertPreemptibleTries
    maxRetries: 1
@@ -172,7 +171,7 @@ task inference {
    cpu: inferenceTotalSegmentatorCpus
    #cpuPlatform: downloadAndConvertCpuFamily
    zones: inferenceTotalSegmentatorZones
-   memory: inferenceTotalSegmentatorRAM + " GB"
+   memory: inferenceTotalSegmentatorRAM + " GiB"
    disks: "local-disk 50 SSD"  #ToDo: Dynamically calculate disk space using the no of bytes of yaml file size. 64 characters is the max size I found in a seriesInstanceUID
    preemptible: inferenceTotalSegmentatorPreemptibleTries
    maxRetries: 1
@@ -184,7 +183,7 @@ task inference {
    File inferenceOutputJupyterNotebook = "inferenceOutputJupyterNotebook.ipynb"
    File inferenceZipFile = "inferenceNiftiFiles.tar.lz4"
    File inferenceUsageMetrics = "inferenceUsageMetrics.lz4"
-   #File inferenceMetaData = "inferencemetaData.zip"
+   File inferenceMetaData = "inferenceMetaData.tar.lz4"
  }
 }
 
@@ -202,28 +201,3 @@ task itkimage2segimage {
     Int itkimage2segimageRAM 
     String itkimage2segimageZones 
     String itkimage2segimageCpuFamily
-
-    File inferenceZipFile
- }
- command {
-   set -e
-   papermill -p csvFilePath ~{seriesInstanceS5cmdUrls} -p inferenceNiftiFilePath ~{inferenceZipFile}  ~{itkimage2segimageNotebook} itkimage2segimageOutputJupyterNotebook.ipynb 
- }
-
- #Run time attributes:
- runtime {
-   docker: itkimage2segimageDocker
-   cpu: itkimage2segimageCpus
-   cpuPlatform: itkimage2segimageCpuFamily
-   zones: itkimage2segimageZones
-   memory: itkimage2segimageRAM + " GB"
-   disks: "local-disk 50 SSD"  #ToDo: Dynamically calculate disk space using the no of bytes of yaml file size. 64 characters is the max size I found in a seriesInstanceUID
-   preemptible: itkimage2segimagePreemptibleTries
-   maxRetries: 1
- }
- output {
-   File itkimage2segimageOutputJupyterNotebook = "itkimage2segimageOutputJupyterNotebook.ipynb"
-   File itkimage2segimageZipFile = "itkimage2segimageDICOMsegFiles.tar.lz4"
-   File itkimage2segimageUsageMetrics = "itkimage2segimageUsageMetrics.lz4"
- }
-}
