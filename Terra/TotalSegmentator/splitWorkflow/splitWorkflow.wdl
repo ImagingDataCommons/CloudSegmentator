@@ -1,3 +1,4 @@
+version 1.0
 #WORKFLOW DEFINITION
 workflow TotalSegmentator {
  input {
@@ -201,3 +202,28 @@ task itkimage2segimage {
     Int itkimage2segimageRAM 
     String itkimage2segimageZones 
     String itkimage2segimageCpuFamily
+
+    File inferenceZipFile
+ }
+ command {
+   set -e
+   papermill -p csvFilePath ~{seriesInstanceS5cmdUrls} -p inferenceNiftiFilePath ~{inferenceZipFile}  ~{itkimage2segimageNotebook} itkimage2segimageOutputJupyterNotebook.ipynb 
+ }
+
+ #Run time attributes:
+ runtime {
+   docker: itkimage2segimageDocker
+   cpu: itkimage2segimageCpus
+   cpuPlatform: itkimage2segimageCpuFamily
+   zones: itkimage2segimageZones
+   memory: itkimage2segimageRAM + " GiB"
+   disks: "local-disk 50 SSD"  #ToDo: Dynamically calculate disk space using the no of bytes of yaml file size. 64 characters is the max size I found in a seriesInstanceUID
+   preemptible: itkimage2segimagePreemptibleTries
+   maxRetries: 1
+ }
+ output {
+   File itkimage2segimageOutputJupyterNotebook = "itkimage2segimageOutputJupyterNotebook.ipynb"
+   File itkimage2segimageZipFile = "itkimage2segimageDICOMsegFiles.tar.lz4"
+   File itkimage2segimageUsageMetrics = "itkimage2segimageUsageMetrics.lz4"
+ }
+}
