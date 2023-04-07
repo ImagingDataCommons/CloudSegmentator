@@ -82,11 +82,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "15825003",
           "CodeMeaning": "Aorta"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -160,11 +155,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "12738006",
           "CodeMeaning": "Brain"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -238,11 +228,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "71854001",
           "CodeMeaning": "Colon"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -264,11 +249,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "38848004",
           "CodeMeaning": "Duodenum"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -290,11 +270,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "32849002",
           "CodeMeaning": "Esophagus"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -312,11 +287,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "89545001",
           "CodeMeaning": "Face"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -390,11 +360,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "28231008",
           "CodeMeaning": "Gallbladder"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -572,11 +537,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "82471001",
           "CodeMeaning": "Left atrium"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -598,11 +558,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "73829009",
           "CodeMeaning": "Right atrium"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -624,11 +579,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "80891009",
           "CodeMeaning": "Heart"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -650,11 +600,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "87878005",
           "CodeMeaning": "Left ventricle"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -676,11 +621,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "53085002",
           "CodeMeaning": "Right ventricle"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -962,11 +902,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "64131007",
           "CodeMeaning": "Inferior vena cava"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -1040,11 +975,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "10200004",
           "CodeMeaning": "Liver"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -1118,11 +1048,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "72481006",
           "CodeMeaning": "Middle lobe of right lung"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -1196,11 +1121,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "15776009",
           "CodeMeaning": "Pancreas"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -1222,11 +1142,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "32764006",
           "CodeMeaning": "Portal vein"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -1248,11 +1163,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "81040000",
           "CodeMeaning": "Pulmonary artery"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -1898,11 +1808,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "54735007",
           "CodeMeaning": "Sacrum"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -1976,11 +1881,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "30315005",
           "CodeMeaning": "Small Intestine"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -2002,11 +1902,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "78961009",
           "CodeMeaning": "Spleen"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -2028,11 +1923,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "69695003",
           "CodeMeaning": "Stomach"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -2054,11 +1944,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "44567001",
           "CodeMeaning": "Trachea"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -2080,11 +1965,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "89837001",
           "CodeMeaning": "Bladder"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -2106,11 +1986,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "14806007",
           "CodeMeaning": "C1 vertebra"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -2132,11 +2007,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "39976000",
           "CodeMeaning": "C2 vertebra"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -2158,11 +2028,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "113205007",
           "CodeMeaning": "C3 vertebra"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -2184,11 +2049,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "5329002",
           "CodeMeaning": "C4 vertebra"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -2210,11 +2070,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "36978003",
           "CodeMeaning": "C5 vertebra"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -2236,11 +2091,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "36054005",
           "CodeMeaning": "C6 vertebra"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -2262,11 +2112,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "87391001",
           "CodeMeaning": "C7 vertebra"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -2288,11 +2133,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "66794005",
           "CodeMeaning": "L1 vertebra"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -2314,11 +2154,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "14293000",
           "CodeMeaning": "L2 vertebra"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -2340,11 +2175,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "36470004",
           "CodeMeaning": "L3 vertebra"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -2366,11 +2196,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "11994002",
           "CodeMeaning": "L4 vertebra"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -2392,11 +2217,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "49668003",
           "CodeMeaning": "L5 vertebra"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -2418,11 +2238,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "64864005",
           "CodeMeaning": "T1 vertebra"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -2444,11 +2259,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "7610001",
           "CodeMeaning": "T10 vertebra"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -2470,11 +2280,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "12989004",
           "CodeMeaning": "T11 vertebra"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -2496,11 +2301,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "23215003",
           "CodeMeaning": "T12 vertebra"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -2522,11 +2322,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "53733008",
           "CodeMeaning": "T2 vertebra"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -2548,11 +2343,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "1626008",
           "CodeMeaning": "T3 vertebra"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -2574,11 +2364,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "73071006",
           "CodeMeaning": "T4 vertebra"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -2600,11 +2385,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "56401006",
           "CodeMeaning": "T5 vertebra"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -2626,11 +2406,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "45296009",
           "CodeMeaning": "T6 vertebra"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -2652,11 +2427,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "62487009",
           "CodeMeaning": "T7 vertebra"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -2678,11 +2448,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "11068009",
           "CodeMeaning": "T8 vertebra"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       },
       {
@@ -2704,11 +2469,6 @@
           "CodingSchemeDesignator": "SCT",
           "CodeValue": "82687006",
           "CodeMeaning": "T9 vertebra"
-        },
-        "SegmentedPropertyTypeModifierCodeSequence": {
-          "CodingSchemeDesignator": "",
-          "CodeValue": "",
-          "CodeMeaning": ""
         }
       }
     ]
