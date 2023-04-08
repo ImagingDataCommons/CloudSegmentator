@@ -3,6 +3,11 @@ workflows:
    - name: TotalSegmentator_GPU
      subclass: WDL
      primaryDescriptorPath: /Terra/TotalSegmentator/GPU/v7.wdl
-   - name: TotalSegmentator_splitWorkflow
+   - name: TotalSegmentatorSplitWorkflowV2
      subclass: WDL
      primaryDescriptorPath: /Terra/TotalSegmentator/splitWorkflow/splitWorkflow.wdl
+   - name: TotalSegmentatorSplitWorkflowV2
+     subclass: WDL
+     primaryDescriptorPath: /Terra/TotalSegmentator/splitWorkflow/splitWorkflowV2.wdl     
+     
+    
