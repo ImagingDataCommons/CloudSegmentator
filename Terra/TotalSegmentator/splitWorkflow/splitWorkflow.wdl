@@ -6,11 +6,7 @@ workflow TotalSegmentator {
    #And the hardcoded inputs will appear as optional to override the values entered here
    #File yamlParameters
    File seriesInstanceS5cmdUrls
-   #JupyterNotebooks containing the code
-   File downloadDicomAndConvertNotebook
-   File inferenceTotalSegmentatorNotebook
-   File itkimage2segimageNotebook
-   
+
    #Parameters
    String dicomToNiftiConverterTool
 
@@ -49,7 +45,6 @@ workflow TotalSegmentator {
         #yamlParameters = yamlParameters,
         dicomToNiftiConverterTool = dicomToNiftiConverterTool,
         seriesInstanceS5cmdUrls = seriesInstanceS5cmdUrls,
-        downloadDicomAndConvertNotebook = downloadDicomAndConvertNotebook,
         downloadDicomAndConvertDocker = downloadDicomAndConvertDocker,
         downloadAndConvertPreemptibleTries = downloadAndConvertPreemptibleTries,
         downloadAndConvertCpus = downloadAndConvertCpus,
@@ -57,9 +52,8 @@ workflow TotalSegmentator {
         downloadAndConvertZones = downloadAndConvertZones,
         downloadAndConvertCpuFamily = downloadAndConvertCpuFamily
  }
- call inference{
+ call inferenceTotalSegmentator{
    input :
-     inferenceTotalSegmentatorNotebook= inferenceTotalSegmentatorNotebook,
      dicomToNiftiConverterTool = dicomToNiftiConverterTool,
      inferenceTotalSegmentatorDocker = inferenceTotalSegmentatorDocker ,
      inferenceTotalSegmentatorPreemptibleTries = inferenceTotalSegmentatorPreemptibleTries ,
@@ -75,7 +69,6 @@ workflow TotalSegmentator {
    input:
     #yamlParameters = yamlParameters,
     seriesInstanceS5cmdUrls = seriesInstanceS5cmdUrls,
-    itkimage2segimageNotebook = itkimage2segimageNotebook,
     itkimage2segimageDocker = itkimage2segimageDocker,
     itkimage2segimagePreemptibleTries = itkimage2segimagePreemptibleTries,
     itkimage2segimageCpus = itkimage2segimageCpus,
@@ -83,24 +76,26 @@ workflow TotalSegmentator {
     itkimage2segimageZones = itkimage2segimageZones,
     itkimage2segimageCpuFamily = itkimage2segimageCpuFamily,
     #Nifti files converted in the first step are provided as input here
-    inferenceZipFile = inference.inferenceZipFile
+    inferenceZipFile = inferenceTotalSegmentator.inferenceZipFile
 }
 
 
  output {
   #output notebooks
    File downloadDicomAndConvertOutputNotebook = downloadAndConvert.downloadDicomAndConvertOutputJupyterNotebook
-   File inferenceTotalSegmentatorOutputNotebook = inference.inferenceOutputJupyterNotebook
+   File inferenceTotalSegmentatorOutputNotebook = inferenceTotalSegmentator.inferenceOutputJupyterNotebook
    File itkimage2segimageOutputNotebook = itkimage2segimage.itkimage2segimageOutputJupyterNotebook   
 
    File downloadDicomAndConvertUsageMetrics  = downloadAndConvert.downloadDicomAndConvertUsageMetrics
-   File inferenceUsageMetrics  = inference.inferenceUsageMetrics
+   File inferenceUsageMetrics  = inferenceTotalSegmentator.inferenceUsageMetrics
    File itkimage2segimageUsageMetrics  = itkimage2segimage.itkimage2segimageUsageMetrics
 
    File itkimage2segimageZipFile = itkimage2segimage.itkimage2segimageZipFile
    
    File? dcm2niix_errors = downloadAndConvert.dcm2niix_errors
-   File inferenceMetaData = inference.inferenceMetaData
+   File? totalsegmentatorErrors = inferenceTotalSegmentator.totalsegmentatorErrors
+   File? itkimage2segimageErrors = itkimage2segimage.itkimage2segimageErrors
+   File inferenceMetaData = inferenceTotalSegmentator.inferenceMetaData
  }
 
 }
@@ -110,7 +105,6 @@ task downloadAndConvert {
     #File yamlParameters
     String dicomToNiftiConverterTool
     File seriesInstanceS5cmdUrls
-    File downloadDicomAndConvertNotebook 
     String downloadDicomAndConvertDocker
     Int downloadAndConvertPreemptibleTries 
     Int downloadAndConvertCpus 
@@ -119,8 +113,9 @@ task downloadAndConvert {
     String downloadAndConvertCpuFamily
  }
  command {
+   wget https://raw.githubusercontent.com/vkt1414/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/downloadDicomAndConvertNotebook.ipynb
    set -e
-   papermill -p converterType ~{dicomToNiftiConverterTool} -p csvFilePath ~{seriesInstanceS5cmdUrls}  ~{downloadDicomAndConvertNotebook} downloadAndConvertOutputJupyterNotebook.ipynb 
+   papermill -p converterType ~{dicomToNiftiConverterTool} -p csvFilePath ~{seriesInstanceS5cmdUrls} downloadDicomAndConvertNotebook.ipynb downloadAndConvertOutputJupyterNotebook.ipynb 
  }
  #Run time attributes:
  runtime {
@@ -143,12 +138,11 @@ task downloadAndConvert {
 }
 
 #Task Definitions
-task inference {
+task inferenceTotalSegmentator {
  input {
    #Just like the workflow inputs, any new inputs entered here but not hardcoded will appear in the UI as required fields
    #And the hardcoded inputs will appear as optional to override the values entered here
    # Command parameters
-    File inferenceTotalSegmentatorNotebook 
     String dicomToNiftiConverterTool
     String inferenceTotalSegmentatorDocker 
     Int inferenceTotalSegmentatorPreemptibleTries 
@@ -163,8 +157,9 @@ task inference {
  }
 
  command {
+   wget https://raw.githubusercontent.com/vkt1414/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/inferenceTotalSegmentatorNotebook.ipynb
    set -e
-   papermill -p converterType ~{dicomToNiftiConverterTool}  -p niftiFilePath ~{NiftiFiles} ~{inferenceTotalSegmentatorNotebook} inferenceOutputJupyterNotebook.ipynb
+   papermill -p converterType ~{dicomToNiftiConverterTool}  -p niftiFilePath ~{NiftiFiles} inferenceTotalSegmentatorNotebook.ipynb inferenceOutputJupyterNotebook.ipynb
  }
  #Run time attributes:
  runtime {
@@ -185,6 +180,7 @@ task inference {
    File inferenceZipFile = "inferenceNiftiFiles.tar.lz4"
    File inferenceUsageMetrics = "inferenceUsageMetrics.lz4"
    File inferenceMetaData = "inferenceMetaData.tar.lz4"
+   File? totalsegmentatorErrors = "totalsegmentator_errors.txt"
  }
 }
 
@@ -195,7 +191,6 @@ task itkimage2segimage {
    #And the hardcoded inputs will appear as optional to override the values entered here
     #File yamlParameters
     File seriesInstanceS5cmdUrls
-    File itkimage2segimageNotebook 
     String itkimage2segimageDocker
     Int itkimage2segimagePreemptibleTries 
     Int itkimage2segimageCpus 
@@ -206,8 +201,9 @@ task itkimage2segimage {
     File inferenceZipFile
  }
  command {
+   wget https://raw.githubusercontent.com/vkt1414/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/itkimage2segimageNotebook.ipynb
    set -e
-   papermill -p csvFilePath ~{seriesInstanceS5cmdUrls} -p inferenceNiftiFilePath ~{inferenceZipFile}  ~{itkimage2segimageNotebook} itkimage2segimageOutputJupyterNotebook.ipynb 
+   papermill -p csvFilePath ~{seriesInstanceS5cmdUrls} -p inferenceNiftiFilePath ~{inferenceZipFile}  itkimage2segimageNotebook.ipynb itkimage2segimageOutputJupyterNotebook.ipynb 
  }
 
  #Run time attributes:
@@ -217,7 +213,7 @@ task itkimage2segimage {
    cpuPlatform: itkimage2segimageCpuFamily
    zones: itkimage2segimageZones
    memory: itkimage2segimageRAM + " GiB"
-   disks: "local-disk 50 SSD"  #ToDo: Dynamically calculate disk space using the no of bytes of yaml file size. 64 characters is the max size I found in a seriesInstanceUID
+   disks: "local-disk 10 SSD"  
    preemptible: itkimage2segimagePreemptibleTries
    maxRetries: 1
  }
@@ -225,5 +221,6 @@ task itkimage2segimage {
    File itkimage2segimageOutputJupyterNotebook = "itkimage2segimageOutputJupyterNotebook.ipynb"
    File itkimage2segimageZipFile = "itkimage2segimageDICOMsegFiles.tar.lz4"
    File itkimage2segimageUsageMetrics = "itkimage2segimageUsageMetrics.lz4"
+   File? itkimage2segimageErrors = "itkimage2segimage_error_file.txt"
  }
 }
