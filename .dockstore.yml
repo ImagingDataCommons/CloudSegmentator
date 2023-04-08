@@ -6,8 +6,12 @@ workflows:
    - name: TotalSegmentatorSplitWorkflow
      subclass: WDL
      primaryDescriptorPath: /Terra/TotalSegmentator/splitWorkflow/splitWorkflow.wdl
+     testParameterFiles:
+     -  /sampleManifests/batch_1.csv
    - name: TotalSegmentatorSplitWorkflowV2
      subclass: WDL
-     primaryDescriptorPath: /Terra/TotalSegmentator/splitWorkflow/splitWorkflowV2.wdl     
+     primaryDescriptorPath: /Terra/TotalSegmentator/splitWorkflow/splitWorkflowV2.wdl
+     testParameterFiles:
+     -  /sampleManifests/batch_1.csv
      
     
