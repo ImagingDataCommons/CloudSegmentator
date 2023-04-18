@@ -15,7 +15,7 @@ workflows:
      -  /sampleManifests/batch_1.csv
    - name: TotalSegmentatorTask1and2
      subclass: CWL
-     primaryDescriptorPath: /SevenBridges/TotalSegmentator/splitWorkflow/tasks1and2.cwl
+     primaryDescriptorPath: /SevenBridges/TotalSegmentator/splitWorkflow/splitWorkflowV2.cwl
      testParameterFiles:
      -  /sampleManifests/batch_1.csv
           
