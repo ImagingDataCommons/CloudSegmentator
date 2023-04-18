@@ -1,14 +1,15 @@
 #!/bin/bash
 
-weights_urls=("https://zenodo.org/record/6802342/files/Task251_TotalSegmentator_part1_organs_1139subj.zip"
-"https://zenodo.org/record/6802358/files/Task252_TotalSegmentator_part2_vertebrae_1139subj.zip"
-"https://zenodo.org/record/6802360/files/Task253_TotalSegmentator_part3_cardiac_1139subj.zip"
-"https://zenodo.org/record/6802366/files/Task254_TotalSegmentator_part4_muscles_1139subj.zip"
-"https://zenodo.org/record/6802452/files/Task255_TotalSegmentator_part5_ribs_1139subj.zip"
-"https://zenodo.org/record/6802052/files/Task256_TotalSegmentator_3mm_1139subj.zip"
+weights_urls=(
+    "http://94.16.105.223/static/Task251_TotalSegmentator_part1_organs_1139subj.zip"
+    "http://94.16.105.223/static/Task252_TotalSegmentator_part2_vertebrae_1139subj.zip"
+    "http://94.16.105.223/static/Task253_TotalSegmentator_part3_cardiac_1139subj.zip"
+    "http://94.16.105.223/static/Task254_TotalSegmentator_part4_muscles_1139subj.zip"
+    "http://94.16.105.223/static/Task255_TotalSegmentator_part5_ribs_1139subj.zip"
+    "http://94.16.105.223/static/Task256_TotalSegmentator_3mm_1139subj.zip"
 )
 
-weights_dir="/root/.totalsegmentator/nnunet/results/nnUNet/3d_fullres/"
+weights_dir="${TOTALSEG_WEIGHTS_PATH}/nnUNet/3d_fullres/"
 
 for url in "${weights_urls[@]}"; do
   fn=$(basename $url)
