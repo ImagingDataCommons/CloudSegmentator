@@ -273,8 +273,6 @@ steps:
   sbg:y: -254.9150390625
 - id: itkimage2segimage
   in:
-  - id: dicomToNiftiConverterTool
-    source: dicomToNiftiConverterTool
   - id: s5cmdUrls
     source: s5cmdUrls
   - id: downloadDicomAndConvertAndInferenceTotalSegmentatorZipFile
@@ -289,7 +287,7 @@ steps:
     cwlVersion: v1.2
     "$namespaces":
       sbg: https://sevenbridges.com
-    id: vamsikrishna14/idc/itkimage2segimage/5
+    id: vamsikrishna14/idc/itkimage2segimage/9
     baseCommand:
     - wget
     - https://raw.githubusercontent.com/vkt1414/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/itkimage2segimageNotebook.ipynb
@@ -299,18 +297,17 @@ steps:
     - "&&"
     - papermill
     inputs:
-    - id: dicomToNiftiConverterTool
-      type: string
-      inputBinding:
-        shellQuote: false
-        position: 2
     - id: s5cmdUrls
       type: File
       inputBinding:
         shellQuote: false
         position: 3
     - id: downloadDicomAndConvertAndInferenceTotalSegmentatorZipFile
-      type: File?
+      type: File
+      inputBinding:
+        shellQuote: true
+        position: 2
+      sbg:fileTypes: LZ4
     outputs:
     - id: itkimage2segimageOutputJupyterNotebook
       type: File?
@@ -337,7 +334,7 @@ steps:
     - prefix: "-p"
       shellQuote: false
       position: 2
-      valueFrom: converterType
+      valueFrom: inferenceNiftiFilePath
     - prefix: "-p"
       shellQuote: false
       position: 3
@@ -385,13 +382,29 @@ steps:
       sbg:modifiedBy: vamsikrishna14
       sbg:modifiedOn: 1681769793
       sbg:revisionNotes: ''
+    - sbg:revision: 6
+      sbg:modifiedBy: vamsikrishna14
+      sbg:modifiedOn: 1681827369
+      sbg:revisionNotes: ''
+    - sbg:revision: 7
+      sbg:modifiedBy: vamsikrishna14
+      sbg:modifiedOn: 1681828769
+      sbg:revisionNotes: ''
+    - sbg:revision: 8
+      sbg:modifiedBy: vamsikrishna14
+      sbg:modifiedOn: 1681828857
+      sbg:revisionNotes: ''
+    - sbg:revision: 9
+      sbg:modifiedBy: vamsikrishna14
+      sbg:modifiedOn: 1681828891
+      sbg:revisionNotes: ''
     sbg:image_url:
     sbg:appVersion:
     - v1.2
-    sbg:id: vamsikrishna14/idc/itkimage2segimage/5
-    sbg:revision: 5
+    sbg:id: vamsikrishna14/idc/itkimage2segimage/9
+    sbg:revision: 9
     sbg:revisionNotes: ''
-    sbg:modifiedOn: 1681769793
+    sbg:modifiedOn: 1681828891
     sbg:modifiedBy: vamsikrishna14
     sbg:createdOn: 1681762996
     sbg:createdBy: vamsikrishna14
@@ -400,9 +413,9 @@ steps:
     sbg:validationErrors: []
     sbg:contributors:
     - vamsikrishna14
-    sbg:latestRevision: 5
+    sbg:latestRevision: 9
     sbg:publisher: sbg
-    sbg:content_hash: a86b07d445be62791fa65348bdadf74762645d405dd5d1f7cda894759f0355ec9
+    sbg:content_hash: a44ec989dd68ff0a415a5e1b1fb88dec30eadf81a7f5e820f84f07eb8c7c8dcc7
     sbg:workflowLanguage: CWL
   label: itkimage2segimage
   sbg:x: 522.7245483398438
@@ -456,14 +469,26 @@ sbg:revisionsInfo:
   sbg:modifiedBy: vamsikrishna14
   sbg:modifiedOn: 1681769890
   sbg:revisionNotes: ''
-sbg:image_url: https://cgc.sbgenomics.com/ns/brood/images/vamsikrishna14/idc/totalsegmentator/10.png
+- sbg:revision: 11
+  sbg:modifiedBy: vamsikrishna14
+  sbg:modifiedOn: 1681825856
+  sbg:revisionNotes: ''
+- sbg:revision: 12
+  sbg:modifiedBy: vamsikrishna14
+  sbg:modifiedOn: 1681827395
+  sbg:revisionNotes: ''
+- sbg:revision: 13
+  sbg:modifiedBy: vamsikrishna14
+  sbg:modifiedOn: 1681829175
+  sbg:revisionNotes: ''
+sbg:image_url: https://cgc.sbgenomics.com/ns/brood/images/vamsikrishna14/idc/totalsegmentator/13.png
 sbg:appVersion:
 - v1.2
-id: https://cgc-api.sbgenomics.com/v2/apps/vamsikrishna14/idc/totalsegmentator/10/raw/
-sbg:id: vamsikrishna14/idc/totalsegmentator/10
-sbg:revision: 10
+id: https://cgc-api.sbgenomics.com/v2/apps/vamsikrishna14/idc/totalsegmentator/13/raw/
+sbg:id: vamsikrishna14/idc/totalsegmentator/13
+sbg:revision: 13
 sbg:revisionNotes: ''
-sbg:modifiedOn: 1681769890
+sbg:modifiedOn: 1681829175
 sbg:modifiedBy: vamsikrishna14
 sbg:createdOn: 1681763732
 sbg:createdBy: vamsikrishna14
@@ -472,7 +497,7 @@ sbg:sbgMaintained: false
 sbg:validationErrors: []
 sbg:contributors:
 - vamsikrishna14
-sbg:latestRevision: 10
+sbg:latestRevision: 13
 sbg:publisher: sbg
-sbg:content_hash: a8c49a98c4e9b783ebe5f8ce835aff66d47783403420af9ac469dc9ab99ff9e82
+sbg:content_hash: aae72e3987167a527d16bb786d57a629451574bf207e71cf1c8a1bafc9c75a27b
 sbg:workflowLanguage: CWL
