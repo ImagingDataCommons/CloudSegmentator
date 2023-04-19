@@ -13,9 +13,14 @@ workflows:
      primaryDescriptorPath: /Terra/TotalSegmentator/splitWorkflow/splitWorkflowV2.wdl
      testParameterFiles:
      -  /sampleManifests/batch_1.csv
-   - name: TotalSegmentatorCWLWorkflow
+   - name: TotalSegmentatorCWLWorkflowV2
      subclass: CWL
      primaryDescriptorPath: /SevenBridges/TotalSegmentator/splitWorkflow/splitWorkflowV2.cwl
+     testParameterFiles:
+     -  /sampleManifests/batch_1.csv
+   - name: TotalSegmentatorCWLWorkflowV1
+     subclass: CWL
+     primaryDescriptorPath: /SevenBridges/TotalSegmentator/splitWorkflow/splitWorkflowV1.cwl
      testParameterFiles:
      -  /sampleManifests/batch_1.csv
           
