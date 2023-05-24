@@ -1,9 +1,16 @@
+#task3_v3
+                                                                                                                                                                                                                      
 FROM python:3.11.2-slim-buster
 
 # Install some basic system utilities
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
+    build-essential\
+    dcm2niix\
     lz4=1.8.3-1+deb10u1\
+    pigz\
+    plastimatch\
+    python3-dev\
     wget=1.20.1-1.1\
   && rm -rf /var/lib/apt/lists/*
 
@@ -14,8 +21,14 @@ RUN pip3 install --no-cache-dir \
     ipython==8.11.0\
     ipywidgets==8.0.5\
     jupyter==1.0.0\
+    nibabel\
     pandas==1.5.3\
-    papermill==2.4.0
+    papermill==2.4.0\
+    p_tqdm\
+    pydicom\
+    tqdm\
+ && pip install --no-cache-dir \
+    pyradiomics==3.0.1
 
 # Download and install s5cmd for interacting with cloud storage
 ENV S5CMD_URL="https://github.com/peak/s5cmd/releases/download/v2.0.0/s5cmd_2.0.0_Linux-64bit.tar.gz"
