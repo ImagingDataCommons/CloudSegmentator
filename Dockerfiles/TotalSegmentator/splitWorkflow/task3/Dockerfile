@@ -2,6 +2,15 @@
                                                                                                                                                                                                                       
 FROM python:3.11.2-slim-buster
 
+#ARG GIT_HASH=
+
+# ENV TERM=xterm-256color \
+#     BAMID_URL=https://github.com/Griffan/VerifyBamID/archive \
+#     TINI_VERSION=v0.19.0
+
+LABEL MAINTAINER="IDC <vthiriveedhi@mgb.org>" \
+        GIT_HASH=${GIT_HASH}
+
 # Install some basic system utilities
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
