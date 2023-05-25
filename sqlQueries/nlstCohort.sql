@@ -141,7 +141,8 @@ geometryChecks AS (
     --AND exposureCount=1
 
 )
-#finally displaying the attributes that we would be interestedSELECT
+#finally displaying the attributes that we would be interested
+SELECT
   SeriesInstanceUID,
   iopCount,
   dotProduct,
