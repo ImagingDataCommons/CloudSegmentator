@@ -5,20 +5,20 @@
 
 -- The assumptions made here are
   -- consider only those series that have CT modality and belong to the NLST collection
-
   -- do not contain LOCALIZER in ImageType
-
-  -- all instances have identical values for ImageOrientationPatient (converted to string for the purposes of comparison)
+  -- all instances in a series have identical values for ImageOrientationPatient (converted to string for the purposes of comparison)
+  -- all instances in a series have 0 as the dot product between first and second vectors in ImageOrientationPosition
   -- have number of instances in the series equal to the number of distinct values of ImagePositionPatient attribute
   -- (converted to string for the purposes of comparison)
-
-  -- all instances have identical values of PixelSpacing (converted to string for the purposes of comparison)
-
-  -- all instances have identical values of SliceThickness--this requirement has been relaxed now
-
+  -- all instances in a series have identical values for the first two components of ImagePositionPatient
+  -- all instances in a series have identical values of PixelSpacing (converted to string for the purposes of comparison)
+  -- all instances in a series have identical values of SliceThickness--this requirement has been relaxed now
+  -- all instances in a series have identical pixel Rows and similarly identical pixel Columns
   -- with sliceIntervalDifference defined as the difference between the values of the 3rd component of ImagePositionPatient,
   -- after sorting all instances by that third component, having the difference between the largest and smallest 
   --values of sliceIntervalDifference less than 0.01
+  
+  
 
 WITH
   -- Create a common table expression (CTE) named nonLocalizerRawData
