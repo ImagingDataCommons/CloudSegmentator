@@ -17,7 +17,7 @@ firstorder_90Percentile
 firstorder_Energy
 firstorder_Entropy
 firstorder_InterquartileRange
-#firstorder_Kurtosis##there is a difference b/w how pyradiomics and IBSI calculates this value
+firstorder_Kurtosis
 firstorder_Maximum
 firstorder_MeanAbsoluteDeviation
 firstorder_Mean
