@@ -21,7 +21,7 @@ workflow TotalSegmentator {
 
    #Compute CPU configuration
    Int downloadDicomAndConvertAndInferenceTotalSegmentatorCpus = 2
-   Int dicomsegAndRadiomicsSR_Cpus = 2
+   Int dicomsegAndRadiomicsSR_Cpus = 4
 
    Int downloadDicomAndConvertAndInferenceTotalSegmentatorRAM = 13
    Int dicomsegAndRadiomicsSR_RAM = 8
