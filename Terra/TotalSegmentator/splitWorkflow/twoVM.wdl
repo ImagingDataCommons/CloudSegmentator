@@ -71,6 +71,10 @@ workflow TotalSegmentator {
 
    File dicomsegAndRadiomicsSR_CompressedFiles = dicomsegAndRadiomicsSR.dicomsegAndRadiomicsSR_CompressedFiles
    
+   File pyradiomicsRadiomicsFeatures = dicomsegAndRadiomicsSR.pyradiomicsRadiomicsFeatures
+   File structuredReportsDICOM = dicomsegAndRadiomicsSR.structuredReportsDICOM
+   File structuredReportsJSON = dicomsegAndRadiomicsSR.structuredReportsJSON
+   
    File? dcm2niixErrors = downloadDicomAndConvertAndInferenceTotalSegmentator.dcm2niixErrors
    File? totalsegmentatorErrors = downloadDicomAndConvertAndInferenceTotalSegmentator.totalsegmentatorErrors
    File? dicomsegAndRadiomicsSR_Errors = dicomsegAndRadiomicsSR.dicomsegAndRadiomicsSR_SRErrors
@@ -162,8 +166,12 @@ task dicomsegAndRadiomicsSR{
  output {
    File dicomsegAndRadiomicsSR_OutputJupyterNotebook = "dicomsegAndRadiomicsSR_OutputJupyterNotebook.ipynb"
    File dicomsegAndRadiomicsSR_CompressedFiles = "dicomsegAndRadiomicsSR_DICOMsegFiles.tar.lz4"
+   File pyradiomicsRadiomicsFeatures = "pyradiomicsRadiomicsFeatures.tar.lz4"
+   File structuredReportsDICOM = "structuredReportsDICOM.tar.lz4"
+   File structuredReportsJSON = "structuredReportsJSON.tar.lz4"
    File dicomsegAndRadiomicsSR_UsageMetrics = "dicomsegAndRadiomicsSR_UsageMetrics.lz4"
    File? dicomsegAndRadiomicsSR_RadiomicsErrors = "radiomics_error_file.txt"
    File? dicomsegAndRadiomicsSR_SRErrors = "sr_error_file.txt"   
+   
  }
 }
