@@ -24,7 +24,7 @@ workflow TotalSegmentator {
    Int dicomsegAndRadiomicsSR_Cpus = 2
 
    Int downloadDicomAndConvertAndInferenceTotalSegmentatorRAM = 13
-   Int dicomsegAndRadiomicsSR_RAM = 2
+   Int dicomsegAndRadiomicsSR_RAM = 6
 
    #String downloadDicomAndConvertAndInferenceTotalSegmentatorCpuFamily = 'Intel Cascade Lake' #Because GPUs are available only with N1 family
    String dicomsegAndRadiomicsSR_CpuFamily = 'AMD Rome'   
