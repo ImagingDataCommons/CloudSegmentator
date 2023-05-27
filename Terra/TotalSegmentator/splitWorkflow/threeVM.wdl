@@ -182,7 +182,7 @@ task inferenceTotalSegmentator {
    File inferenceOutputJupyterNotebook = "inferenceOutputJupyterNotebook.ipynb"
    File inferenceZipFile = "inferenceNiftiFiles.tar.lz4"
    File inferenceUsageMetrics = "inferenceUsageMetrics.lz4"
-   File inferenceMetaData = "inferenceMetaData.tar.lz4"
+   #File inferenceMetaData = "inferenceMetaData.tar.lz4"
    File? totalsegmentatorErrors = "totalsegmentator_errors.txt"
  }
 }
