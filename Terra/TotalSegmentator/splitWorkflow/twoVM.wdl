@@ -114,7 +114,7 @@ task downloadDicomAndConvertAndInferenceTotalSegmentator{
    #cpuPlatform: downloadDicomAndConvertAndInferenceTotalSegmentatorCpuFamily 
    zones: downloadDicomAndConvertAndInferenceTotalSegmentatorZones 
    memory: downloadDicomAndConvertAndInferenceTotalSegmentatorRAM + " GiB"
-   disks: "local-disk 50 SSD"  #ToDo: Dynamically calculate disk space using the no of bytes of yaml file size. 64 characters is the max size I found in a seriesInstanceUID
+   disks: "local-disk 25 HDD"  #ToDo: Dynamically calculate disk space using the no of bytes of yaml file size. 64 characters is the max size I found in a seriesInstanceUID
    preemptible: downloadDicomAndConvertAndInferenceTotalSegmentatorPreemptibleTries 
    maxRetries: 1
    gpuType: downloadDicomAndConvertAndInferenceTotalSegmentatorGpuType 
@@ -159,7 +159,7 @@ task dicomsegAndRadiomicsSR{
    cpuPlatform: dicomsegAndRadiomicsSR_CpuFamily
    zones: dicomsegAndRadiomicsSR_Zones
    memory: dicomsegAndRadiomicsSR_RAM + " GiB"
-   disks: "local-disk 10 SSD"  #ToDo: Dynamically calculate disk space using the no of bytes of yaml file size. 64 characters is the max size I found in a seriesInstanceUID
+   disks: "local-disk 10 HDD"  #ToDo: Dynamically calculate disk space using the no of bytes of yaml file size. 64 characters is the max size I found in a seriesInstanceUID
    preemptible: dicomsegAndRadiomicsSR_PreemptibleTries
    maxRetries: 2
  }
