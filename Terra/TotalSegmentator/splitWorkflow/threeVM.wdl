@@ -197,7 +197,7 @@ task dicomsegAndRadiomicsSR{
     String dicomsegAndRadiomicsSR_Docker
     Int dicomsegAndRadiomicsSR_PreemptibleTries 
     Int dicomsegAndRadiomicsSR_Cpus 
-    Int dicomsegAndRadiomicsSR_RAM 
+    #Int dicomsegAndRadiomicsSR_RAM 
     String dicomsegAndRadiomicsSR_Zones 
     String dicomsegAndRadiomicsSR_CpuFamily
 
