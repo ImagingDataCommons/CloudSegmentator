@@ -72,7 +72,7 @@ workflow TotalSegmentator {
     dicomsegAndRadiomicsSR_Docker = dicomsegAndRadiomicsSR_Docker,
     dicomsegAndRadiomicsSR_PreemptibleTries = dicomsegAndRadiomicsSR_PreemptibleTries,
     dicomsegAndRadiomicsSR_Cpus = dicomsegAndRadiomicsSR_Cpus,
-    dicomsegAndRadiomicsSR_RAM = dicomsegAndRadiomicsSR_RAM,
+    #dicomsegAndRadiomicsSR_RAM = dicomsegAndRadiomicsSR_RAM,
     dicomsegAndRadiomicsSR_Zones = dicomsegAndRadiomicsSR_Zones,
     dicomsegAndRadiomicsSR_CpuFamily = dicomsegAndRadiomicsSR_CpuFamily,
     #Nifti files converted in the first step are provided as input here
