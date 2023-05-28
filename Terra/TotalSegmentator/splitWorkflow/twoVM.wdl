@@ -24,7 +24,7 @@ workflow TotalSegmentator {
    Int dicomsegAndRadiomicsSR_Cpus = 4
 
    Int downloadDicomAndConvertAndInferenceTotalSegmentatorRAM = 13
-   #Int dicomsegAndRadiomicsSR_RAM = 12
+   Int dicomsegAndRadiomicsSR_RAM = 12
 
    #String downloadDicomAndConvertAndInferenceTotalSegmentatorCpuFamily = 'Intel Cascade Lake' #Because GPUs are available only with N1 family
    String dicomsegAndRadiomicsSR_CpuFamily = 'Intel Cascade Lake'   
@@ -52,7 +52,7 @@ workflow TotalSegmentator {
     dicomsegAndRadiomicsSR_Docker = dicomsegAndRadiomicsSR_Docker,
     dicomsegAndRadiomicsSR_PreemptibleTries = dicomsegAndRadiomicsSR_PreemptibleTries,
     dicomsegAndRadiomicsSR_Cpus = dicomsegAndRadiomicsSR_Cpus,
-    #dicomsegAndRadiomicsSR_RAM = dicomsegAndRadiomicsSR_RAM,
+    dicomsegAndRadiomicsSR_RAM = dicomsegAndRadiomicsSR_RAM,
     dicomsegAndRadiomicsSR_Zones = dicomsegAndRadiomicsSR_Zones,
     dicomsegAndRadiomicsSR_CpuFamily = dicomsegAndRadiomicsSR_CpuFamily,
     #Nifti files converted in the first step are provided as input here
@@ -140,7 +140,7 @@ task dicomsegAndRadiomicsSR{
     String dicomsegAndRadiomicsSR_Docker
     Int dicomsegAndRadiomicsSR_PreemptibleTries 
     Int dicomsegAndRadiomicsSR_Cpus 
-    #Int dicomsegAndRadiomicsSR_RAM 
+    Int dicomsegAndRadiomicsSR_RAM 
     String dicomsegAndRadiomicsSR_Zones 
     String dicomsegAndRadiomicsSR_CpuFamily
 
@@ -158,7 +158,7 @@ task dicomsegAndRadiomicsSR{
    cpu: dicomsegAndRadiomicsSR_Cpus
    cpuPlatform: dicomsegAndRadiomicsSR_CpuFamily
    zones: dicomsegAndRadiomicsSR_Zones
-   #memory: dicomsegAndRadiomicsSR_RAM + " GiB"
+   memory: dicomsegAndRadiomicsSR_RAM + " GiB"
    disks: "local-disk 10 HDD"  #ToDo: Dynamically calculate disk space using the no of bytes of yaml file size. 64 characters is the max size I found in a seriesInstanceUID
    preemptible: dicomsegAndRadiomicsSR_PreemptibleTries
    maxRetries: 2
