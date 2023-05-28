@@ -27,17 +27,18 @@ workflow TotalSegmentator {
 
    Int downloadAndConvertRAM = 1
    Int inferenceTotalSegmentatorRAM = 13
-   Int dicomsegAndRadiomicsSR_RAM = 12
+   #Int dicomsegAndRadiomicsSR_RAM = 12
 
    String downloadAndConvertCpuFamily = 'AMD Rome'
    #String inferenceTotalSegmentatorCpuFamily = 'Intel Cascade Lake' #Because GPUs are available only with N1 family
-   String dicomsegAndRadiomicsSR_CpuFamily = 'AMD Rome'   
+   String dicomsegAndRadiomicsSR_CpuFamily = 'Intel Cascade Lake'   
 
    String inferenceTotalSegmentatorGpuType = 'nvidia-tesla-t4'
 
    String downloadAndConvertZones = "us-central1-a us-central1-b us-central1-c us-central1-f"
    String inferenceTotalSegmentatorZones = "us-central1-a us-central1-b us-central1-c us-central1-f"
-   String dicomsegAndRadiomicsSR_Zones = "us-central1-a us-central1-b us-central1-c us-central1-f"
+   String dicomsegAndRadiomicsSR_Zones = "us-central1-a us-central1-b us-central1-c us-central1-f us-east1-b us-east1-c us-east1-d us-east5-a us-east5-b us-east5-c us-west1-a us-west1-b us-west1-c us-west4-a us-west4-b us-west4-c"
+
  }
  #calling Papermill Task with the inputs
  call downloadAndConvert{
@@ -214,7 +215,7 @@ task dicomsegAndRadiomicsSR{
    cpu: dicomsegAndRadiomicsSR_Cpus
    cpuPlatform: dicomsegAndRadiomicsSR_CpuFamily
    zones: dicomsegAndRadiomicsSR_Zones
-   memory: dicomsegAndRadiomicsSR_RAM + " GiB"
+   #memory: dicomsegAndRadiomicsSR_RAM + " GiB"
    disks: "local-disk 10 HDD"  #ToDo: Dynamically calculate disk space using the no of bytes of yaml file size. 64 characters is the max size I found in a seriesInstanceUID
    preemptible: dicomsegAndRadiomicsSR_PreemptibleTries
    maxRetries: 2
