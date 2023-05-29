@@ -31,13 +31,15 @@ workflow TotalSegmentator {
 
    String downloadAndConvertCpuFamily = 'AMD Rome'
    #String inferenceTotalSegmentatorCpuFamily = 'Intel Cascade Lake' #Because GPUs are available only with N1 family
-   String dicomsegAndRadiomicsSR_CpuFamily = 'Intel Cascade Lake'   
+   #String dicomsegAndRadiomicsSR_CpuFamily = 'Intel Cascade Lake' 
+   String dicomsegAndRadiomicsSR_CpuFamily = 'AMD Rome'  
 
    String inferenceTotalSegmentatorGpuType = 'nvidia-tesla-t4'
 
    String downloadAndConvertZones = "us-central1-a us-central1-b us-central1-c us-central1-f"
    String inferenceTotalSegmentatorZones = "us-central1-a us-central1-b us-central1-c us-central1-f"
-   String dicomsegAndRadiomicsSR_Zones = "us-central1-a us-central1-b us-central1-c us-central1-f us-east1-b us-east1-c us-east1-d us-east5-a us-east5-b us-east5-c us-west1-a us-west1-b us-west1-c us-west4-a us-west4-b us-west4-c"
+   #String dicomsegAndRadiomicsSR_Zones = "us-central1-a us-central1-b us-central1-c us-central1-f us-east1-b us-east1-c us-east1-d us-east5-a us-east5-b us-east5-c us-west1-a us-west1-b us-west1-c us-west4-a us-west4-b us-west4-c"
+   String dicomsegAndRadiomicsSR_Zones = "us-central1-a us-central1-b us-central1-c us-central1-f us-east1-b us-east1-c us-east1-d us-east5-a us-east5-b us-east5-c us-west1-a us-west1-b us-west1-c"
 
  }
  #calling Papermill Task with the inputs
