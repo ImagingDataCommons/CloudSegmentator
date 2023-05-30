@@ -28,7 +28,7 @@ workflows:
  tools:
    - name: TotalSegmentatorOneVmWorkflowOnSB-CGC
      subclass: CWL
-     primaryDescriptorPath: /Terra/TotalSegmentator/splitWorkflow/one.cwl
+     primaryDescriptorPath: /SevenBridges/TotalSegmentator/splitWorkflow/oneVM.cwl
      testParameterFiles:
      -  /sampleManifests/batch_1.csv         
     
