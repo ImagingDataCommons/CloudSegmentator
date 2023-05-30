@@ -174,7 +174,7 @@ task inferenceTotalSegmentator {
    #cpuPlatform: downloadAndConvertCpuFamily
    zones: inferenceTotalSegmentatorZones
    memory: inferenceTotalSegmentatorRAM + " GiB"
-   disks: "local-disk 25 HDD"  #ToDo: Dynamically calculate disk space using the no of bytes of yaml file size. 64 characters is the max size I found in a seriesInstanceUID
+   disks: "local-disk 10 HDD"  #ToDo: Dynamically calculate disk space using the no of bytes of yaml file size. 64 characters is the max size I found in a seriesInstanceUID
    preemptible: inferenceTotalSegmentatorPreemptibleTries
    maxRetries: 1
    gpuType: inferenceTotalSegmentatorGpuType
