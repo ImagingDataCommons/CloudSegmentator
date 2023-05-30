@@ -15,15 +15,20 @@ workflows:
      primaryDescriptorPath: /Terra/TotalSegmentator/splitWorkflow/oneVM.wdl
      testParameterFiles:
      -  /sampleManifests/batch_1.csv       
-   - name: TotalSegmentatorCWLWorkflowV2
+   - name: TotalSegmentatortwoVmWorkflowOnSB-CGC
      subclass: CWL
-     primaryDescriptorPath: /SevenBridges/TotalSegmentator/splitWorkflow/splitWorkflowV2.cwl
+     primaryDescriptorPath: /SevenBridges/TotalSegmentator/splitWorkflow/twoVM.cwl
      testParameterFiles:
      -  /sampleManifests/batch_1.csv
-   - name: TotalSegmentatorCWLWorkflowV1
+   - name: TotalSegmentatorthreeVmWorkflowOnSB-CGC
      subclass: CWL
-     primaryDescriptorPath: /SevenBridges/TotalSegmentator/splitWorkflow/splitWorkflowV1.cwl
+     primaryDescriptorPath: /SevenBridges/TotalSegmentator/splitWorkflow/threeVM.cwl
      testParameterFiles:
      -  /sampleManifests/batch_1.csv
-          
+ tools:
+   - name: TotalSegmentatorOneVmWorkflowOnSB-CGC
+     subclass: CWL
+     primaryDescriptorPath: /Terra/TotalSegmentator/splitWorkflow/one.cwl
+     testParameterFiles:
+     -  /sampleManifests/batch_1.csv         
     
