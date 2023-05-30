@@ -1,13 +1,5 @@
 version: 1.2
 workflows:
-   - name: TotalSegmentator_GPU
-     subclass: WDL
-     primaryDescriptorPath: /Terra/TotalSegmentator/GPU/v7.wdl
-   - name: TotalSegmentatorSplitWorkflowV1
-     subclass: WDL
-     primaryDescriptorPath: /Terra/TotalSegmentator/splitWorkflow/splitWorkflow.wdl
-     testParameterFiles:
-     -  /sampleManifests/batch_1.csv
    - name: TotalSegmentatortwoVmWorkflowOnTerra
      subclass: WDL
      primaryDescriptorPath: /Terra/TotalSegmentator/splitWorkflow/twoVM.wdl
