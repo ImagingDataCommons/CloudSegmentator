@@ -7,7 +7,7 @@
   "ContentDescription": "Image segmentation",
   "ContentLabel": "SEGMENTATION",
   "InstanceNumber": "1",
-  "SeriesDescription": "Segmentation",
+  "SeriesDescription": "TotalSegmentator Segmentation",
   "SeriesNumber": "42",
   "segmentAttributes": [
     [
