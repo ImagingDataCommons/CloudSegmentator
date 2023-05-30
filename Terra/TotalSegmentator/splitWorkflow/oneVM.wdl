@@ -37,6 +37,7 @@ workflow TotalSegmentator {
  call totalSegmentatorEndToEnd{
    input:
     seriesInstanceS5cmdUrls = seriesInstanceS5cmdUrls,
+    dicomToNiftiConverterTool = dicomToNiftiConverterTool,
     totalSegmentatorDocker = totalSegmentatorDocker,
     totalSegmentatorPreemptibleTries = totalSegmentatorPreemptibleTries,
     totalSegmentatorCpus = totalSegmentatorCpus,
