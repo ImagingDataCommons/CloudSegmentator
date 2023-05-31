@@ -1,25 +1,3 @@
-#standardSQL
-
--- The point of this query is to remove the CT Image Series from nlst study which do not conform to
--- geometrical checks generally required for NIFTI file converison
-
--- The assumptions made here are
-  -- consider only those series that have CT modality and belong to the NLST collection
-  -- do not contain LOCALIZER in ImageType
-  -- all instances in a series have identical values for ImageOrientationPatient (converted to string for the purposes of comparison)
-  -- all instances in a series have 0 as the dot product between first and second vectors in ImageOrientationPosition
-  -- have number of instances in the series equal to the number of distinct values of ImagePositionPatient attribute
-  -- (converted to string for the purposes of comparison)
-  -- all instances in a series have identical values for the first two components of ImagePositionPatient
-  -- all instances in a series have identical values of PixelSpacing (converted to string for the purposes of comparison)
-  -- all instances in a series have identical values of SliceThickness--this requirement has been relaxed now
-  -- all instances in a series have identical pixel Rows and similarly identical pixel Columns
-  -- with sliceIntervalDifference defined as the difference between the values of the 3rd component of ImagePositionPatient,
-  -- after sorting all instances by that third component, having the difference between the largest and smallest 
-  --values of sliceIntervalDifference less than 0.01
-  
-  
-
 WITH
   -- Create a common table expression (CTE) named nonLocalizerRawData
   nonLocalizerRawData AS (
@@ -73,19 +51,31 @@ WITH
       collection_id = 'nlst' AND Modality = 'CT' AND axes = 2 AND axis1 = 0 AND axis2 = 1 AND 'LOCALIZER' NOT IN UNNEST(ImageType)
   )
 ,
+crossProduct AS (
+  SELECT
+    SOPInstanceUID,
+    SeriesInstanceUID,
+    -- Calculate the cross product of x_vector and y_vector for each row in nonLocalizerRawData
+    (SELECT AS STRUCT
+      (x_vector[OFFSET(1)]*y_vector[OFFSET(2)] - x_vector[OFFSET(2)]*y_vector[OFFSET(1)]) AS x,
+      (x_vector[OFFSET(2)]*y_vector[OFFSET(0)] - x_vector[OFFSET(0)]*y_vector[OFFSET(2)]) AS y,
+      (x_vector[OFFSET(0)]*y_vector[OFFSET(1)] - x_vector[OFFSET(1)]*y_vector[OFFSET(0)]) AS z
+    ) AS xyCrossProduct
+  FROM nonLocalizerRawData
+),
 dotProduct AS (
   SELECT
     SOPInstanceUID,
     SeriesInstanceUID,
-    -- Calculate the dot product of x_vector and y_vector for each row in nonLocalizerRawData
+    xyCrossProduct,
+    -- Calculate the dot product of xyCrossProduct and [0,0,1] for each row in crossProduct
     (
-      -- Subquery to calculate the dot product
       SELECT SUM(element1 * element2)
-      FROM nonLocalizerRawData.x_vector element1 WITH OFFSET pos
-      JOIN nonLocalizerRawData.y_vector element2 WITH OFFSET pos
+      FROM UNNEST([xyCrossProduct.x, xyCrossProduct.y, xyCrossProduct.z]) element1 WITH OFFSET pos
+      JOIN UNNEST([0,0,1]) element2 WITH OFFSET pos
       USING(pos)
     ) AS xyDotProduct
-  FROM nonLocalizerRawData
+  FROM crossProduct
 )
 ,
 geometryChecks AS (
@@ -136,7 +126,7 @@ geometryChecks AS (
     --AND sliceThicknessCount=1 --we expect identical slice thickness in a series, but this requirement is relaxed upon Dr. David Clunie's advice
     AND pixelColumnCount = 1 --we expect consistent pixel Columns across the series
     AND pixelRowCount = 1 --we expect consistent pixel Rows across the series
-    AND dotProduct < 0.01 --we expect the dot product of x and y vectors to be ideally zero, however we are allowing for minor deviations (0.01)
+    AND abs(dotProduct) between 0.99 and 1.01 --we expect the dot product of x and y vectors to be ideally one, however we are allowing for minor deviations (0.01)
 
     --AND exposureCount=1
 
@@ -161,8 +151,8 @@ SELECT
   min(de) as minExposure,
   max(de) -min (de) as maxExposureDifference,
   seriesSizeInMB,
-  --viewerUrl,
-  s5cmdUrls
+  viewerUrl,
+  --s5cmdUrls
 FROM
   geometryChecks
 LEFT JOIN
@@ -183,7 +173,7 @@ GROUP BY
   pixelColumnCount,
   exposureCount,
   seriesSizeInMB,
-  --viewerUrl,
+  viewerUrl,
   s5cmdUrls
 #Setting the minimum number of Series to be 50
 HAVING sliceIntervalifferenceTolerance<0.01 and sopInstanceCount >=50
