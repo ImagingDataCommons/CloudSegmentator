@@ -20,11 +20,11 @@ workflow TotalSegmentator {
    Int dicomsegAndRadiomicsSR_PreemptibleTries = 3
 
    #Compute CPU configuration
-   Int downloadDicomAndConvertAndInferenceTotalSegmentatorCpus = 2
+   Int downloadDicomAndConvertAndInferenceTotalSegmentatorCpus = 4
    Int dicomsegAndRadiomicsSR_Cpus = 4
 
-   Int downloadDicomAndConvertAndInferenceTotalSegmentatorRAM = 13
-   Int dicomsegAndRadiomicsSR_RAM = 12
+   Int downloadDicomAndConvertAndInferenceTotalSegmentatorRAM = 16
+   Int dicomsegAndRadiomicsSR_RAM = 16
 
    #String downloadDicomAndConvertAndInferenceTotalSegmentatorCpuFamily = 'Intel Cascade Lake' #Because GPUs are available only with N1 family
    #String dicomsegAndRadiomicsSR_CpuFamily = 'Intel Cascade Lake'   
