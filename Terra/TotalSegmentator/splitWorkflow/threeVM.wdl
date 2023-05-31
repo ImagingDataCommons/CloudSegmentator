@@ -22,11 +22,11 @@ workflow TotalSegmentator {
 
    #Compute CPU configuration
    Int downloadAndConvertCpus = 2
-   Int inferenceTotalSegmentatorCpus = 4
+   Int inferenceTotalSegmentatorCpus = 2
    Int dicomsegAndRadiomicsSR_Cpus = 4
 
-   Int downloadAndConvertRAM = 4
-   Int inferenceTotalSegmentatorRAM = 16
+   Int downloadAndConvertRAM = 1
+   Int inferenceTotalSegmentatorRAM = 13
    Int dicomsegAndRadiomicsSR_RAM = 16
 
    String downloadAndConvertCpuFamily = 'AMD Rome'
