@@ -22,12 +22,12 @@ workflow TotalSegmentator {
 
    #Compute CPU configuration
    Int downloadAndConvertCpus = 2
-   Int inferenceTotalSegmentatorCpus = 2
+   Int inferenceTotalSegmentatorCpus = 4
    Int dicomsegAndRadiomicsSR_Cpus = 4
 
-   Int downloadAndConvertRAM = 1
-   Int inferenceTotalSegmentatorRAM = 13
-   Int dicomsegAndRadiomicsSR_RAM = 12
+   Int downloadAndConvertRAM = 4
+   Int inferenceTotalSegmentatorRAM = 16
+   Int dicomsegAndRadiomicsSR_RAM = 16
 
    String downloadAndConvertCpuFamily = 'AMD Rome'
    #String inferenceTotalSegmentatorCpuFamily = 'Intel Cascade Lake' #Because GPUs are available only with N1 family
