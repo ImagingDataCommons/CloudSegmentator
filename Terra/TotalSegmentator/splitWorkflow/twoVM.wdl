@@ -27,14 +27,14 @@ workflow TotalSegmentator {
    Int dicomsegAndRadiomicsSR_RAM = 12
 
    #String downloadDicomAndConvertAndInferenceTotalSegmentatorCpuFamily = 'Intel Cascade Lake' #Because GPUs are available only with N1 family
-   #String dicomsegAndRadiomicsSR_CpuFamily = 'Intel Cascade Lake'   
-   String dicomsegAndRadiomicsSR_CpuFamily = 'AMD Rome' 
+   String dicomsegAndRadiomicsSR_CpuFamily = 'Intel Cascade Lake'   
+   #String dicomsegAndRadiomicsSR_CpuFamily = 'AMD Rome' 
    
    String downloadDicomAndConvertAndInferenceTotalSegmentatorGpuType = 'nvidia-tesla-t4'
 
    String downloadDicomAndConvertAndInferenceTotalSegmentatorZones = "us-west4-a us-west4-b europe-west2-a europe-west2-b asia-east1-a asia-east1-c australia-southeast1-a australia-southeast1-c asia-northeast1-a asia-northeast1-c"
-   #String dicomsegAndRadiomicsSR_Zones = "us-central1-a us-central1-b us-central1-c us-central1-f us-east1-b us-east1-c us-east1-d us-east5-a us-east5-b us-east5-c us-west1-a us-west1-b us-west1-c us-west4-a us-west4-b us-west4-c"
-   String dicomsegAndRadiomicsSR_Zones = "us-central1-a us-central1-b us-central1-c us-central1-f us-east1-b us-east1-c us-east1-d us-east5-a us-east5-b us-east5-c us-west1-a us-west1-b us-west1-c"
+   #String dicomsegAndRadiomicsSR_Zones = "us-central1-a us-central1-b us-central1-c us-central1-f us-east1-b us-east1-c us-east1-d us-west1-a us-west1-b us-west1-c us-west4-a us-west4-b us-west4-c"
+   String dicomsegAndRadiomicsSR_Zones = "us-central1-a us-central1-b us-central1-c us-central1-f us-east1-b us-east1-c us-east1-d us-west1-a us-west1-b us-west1-c"
 
  }
  #calling Papermill Task with the inputs
