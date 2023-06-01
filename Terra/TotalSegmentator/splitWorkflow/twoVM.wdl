@@ -159,7 +159,7 @@ task dicomsegAndRadiomicsSR{
    
    papermill -p csvFilePath ~{seriesInstanceS5cmdUrls} -p inferenceNiftiFilePath ~{inferenceZipFile}  dicomsegAndRadiomicsSR_Notebook.ipynb dicomsegAndRadiomicsSR_OutputJupyterNotebook.ipynb 
    
-   papermill_exit_code=$?
+   declare -i papermill_exit_code=$?
    set -o errexit
    exit ${papermill_exit_code}
  }
