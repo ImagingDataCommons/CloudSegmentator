@@ -151,8 +151,17 @@ task dicomsegAndRadiomicsSR{
  }
  command {
    wget https://raw.githubusercontent.com/vkt1414/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/dicomsegAndRadiomicsSR_Notebook.ipynb
-   set -e
-   papermill -p csvFilePath ~{seriesInstanceS5cmdUrls} -p inferenceNiftiFilePath ~{inferenceZipFile}  dicomsegAndRadiomicsSR_Notebook.ipynb dicomsegAndRadiomicsSR_OutputJupyterNotebook.ipynb || (if [ $? -eq 137 ]; then echo "Killed"; fi; exit 1)
+   
+   set -o xtrace
+   # For any command failures in the rest of this script, return the error.
+   set -o pipefail
+   set +o errexit
+   
+   papermill -p csvFilePath ~{seriesInstanceS5cmdUrls} -p inferenceNiftiFilePath ~{inferenceZipFile}  dicomsegAndRadiomicsSR_Notebook.ipynb dicomsegAndRadiomicsSR_OutputJupyterNotebook.ipynb 
+   
+   papermill_exit_code=$?
+   set -o errexit
+   exit ${papermill_exit_code}
  }
 
  #Run time attributes:
