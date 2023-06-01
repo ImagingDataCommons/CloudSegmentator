@@ -157,11 +157,10 @@ task dicomsegAndRadiomicsSR{
    set -o pipefail
    set +o errexit
    
-   papermill -p csvFilePath ~{seriesInstanceS5cmdUrls} -p inferenceNiftiFilePath ~{inferenceZipFile}  dicomsegAndRadiomicsSR_Notebook.ipynb dicomsegAndRadiomicsSR_OutputJupyterNotebook.ipynb 
+   papermill -p csvFilePath ~{seriesInstanceS5cmdUrls} -p inferenceNiftiFilePath ~{inferenceZipFile}  dicomsegAndRadiomicsSR_Notebook.ipynb dicomsegAndRadiomicsSR_OutputJupyterNotebook.ipynb
    
-   declare -i papermill_exit_code=$?
    set -o errexit
-   exit ${papermill_exit_code}
+   exit $?
  }
 
  #Run time attributes:
