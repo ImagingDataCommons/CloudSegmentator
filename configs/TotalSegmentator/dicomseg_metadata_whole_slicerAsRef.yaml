@@ -1,4 +1,4 @@
-BodyPartExamined: WHOLEBODY
+BodyPartExamined: CHEST
 ClinicalTrialCoordinatingCenterName: dcmqi
 ClinicalTrialSeriesID: '0'
 ClinicalTrialTimePointID: '1'
@@ -6,10 +6,10 @@ ContentCreatorName: IDC
 ContentDescription: Image segmentation
 ContentLabel: SEGMENTATION
 InstanceNumber: '1'
-SeriesDescription: Segmentation
+SeriesDescription: TotalSegmentator Segmentation
 SeriesNumber: '42'
 segmentAttributes:
-- - SegmentAlgorithmName: TotalSegmentator
+- - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left adrenal gland
     SegmentedPropertyCategoryCodeSequence:
@@ -29,7 +29,7 @@ segmentAttributes:
     - 199
     - 27
     - 27
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right adrenal gland
     SegmentedPropertyCategoryCodeSequence:
@@ -49,7 +49,7 @@ segmentAttributes:
     - 199
     - 27
     - 27
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Aorta
     SegmentedPropertyCategoryCodeSequence:
@@ -60,16 +60,12 @@ segmentAttributes:
       CodeMeaning: Aorta
       CodeValue: '15825003'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 7
     recommendedDisplayRGBValue:
     - 224
     - 97
     - 76
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left autochthonous back muscle
     SegmentedPropertyCategoryCodeSequence:
@@ -89,7 +85,7 @@ segmentAttributes:
     - 192
     - 104
     - 88
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right autochthonous back muscle
     SegmentedPropertyCategoryCodeSequence:
@@ -109,7 +105,7 @@ segmentAttributes:
     - 192
     - 104
     - 88
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Brain
     SegmentedPropertyCategoryCodeSequence:
@@ -120,16 +116,12 @@ segmentAttributes:
       CodeMeaning: Brain
       CodeValue: '12738006'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 50
     recommendedDisplayRGBValue:
     - 250
     - 250
     - 225
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left clavicle
     SegmentedPropertyCategoryCodeSequence:
@@ -149,7 +141,7 @@ segmentAttributes:
     - 241
     - 188
     - 38
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right clavicle
     SegmentedPropertyCategoryCodeSequence:
@@ -169,7 +161,7 @@ segmentAttributes:
     - 241
     - 188
     - 38
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Colon
     SegmentedPropertyCategoryCodeSequence:
@@ -180,16 +172,12 @@ segmentAttributes:
       CodeMeaning: Colon
       CodeValue: '71854001'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 57
     recommendedDisplayRGBValue:
     - 204
     - 168
     - 143
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Duodenum
     SegmentedPropertyCategoryCodeSequence:
@@ -200,16 +188,12 @@ segmentAttributes:
       CodeMeaning: Duodenum
       CodeValue: '38848004'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 56
     recommendedDisplayRGBValue:
     - 255
     - 253
     - 229
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Esophagus
     SegmentedPropertyCategoryCodeSequence:
@@ -220,16 +204,12 @@ segmentAttributes:
       CodeMeaning: Esophagus
       CodeValue: '32849002'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 42
     recommendedDisplayRGBValue:
     - 211
     - 171
     - 143
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Face
     SegmentedPropertyCategoryCodeSequence:
@@ -240,13 +220,9 @@ segmentAttributes:
       CodeMeaning: Face
       CodeValue: '89545001'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 93
     recommendedDisplayRGBValue: null
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left femur
     SegmentedPropertyCategoryCodeSequence:
@@ -266,7 +242,7 @@ segmentAttributes:
     - 130
     - 222
     - 207
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right femur
     SegmentedPropertyCategoryCodeSequence:
@@ -286,7 +262,7 @@ segmentAttributes:
     - 130
     - 222
     - 207
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Gallbladder
     SegmentedPropertyCategoryCodeSequence:
@@ -297,16 +273,12 @@ segmentAttributes:
       CodeMeaning: Gallbladder
       CodeValue: '28231008'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 4
     recommendedDisplayRGBValue:
     - 139
     - 150
     - 98
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left gluteus maximus
     SegmentedPropertyCategoryCodeSequence:
@@ -326,7 +298,7 @@ segmentAttributes:
     - 192
     - 104
     - 88
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right gluteus maximus
     SegmentedPropertyCategoryCodeSequence:
@@ -346,7 +318,7 @@ segmentAttributes:
     - 192
     - 104
     - 88
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left gluteus medius
     SegmentedPropertyCategoryCodeSequence:
@@ -366,7 +338,7 @@ segmentAttributes:
     - 192
     - 104
     - 88
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right gluteus medius
     SegmentedPropertyCategoryCodeSequence:
@@ -386,7 +358,7 @@ segmentAttributes:
     - 192
     - 104
     - 88
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left gluteus minimus
     SegmentedPropertyCategoryCodeSequence:
@@ -406,7 +378,7 @@ segmentAttributes:
     - 192
     - 104
     - 88
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right gluteus minimus
     SegmentedPropertyCategoryCodeSequence:
@@ -426,7 +398,7 @@ segmentAttributes:
     - 192
     - 104
     - 88
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left atrium
     SegmentedPropertyCategoryCodeSequence:
@@ -437,16 +409,12 @@ segmentAttributes:
       CodeMeaning: Left atrium
       CodeValue: '82471001'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 45
     recommendedDisplayRGBValue:
     - 193
     - 156
     - 49
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right atrium
     SegmentedPropertyCategoryCodeSequence:
@@ -457,16 +425,12 @@ segmentAttributes:
       CodeMeaning: Right atrium
       CodeValue: '73829009'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 47
     recommendedDisplayRGBValue:
     - 193
     - 156
     - 49
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Myocardium
     SegmentedPropertyCategoryCodeSequence:
@@ -477,16 +441,12 @@ segmentAttributes:
       CodeMeaning: Heart
       CodeValue: '80891009'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 44
     recommendedDisplayRGBValue:
     - 192
     - 104
     - 88
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left ventricle
     SegmentedPropertyCategoryCodeSequence:
@@ -497,16 +457,12 @@ segmentAttributes:
       CodeMeaning: Left ventricle
       CodeValue: '87878005'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 46
     recommendedDisplayRGBValue:
     - 152
     - 55
     - 13
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right ventricle
     SegmentedPropertyCategoryCodeSequence:
@@ -517,16 +473,12 @@ segmentAttributes:
       CodeMeaning: Right ventricle
       CodeValue: '53085002'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 48
     recommendedDisplayRGBValue:
     - 181
     - 85
     - 57
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left hip
     SegmentedPropertyCategoryCodeSequence:
@@ -546,7 +498,7 @@ segmentAttributes:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right hip
     SegmentedPropertyCategoryCodeSequence:
@@ -566,7 +518,7 @@ segmentAttributes:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left humerus
     SegmentedPropertyCategoryCodeSequence:
@@ -586,7 +538,7 @@ segmentAttributes:
     - 95
     - 229
     - 185
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right humerus
     SegmentedPropertyCategoryCodeSequence:
@@ -606,7 +558,7 @@ segmentAttributes:
     - 95
     - 229
     - 185
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left iliac artery
     SegmentedPropertyCategoryCodeSequence:
@@ -626,7 +578,7 @@ segmentAttributes:
     - 217
     - 162
     - 48
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right iliac artery
     SegmentedPropertyCategoryCodeSequence:
@@ -646,7 +598,7 @@ segmentAttributes:
     - 217
     - 162
     - 48
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left iliac vein
     SegmentedPropertyCategoryCodeSequence:
@@ -666,7 +618,7 @@ segmentAttributes:
     - 197
     - 174
     - 37
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right iliac vein
     SegmentedPropertyCategoryCodeSequence:
@@ -686,7 +638,7 @@ segmentAttributes:
     - 197
     - 174
     - 37
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left iliopsoas
     SegmentedPropertyCategoryCodeSequence:
@@ -706,7 +658,7 @@ segmentAttributes:
     - 192
     - 104
     - 88
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right iliopsoas
     SegmentedPropertyCategoryCodeSequence:
@@ -726,7 +678,7 @@ segmentAttributes:
     - 192
     - 104
     - 88
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Inferior vena cava
     SegmentedPropertyCategoryCodeSequence:
@@ -737,16 +689,12 @@ segmentAttributes:
       CodeMeaning: Inferior vena cava
       CodeValue: '64131007'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 8
     recommendedDisplayRGBValue:
     - 110
     - 165
     - 54
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left kidney
     SegmentedPropertyCategoryCodeSequence:
@@ -766,7 +714,7 @@ segmentAttributes:
     - 212
     - 126
     - 151
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right kidney
     SegmentedPropertyCategoryCodeSequence:
@@ -786,7 +734,7 @@ segmentAttributes:
     - 212
     - 126
     - 151
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Liver
     SegmentedPropertyCategoryCodeSequence:
@@ -797,16 +745,12 @@ segmentAttributes:
       CodeMeaning: Liver
       CodeValue: '10200004'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 5
     recommendedDisplayRGBValue:
     - 221
     - 130
     - 101
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left lower lung lobe
     SegmentedPropertyCategoryCodeSequence:
@@ -826,7 +770,7 @@ segmentAttributes:
     - 242
     - 150
     - 232
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right lower lung lobe
     SegmentedPropertyCategoryCodeSequence:
@@ -846,7 +790,7 @@ segmentAttributes:
     - 117
     - 212
     - 208
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right middle lung lobe
     SegmentedPropertyCategoryCodeSequence:
@@ -857,16 +801,12 @@ segmentAttributes:
       CodeMeaning: Middle lobe of right lung
       CodeValue: '72481006'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 16
     recommendedDisplayRGBValue:
     - 202
     - 164
     - 140
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left upper lung lobe
     SegmentedPropertyCategoryCodeSequence:
@@ -886,7 +826,7 @@ segmentAttributes:
     - 112
     - 162
     - 95
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right upper lung lobe
     SegmentedPropertyCategoryCodeSequence:
@@ -906,7 +846,7 @@ segmentAttributes:
     - 173
     - 69
     - 44
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Pancreas
     SegmentedPropertyCategoryCodeSequence:
@@ -917,16 +857,12 @@ segmentAttributes:
       CodeMeaning: Pancreas
       CodeValue: '15776009'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 10
     recommendedDisplayRGBValue:
     - 249
     - 180
     - 111
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Portal and splenic vein
     SegmentedPropertyCategoryCodeSequence:
@@ -937,16 +873,12 @@ segmentAttributes:
       CodeMeaning: Portal vein
       CodeValue: '32764006'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 9
     recommendedDisplayRGBValue:
     - 0
     - 151
     - 206
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Pulmonary artery
     SegmentedPropertyCategoryCodeSequence:
@@ -957,16 +889,12 @@ segmentAttributes:
       CodeMeaning: Pulmonary artery
       CodeValue: '81040000'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 49
     recommendedDisplayRGBValue:
     - 0
     - 122
     - 171
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left rib 10
     SegmentedPropertyCategoryCodeSequence:
@@ -986,7 +914,7 @@ segmentAttributes:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left rib 11
     SegmentedPropertyCategoryCodeSequence:
@@ -1006,7 +934,7 @@ segmentAttributes:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left rib 12
     SegmentedPropertyCategoryCodeSequence:
@@ -1026,7 +954,7 @@ segmentAttributes:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left rib 1
     SegmentedPropertyCategoryCodeSequence:
@@ -1046,7 +974,7 @@ segmentAttributes:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left rib 2
     SegmentedPropertyCategoryCodeSequence:
@@ -1066,7 +994,7 @@ segmentAttributes:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left rib 3
     SegmentedPropertyCategoryCodeSequence:
@@ -1086,7 +1014,7 @@ segmentAttributes:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left rib 4
     SegmentedPropertyCategoryCodeSequence:
@@ -1106,7 +1034,7 @@ segmentAttributes:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left rib 5
     SegmentedPropertyCategoryCodeSequence:
@@ -1126,7 +1054,7 @@ segmentAttributes:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left rib 6
     SegmentedPropertyCategoryCodeSequence:
@@ -1146,7 +1074,7 @@ segmentAttributes:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left rib 7
     SegmentedPropertyCategoryCodeSequence:
@@ -1166,7 +1094,7 @@ segmentAttributes:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left rib 8
     SegmentedPropertyCategoryCodeSequence:
@@ -1186,7 +1114,7 @@ segmentAttributes:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left rib 9
     SegmentedPropertyCategoryCodeSequence:
@@ -1206,7 +1134,7 @@ segmentAttributes:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right rib 10
     SegmentedPropertyCategoryCodeSequence:
@@ -1226,7 +1154,7 @@ segmentAttributes:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right rib 11
     SegmentedPropertyCategoryCodeSequence:
@@ -1246,7 +1174,7 @@ segmentAttributes:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right rib 12
     SegmentedPropertyCategoryCodeSequence:
@@ -1266,7 +1194,7 @@ segmentAttributes:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right rib 1
     SegmentedPropertyCategoryCodeSequence:
@@ -1286,7 +1214,7 @@ segmentAttributes:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right rib 2
     SegmentedPropertyCategoryCodeSequence:
@@ -1306,7 +1234,7 @@ segmentAttributes:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right rib 3
     SegmentedPropertyCategoryCodeSequence:
@@ -1326,7 +1254,7 @@ segmentAttributes:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right rib 4
     SegmentedPropertyCategoryCodeSequence:
@@ -1346,7 +1274,7 @@ segmentAttributes:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right rib 5
     SegmentedPropertyCategoryCodeSequence:
@@ -1366,7 +1294,7 @@ segmentAttributes:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right rib 6
     SegmentedPropertyCategoryCodeSequence:
@@ -1386,7 +1314,7 @@ segmentAttributes:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right rib 7
     SegmentedPropertyCategoryCodeSequence:
@@ -1406,7 +1334,7 @@ segmentAttributes:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right rib 8
     SegmentedPropertyCategoryCodeSequence:
@@ -1426,7 +1354,7 @@ segmentAttributes:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right rib 9
     SegmentedPropertyCategoryCodeSequence:
@@ -1446,7 +1374,7 @@ segmentAttributes:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Sacrum
     SegmentedPropertyCategoryCodeSequence:
@@ -1457,16 +1385,12 @@ segmentAttributes:
       CodeMeaning: Sacrum
       CodeValue: '54735007'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 92
     recommendedDisplayRGBValue:
     - 163
     - 140
     - 140
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left scapula
     SegmentedPropertyCategoryCodeSequence:
@@ -1486,7 +1410,7 @@ segmentAttributes:
     - 199
     - 204
     - 131
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right scapula
     SegmentedPropertyCategoryCodeSequence:
@@ -1506,7 +1430,7 @@ segmentAttributes:
     - 199
     - 204
     - 131
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Small intestine
     SegmentedPropertyCategoryCodeSequence:
@@ -1517,16 +1441,12 @@ segmentAttributes:
       CodeMeaning: Small Intestine
       CodeValue: '30315005'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 55
     recommendedDisplayRGBValue:
     - 205
     - 167
     - 142
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Spleen
     SegmentedPropertyCategoryCodeSequence:
@@ -1537,16 +1457,12 @@ segmentAttributes:
       CodeMeaning: Spleen
       CodeValue: '78961009'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 1
     recommendedDisplayRGBValue:
     - 157
     - 108
     - 162
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Stomach
     SegmentedPropertyCategoryCodeSequence:
@@ -1557,16 +1473,12 @@ segmentAttributes:
       CodeMeaning: Stomach
       CodeValue: '69695003'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 6
     recommendedDisplayRGBValue:
     - 216
     - 132
     - 105
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Trachea
     SegmentedPropertyCategoryCodeSequence:
@@ -1577,16 +1489,12 @@ segmentAttributes:
       CodeMeaning: Trachea
       CodeValue: '44567001'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 43
     recommendedDisplayRGBValue:
     - 182
     - 228
     - 255
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Urinary bladder
     SegmentedPropertyCategoryCodeSequence:
@@ -1597,16 +1505,12 @@ segmentAttributes:
       CodeMeaning: Bladder
       CodeValue: '89837001'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 104
     recommendedDisplayRGBValue:
     - 222
     - 154
     - 132
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae C1
     SegmentedPropertyCategoryCodeSequence:
@@ -1617,16 +1521,12 @@ segmentAttributes:
       CodeMeaning: C1 vertebra
       CodeValue: '14806007'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 41
     recommendedDisplayRGBValue:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae C2
     SegmentedPropertyCategoryCodeSequence:
@@ -1637,16 +1537,12 @@ segmentAttributes:
       CodeMeaning: C2 vertebra
       CodeValue: '39976000'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 40
     recommendedDisplayRGBValue:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae C3
     SegmentedPropertyCategoryCodeSequence:
@@ -1657,16 +1553,12 @@ segmentAttributes:
       CodeMeaning: C3 vertebra
       CodeValue: '113205007'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 39
     recommendedDisplayRGBValue:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae C4
     SegmentedPropertyCategoryCodeSequence:
@@ -1677,16 +1569,12 @@ segmentAttributes:
       CodeMeaning: C4 vertebra
       CodeValue: '5329002'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 38
     recommendedDisplayRGBValue:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae C5
     SegmentedPropertyCategoryCodeSequence:
@@ -1697,16 +1585,12 @@ segmentAttributes:
       CodeMeaning: C5 vertebra
       CodeValue: '36978003'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 37
     recommendedDisplayRGBValue:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae C6
     SegmentedPropertyCategoryCodeSequence:
@@ -1717,16 +1601,12 @@ segmentAttributes:
       CodeMeaning: C6 vertebra
       CodeValue: '36054005'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 36
     recommendedDisplayRGBValue:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae C7
     SegmentedPropertyCategoryCodeSequence:
@@ -1737,16 +1617,12 @@ segmentAttributes:
       CodeMeaning: C7 vertebra
       CodeValue: '87391001'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 35
     recommendedDisplayRGBValue:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae L1
     SegmentedPropertyCategoryCodeSequence:
@@ -1757,16 +1633,12 @@ segmentAttributes:
       CodeMeaning: L1 vertebra
       CodeValue: '66794005'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 22
     recommendedDisplayRGBValue:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae L2
     SegmentedPropertyCategoryCodeSequence:
@@ -1777,16 +1649,12 @@ segmentAttributes:
       CodeMeaning: L2 vertebra
       CodeValue: '14293000'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 21
     recommendedDisplayRGBValue:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae L3
     SegmentedPropertyCategoryCodeSequence:
@@ -1797,16 +1665,12 @@ segmentAttributes:
       CodeMeaning: L3 vertebra
       CodeValue: '36470004'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 20
     recommendedDisplayRGBValue:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae L4
     SegmentedPropertyCategoryCodeSequence:
@@ -1817,16 +1681,12 @@ segmentAttributes:
       CodeMeaning: L4 vertebra
       CodeValue: '11994002'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 19
     recommendedDisplayRGBValue:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae L5
     SegmentedPropertyCategoryCodeSequence:
@@ -1837,16 +1697,12 @@ segmentAttributes:
       CodeMeaning: L5 vertebra
       CodeValue: '49668003'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 18
     recommendedDisplayRGBValue:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae T10
     SegmentedPropertyCategoryCodeSequence:
@@ -1857,16 +1713,12 @@ segmentAttributes:
       CodeMeaning: T1 vertebra
       CodeValue: '64864005'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 25
     recommendedDisplayRGBValue:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae T11
     SegmentedPropertyCategoryCodeSequence:
@@ -1877,16 +1729,12 @@ segmentAttributes:
       CodeMeaning: T10 vertebra
       CodeValue: '7610001'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 24
     recommendedDisplayRGBValue:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae T12
     SegmentedPropertyCategoryCodeSequence:
@@ -1897,16 +1745,12 @@ segmentAttributes:
       CodeMeaning: T11 vertebra
       CodeValue: '12989004'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 23
     recommendedDisplayRGBValue:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae T1
     SegmentedPropertyCategoryCodeSequence:
@@ -1917,16 +1761,12 @@ segmentAttributes:
       CodeMeaning: T12 vertebra
       CodeValue: '23215003'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 34
     recommendedDisplayRGBValue:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae T2
     SegmentedPropertyCategoryCodeSequence:
@@ -1937,16 +1777,12 @@ segmentAttributes:
       CodeMeaning: T2 vertebra
       CodeValue: '53733008'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 33
     recommendedDisplayRGBValue:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae T3
     SegmentedPropertyCategoryCodeSequence:
@@ -1957,16 +1793,12 @@ segmentAttributes:
       CodeMeaning: T3 vertebra
       CodeValue: '1626008'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 32
     recommendedDisplayRGBValue:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae T4
     SegmentedPropertyCategoryCodeSequence:
@@ -1977,16 +1809,12 @@ segmentAttributes:
       CodeMeaning: T4 vertebra
       CodeValue: '73071006'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 31
     recommendedDisplayRGBValue:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae T5
     SegmentedPropertyCategoryCodeSequence:
@@ -1997,16 +1825,12 @@ segmentAttributes:
       CodeMeaning: T5 vertebra
       CodeValue: '56401006'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 30
     recommendedDisplayRGBValue:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae T6
     SegmentedPropertyCategoryCodeSequence:
@@ -2017,16 +1841,12 @@ segmentAttributes:
       CodeMeaning: T6 vertebra
       CodeValue: '45296009'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 29
     recommendedDisplayRGBValue:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae T7
     SegmentedPropertyCategoryCodeSequence:
@@ -2037,16 +1857,12 @@ segmentAttributes:
       CodeMeaning: T7 vertebra
       CodeValue: '62487009'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 28
     recommendedDisplayRGBValue:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae T8
     SegmentedPropertyCategoryCodeSequence:
@@ -2057,16 +1873,12 @@ segmentAttributes:
       CodeMeaning: T8 vertebra
       CodeValue: '11068009'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 27
     recommendedDisplayRGBValue:
     - 241
     - 214
     - 145
-  - SegmentAlgorithmName: TotalSegmentator
+  - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae T9
     SegmentedPropertyCategoryCodeSequence:
@@ -2077,10 +1889,6 @@ segmentAttributes:
       CodeMeaning: T9 vertebra
       CodeValue: '82687006'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: ''
-      CodeValue: ''
-      CodingSchemeDesignator: ''
     labelID: 26
     recommendedDisplayRGBValue:
     - 241
