@@ -96,8 +96,8 @@
 95,gluteus_maximus_right,SCT,123037004,Anatomical Structure,SCT,181674001,Gluteus maximus muscle,SCT,24028007,Right
 96,gluteus_medius_left,SCT,123037004,Anatomical Structure,SCT,78333006,Gluteus medius muscle,SCT,7771000,Left
 97,gluteus_medius_right,SCT,123037004,Anatomical Structure,SCT,78333006,Gluteus medius muscle,SCT,24028007,Right
-98,gluteus_minimus_left,SCT,123037004,Anatomical Structure,SCT,75297007,Gluteus minius muscle,SCT,7771000,Left
-99,gluteus_minimus_right,SCT,123037004,Anatomical Structure,SCT,75297007,Gluteus minius muscle,SCT,24028007,Right
+98,gluteus_minimus_left,SCT,123037004,Anatomical Structure,SCT,75297007,Gluteus minimus muscle,SCT,7771000,Left
+99,gluteus_minimus_right,SCT,123037004,Anatomical Structure,SCT,75297007,Gluteus minimus muscle,SCT,24028007,Right
 100,autochthon_left,SCT,123037004,Anatomical Structure,SCT,44947003,Erector spinae muscle,SCT,7771000,Left
 101,autochthon_right,SCT,123037004,Anatomical Structure,SCT,44947003,Erector spinae muscle,SCT,24028007,Right
 102,iliopsoas_left,SCT,123037004,Anatomical Structure,SCT,68455001,Iliopsoas muscle,SCT,7771000,Left
