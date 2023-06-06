@@ -7,7 +7,7 @@
 6,stomach,SCT,123037004,Anatomical Structure,SCT,69695003,Stomach,,,
 7,aorta,SCT,123037004,Anatomical Structure,SCT,15825003,Aorta,,,
 8,inferior_vena_cava,SCT,123037004,Anatomical Structure,SCT,64131007,Inferior vena cava,,,
-9,portal_vein_and_splenic_vein,SCT,123037004,Anatomical Structure,SCT,32764006,Portal vein,,,
+9,portal_vein_and_splenic_vein,SCT,123037004,Anatomical Structure,SCT,110765007,Portal vein and splenic vein ,,,
 10,pancreas,SCT,123037004,Anatomical Structure,SCT,15776009,Pancreas,,,
 11,adrenal_gland_right,SCT,123037004,Anatomical Structure,SCT,23451007,Adrenal gland,SCT,24028007,Right
 12,adrenal_gland_left,SCT,123037004,Anatomical Structure,SCT,23451007,Adrenal gland,SCT,7771000,Left
@@ -42,7 +42,7 @@
 41,vertebrae_C1,SCT,123037004,Anatomical Structure,SCT,14806007,C1 vertebra,,,
 42,esophagus,SCT,123037004,Anatomical Structure,SCT,32849002,Esophagus,,,
 43,trachea,SCT,123037004,Anatomical Structure,SCT,44567001,Trachea,,,
-44,heart_myocardium,SCT,123037004,Anatomical Structure,SCT,80891009,Heart,,,
+44,heart_myocardium,SCT,123037004,Anatomical Structure,SCT,74281007,Myocardium,,,
 45,heart_atrium_left,SCT,123037004,Anatomical Structure,SCT,82471001,Left atrium,,,
 46,heart_ventricle_left,SCT,123037004,Anatomical Structure,SCT,87878005,Left ventricle,,,
 47,heart_atrium_right,SCT,123037004,Anatomical Structure,SCT,73829009,Right atrium,,,
@@ -96,8 +96,8 @@
 95,gluteus_maximus_right,SCT,123037004,Anatomical Structure,SCT,181674001,Gluteus maximus muscle,SCT,24028007,Right
 96,gluteus_medius_left,SCT,123037004,Anatomical Structure,SCT,78333006,Gluteus medius muscle,SCT,7771000,Left
 97,gluteus_medius_right,SCT,123037004,Anatomical Structure,SCT,78333006,Gluteus medius muscle,SCT,24028007,Right
-98,gluteus_minimus_left,SCT,123037004,Anatomical Structure,SCT,78333006,Gluteus medius muscle,SCT,7771000,Left
-99,gluteus_minimus_right,SCT,123037004,Anatomical Structure,SCT,78333006,Gluteus medius muscle,SCT,24028007,Right
+98,gluteus_minimus_left,SCT,123037004,Anatomical Structure,SCT,75297007,Gluteus minius muscle,SCT,7771000,Left
+99,gluteus_minimus_right,SCT,123037004,Anatomical Structure,SCT,75297007,Gluteus minius muscle,SCT,24028007,Right
 100,autochthon_left,SCT,123037004,Anatomical Structure,SCT,44947003,Erector spinae muscle,SCT,7771000,Left
 101,autochthon_right,SCT,123037004,Anatomical Structure,SCT,44947003,Erector spinae muscle,SCT,24028007,Right
 102,iliopsoas_left,SCT,123037004,Anatomical Structure,SCT,68455001,Iliopsoas muscle,SCT,7771000,Left
