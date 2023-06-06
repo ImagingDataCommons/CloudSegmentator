@@ -366,8 +366,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Gluteus medius muscle
-      CodeValue: '78333006'
+      CodeMeaning: Gluteus minius muscle
+      CodeValue: '75297007'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeModifierCodeSequence:
       CodeMeaning: Left
@@ -386,8 +386,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Gluteus medius muscle
-      CodeValue: '78333006'
+      CodeMeaning: Gluteus minius muscle
+      CodeValue: '75297007'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeModifierCodeSequence:
       CodeMeaning: Right
@@ -438,8 +438,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Heart
-      CodeValue: '80891009'
+      CodeMeaning: Myocardium
+      CodeValue: '74281007'
       CodingSchemeDesignator: SCT
     labelID: 44
     recommendedDisplayRGBValue:
@@ -454,7 +454,7 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Left ventricle
+      CodeMeaning: Left ventricle of heart
       CodeValue: '87878005'
       CodingSchemeDesignator: SCT
     labelID: 46
@@ -470,7 +470,7 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Right ventricle
+      CodeMeaning: Right ventricle of heart
       CodeValue: '53085002'
       CodingSchemeDesignator: SCT
     labelID: 48
@@ -870,8 +870,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Portal vein
-      CodeValue: '32764006'
+      CodeMeaning: Portal vein and splenic vein
+      CodeValue: '110765007'
       CodingSchemeDesignator: SCT
     labelID: 9
     recommendedDisplayRGBValue:
@@ -922,8 +922,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Tenth rib
-      CodeValue: '77644006'
+      CodeMeaning: Second rib
+      CodeValue: '78247007'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeModifierCodeSequence:
       CodeMeaning: Left
@@ -942,8 +942,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Eleventh rib
-      CodeValue: '58830002'
+      CodeMeaning: Third rib
+      CodeValue: '25888004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeModifierCodeSequence:
       CodeMeaning: Left
@@ -962,8 +962,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Twelfth rib
-      CodeValue: '43993008'
+      CodeMeaning: Fourth rib
+      CodeValue: '25523003'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeModifierCodeSequence:
       CodeMeaning: Left
@@ -982,8 +982,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Second rib
-      CodeValue: '78247007'
+      CodeMeaning: Fifth rib
+      CodeValue: '15339008'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeModifierCodeSequence:
       CodeMeaning: Left
@@ -1002,8 +1002,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Third rib
-      CodeValue: '25888004'
+      CodeMeaning: Sixth rib
+      CodeValue: '59558009'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeModifierCodeSequence:
       CodeMeaning: Left
@@ -1022,8 +1022,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Fourth rib
-      CodeValue: '25523003'
+      CodeMeaning: Seventh rib
+      CodeValue: '24915002'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeModifierCodeSequence:
       CodeMeaning: Left
@@ -1042,8 +1042,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Fifth rib
-      CodeValue: '15339008'
+      CodeMeaning: Eighth rib
+      CodeValue: '5953002'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeModifierCodeSequence:
       CodeMeaning: Left
@@ -1062,8 +1062,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Sixth rib
-      CodeValue: '59558009'
+      CodeMeaning: Ninth rib
+      CodeValue: '22565002'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeModifierCodeSequence:
       CodeMeaning: Left
@@ -1082,8 +1082,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Seventh rib
-      CodeValue: '24915002'
+      CodeMeaning: Tenth rib
+      CodeValue: '77644006'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeModifierCodeSequence:
       CodeMeaning: Left
@@ -1102,8 +1102,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Eighth rib
-      CodeValue: '5953002'
+      CodeMeaning: Eleventh rib
+      CodeValue: '58830002'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeModifierCodeSequence:
       CodeMeaning: Left
@@ -1122,8 +1122,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Ninth rib
-      CodeValue: '22565002'
+      CodeMeaning: Twelfth rib
+      CodeValue: '43993008'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeModifierCodeSequence:
       CodeMeaning: Left
@@ -1162,8 +1162,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Tenth rib
-      CodeValue: '77644006'
+      CodeMeaning: Second rib
+      CodeValue: '78247007'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeModifierCodeSequence:
       CodeMeaning: Right
@@ -1182,8 +1182,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Eleventh rib
-      CodeValue: '58830002'
+      CodeMeaning: Third rib
+      CodeValue: '25888004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeModifierCodeSequence:
       CodeMeaning: Right
@@ -1202,8 +1202,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Twelfth rib
-      CodeValue: '43993008'
+      CodeMeaning: Fourth rib
+      CodeValue: '25523003'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeModifierCodeSequence:
       CodeMeaning: Right
@@ -1222,8 +1222,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Second rib
-      CodeValue: '78247007'
+      CodeMeaning: Fifth rib
+      CodeValue: '15339008'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeModifierCodeSequence:
       CodeMeaning: Right
@@ -1242,8 +1242,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Third rib
-      CodeValue: '25888004'
+      CodeMeaning: Sixth rib
+      CodeValue: '59558009'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeModifierCodeSequence:
       CodeMeaning: Right
@@ -1262,8 +1262,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Fourth rib
-      CodeValue: '25523003'
+      CodeMeaning: Seventh rib
+      CodeValue: '24915002'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeModifierCodeSequence:
       CodeMeaning: Right
@@ -1282,8 +1282,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Fifth rib
-      CodeValue: '15339008'
+      CodeMeaning: Eighth rib
+      CodeValue: '5953002'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeModifierCodeSequence:
       CodeMeaning: Right
@@ -1302,8 +1302,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Sixth rib
-      CodeValue: '59558009'
+      CodeMeaning: Ninth rib
+      CodeValue: '22565002'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeModifierCodeSequence:
       CodeMeaning: Right
@@ -1322,8 +1322,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Seventh rib
-      CodeValue: '24915002'
+      CodeMeaning: Tenth rib
+      CodeValue: '77644006'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeModifierCodeSequence:
       CodeMeaning: Right
@@ -1342,8 +1342,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Eighth rib
-      CodeValue: '5953002'
+      CodeMeaning: Eleventh rib
+      CodeValue: '58830002'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeModifierCodeSequence:
       CodeMeaning: Right
@@ -1362,8 +1362,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Ninth rib
-      CodeValue: '22565002'
+      CodeMeaning: Twelfth rib
+      CodeValue: '43993008'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeModifierCodeSequence:
       CodeMeaning: Right
@@ -1502,7 +1502,7 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Bladder
+      CodeMeaning: Urinary bladder
       CodeValue: '89837001'
       CodingSchemeDesignator: SCT
     labelID: 104
@@ -1726,8 +1726,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: T10 vertebra
-      CodeValue: '7610001'
+      CodeMeaning: T2 vertebra
+      CodeValue: '53733008'
       CodingSchemeDesignator: SCT
     labelID: 24
     recommendedDisplayRGBValue:
@@ -1742,8 +1742,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: T11 vertebra
-      CodeValue: '12989004'
+      CodeMeaning: T3 vertebra
+      CodeValue: '1626008'
       CodingSchemeDesignator: SCT
     labelID: 23
     recommendedDisplayRGBValue:
@@ -1758,8 +1758,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: T12 vertebra
-      CodeValue: '23215003'
+      CodeMeaning: T4 vertebra
+      CodeValue: '73071006'
       CodingSchemeDesignator: SCT
     labelID: 34
     recommendedDisplayRGBValue:
@@ -1774,8 +1774,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: T2 vertebra
-      CodeValue: '53733008'
+      CodeMeaning: T5 vertebra
+      CodeValue: '56401006'
       CodingSchemeDesignator: SCT
     labelID: 33
     recommendedDisplayRGBValue:
@@ -1790,8 +1790,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: T3 vertebra
-      CodeValue: '1626008'
+      CodeMeaning: T6 vertebra
+      CodeValue: '45296009'
       CodingSchemeDesignator: SCT
     labelID: 32
     recommendedDisplayRGBValue:
@@ -1806,8 +1806,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: T4 vertebra
-      CodeValue: '73071006'
+      CodeMeaning: T7 vertebra
+      CodeValue: '62487009'
       CodingSchemeDesignator: SCT
     labelID: 31
     recommendedDisplayRGBValue:
@@ -1822,8 +1822,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: T5 vertebra
-      CodeValue: '56401006'
+      CodeMeaning: T8 vertebra
+      CodeValue: '11068009'
       CodingSchemeDesignator: SCT
     labelID: 30
     recommendedDisplayRGBValue:
@@ -1838,8 +1838,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: T6 vertebra
-      CodeValue: '45296009'
+      CodeMeaning: T9 vertebra
+      CodeValue: '82687006'
       CodingSchemeDesignator: SCT
     labelID: 29
     recommendedDisplayRGBValue:
@@ -1854,8 +1854,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: T7 vertebra
-      CodeValue: '62487009'
+      CodeMeaning: T10 vertebra
+      CodeValue: '7610001'
       CodingSchemeDesignator: SCT
     labelID: 28
     recommendedDisplayRGBValue:
@@ -1870,8 +1870,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: T8 vertebra
-      CodeValue: '11068009'
+      CodeMeaning: T11 vertebra
+      CodeValue: '12989004'
       CodingSchemeDesignator: SCT
     labelID: 27
     recommendedDisplayRGBValue:
@@ -1886,8 +1886,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: T9 vertebra
-      CodeValue: '82687006'
+      CodeMeaning: T12 vertebra
+      CodeValue: '23215003'
       CodingSchemeDesignator: SCT
     labelID: 26
     recommendedDisplayRGBValue:
