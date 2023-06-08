@@ -73,8 +73,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Erector spinae muscle
-      CodeValue: '44947003'
+      CodeMeaning: Deep muscle of back
+      CodeValue: '244849004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeModifierCodeSequence:
       CodeMeaning: Left
@@ -93,8 +93,8 @@ segmentAttributes:
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Erector spinae muscle
-      CodeValue: '44947003'
+      CodeMeaning: Deep muscle of back
+      CodeValue: '244849004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeModifierCodeSequence:
       CodeMeaning: Right

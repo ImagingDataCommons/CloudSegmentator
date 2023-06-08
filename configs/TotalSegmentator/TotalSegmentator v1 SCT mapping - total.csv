@@ -2,8 +2,8 @@
 0,adrenal_gland_left,SCT,123037004,Anatomical Structure,SCT,23451007,Adrenal gland,SCT,7771000,Left
 1,adrenal_gland_right,SCT,123037004,Anatomical Structure,SCT,23451007,Adrenal gland,SCT,24028007,Right
 2,aorta,SCT,123037004,Anatomical Structure,SCT,15825003,Aorta,,,
-3,autochthon_left,SCT,123037004,Anatomical Structure,SCT,44947003,Erector spinae muscle,SCT,7771000,Left
-4,autochthon_right,SCT,123037004,Anatomical Structure,SCT,44947003,Erector spinae muscle,SCT,24028007,Right
+3,autochthon_left,SCT,123037004,Anatomical Structure,SCT,244849004,Deep muscle of back,SCT,7771000,Left
+4,autochthon_right,SCT,123037004,Anatomical Structure,SCT,244849004,Deep muscle of back,SCT,24028007,Right
 5,brain,SCT,123037004,Anatomical Structure,SCT,12738006,Brain,,,
 6,clavicula_left,SCT,123037004,Anatomical Structure,SCT,51299004,Clavicle,SCT,7771000,Left
 7,clavicula_right,SCT,123037004,Anatomical Structure,SCT,51299004,Clavicle,SCT,24028007,Right
