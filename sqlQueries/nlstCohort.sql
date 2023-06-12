@@ -3,6 +3,8 @@ WITH
   nonLocalizerRawData AS (
     SELECT
       SeriesInstanceUID,
+      StudyInstanceUID,
+      PatientID,
       SOPInstanceUID,
       SliceThickness,
       -- Cast Exposure column as FLOAT64 data type
@@ -82,6 +84,8 @@ dotProduct AS (
 geometryChecks AS (
   SELECT
     SeriesInstanceUID,
+    StudyInstanceUID,
+    PatientID,
     -- Aggregate distinct slice_interval values into an array 
     ARRAY_AGG(DISTINCT(slice_interval) ignore nulls) AS sliceIntervalDifferences,
     -- Aggregate distinct Exposure values into an array 
@@ -118,7 +122,10 @@ geometryChecks AS (
       nonLocalizerRawData
   JOIN dotProduct using (SeriesInstanceUID, SOPInstanceUID)
   GROUP BY
-      SeriesInstanceUID, viewerUrl
+      SeriesInstanceUID, 
+      StudyInstanceUID,
+      PatientID,
+      viewerUrl
   HAVING
     iopCount=1 --we expect only one image orientation in a series
     AND pixelSpacingCount=1  --we expect identical pixel spacing in a series
@@ -135,6 +142,8 @@ geometryChecks AS (
 #finally displaying the attributes that we would be interested
 SELECT
   SeriesInstanceUID,
+  StudyInstanceUID,
+  PatientID,
   iopCount,
   dotProduct,
   pixelSpacingCount,
@@ -153,7 +162,7 @@ SELECT
   max(de) -min (de) as maxExposureDifference,
   seriesSizeInMB,
   viewerUrl,
-  --s5cmdUrls
+  s5cmdUrls
 FROM
   geometryChecks
 LEFT JOIN
@@ -163,6 +172,8 @@ LEFT JOIN
 
 GROUP BY
   SeriesInstanceUID,
+  StudyInstanceUID,
+  PatientID,
   iopCount,
   dotProduct,
   pixelSpacingCount,
