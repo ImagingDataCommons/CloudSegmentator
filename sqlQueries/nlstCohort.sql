@@ -47,8 +47,9 @@ WITH
     LEFT JOIN
       UNNEST(bid.ImagePositionPatient) ipp3 WITH OFFSET AS axis2
     WHERE
-      -- Filter for CT images in the NLST collection that are not localizers
-      collection_id = 'nlst' AND Modality = 'CT' AND axes = 2 AND axis1 = 0 AND axis2 = 1 AND 'LOCALIZER' NOT IN UNNEST(ImageType)
+      -- Filter for CT images in the NLST collection that are not localizers 
+      --and removing the transfer syntax ids that require additional processing (decompression before passing to dcm2niix)
+      collection_id = 'nlst' AND Modality = 'CT' AND axes = 2 AND axis1 = 0 AND axis2 = 1 AND 'LOCALIZER' NOT IN UNNEST(ImageType) AND TransferSyntaxUID NOT IN ( '1.2.840.10008.1.2.4.70','1.2.840.10008.1.2.4.51')
   )
 ,
 crossProduct AS (
