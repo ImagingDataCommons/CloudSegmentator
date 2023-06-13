@@ -1,4 +1,25 @@
-WITH
+#standardSQL
+
+-- The point of this query is to remove the CT Image Series from nlst study which do not conform to
+-- geometrical checks generally required for NIFTI file converison
+-- also to remove those series that require additional decompression steps before passing to dcm2niix for conversion to NIfTI format.
+
+-- The assumptions made here are
+  -- consider only those series that have CT modality and belong to the NLST collection and TransferSyntaxUID's NOT IN ( '1.2.840.10008.1.2.4.70','1.2.840.10008.1.2.4.51')
+  -- do not contain LOCALIZER in ImageType
+  -- all instances in a series have identical values for ImageOrientationPatient (converted to string for the purposes of comparison)
+  -- all instances in a series have 1 ± 0.01 as the dot product between cross product of first and second vectors, and [1,0,0] in ImageOrientationPosition
+  -- have number of instances in the series equal to the number of distinct values of ImagePositionPatient attribute
+      -- (converted to string for the purposes of comparison)
+  -- all instances in a series have identical values for the first two components of ImagePositionPatient
+  -- all instances in a series have identical values of PixelSpacing (converted to string for the purposes of comparison)
+  -- all instances in a series have identical values of SliceThickness--this requirement has been relaxed now
+  -- all instances in a series have identical pixel Rows and similarly identical pixel Columns
+  -- with sliceIntervalDifference defined as the difference between the values of the 3rd component of ImagePositionPatient,
+  -- after sorting all instances by that third component, having the difference between the largest and smallest 
+  --values of sliceIntervalDifference less than 0.01
+  
+  WITH
   -- Create a common table expression (CTE) named nonLocalizerRawData
   nonLocalizerRawData AS (
     SELECT
