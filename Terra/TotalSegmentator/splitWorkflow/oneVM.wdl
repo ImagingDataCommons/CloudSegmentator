@@ -50,7 +50,7 @@ workflow TotalSegmentator {
  output {
   #output notebooks
   
-   File endToEndTotalSegmentatorOutputJupyterNotebook = totalSegmentatorEndToEnd.endToEndTotalSegmentator_UsageMetrics
+   File endToEndTotalSegmentatorOutputJupyterNotebook = totalSegmentatorEndToEnd.endToEndTotalSegmentatorOutputJupyterNotebook
    File dicomsegAndRadiomicsSR_CompressedFiles = totalSegmentatorEndToEnd.dicomsegAndRadiomicsSR_CompressedFiles
    File pyradiomicsRadiomicsFeatures = totalSegmentatorEndToEnd.pyradiomicsRadiomicsFeatures
    File structuredReportsDICOM = totalSegmentatorEndToEnd.structuredReportsDICOM
