@@ -1,0 +1,7 @@
+fetch consumer_quota
+| metric 'serviceruntime.googleapis.com/quota/allocation/usage'
+| filter
+    (metric.quota_metric == 'compute.googleapis.com/preemptible_nvidia_t4_gpus')
+| group_by 1m, [row_count: row_count()]
+| every 1m
+| group_by [resource.location], [row_count_aggregate: aggregate(row_count)]
