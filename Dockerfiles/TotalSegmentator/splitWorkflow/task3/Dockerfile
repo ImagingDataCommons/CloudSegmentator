@@ -30,7 +30,7 @@ RUN pip3 install --no-cache-dir \
     ipython==8.11.0\
     ipywidgets==8.0.5\
     jupyter==1.0.0\
-    nibabel== 5.1.0\
+    nibabel==5.1.0\
     pandas==1.5.3\
     papermill==2.4.0\
     p_tqdm==1.4.0\
