@@ -1,5 +1,3 @@
-#task3_v3
-                                                                                                                                                                                                                      
 FROM python:3.11.2-slim-buster
 
 #ARG GIT_HASH=
@@ -14,13 +12,15 @@ LABEL MAINTAINER="IDC <vthiriveedhi@mgb.org>" \
 # Install some basic system utilities
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
-    build-essential\
-    dcm2niix\
+    build-essential=12.6\
+    #dcm2niix\
     lz4=1.8.3-1+deb10u1\
-    pigz\
-    plastimatch\
-    python3-dev\
+    pigz=2.4-1\
+    plastimatch=1.7.4+dfsg.1-2\
+    python3-dev=3.7.3-1\
+    unzip=6.0-23+deb10u3\
     wget=1.20.1-1.1\
+    zip=3.0-11+b1\
   && rm -rf /var/lib/apt/lists/*
 
 # Install Jupyter utilities
@@ -30,12 +30,12 @@ RUN pip3 install --no-cache-dir \
     ipython==8.11.0\
     ipywidgets==8.0.5\
     jupyter==1.0.0\
-    nibabel\
+    nibabel== 5.1.0\
     pandas==1.5.3\
     papermill==2.4.0\
-    p_tqdm\
-    pydicom\
-    tqdm\
+    p_tqdm==1.4.0\
+    pydicom==2.4.1\
+    tqdm==4.65.0\
  && pip install --no-cache-dir \
     pyradiomics==3.0.1
 
@@ -54,3 +54,12 @@ RUN wget ${DCMQI_URL} \
   && tar -xvzf ${DCMQI_FN} \
   && rm ${DCMQI_FN} \
   && mv dcmqi-1.2.5-linux/bin/* /bin
+
+
+#Install dcm2niix
+ENV DCM2NIIX_URL="https://github.com/rordenlab/dcm2niix/releases/download/v1.0.20230411/dcm2niix_lnx.zip"
+ENV DCM2NIIX_FN="dcm2niix_lnx.zip"
+RUN wget ${DCM2NIIX_URL} \
+  && unzip ${DCM2NIIX_FN} \
+  && rm ${DCM2NIIX_FN} \
+  && mv dcm2niix /usr/local/bin/dcm2niix
