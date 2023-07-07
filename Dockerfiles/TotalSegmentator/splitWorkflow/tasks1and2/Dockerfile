@@ -10,13 +10,13 @@ RUN rm -f /etc/apt/sources.list.d/*.list
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential=12.8ubuntu1.1\
-    dcm2niix=1.0.20181125-1build1 \
+    #dcm2niix=1.0.20181125-1build1 \installing from zip file now
     ffmpeg=7:4.2.7-0ubuntu0.1\
     lz4=1.9.2-2ubuntu0.20.04.1\
     pigz=2.4-1\
     plastimatch=1.8.0+dfsg.1-2build1\
     python3-dev=3.8.2-0ubuntu2\
-    python3-pip=20.0.2-5ubuntu1.8\
+    python3-pip=20.0.2-5ubuntu1.9\
     wget=1.20.3-1ubuntu2\
     zip=3.0-11build1\
     unzip=6.0-25ubuntu1.1\
@@ -36,7 +36,7 @@ RUN pip install --no-cache-dir \
     TotalSegmentator==1.5.5\
  && pip install --no-cache-dir \
     pyradiomics==3.0.1
-    
+
 ENV TOTALSEG_WEIGHTS_PATH /totalsegmentator_weights
 RUN mkdir -p $TOTALSEG_WEIGHTS_PATH
 
@@ -52,3 +52,10 @@ RUN wget ${S5CMD_URL} \
   && rm ${S5CMD_FN} \
   && mv s5cmd /usr/local/bin/s5cmd
 
+#Install dcm2niix
+ENV DCM2NIIX_URL="https://github.com/rordenlab/dcm2niix/releases/download/v1.0.20230411/dcm2niix_lnx.zip"
+ENV DCM2NIIX_FN="dcm2niix_lnx.zip"
+RUN wget ${DCM2NIIX_URL} \
+  && unzip ${DCM2NIIX_FN} \
+  && rm ${DCM2NIIX_FN} \
+  && mv dcm2niix /usr/local/bin/dcm2niix
