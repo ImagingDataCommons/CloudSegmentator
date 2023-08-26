@@ -14,7 +14,10 @@ workflows:
      subclass: WDL
      primaryDescriptorPath: /Terra/TotalSegmentator/splitWorkflow/oneVM.wdl
      testParameterFiles:
-     -  /sampleManifests/batch_1.csv       
+     -  /sampleManifests/batch_1.csv      
+   - name: perFrameFunctionalGroupSequenceExtractionOnTerra
+     subclass: WDL
+     primaryDescriptorPath: /Terra/TotalSegmentator/postProcessing/perFrame.wdl      
    - name: TotalSegmentatortwoVmWorkflowOnSB-CGC
      subclass: CWL
      primaryDescriptorPath: /SevenBridges/TotalSegmentator/splitWorkflow/twoVM.cwl
