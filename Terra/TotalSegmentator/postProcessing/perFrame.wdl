@@ -8,7 +8,7 @@ workflow PerFrameFunctionalGroupsSequence {
    File jsonServiceAccountFile
 
    #Docker Images for each task
-   String docker_PerFrameFunctionalGroupsSequence = "vamsithiriveedhi/totalsegmentator:task1and2_v4"
+   String docker_PerFrameFunctionalGroupsSequence = "vamsithiriveedhi/extract_perframe_functional_group_sequence"
 
    #Preemptible retries
    Int preemptibleTries_PerFrameFunctionalGroupsSequence = 3
@@ -83,7 +83,7 @@ task PerFrameFunctionalGroupsSequence{
    cpuPlatform: cpuFamily_PerFrameFunctionalGroupsSequence
    zones: zones_PerFrameFunctionalGroupsSequence
    memory: ram_PerFrameFunctionalGroupsSequence + " GiB"
-   disks: "local-disk 10 HDD"  #ToDo: Dynamically calculate disk space using the no of bytes of yaml file size. 64 characters is the max size I found in a seriesInstanceUID
+   disks: "local-disk 10 HDD" 
    preemptible: preemptibleTries_PerFrameFunctionalGroupsSequence
    maxRetries: 3
  }
