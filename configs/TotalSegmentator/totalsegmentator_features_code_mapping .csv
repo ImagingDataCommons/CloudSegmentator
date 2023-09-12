@@ -1,0 +1,28 @@
+shape_feature,quantity_CodingSchemeDesignator,quantity_CodeValue,quantity_CodeMeaning,units_CodingSchemeDesignator,units_CodeValue,units_CodeMeaning
+Elongation,IBSI,Q3CK,Elongation,UCUM,mm,millimeter
+Flatness,IBSI,N17B,Flatness,UCUM,mm,millimeter
+LeastAxisLength,IBSI,7J51,Least Axis in 3D Length,UCUM,mm,millimeter
+MajorAxisLength,IBSI,TDIC,Major Axis in 3D Length,UCUM,mm,millimeter
+Maximum3DDiameter,IBSI,L0JK,Maximum 3D Diameter of a Mesh,UCUM,mm,millimeter
+MeshVolume,IBSI,RNU0,Volume of Mesh,UCUM,mm3,cubic millimeter 
+MinorAxisLength,IBSI,P9VJ,Minor Axis in 3D Length,UCUM,mm,millimeter
+Sphericity,IBSI,QCFX,Sphericity,UCUM,1,no units
+SurfaceArea,IBSI,C0JK,Surface Area of Mesh,UCUM,mm2,square millimeter
+SurfaceVolumeRatio,IBSI,2PR5,Surface to Volume Ratio,UCUM,/mm,per millimeter
+VoxelVolume,IBSI,YEKZ,Volume from Voxel Summation,UCUM,mm3,cubic millimeter
+10Percentile,IBSI,GPMT,Intensity Histogram 10th Percentile,UCUM,1,no units
+90Percentile,IBSI,OZ0C,Intensity Histogram 90th Percentile,UCUM,1,no units
+Entropy,IBSI,TLU2,Intensity Histogram Entropy,UCUM,1,no units
+InterquartileRange,IBSI,WR0O,Intensity Histogram Interquartile Range,UCUM,1,no units
+Kurtosis,IBSI,C3I7,Intensity Histogram Kurtosis,UCUM,1,no units
+Maximum,IBSI,3NCY,Intensity Histogram Maximum Gray Level,UCUM,1,no units
+MeanAbsoluteDeviation,IBSI,D2ZX,Intensity Histogram Mean Absolute Deviation,UCUM,1,no units
+Mean,IBSI,X6K6,Intensity Histogram Mean,UCUM,1,no units
+Median,IBSI,WIFQ,Intensity Histogram Median,UCUM,1,no units
+Minimum,IBSI,1PR8,Intensity Histogram Minimum Gray Level,UCUM,1,no units
+Range,IBSI,5Z3W,Intensity Histogram Range,UCUM,1,no units
+RobustMeanAbsoluteDeviation,IBSI,WRZB,Intensity Histogram Mean Absolute Deviation,UCUM,1,no units
+RootMeanSquared,IBSI,5ZWQ,Root mean square intensity,UCUM,1,no units
+Skewness,IBSI,88K1,Intensity Histogram Skewness,UCUM,1,no units
+Uniformity,IBSI,BJ5W,Intensity Histogram Uniformity,UCUM,1,no units
+Variance,IBSI,CH89,Intensity Histogram Variance,UCUM,1,no units
