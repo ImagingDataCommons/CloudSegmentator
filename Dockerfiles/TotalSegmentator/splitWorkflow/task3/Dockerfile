@@ -8,7 +8,7 @@ ARG GIT_HASH
 
 LABEL MAINTAINER="IDC <vthiriveedhi@mgb.org>" \
       GIT_HASH=${GIT_HASH}\
-      IMAGE_NAME_ON_DOCKERHUB= "imagingdatacommons/totalsegmentator:task3_v5"
+      IMAGE_NAME_ON_DOCKERHUB="imagingdatacommons/totalsegmentator:task3_v5"
 
 # Install some basic system utilities
 RUN apt-get update \
