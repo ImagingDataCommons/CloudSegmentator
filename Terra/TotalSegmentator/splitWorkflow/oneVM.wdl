@@ -11,7 +11,7 @@ workflow TotalSegmentator {
    String dicomToNiftiConverterTool
 
    #Docker Images for each task
-   String totalSegmentatorDocker = "vamsithiriveedhi/totalsegmentator:end_to_end_v1" 
+   String totalSegmentatorDocker = "imagingdatacommons/totalsegmentator:end_to_end_v1" 
 
    #Preemptible retries
    Int totalSegmentatorPreemptibleTries = 3
@@ -83,7 +83,7 @@ task totalSegmentatorEndToEnd{
 
  }
  command {
-   wget https://raw.githubusercontent.com/vkt1414/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/endToEndTotalSegmentatorNotebook.ipynb
+   wget https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/endToEndTotalSegmentatorNotebook.ipynb
    set -e
    papermill -p csvFilePath ~{seriesInstanceS5cmdUrls} -p converterType ~{dicomToNiftiConverterTool}  endToEndTotalSegmentatorNotebook.ipynb endToEndTotalSegmentatorOutputJupyterNotebook.ipynb || (>&2 echo "Killed" && exit 1)
  }
