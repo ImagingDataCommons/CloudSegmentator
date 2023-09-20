@@ -1,13 +1,14 @@
 FROM python:3.11.2-slim-buster
 
-#ARG GIT_HASH=
+ARG GIT_HASH
 
 # ENV TERM=xterm-256color \
 #     BAMID_URL=https://github.com/Griffan/VerifyBamID/archive \
 #     TINI_VERSION=v0.19.0
 
 LABEL MAINTAINER="IDC <vthiriveedhi@mgb.org>" \
-        GIT_HASH=${GIT_HASH}
+      GIT_HASH=${GIT_HASH}\
+      IMAGE_NAME_ON_DOCKERHUB= "imagingdatacommons/totalsegmentator:task3_v5"
 
 # Install some basic system utilities
 RUN apt-get update \
