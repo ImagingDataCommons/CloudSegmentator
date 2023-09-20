@@ -11,9 +11,9 @@ workflow TotalSegmentator {
    String dicomToNiftiConverterTool
 
    #Docker Images for each task
-   String downloadDicomAndConvertDocker = "vamsithiriveedhi/totalsegmentator:task1_v1"
-   String inferenceTotalSegmentatorDocker = "vamsithiriveedhi/totalsegmentator:task2_v3"
-   String dicomsegAndRadiomicsSR_Docker = "vamsithiriveedhi/totalsegmentator:task3_v3"
+   String downloadDicomAndConvertDocker = "imagingdatacommons/totalsegmentator:task1_v1"
+   String inferenceTotalSegmentatorDocker = "imagingdatacommons/totalsegmentator:task2_v3"
+   String dicomsegAndRadiomicsSR_Docker = "imagingdatacommons/totalsegmentator:task3_v3"
 
    #Preemptible retries
    Int downloadAndConvertPreemptibleTries = 3
@@ -119,7 +119,7 @@ task downloadAndConvert {
     String downloadAndConvertCpuFamily
  }
  command {
-   wget https://raw.githubusercontent.com/vkt1414/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/downloadDicomAndConvertNotebook.ipynb
+   wget https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/downloadDicomAndConvertNotebook.ipynb
    set -e
    papermill -p converterType ~{dicomToNiftiConverterTool} -p csvFilePath ~{seriesInstanceS5cmdUrls} downloadDicomAndConvertNotebook.ipynb downloadAndConvertOutputJupyterNotebook.ipynb 
  }
@@ -163,7 +163,7 @@ task inferenceTotalSegmentator {
  }
 
  command {
-   wget https://raw.githubusercontent.com/vkt1414/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/inferenceTotalSegmentatorNotebook.ipynb
+   wget https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/inferenceTotalSegmentatorNotebook.ipynb
    set -e
    papermill -p converterType ~{dicomToNiftiConverterTool}  -p niftiFilePath ~{NiftiFiles} inferenceTotalSegmentatorNotebook.ipynb inferenceOutputJupyterNotebook.ipynb
  }
@@ -206,7 +206,7 @@ task dicomsegAndRadiomicsSR{
     File inferenceZipFile
  }
  command {
-   wget https://raw.githubusercontent.com/vkt1414/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/dicomsegAndRadiomicsSR_Notebook.ipynb
+   wget https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/dicomsegAndRadiomicsSR_Notebook.ipynb
    set -e
    papermill -p csvFilePath ~{seriesInstanceS5cmdUrls} -p inferenceNiftiFilePath ~{inferenceZipFile}  dicomsegAndRadiomicsSR_Notebook.ipynb dicomsegAndRadiomicsSR_OutputJupyterNotebook.ipynb || (>&2 echo "Killed" && exit 1)
  }
