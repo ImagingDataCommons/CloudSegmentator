@@ -1,5 +1,12 @@
-FROM python:3.11.2-slim-buster
+FROM python@5b287042a6150052420e6a7fb7c1606b6403740880897ae9610faf434da28693
 
+ARG GIT_HASH
+
+LABEL python base docker image: python:3.11.2-slim-buster\
+      MAINTAINER="IDC <vthiriveedhi@mgb.org>" \
+      GIT_HASH=${GIT_HASH}\
+      IMAGE_NAME_ON_DOCKERHUB="imagingdatacommons/idc_data_download_convert"
+      
 # Install some basic system utilities
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
