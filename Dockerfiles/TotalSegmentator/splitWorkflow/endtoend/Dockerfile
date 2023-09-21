@@ -9,10 +9,6 @@ LABEL BASE_DOCKER_IMAGE="nvidia/cuda:12.1.0-base-ubuntu22.04"\
 
 # Set noninteractive mode to avoid geographic area prompt during package installation
 ENV DEBIAN_FRONTEND noninteractive
-
-LABEL MAINTAINER="IDC <vthiriveedhi@mgb.org>" \
-      VERSION="${VERSION}" \
-      IMAGE_NAME="vamsithiriveedhi/totalsegmentator:end_to_end_v${VERSION}"
        
 # Remove any third-party apt sources to avoid issues with expiring keys.
 RUN rm -f /etc/apt/sources.list.d/*.list
