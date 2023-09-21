@@ -5,7 +5,8 @@ ARG GIT_HASH
 LABEL python base docker image: python:3.11.2-slim-buster\
       MAINTAINER="IDC <vthiriveedhi@mgb.org>" \
       GIT_HASH=${GIT_HASH}\
-      IMAGE_NAME_ON_DOCKERHUB="imagingdatacommons/idc_data_download_convert"
+      PATH_TO_DOCKER_FILE="https://github.com/vkt1414/Cloud-Resources-Workflows/blob/${GIT_HASH}/Dockerfiles/TotalSegmentator/splitWorkflow/task1/Dockerfile"
+      IMAGE_NAME_ON_DOCKERHUB="imagingdatacommons/download_convert"
       
 # Install some basic system utilities
 RUN apt-get update \
