@@ -5,7 +5,7 @@ ARG GIT_HASH
 LABEL BASE_DOCKER_IMAGE="nvidia/cuda:12.1.0-runtime-ubuntu20.04"\
       MAINTAINER="IDC <vthiriveedhi@mgb.org>" \
       GIT_HASH=${GIT_HASH}\
-      PATH_TO_DOCKER_FILE="https://github.com/vkt1414/Cloud-Resources-Workflows/blob/${GIT_HASH}/Dockerfiles/TotalSegmentator/splitWorkflow/tasks1and2/Dockerfile"\
+      PATH_TO_DOCKER_FILE="https://github.com/imagingdatacommons/Cloud-Resources-Workflows/blob/${GIT_HASH}/Dockerfiles/TotalSegmentator/splitWorkflow/tasks1and2/Dockerfile"\
       IMAGE_NAME_ON_DOCKERHUB="imagingdatacommons/download_convert_inference_totalseg"
 
 # Set noninteractive mode to avoid geographic area prompt during package installation
