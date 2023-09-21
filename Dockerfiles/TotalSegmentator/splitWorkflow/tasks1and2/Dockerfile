@@ -1,10 +1,12 @@
-FROM nvidia/cuda:12.1.0-runtime-ubuntu20.04
+FROM nvidia/cuda@sha256:9c085c1904981625854dee32cfa777fffd06784b8183ed49adeaab11d241dc5a
 
 ARG GIT_HASH
 
-LABEL MAINTAINER="IDC <vthiriveedhi@mgb.org>" \
+LABEL BASE_DOCKER_IMAGE="nvidia/cuda:12.1.0-runtime-ubuntu20.04"\
+      MAINTAINER="IDC <vthiriveedhi@mgb.org>" \
       GIT_HASH=${GIT_HASH}\
-      IMAGE_NAME_ON_DOCKERHUB="imagingdatacommons/totalsegmentator:task1and2_v5"
+      PATH_TO_DOCKER_FILE="https://github.com/vkt1414/Cloud-Resources-Workflows/blob/${GIT_HASH}/Dockerfiles/TotalSegmentator/splitWorkflow/tasks1and2/Dockerfile"\
+      IMAGE_NAME_ON_DOCKERHUB="imagingdatacommons/download_convert_inference_totalseg"
 
 # Set noninteractive mode to avoid geographic area prompt during package installation
 ENV DEBIAN_FRONTEND noninteractive
