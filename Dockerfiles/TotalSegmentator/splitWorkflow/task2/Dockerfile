@@ -1,5 +1,10 @@
-#vamsithiriveedhi/totalsegmentator:task2_v3
-FROM nvidia/cuda:12.1.0-base-ubuntu22.04
+FROM nvidia/cuda@sha256:27838367c7a10bd7954f3ddc84b240658aa396b4f5a31ac7e153ae43a5082174
+
+LABEL BASE_DOCKER_IMAGE="nvidia/cuda:12.1.0-base-ubuntu22.04"\
+      MAINTAINER="IDC <vthiriveedhi@mgb.org>" \
+      GIT_HASH=${GIT_HASH}\
+      PATH_TO_DOCKER_FILE="https://github.com/vkt1414/Cloud-Resources-Workflows/blob/${GIT_HASH}/Dockerfiles/TotalSegmentator/splitWorkflow/task1/Dockerfile"
+      IMAGE_NAME_ON_DOCKERHUB="imagingdatacommons/download_convert"
 
 # Set noninteractive mode to avoid geographic area prompt during package installation
 ENV DEBIAN_FRONTEND noninteractive
