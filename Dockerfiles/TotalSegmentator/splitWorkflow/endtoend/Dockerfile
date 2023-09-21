@@ -1,5 +1,4 @@
-FROM nvidia/cuda:12.1.0-base-ubuntu22.04
-#nvidia/cuda@sha256:27838367c7a10bd7954f3ddc84b240658aa396b4f5a31ac7e153ae43a5082174
+FROM nvidia/cuda@sha256:bed19cc4270a4624f732de7a69beb061a7dfb2ab2e05e1a58e157a483ed25185
 
 LABEL BASE_DOCKER_IMAGE="nvidia/cuda:12.1.0-base-ubuntu22.04"\
       MAINTAINER="IDC <vthiriveedhi@mgb.org>" \
