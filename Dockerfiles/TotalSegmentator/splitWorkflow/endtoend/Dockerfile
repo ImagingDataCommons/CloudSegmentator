@@ -1,6 +1,6 @@
-FROM nvidia/cuda@sha256:bed19cc4270a4624f732de7a69beb061a7dfb2ab2e05e1a58e157a483ed25185
+FROM nvidia/cuda@sha256:e1a2b842633d9b48588553c699fe5369199fba724729ea165fd0e1c7a5baf3cb
 
-LABEL BASE_DOCKER_IMAGE="nvidia/cuda:12.1.0-base-ubuntu22.04"\
+LABEL BASE_DOCKER_IMAGE="nvidia/cuda:12.1.0-base-ubuntu20.04"\
       MAINTAINER="IDC <vthiriveedhi@mgb.org>" \
       GIT_HASH=${GIT_HASH}\
       PATH_TO_DOCKER_FILE="https://github.com/vkt1414/Cloud-Resources-Workflows/blob/${GIT_HASH}/Dockerfiles/TotalSegmentator/splitWorkflow/endtoend/Dockerfile"\
