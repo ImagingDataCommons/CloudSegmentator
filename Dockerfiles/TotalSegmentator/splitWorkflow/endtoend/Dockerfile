@@ -21,7 +21,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     pigz=2.4-1\
     plastimatch=1.8.0+dfsg.1-2build1\
     python3-dev=3.8.2-0ubuntu2\
-    python3-pip\
+    python3-pip=20.0.2-5ubuntu1.8\
     unzip=6.0-25ubuntu1.1\
     wget=1.20.3-1ubuntu2\
     xvfb=2:1.20.13-1ubuntu1~20.04.8\
