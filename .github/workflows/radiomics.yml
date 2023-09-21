@@ -6,12 +6,6 @@ on:
       - main  
     paths:
       - 'Dockerfiles/TotalSegmentator/splitWorkflow/task3/**'
-  pull_request:
-    branches:
-      - main  
-    paths:
-      - 'Dockerfiles/TotalSegmentator/splitWorkflow/task3/**'
-
 
 jobs:
   build-and-push:

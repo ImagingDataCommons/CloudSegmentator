@@ -6,11 +6,6 @@ on:
       - main  
     paths:
       - 'Dockerfiles/TotalSegmentator/splitWorkflow/endtoend/**'
-  pull_request:
-    branches:
-      - main  
-    paths:
-      - 'Dockerfiles/TotalSegmentator/splitWorkflow/endtoend/**'
 
 jobs:
   build-and-push:
