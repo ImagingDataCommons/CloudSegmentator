@@ -37,6 +37,6 @@ jobs:
           context: .
           file: ./Dockerfiles/TotalSegmentator/splitWorkflow/tasks1and2/Dockerfile
           push: true
-          tags: vamsithiriveedhi/totalsegmentator:download_convert_inference_totalseg
+          tags: imagingdatacommons/totalsegmentator:download_convert_inference_totalseg
           build-args: |
             GIT_HASH=${{ steps.git-commit-hash.outputs.commit_hash }}
