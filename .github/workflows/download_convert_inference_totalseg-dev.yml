@@ -1,4 +1,4 @@
-name: download_convert_inference_totalseg
+name: dev-download_convert_inference_totalseg
 
 on:
   push:

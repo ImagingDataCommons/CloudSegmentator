@@ -1,4 +1,4 @@
-name: download_convert_inference_totalseg_radiomics
+name: dev-download_convert_inference_totalseg_radiomics
 
 on:
   push:

@@ -1,4 +1,4 @@
-name: per_frame_functional_group_sequence
+name: dev-per_frame_functional_group_sequence
 
 on:
   push:

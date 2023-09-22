@@ -1,4 +1,4 @@
-name: inference_totalseg
+name: dev-inference_totalseg
 
 on:
   push:

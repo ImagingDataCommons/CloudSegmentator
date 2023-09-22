@@ -1,4 +1,4 @@
-name: radiomics
+name: dev-radiomics
 
 on:
   push:
