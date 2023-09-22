@@ -3,9 +3,10 @@ name: per_frame_functional_group_sequence
 on:
   push:
     branches:
-      - main  
+      - dev  
     paths:
       - 'Dockerfiles/per_frame_functional_group_sequence/**'
+      - .github/workflows/per_frame_functional_group_sequence.yml   
 
 jobs:
   build-and-push:
@@ -37,6 +38,6 @@ jobs:
           context: .
           file: ./Dockerfiles/per_frame_functional_group_sequence/Dockerfile
           push: true
-          tags: imagingdatacommons/per_frame_functional_group_sequence
+          tags: imagingdatacommons/per_frame_functional_group_sequence:dev
           build-args: |
             GIT_HASH=$COMMIT_HASH

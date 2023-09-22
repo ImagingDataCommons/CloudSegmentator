@@ -3,9 +3,10 @@ name: download_convert_inference_totalseg
 on:
   push:
     branches:
-      - main
+      - dev
     paths:
       - 'Dockerfiles/download_convert_inference_totalseg/**'
+      - .github/workflows/download_convert_inference_totalseg.yml
 
 jobs:
   build-and-push:
@@ -39,6 +40,6 @@ jobs:
           context: .
           file: ./Dockerfiles/download_convert_inference_totalseg/Dockerfile
           push: true
-          tags: imagingdatacommons/download_convert_inference_totalseg
+          tags: imagingdatacommons/download_convert_inference_totalseg:dev
           build-args: |
             GIT_HASH=$COMMIT_HASH
