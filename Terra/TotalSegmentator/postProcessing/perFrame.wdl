@@ -8,7 +8,7 @@ workflow PerFrameFunctionalGroupsSequence {
    File jsonServiceAccountFile
 
    #Docker Images for each task
-   String docker_PerFrameFunctionalGroupsSequence = "imagingdatacommons/extract_perframe_functional_group_sequence"
+   String docker_PerFrameFunctionalGroupsSequence = "imagingdatacommons/per_frame_functional_group_sequence"
 
    #Preemptible retries
    Int preemptibleTries_PerFrameFunctionalGroupsSequence = 3
