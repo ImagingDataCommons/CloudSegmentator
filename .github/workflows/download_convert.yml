@@ -41,4 +41,4 @@ jobs:
           push: true
           tags: imagingdatacommons/download_convert:dev
           build-args: |
-            GIT_HASH=$COMMIT_HASH
+            GIT_HASH=${COMMIT_HASH}
