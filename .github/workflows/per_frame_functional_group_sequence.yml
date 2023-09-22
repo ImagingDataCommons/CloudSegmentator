@@ -40,4 +40,6 @@ jobs:
           push: true
           tags: imagingdatacommons/per_frame_functional_group_sequence:dev
           build-args: |
-            GIT_HASH=${COMMIT_HASH}
+            GIT_HASH=${{ env.COMMIT_HASH }}
+        env:
+          COMMIT_HASH: ${{ env.COMMIT_HASH }}

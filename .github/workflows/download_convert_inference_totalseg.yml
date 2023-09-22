@@ -42,4 +42,6 @@ jobs:
           push: true
           tags: imagingdatacommons/download_convert_inference_totalseg:dev
           build-args: |
-            GIT_HASH=${COMMIT_HASH}
+            GIT_HASH=${{ env.COMMIT_HASH }}
+        env:
+          COMMIT_HASH: ${{ env.COMMIT_HASH }}
