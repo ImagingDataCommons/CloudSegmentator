@@ -5,13 +5,13 @@ on:
     branches:
       - main  
     paths:
-      - 'Dockerfiles/TotalSegmentator/splitWorkflow/task2/**'
+      - 'Dockerfiles/inference_totalseg/**'
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Git
         run: git config --global user.email "actions@github.com" && git config --global user.name "GitHub Actions"
@@ -22,20 +22,20 @@ jobs:
       
       - name: Copy additional files to build context
         run: |
-          cp Dockerfiles/TotalSegmentator/splitWorkflow/task2/weights_download.sh .
+          cp Dockerfiles/inference_totalseg/weights_download.sh .
 
       - name: Login to Docker Hub
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./Dockerfiles/TotalSegmentator/splitWorkflow/task2/Dockerfile
+          file: ./Dockerfiles/inference_totalseg/Dockerfile
           push: true
-          tags: imagingdatacommons/totalsegmentator:inference_totalseg
+          tags: imagingdatacommons/inference_totalseg
           build-args: |
             GIT_HASH=${{ steps.git-commit-hash.outputs.commit_hash }}

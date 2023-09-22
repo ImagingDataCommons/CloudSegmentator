@@ -3,7 +3,7 @@ FROM nvidia/cuda@sha256:bed19cc4270a4624f732de7a69beb061a7dfb2ab2e05e1a58e157a48
 LABEL BASE_DOCKER_IMAGE="nvidia/cuda:12.1.0-base-ubuntu22.04"\
       MAINTAINER="IDC <vthiriveedhi@mgb.org>" \
       GIT_HASH=${GIT_HASH}\
-      PATH_TO_DOCKER_FILE="https://github.com/imagingdatacommons/Cloud-Resources-Workflows/blob/${GIT_HASH}/Dockerfiles/TotalSegmentator/splitWorkflow/task2/Dockerfile"\
+      PATH_TO_DOCKER_FILE="https://github.com/imagingdatacommons/Cloud-Resources-Workflows/blob/${GIT_HASH}/Dockerfiles/inference_totalseg/Dockerfile"\
       IMAGE_NAME_ON_DOCKERHUB="imagingdatacommons/inference_totalseg"
 
 # Set noninteractive mode to avoid geographic area prompt during package installation
