@@ -3,7 +3,7 @@ name: radiomics
 on:
   push:
     branches:
-      - dev  
+      - main  
     paths:
       - 'Dockerfiles/radiomics/**'
       - .github/workflows/radiomics.yml
@@ -38,7 +38,7 @@ jobs:
           context: .
           file: ./Dockerfiles/radiomics/Dockerfile
           push: true
-          tags: imagingdatacommons/radiomics:dev
+          tags: imagingdatacommons/radiomics
           build-args: |
             GIT_HASH=${{ env.COMMIT_HASH }}
         env:

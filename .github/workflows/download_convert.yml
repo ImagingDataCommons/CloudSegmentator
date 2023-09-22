@@ -3,7 +3,7 @@ name: download_convert
 on:
   push:
     branches:
-      - dev
+      - main
     paths:
       - 'Dockerfiles/download_convert/**'
       - .github/workflows/download_convert.yml
@@ -39,7 +39,7 @@ jobs:
           context: .
           file: ./Dockerfiles/download_convert/Dockerfile
           push: true
-          tags: imagingdatacommons/download_convert:dev
+          tags: imagingdatacommons/download_convert
           build-args: |
             GIT_HASH=${{ env.COMMIT_HASH }}
         env:

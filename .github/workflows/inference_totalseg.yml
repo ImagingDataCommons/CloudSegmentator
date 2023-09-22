@@ -3,7 +3,7 @@ name: inference_totalseg
 on:
   push:
     branches:
-      - dev  
+      - main  
     paths:
       - 'Dockerfiles/inference_totalseg/**'
       - .github/workflows/inference_totalseg.yml     
@@ -42,7 +42,7 @@ jobs:
           context: .
           file: ./Dockerfiles/inference_totalseg/Dockerfile
           push: true
-          tags: imagingdatacommons/inference_totalseg:dev
+          tags: imagingdatacommons/inference_totalseg
           build-args: |
             GIT_HASH=${{ env.COMMIT_HASH }}
         env:
