@@ -6,7 +6,7 @@ on:
       - dev
     paths:
       - 'Dockerfiles/download_convert/**'
-      - .github/workflows/download_convert.yml
+      - .github/workflows/download_convert-dev.yml
 
 jobs:
   build-and-push:

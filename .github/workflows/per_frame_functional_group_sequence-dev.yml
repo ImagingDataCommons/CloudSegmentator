@@ -6,7 +6,7 @@ on:
       - dev  
     paths:
       - 'Dockerfiles/per_frame_functional_group_sequence/**'
-      - .github/workflows/per_frame_functional_group_sequence.yml   
+      - .github/workflows/per_frame_functional_group_sequence-dev.yml   
 
 jobs:
   build-and-push:

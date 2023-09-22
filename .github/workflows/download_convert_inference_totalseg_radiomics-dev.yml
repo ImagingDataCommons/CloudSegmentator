@@ -6,7 +6,7 @@ on:
       - dev  
     paths:
       - 'Dockerfiles/download_convert_inference_totalseg_radiomics/**'
-      - .github/workflows/download_convert_inference_totalseg_radiomics.yml
+      - .github/workflows/download_convert_inference_totalseg_radiomics-dev.yml
 
 jobs:
   build-and-push:

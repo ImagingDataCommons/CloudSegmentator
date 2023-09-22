@@ -6,7 +6,7 @@ on:
       - dev  
     paths:
       - 'Dockerfiles/radiomics/**'
-      - .github/workflows/radiomics.yml
+      - .github/workflows/radiomics-dev.yml
 
 jobs:
   build-and-push:

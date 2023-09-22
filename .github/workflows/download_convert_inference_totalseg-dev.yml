@@ -6,7 +6,7 @@ on:
       - dev
     paths:
       - 'Dockerfiles/download_convert_inference_totalseg/**'
-      - .github/workflows/download_convert_inference_totalseg.yml
+      - .github/workflows/download_convert_inference_totalseg-dev.yml
       
 jobs:
   build-and-push:

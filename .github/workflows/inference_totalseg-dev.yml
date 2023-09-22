@@ -6,7 +6,7 @@ on:
       - dev  
     paths:
       - 'Dockerfiles/inference_totalseg/**'
-      - .github/workflows/inference_totalseg.yml     
+      - .github/workflows/inference_totalseg-dev.yml     
       
 jobs:
   build-and-push:
