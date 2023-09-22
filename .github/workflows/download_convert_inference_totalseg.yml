@@ -22,7 +22,9 @@ jobs:
       
       - name: Get Git Commit Hash
         id: git-commit-hash
-        run: echo "::set-output name=commit_hash::$(git rev-parse HEAD)"
+        run: |
+          COMMIT_HASH=$(git rev-parse HEAD)
+          echo "COMMIT_HASH=$COMMIT_HASH" >> $GITHUB_ENV
       
       - name: Copy additional files to build context
         run: |
