@@ -24,6 +24,7 @@ jobs:
         id: git-commit-hash
         run: |
           COMMIT_HASH=$(git rev-parse HEAD)
+          echo $COMMIT_HASH
           echo "COMMIT_HASH=$COMMIT_HASH" >> $GITHUB_ENV
 
       - name: Login to Docker Hub
