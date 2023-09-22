@@ -42,3 +42,5 @@ jobs:
           tags: imagingdatacommons/download_convert:dev
           build-args: |
             GIT_HASH=${COMMIT_HASH}
+        env:
+          COMMIT_HASH: ${{ env.COMMIT_HASH }}
