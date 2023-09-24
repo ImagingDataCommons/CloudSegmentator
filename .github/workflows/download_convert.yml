@@ -34,13 +34,32 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build and push Docker image
+      - name: Build and push Docker image to Docker Hub
         uses: docker/build-push-action@v5
         with:
           context: .
           file: ./Dockerfiles/download_convert/Dockerfile
           push: true
           tags: imagingdatacommons/download_convert:dev
+          build-args: |
+            GIT_HASH=${{ env.COMMIT_HASH }}
+        env:
+          COMMIT_HASH: ${{ env.COMMIT_HASH }}
+
+      - name: Login to GitHub Container Registry (ghcr.io)
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker image to GitHub Container Registry
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfiles/download_convert/Dockerfile
+          push: true
+          tags: ghcr.io/imagingdatacommons/download_convert:dev
           build-args: |
             GIT_HASH=${{ env.COMMIT_HASH }}
         env:
@@ -70,13 +89,32 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build and push Docker image
+      - name: Build and push Docker image to Docker Hub
         uses: docker/build-push-action@v5
         with:
           context: .
           file: ./Dockerfiles/download_convert/Dockerfile
           push: true
           tags: imagingdatacommons/download_convert
+          build-args: |
+            GIT_HASH=${{ env.COMMIT_HASH }}
+        env:
+          COMMIT_HASH: ${{ env.COMMIT_HASH }}
+
+      - name: Login to GitHub Container Registry (ghcr.io)
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker image to GitHub Container Registry
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfiles/download_convert/Dockerfile
+          push: true
+          tags: ghcr.io/imagingdatacommons/download_convert
           build-args: |
             GIT_HASH=${{ env.COMMIT_HASH }}
         env:
