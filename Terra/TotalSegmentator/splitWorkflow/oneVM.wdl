@@ -8,7 +8,7 @@ workflow TotalSegmentator {
    File seriesInstanceS5cmdUrls
    
    #Parameters
-   String dicomToNiftiConverterTool
+   #String dicomToNiftiConverterTool
 
    #Docker Images for each task
    String totalSegmentatorDocker = "imagingdatacommons/download_convert_inference_totalseg_radiomics" 
@@ -37,7 +37,7 @@ workflow TotalSegmentator {
  call totalSegmentatorEndToEnd{
    input:
     seriesInstanceS5cmdUrls = seriesInstanceS5cmdUrls,
-    dicomToNiftiConverterTool = dicomToNiftiConverterTool,
+    #dicomToNiftiConverterTool = dicomToNiftiConverterTool,
     totalSegmentatorDocker = totalSegmentatorDocker,
     totalSegmentatorPreemptibleTries = totalSegmentatorPreemptibleTries,
     totalSegmentatorCpus = totalSegmentatorCpus,
@@ -73,7 +73,7 @@ task totalSegmentatorEndToEnd{
    #Just like the workflow inputs, any new inputs entered here but not hardcoded will appear in the UI as required fields
    #And the hardcoded inputs will appear as optional to override the values entered here
     File seriesInstanceS5cmdUrls
-    String dicomToNiftiConverterTool 
+    #String dicomToNiftiConverterTool 
     String totalSegmentatorDocker
     Int totalSegmentatorPreemptibleTries 
     Int totalSegmentatorCpus 
@@ -85,7 +85,7 @@ task totalSegmentatorEndToEnd{
  command {
    wget https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/endToEndTotalSegmentatorNotebook.ipynb
    set -e
-   papermill -p csvFilePath ~{seriesInstanceS5cmdUrls} -p converterType ~{dicomToNiftiConverterTool}  endToEndTotalSegmentatorNotebook.ipynb endToEndTotalSegmentatorOutputJupyterNotebook.ipynb || (>&2 echo "Killed" && exit 1)
+   papermill -p csvFilePath ~{seriesInstanceS5cmdUrls} -p  endToEndTotalSegmentatorNotebook.ipynb endToEndTotalSegmentatorOutputJupyterNotebook.ipynb || (>&2 echo "Killed" && exit 1)
  }
 
  #Run time attributes:

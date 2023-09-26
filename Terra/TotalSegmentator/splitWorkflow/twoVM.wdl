@@ -8,7 +8,7 @@ workflow TotalSegmentator {
    File seriesInstanceS5cmdUrls
    
    #Parameters
-   String dicomToNiftiConverterTool
+   #String dicomToNiftiConverterTool
 
    #Docker Images for each task
    String downloadDicomAndConvertAndInferenceTotalSegmentatorDocker = "imagingdatacommons/download_convert_inference_totalseg"
@@ -41,7 +41,7 @@ workflow TotalSegmentator {
  call downloadDicomAndConvertAndInferenceTotalSegmentator{
    input :
      seriesInstanceS5cmdUrls = seriesInstanceS5cmdUrls,
-     dicomToNiftiConverterTool = dicomToNiftiConverterTool,
+     #dicomToNiftiConverterTool = dicomToNiftiConverterTool,
      downloadDicomAndConvertAndInferenceTotalSegmentatorDocker = downloadDicomAndConvertAndInferenceTotalSegmentatorDocker ,
      downloadDicomAndConvertAndInferenceTotalSegmentatorPreemptibleTries = downloadDicomAndConvertAndInferenceTotalSegmentatorPreemptibleTries ,
      downloadDicomAndConvertAndInferenceTotalSegmentatorCpus = downloadDicomAndConvertAndInferenceTotalSegmentatorCpus ,
@@ -93,7 +93,7 @@ task downloadDicomAndConvertAndInferenceTotalSegmentator{
    #And the hardcoded inputs will appear as optional to override the values entered here
    # Command parameters
     File seriesInstanceS5cmdUrls 
-    String dicomToNiftiConverterTool
+    #String dicomToNiftiConverterTool
     String downloadDicomAndConvertAndInferenceTotalSegmentatorDocker 
     Int downloadDicomAndConvertAndInferenceTotalSegmentatorPreemptibleTries 
     Int downloadDicomAndConvertAndInferenceTotalSegmentatorCpus 
@@ -108,7 +108,7 @@ task downloadDicomAndConvertAndInferenceTotalSegmentator{
  command {
    wget https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/downloadDicomAndConvertAndInferenceTotalSegmentatorNotebook.ipynb
    set -e
-   papermill -p converterType ~{dicomToNiftiConverterTool}  -p csvFilePath ~{seriesInstanceS5cmdUrls} downloadDicomAndConvertAndInferenceTotalSegmentatorNotebook.ipynb downloadDicomAndConvertAndInferenceTotalSegmentatorOutputJupyterNotebook.ipynb
+   papermill -p csvFilePath ~{seriesInstanceS5cmdUrls} downloadDicomAndConvertAndInferenceTotalSegmentatorNotebook.ipynb downloadDicomAndConvertAndInferenceTotalSegmentatorOutputJupyterNotebook.ipynb
  }
  #Run time attributes:
  runtime {

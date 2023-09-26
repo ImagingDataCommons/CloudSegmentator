@@ -8,7 +8,7 @@ workflow TotalSegmentator {
    File seriesInstanceS5cmdUrls
 
    #Parameters
-   String dicomToNiftiConverterTool
+   #String dicomToNiftiConverterTool
 
    #Docker Images for each task
    String downloadDicomAndConvertDocker = "imagingdatacommons/download_convert"
@@ -46,7 +46,7 @@ workflow TotalSegmentator {
  call downloadAndConvert{
    input :
         #yamlParameters = yamlParameters,
-        dicomToNiftiConverterTool = dicomToNiftiConverterTool,
+        #dicomToNiftiConverterTool = dicomToNiftiConverterTool,
         seriesInstanceS5cmdUrls = seriesInstanceS5cmdUrls,
         downloadDicomAndConvertDocker = downloadDicomAndConvertDocker,
         downloadAndConvertPreemptibleTries = downloadAndConvertPreemptibleTries,
@@ -57,7 +57,7 @@ workflow TotalSegmentator {
  }
  call inferenceTotalSegmentator{
    input :
-     dicomToNiftiConverterTool = dicomToNiftiConverterTool,
+     #dicomToNiftiConverterTool = dicomToNiftiConverterTool,
      inferenceTotalSegmentatorDocker = inferenceTotalSegmentatorDocker ,
      inferenceTotalSegmentatorPreemptibleTries = inferenceTotalSegmentatorPreemptibleTries ,
      inferenceTotalSegmentatorCpus = inferenceTotalSegmentatorCpus ,
@@ -109,7 +109,7 @@ workflow TotalSegmentator {
 task downloadAndConvert {
  input {
     #File yamlParameters
-    String dicomToNiftiConverterTool
+    #String dicomToNiftiConverterTool
     File seriesInstanceS5cmdUrls
     String downloadDicomAndConvertDocker
     Int downloadAndConvertPreemptibleTries 
@@ -121,7 +121,7 @@ task downloadAndConvert {
  command {
    wget https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/downloadDicomAndConvertNotebook.ipynb
    set -e
-   papermill -p converterType ~{dicomToNiftiConverterTool} -p csvFilePath ~{seriesInstanceS5cmdUrls} downloadDicomAndConvertNotebook.ipynb downloadAndConvertOutputJupyterNotebook.ipynb 
+   papermill -p csvFilePath ~{seriesInstanceS5cmdUrls} downloadDicomAndConvertNotebook.ipynb downloadAndConvertOutputJupyterNotebook.ipynb 
  }
  #Run time attributes:
  runtime {
@@ -149,7 +149,7 @@ task inferenceTotalSegmentator {
    #Just like the workflow inputs, any new inputs entered here but not hardcoded will appear in the UI as required fields
    #And the hardcoded inputs will appear as optional to override the values entered here
    # Command parameters
-    String dicomToNiftiConverterTool
+    #String dicomToNiftiConverterTool
     String inferenceTotalSegmentatorDocker 
     Int inferenceTotalSegmentatorPreemptibleTries 
     Int inferenceTotalSegmentatorCpus 
@@ -165,7 +165,7 @@ task inferenceTotalSegmentator {
  command {
    wget https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/inferenceTotalSegmentatorNotebook.ipynb
    set -e
-   papermill -p converterType ~{dicomToNiftiConverterTool}  -p niftiFilePath ~{NiftiFiles} inferenceTotalSegmentatorNotebook.ipynb inferenceOutputJupyterNotebook.ipynb
+   papermill -p niftiFilePath ~{NiftiFiles} inferenceTotalSegmentatorNotebook.ipynb inferenceOutputJupyterNotebook.ipynb
  }
  #Run time attributes:
  runtime {
