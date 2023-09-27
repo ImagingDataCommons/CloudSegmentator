@@ -3,12 +3,13 @@ name: download_convert
 on:
   push:
     branches:
-      - dev
       - main
     paths:
       - 'Dockerfiles/download_convert/**'
       - '.github/workflows/download_convert.yml'
-
+  pull_request:
+    branches: [ "main" ]
+    
 jobs:
   build-and-push-dev:
     if: github.ref == 'refs/heads/dev'
