@@ -1,73 +1,11 @@
 name: download_convert
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'Dockerfiles/download_convert/**'
-      - '.github/workflows/download_convert.yml'
   pull_request:
     branches: [ "main" ]
     
 jobs:
-  build-and-push-dev:
-    if: github.ref == 'refs/heads/dev'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Git
-        run: |
-          git config --global user.email "actions@github.com"
-          git config --global user.name "GitHub Actions"
-
-      - name: Get Git Commit Hash
-        id: git-commit-hash
-        run: |
-          COMMIT_HASH=$(git rev-parse HEAD)
-          echo "COMMIT_HASH=$COMMIT_HASH" >> $GITHUB_ENV
-
-      - name: Login to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-
-      - name: Build and push Docker image to Docker Hub
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          file: ./Dockerfiles/download_convert/Dockerfile
-          push: true
-          tags: imagingdatacommons/download_convert:dev
-          build-args: |
-            GIT_HASH=${{ env.COMMIT_HASH }}
-        env:
-          COMMIT_HASH: ${{ env.COMMIT_HASH }}
-
-      - name: Login to GitHub Container Registry (ghcr.io)
-        uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Build and push Docker image to GitHub Container Registry
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          file: ./Dockerfiles/download_convert/Dockerfile
-          push: true
-          tags: ghcr.io/imagingdatacommons/download_convert:dev
-          build-args: |
-            GIT_HASH=${{ env.COMMIT_HASH }}
-        env:
-          COMMIT_HASH: ${{ env.COMMIT_HASH }}
-
-  build-and-push-prod:
-    if: github.ref == 'refs/heads/main'
+  build-and-push:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
