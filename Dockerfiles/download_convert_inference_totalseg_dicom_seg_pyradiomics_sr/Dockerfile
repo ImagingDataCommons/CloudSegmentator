@@ -5,8 +5,8 @@ ARG GIT_HASH
 LABEL BASE_DOCKER_IMAGE="nvidia/cuda:12.1.0-base-ubuntu20.04"\
       MAINTAINER="IDC <vthiriveedhi@mgb.org>" \
       GIT_HASH=${GIT_HASH}\
-      PATH_TO_DOCKER_FILE="https://github.com/imagingdatacommons/Cloud-Resources-Workflows/blob/${GIT_HASH}/Dockerfiles/download_convert_inference_totalseg_radiomics/Dockerfile"\
-      IMAGE_NAME_ON_DOCKERHUB="imagingdatacommons/download_convert_inference_totalseg_radiomics"
+      PATH_TO_DOCKER_FILE="https://github.com/imagingdatacommons/Cloud-Resources-Workflows/blob/${GIT_HASH}/Dockerfiles/download_convert_inference_totalseg_dicom_seg_pyradiomics_sr/Dockerfile"\
+      IMAGE_NAME_ON_DOCKERHUB="imagingdatacommons/download_convert_inference_totalseg_dicom_seg_pyradiomics_sr"
 
 
 # Set noninteractive mode to avoid geographic area prompt during package installation

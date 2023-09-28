@@ -5,8 +5,8 @@ ARG GIT_HASH
 LABEL PYTHON_BASE_DOCKER_IMAGE="python:3.11.2-slim-buster"\
       MAINTAINER="IDC <vthiriveedhi@mgb.org>" \
       GIT_HASH=${GIT_HASH}\
-      PATH_TO_DOCKER_FILE="https://github.com/imagingdatacommons/Cloud-Resources-Workflows/blob/${GIT_HASH}/Dockerfiles/radiomics/Dockerfile"\
-      IMAGE_NAME_ON_DOCKERHUB="imagingdatacommons/radiomics"
+      PATH_TO_DOCKER_FILE="https://github.com/imagingdatacommons/Cloud-Resources-Workflows/blob/${GIT_HASH}/Dockerfiles/dicom_seg_pyradiomics_sr/Dockerfile"\
+      IMAGE_NAME_ON_DOCKERHUB="imagingdatacommons/dicom_seg_pyradiomics_sr"
 
 # Install some basic system utilities
 RUN apt-get update \
