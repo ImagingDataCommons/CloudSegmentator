@@ -28,6 +28,10 @@
       PatientID,
       SOPInstanceUID,
       SliceThickness,
+      ImageType,
+      TransferSyntaxUID,
+      SeriesNumber,
+
       -- Cast Exposure column as FLOAT64 data type
       SAFE_CAST(Exposure AS FLOAT64) Exposure,
       -- Cast unnested Image Patient Position column as FLOAT64 data type and rename it as zImagePosition as we filter for the z-axis
@@ -56,7 +60,7 @@
       `Rows` AS pixelRows,
       `Columns` AS pixelColumns,
       -- Store the GCS URL of the SOP Instance
-      gcs_url AS sopInstanceUrl,
+      aws_url AS sopInstanceUrl,
       -- Store the size of the SOP Instance in bytes
       instance_size AS instanceSize,
       -- Concatenate viewer URL with StudyInstanceUID and SeriesInstanceUID parameters to create a link for viewing the series
@@ -72,7 +76,10 @@
     WHERE
       -- Filter for CT images in the NLST collection that are not localizers 
       --and removing the transfer syntax ids that require additional processing (decompression before passing to dcm2niix)
-      collection_id = 'nlst' AND Modality = 'CT' AND axes = 2 AND axis1 = 0 AND axis2 = 1 AND 'LOCALIZER' NOT IN UNNEST(ImageType) AND TransferSyntaxUID NOT IN ( '1.2.840.10008.1.2.4.70','1.2.840.10008.1.2.4.51')
+      collection_id = 'nlst' AND Modality = 'CT' AND axes = 2 AND axis1 = 0 AND axis2 = 1 
+      AND SeriesInstanceUID not in (Select SeriesInstanceuID from  `bigquery-public-data.idc_v16.dicom_all` bid, bid.ImageType image_type where image_type='LOCALIZER' OR  TransferSyntaxUID  IN ( '1.2.840.10008.1.2.4.70','1.2.840.10008.1.2.4.51'))
+      --'LOCALIZER' NOT IN UNNEST(ImageType) 
+      --AND TransferSyntaxUID NOT IN ( '1.2.840.10008.1.2.4.70','1.2.840.10008.1.2.4.51')
   )
 ,
 crossProduct AS (
@@ -105,6 +112,7 @@ dotProduct AS (
 geometryChecks AS (
   SELECT
     SeriesInstanceUID,
+    ANY_VALUE(seriesNumber) seriesNumber,
     StudyInstanceUID,
     PatientID,
     -- Aggregate distinct slice_interval values into an array 
@@ -138,7 +146,8 @@ geometryChecks AS (
       -- add " idc_data/" which acts as destination folder for s5cmd and
       -- at end for each row separated by new line character "\n" so it will be
       -- ready for creating a manifest file later in the workflow
-      string_agg (CONCAT("cp ",REPLACE(sopInstanceUrl, "gs://", "s3://"), " idc_data/"), "\n") as s5cmdUrls
+      --string_agg (CONCAT("cp ",REPLACE(sopInstanceUrl, "gs://", "s3://"), " idc_data/"), "\n") as s5cmdUrls
+       ANY_VALUE(CONCAT("cp --show-progress s3",REGEXP_SUBSTR(sopInstanceUrl, "(://.*)/"),"/* idc_data/")) AS s5cmdUrls
   FROM
       nonLocalizerRawData
   JOIN dotProduct using (SeriesInstanceUID, SOPInstanceUID)
@@ -160,9 +169,11 @@ geometryChecks AS (
     --AND exposureCount=1
 
 )
-#finally displaying the attributes that we would be interested
+
 SELECT
   SeriesInstanceUID,
+  seriesNumber,
+  s5cmdUrls,
   StudyInstanceUID,
   PatientID,
   iopCount,
@@ -183,7 +194,7 @@ SELECT
   max(de) -min (de) as maxExposureDifference,
   seriesSizeInMB,
   viewerUrl,
-  s5cmdUrls
+
 FROM
   geometryChecks
 LEFT JOIN
@@ -193,6 +204,7 @@ LEFT JOIN
 
 GROUP BY
   SeriesInstanceUID,
+  seriesNumber,
   StudyInstanceUID,
   PatientID,
   iopCount,
@@ -208,9 +220,12 @@ GROUP BY
   seriesSizeInMB,
   viewerUrl,
   s5cmdUrls
+
 #Setting the minimum number of Series to be 50
-HAVING sliceIntervalifferenceTolerance<0.01 and sopInstanceCount >=50
+HAVING sliceIntervalifferenceTolerance<0.01 and sopInstanceCount >=50 
 ORDER BY
 sliceIntervalifferenceTolerance desc,
 maxExposureDifference desc,
 SeriesInstanceUID
+
+
