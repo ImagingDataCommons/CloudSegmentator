@@ -26,3 +26,5 @@
 24,Skewness,firstorder,,IBSI,KE2A,Skewness,UCUM,1,no units
 25,Uniformity,firstorder,,IBSI,BJ5W,Intensity histogram uniformity,UCUM,1,no units
 26,Variance,firstorder,,IBSI,ECT3,Variance,UCUM,1,no units
+27,BoundingBox,general,,SCT,75958009,Bounded by,UCUM,1,no units
+28,CenterOfMass,general,,DCM,128138,Center of Mass,UCUM,1,no units
