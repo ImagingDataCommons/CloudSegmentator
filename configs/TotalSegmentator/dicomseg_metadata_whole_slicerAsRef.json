@@ -1430,8 +1430,8 @@
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "labelID": 64,
                 "recommendedDisplayRGBValue": [
+                    109,
                     0,
-                    2,
                     145
                 ],
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1456,9 +1456,9 @@
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "labelID": 65,
                 "recommendedDisplayRGBValue": [
-                    141,
-                    186,
-                    216
+                    164,
+                    216,
+                    199
                 ],
                 "SegmentedPropertyCategoryCodeSequence": {
                     "CodingSchemeDesignator": "SCT",
@@ -1482,9 +1482,9 @@
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "labelID": 66,
                 "recommendedDisplayRGBValue": [
-                    30,
-                    128,
-                    188
+                    96,
+                    188,
+                    62
                 ],
                 "SegmentedPropertyCategoryCodeSequence": {
                     "CodingSchemeDesignator": "SCT",
@@ -1508,9 +1508,9 @@
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "labelID": 67,
                 "recommendedDisplayRGBValue": [
-                    73,
-                    228,
-                    202
+                    26,
+                    97,
+                    228
                 ],
                 "SegmentedPropertyCategoryCodeSequence": {
                     "CodingSchemeDesignator": "SCT",
@@ -1534,9 +1534,9 @@
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "labelID": 68,
                 "recommendedDisplayRGBValue": [
-                    8,
-                    82,
-                    73
+                    16,
+                    164,
+                    144
                 ],
                 "SegmentedPropertyCategoryCodeSequence": {
                     "CodingSchemeDesignator": "SCT",
@@ -1560,8 +1560,8 @@
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "labelID": 69,
                 "recommendedDisplayRGBValue": [
-                    88,
-                    119,
+                    166,
+                    89,
                     255
                 ],
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1742,8 +1742,8 @@
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "labelID": 76,
                 "recommendedDisplayRGBValue": [
+                    109,
                     0,
-                    2,
                     145
                 ],
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1768,9 +1768,9 @@
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "labelID": 77,
                 "recommendedDisplayRGBValue": [
-                    141,
-                    186,
-                    216
+                    164,
+                    216,
+                    199
                 ],
                 "SegmentedPropertyCategoryCodeSequence": {
                     "CodingSchemeDesignator": "SCT",
@@ -1794,9 +1794,9 @@
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "labelID": 78,
                 "recommendedDisplayRGBValue": [
-                    30,
-                    128,
-                    188
+                    96,
+                    188,
+                    62
                 ],
                 "SegmentedPropertyCategoryCodeSequence": {
                     "CodingSchemeDesignator": "SCT",
@@ -1820,9 +1820,9 @@
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "labelID": 79,
                 "recommendedDisplayRGBValue": [
-                    73,
-                    228,
-                    202
+                    26,
+                    97,
+                    228
                 ],
                 "SegmentedPropertyCategoryCodeSequence": {
                     "CodingSchemeDesignator": "SCT",
@@ -1846,9 +1846,9 @@
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "labelID": 80,
                 "recommendedDisplayRGBValue": [
-                    8,
-                    82,
-                    73
+                    16,
+                    164,
+                    144
                 ],
                 "SegmentedPropertyCategoryCodeSequence": {
                     "CodingSchemeDesignator": "SCT",
@@ -1872,8 +1872,8 @@
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "labelID": 81,
                 "recommendedDisplayRGBValue": [
-                    88,
-                    119,
+                    166,
+                    89,
                     255
                 ],
                 "SegmentedPropertyCategoryCodeSequence": {

@@ -1106,8 +1106,8 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 64
     recommendedDisplayRGBValue:
+    - 109
     - 0
-    - 2
     - 145
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
@@ -1126,9 +1126,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 65
     recommendedDisplayRGBValue:
-    - 141
-    - 186
+    - 164
     - 216
+    - 199
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left rib 9
@@ -1146,9 +1146,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 66
     recommendedDisplayRGBValue:
-    - 30
-    - 128
+    - 96
     - 188
+    - 62
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left rib 10
@@ -1166,9 +1166,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 67
     recommendedDisplayRGBValue:
-    - 73
+    - 26
+    - 97
     - 228
-    - 202
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left rib 11
@@ -1186,9 +1186,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 68
     recommendedDisplayRGBValue:
-    - 8
-    - 82
-    - 73
+    - 16
+    - 164
+    - 144
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left rib 12
@@ -1206,8 +1206,8 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 69
     recommendedDisplayRGBValue:
-    - 88
-    - 119
+    - 166
+    - 89
     - 255
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
@@ -1346,8 +1346,8 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 76
     recommendedDisplayRGBValue:
+    - 109
     - 0
-    - 2
     - 145
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
@@ -1366,9 +1366,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 77
     recommendedDisplayRGBValue:
-    - 141
-    - 186
+    - 164
     - 216
+    - 199
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right rib 9
@@ -1386,9 +1386,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 78
     recommendedDisplayRGBValue:
-    - 30
-    - 128
+    - 96
     - 188
+    - 62
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right rib 10
@@ -1406,9 +1406,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 79
     recommendedDisplayRGBValue:
-    - 73
+    - 26
+    - 97
     - 228
-    - 202
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right rib 11
@@ -1426,9 +1426,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 80
     recommendedDisplayRGBValue:
-    - 8
-    - 82
-    - 73
+    - 16
+    - 164
+    - 144
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right rib 12
@@ -1446,8 +1446,8 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 81
     recommendedDisplayRGBValue:
-    - 88
-    - 119
+    - 166
+    - 89
     - 255
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
