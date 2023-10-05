@@ -110,9 +110,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 6
     recommendedDisplayRGBValue:
-    - 216
-    - 132
-    - 105
+    - 160
+    - 139
+    - 76
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Aorta
@@ -310,9 +310,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 17
     recommendedDisplayRGBValue:
-    - 117
     - 212
-    - 208
+    - 191
+    - 32
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae L5
@@ -326,9 +326,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 18
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 117
+    - 78
+    - 55
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae L4
@@ -342,9 +342,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 19
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 255
+    - 255
+    - 128
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae L3
@@ -358,9 +358,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 20
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 157
+    - 126
+    - 0
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae L2
@@ -374,9 +374,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 21
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 255
+    - 144
+    - 32
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae L1
@@ -390,9 +390,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 22
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 255
+    - 255
+    - 1
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae T12
@@ -406,9 +406,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 23
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 166
+    - 89
+    - 255
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae T11
@@ -422,9 +422,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 24
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 16
+    - 164
+    - 144
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae T10
@@ -438,9 +438,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 25
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 26
+    - 97
+    - 228
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae T9
@@ -454,9 +454,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 26
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 96
+    - 188
+    - 62
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae T8
@@ -470,9 +470,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 27
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 164
+    - 216
+    - 199
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae T7
@@ -486,8 +486,8 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 28
     recommendedDisplayRGBValue:
-    - 241
-    - 214
+    - 109
+    - 0
     - 145
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
@@ -502,9 +502,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 29
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 88
+    - 119
+    - 255
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae T5
@@ -518,9 +518,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 30
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 8
+    - 82
+    - 73
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae T4
@@ -534,9 +534,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 31
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 73
+    - 228
+    - 202
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae T3
@@ -550,9 +550,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 32
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 30
+    - 128
+    - 188
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae T2
@@ -566,9 +566,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 33
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 141
+    - 186
+    - 216
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae T1
@@ -582,8 +582,8 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 34
     recommendedDisplayRGBValue:
-    - 241
-    - 214
+    - 0
+    - 2
     - 145
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
@@ -598,9 +598,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 35
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 255
+    - 0
+    - 0
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae C6
@@ -614,9 +614,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 36
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 253
+    - 134
+    - 125
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae C5
@@ -630,9 +630,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 37
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 118
+    - 40
+    - 9
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae C4
@@ -646,9 +646,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 38
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 250
+    - 14
+    - 116
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae C3
@@ -662,9 +662,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 39
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 167
+    - 117
+    - 152
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae C2
@@ -678,9 +678,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 40
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 193
+    - 99
+    - 36
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Vertebrae C1
@@ -694,9 +694,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 41
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 255
+    - 186
+    - 107
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Esophagus
@@ -758,9 +758,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 45
     recommendedDisplayRGBValue:
-    - 193
-    - 156
-    - 49
+    - 221
+    - 129
+    - 37
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left ventricle
@@ -790,9 +790,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 47
     recommendedDisplayRGBValue:
-    - 193
-    - 156
-    - 49
+    - 221
+    - 129
+    - 37
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right ventricle
@@ -986,8 +986,8 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 58
     recommendedDisplayRGBValue:
-    - 241
-    - 214
+    - 0
+    - 2
     - 145
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
@@ -1006,9 +1006,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 59
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 141
+    - 186
+    - 216
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left rib 3
@@ -1026,9 +1026,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 60
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 30
+    - 128
+    - 188
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left rib 4
@@ -1046,9 +1046,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 61
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 73
+    - 228
+    - 202
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left rib 5
@@ -1066,9 +1066,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 62
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 8
+    - 82
+    - 73
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left rib 6
@@ -1086,9 +1086,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 63
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 88
+    - 119
+    - 255
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left rib 7
@@ -1106,8 +1106,8 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 64
     recommendedDisplayRGBValue:
-    - 241
-    - 214
+    - 0
+    - 2
     - 145
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
@@ -1126,9 +1126,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 65
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 141
+    - 186
+    - 216
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left rib 9
@@ -1146,9 +1146,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 66
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 30
+    - 128
+    - 188
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left rib 10
@@ -1166,9 +1166,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 67
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 73
+    - 228
+    - 202
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left rib 11
@@ -1186,9 +1186,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 68
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 8
+    - 82
+    - 73
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left rib 12
@@ -1206,9 +1206,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 69
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 88
+    - 119
+    - 255
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right rib 1
@@ -1226,8 +1226,8 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 70
     recommendedDisplayRGBValue:
-    - 241
-    - 214
+    - 0
+    - 2
     - 145
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
@@ -1246,9 +1246,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 71
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 141
+    - 186
+    - 216
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right rib 3
@@ -1266,9 +1266,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 72
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 30
+    - 128
+    - 188
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right rib 4
@@ -1286,9 +1286,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 73
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 73
+    - 228
+    - 202
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right rib 5
@@ -1306,9 +1306,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 74
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 8
+    - 82
+    - 73
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right rib 6
@@ -1326,9 +1326,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 75
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 88
+    - 119
+    - 255
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right rib 7
@@ -1346,8 +1346,8 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 76
     recommendedDisplayRGBValue:
-    - 241
-    - 214
+    - 0
+    - 2
     - 145
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
@@ -1366,9 +1366,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 77
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 141
+    - 186
+    - 216
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right rib 9
@@ -1386,9 +1386,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 78
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 30
+    - 128
+    - 188
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right rib 10
@@ -1406,9 +1406,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 79
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 73
+    - 228
+    - 202
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right rib 11
@@ -1426,9 +1426,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 80
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 8
+    - 82
+    - 73
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Right rib 12
@@ -1446,9 +1446,9 @@ segmentAttributes:
       CodingSchemeDesignator: SCT
     labelID: 81
     recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
+    - 88
+    - 119
+    - 255
   - SegmentAlgorithmName: TotalSegmentator v1.5.5
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Left humerus
