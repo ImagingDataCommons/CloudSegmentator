@@ -1,4 +1,4 @@
-name: download_convert
+name: download_convert_inference_totalseg
 
 on:
   push:
@@ -6,7 +6,6 @@ on:
   pull_request:
     branches: [ "main" ]
 
-    
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -25,12 +24,16 @@ jobs:
           COMMIT_HASH=$(git rev-parse HEAD)
           echo "COMMIT_HASH=$COMMIT_HASH" >> $GITHUB_ENV
 
+      - name: Copy additional files to build context
+        run: |
+          cp Dockerfiles/download_convert_inference_totalseg/weights_download.sh .
+
       - name: Build Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./Dockerfiles/download_convert/Dockerfile
-          tags: imagingdatacommons/download_convert
+          file: ./Dockerfiles/download_convert_inference_totalseg/Dockerfile
+          tags: imagingdatacommons/download_convert_inference_totalseg
           build-args: |
             GIT_HASH=${{ env.COMMIT_HASH }}
         env:
@@ -51,9 +54,9 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./Dockerfiles/download_convert/Dockerfile
+          file: ./Dockerfiles/download_convert_inference_totalseg/Dockerfile
           push: true
-          tags: imagingdatacommons/download_convert
+          tags: imagingdatacommons/download_convert_inference_totalseg
 
   push-ghcr:
     needs: build
@@ -71,6 +74,6 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./Dockerfiles/download_convert/Dockerfile
+          file: ./Dockerfiles/download_convert_inference_totalseg/Dockerfile
           push: true
-          tags: ghcr.io/imagingdatacommons/download_convert
+          tags: ghcr.io/imagingdatacommons/download_convert_inference_totalseg

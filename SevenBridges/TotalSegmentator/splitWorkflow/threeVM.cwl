@@ -129,10 +129,10 @@ steps:
     cwlVersion: v1.2
     "$namespaces":
       sbg: https://sevenbridges.com
-    id: vamsikrishna14/idc/downloaddicomandconvert/2
+    id: vamsikrishna14/idc/downloaddicomandconvert/3
     baseCommand:
     - wget
-    - https://raw.githubusercontent.com/vkt1414/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/downloadDicomAndConvertNotebook.ipynb
+    - https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/downloadDicomAndConvertNotebook.ipynb
     - "&&"
     - set
     - "-e"
@@ -192,7 +192,7 @@ steps:
     - class: ShellCommandRequirement
     - class: LoadListingRequirement
     - class: DockerRequirement
-      dockerPull: vamsithiriveedhi/totalsegmentator:task1_v1
+      dockerPull: imagingdatacommons/download_convert
     - class: InlineJavascriptRequirement
     hints:
     - class: sbg:AWSInstanceType
@@ -211,13 +211,17 @@ steps:
       sbg:modifiedBy: vamsikrishna14
       sbg:modifiedOn: 1681840727
       sbg:revisionNotes: ''
+    - sbg:revision: 3
+      sbg:modifiedBy: vamsikrishna14
+      sbg:modifiedOn: 1695396114
+      sbg:revisionNotes: ''
     sbg:image_url:
     sbg:appVersion:
     - v1.2
-    sbg:id: vamsikrishna14/idc/downloaddicomandconvert/2
-    sbg:revision: 2
+    sbg:id: vamsikrishna14/idc/downloaddicomandconvert/3
+    sbg:revision: 3
     sbg:revisionNotes: ''
-    sbg:modifiedOn: 1681840727
+    sbg:modifiedOn: 1695396114
     sbg:modifiedBy: vamsikrishna14
     sbg:createdOn: 1681833288
     sbg:createdBy: vamsikrishna14
@@ -226,9 +230,9 @@ steps:
     sbg:validationErrors: []
     sbg:contributors:
     - vamsikrishna14
-    sbg:latestRevision: 2
+    sbg:latestRevision: 3
     sbg:publisher: sbg
-    sbg:content_hash: a06cee4ff549980ea24181509b5ff33641b37fc106922c1dc5b7c18b2a2453555
+    sbg:content_hash: a2fff83cdce6f5974ed918b5730d473ca7bbe4c51fc8899051f9f8ed2542055e5
     sbg:workflowLanguage: CWL
   label: downloadDicomAndConvert
   sbg:x: 259.817138671875
@@ -249,10 +253,10 @@ steps:
     cwlVersion: v1.2
     "$namespaces":
       sbg: https://sevenbridges.com
-    id: vamsikrishna14/idc/inferencetotalsegmentatordocker/6
+    id: vamsikrishna14/idc/inferencetotalsegmentatordocker/7
     baseCommand:
     - wget
-    - https://raw.githubusercontent.com/vkt1414/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/inferenceTotalSegmentatorNotebook.ipynb
+    - https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/inferenceTotalSegmentatorNotebook.ipynb
     - "&&"
     - set
     - "-e"
@@ -313,7 +317,7 @@ steps:
     - class: ShellCommandRequirement
     - class: LoadListingRequirement
     - class: DockerRequirement
-      dockerPull: vamsithiriveedhi/totalsegmentator:task2_v3
+      dockerPull: imagingdatacommons/inference_totalseg
     - class: InlineJavascriptRequirement
     hints:
     - class: sbg:AWSInstanceType
@@ -348,13 +352,17 @@ steps:
       sbg:modifiedBy: vamsikrishna14
       sbg:modifiedOn: 1685297796
       sbg:revisionNotes: removed metadata as required outputs
+    - sbg:revision: 7
+      sbg:modifiedBy: vamsikrishna14
+      sbg:modifiedOn: 1695396371
+      sbg:revisionNotes: ''
     sbg:image_url:
     sbg:appVersion:
     - v1.2
-    sbg:id: vamsikrishna14/idc/inferencetotalsegmentatordocker/6
-    sbg:revision: 6
-    sbg:revisionNotes: removed metadata as required outputs
-    sbg:modifiedOn: 1685297796
+    sbg:id: vamsikrishna14/idc/inferencetotalsegmentatordocker/7
+    sbg:revision: 7
+    sbg:revisionNotes: ''
+    sbg:modifiedOn: 1695396371
     sbg:modifiedBy: vamsikrishna14
     sbg:createdOn: 1681836278
     sbg:createdBy: vamsikrishna14
@@ -363,9 +371,9 @@ steps:
     sbg:validationErrors: []
     sbg:contributors:
     - vamsikrishna14
-    sbg:latestRevision: 6
+    sbg:latestRevision: 7
     sbg:publisher: sbg
-    sbg:content_hash: adcdf56421b92579ce7d5f1904ae38c1472cd1e8fe20c03036f0a3a3789c63dc3
+    sbg:content_hash: ab851c5f011008d0250dffee373ec54ae770f1b34b524501f01b040d8d9ee68a0
     sbg:workflowLanguage: CWL
   label: inferenceTotalSegmentator
   sbg:x: 795.6659545898438
@@ -390,10 +398,10 @@ steps:
     cwlVersion: v1.2
     "$namespaces":
       sbg: https://sevenbridges.com
-    id: vamsikrishna14/idc/dicomsegandradiomicssr/1
+    id: vamsikrishna14/idc/dicomsegandradiomicssr/2
     baseCommand:
     - wget
-    - https://raw.githubusercontent.com/vkt1414/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/dicomsegAndRadiomicsSR_Notebook.ipynb
+    - https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/dicomsegAndRadiomicsSR_Notebook.ipynb
     - "&&"
     - set
     - "-e"
@@ -474,7 +482,7 @@ steps:
     - class: ShellCommandRequirement
     - class: LoadListingRequirement
     - class: DockerRequirement
-      dockerPull: vamsithiriveedhi/totalsegmentator:task3_v3
+      dockerPull: imagingdatacommons/radiomics
     - class: InlineJavascriptRequirement
     hints:
     - class: sbg:AWSInstanceType
@@ -489,13 +497,17 @@ steps:
       sbg:modifiedBy: vamsikrishna14
       sbg:modifiedOn: 1685298787
       sbg:revisionNotes: updated task3
+    - sbg:revision: 2
+      sbg:modifiedBy: vamsikrishna14
+      sbg:modifiedOn: 1695396190
+      sbg:revisionNotes: ''
     sbg:image_url:
     sbg:appVersion:
     - v1.2
-    sbg:id: vamsikrishna14/idc/dicomsegandradiomicssr/1
-    sbg:revision: 1
-    sbg:revisionNotes: updated task3
-    sbg:modifiedOn: 1685298787
+    sbg:id: vamsikrishna14/idc/dicomsegandradiomicssr/2
+    sbg:revision: 2
+    sbg:revisionNotes: ''
+    sbg:modifiedOn: 1695396190
     sbg:modifiedBy: vamsikrishna14
     sbg:createdOn: 1685298038
     sbg:createdBy: vamsikrishna14
@@ -504,9 +516,9 @@ steps:
     sbg:validationErrors: []
     sbg:contributors:
     - vamsikrishna14
-    sbg:latestRevision: 1
+    sbg:latestRevision: 2
     sbg:publisher: sbg
-    sbg:content_hash: a75556be18f1ecf2535f6d414adff727aa056f49a974989de22bce3da346ed857
+    sbg:content_hash: a32120ab84bdb935639d78709618996d0108b5048e4eb87e3e5beeb31cb0dae64
     sbg:workflowLanguage: CWL
   label: dicomsegAndRadiomicsSR
   sbg:x: 1274.7718505859375
@@ -536,14 +548,18 @@ sbg:revisionsInfo:
   sbg:modifiedBy: vamsikrishna14
   sbg:modifiedOn: 1685301628
   sbg:revisionNotes: ''
-sbg:image_url: https://cgc.sbgenomics.com/ns/brood/images/vamsikrishna14/idc/totalsegmentatorthreevmworkflow/4.png
+- sbg:revision: 5
+  sbg:modifiedBy: vamsikrishna14
+  sbg:modifiedOn: 1695396679
+  sbg:revisionNotes: ''
+sbg:image_url: https://cgc.sbgenomics.com/ns/brood/images/vamsikrishna14/idc/totalsegmentatorthreevmworkflow/5.png
 sbg:appVersion:
 - v1.2
-id: https://cgc-api.sbgenomics.com/v2/apps/vamsikrishna14/idc/totalsegmentatorthreevmworkflow/4/raw/
-sbg:id: vamsikrishna14/idc/totalsegmentatorthreevmworkflow/4
-sbg:revision: 4
+id: https://cgc-api.sbgenomics.com/v2/apps/vamsikrishna14/idc/totalsegmentatorthreevmworkflow/5/raw/
+sbg:id: vamsikrishna14/idc/totalsegmentatorthreevmworkflow/5
+sbg:revision: 5
 sbg:revisionNotes: ''
-sbg:modifiedOn: 1685301628
+sbg:modifiedOn: 1695396679
 sbg:modifiedBy: vamsikrishna14
 sbg:createdOn: 1685299575
 sbg:createdBy: vamsikrishna14
@@ -552,7 +568,7 @@ sbg:sbgMaintained: false
 sbg:validationErrors: []
 sbg:contributors:
 - vamsikrishna14
-sbg:latestRevision: 4
+sbg:latestRevision: 5
 sbg:publisher: sbg
-sbg:content_hash: ad136186a986d73930c2fefd54443c36e908aef5885493541735f3b1acdc90f5b
+sbg:content_hash: a9e9ea5f19f18761b3dbcb4babc86e58ae5011bc602f60c1988548307cb9a8be9
 sbg:workflowLanguage: CWL

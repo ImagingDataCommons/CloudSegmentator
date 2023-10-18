@@ -5,7 +5,7 @@ cwlVersion: v1.2
   sbg: https://sevenbridges.com
 baseCommand:
 - wget
-- https://raw.githubusercontent.com/vkt1414/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/endToEndTotalSegmentatorNotebook.ipynb
+- https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/endToEndTotalSegmentatorNotebook.ipynb
 - "&&"
 - set
 - "-e"
@@ -98,7 +98,7 @@ requirements:
 - class: ShellCommandRequirement
 - class: LoadListingRequirement
 - class: DockerRequirement
-  dockerPull: vamsithiriveedhi/totalsegmentator:end_to_end_v1
+  dockerPull: download_convert_inference_totalseg_radiomics
 - class: InlineJavascriptRequirement
 hints:
 - class: sbg:AWSInstanceType
@@ -113,14 +113,18 @@ sbg:revisionsInfo:
   sbg:modifiedBy: vamsikrishna14
   sbg:modifiedOn: 1685411485
   sbg:revisionNotes: ''
+- sbg:revision: 2
+  sbg:modifiedBy: vamsikrishna14
+  sbg:modifiedOn: 1695396409
+  sbg:revisionNotes: ''
 sbg:image_url:
 sbg:appVersion:
 - v1.2
-id: https://cgc-api.sbgenomics.com/v2/apps/vamsikrishna14/idc/totalsegmentatorend-to-end/1/raw/
-sbg:id: vamsikrishna14/idc/totalsegmentatorend-to-end/1
-sbg:revision: 1
+id: https://cgc-api.sbgenomics.com/v2/apps/vamsikrishna14/idc/totalsegmentatorend-to-end/2/raw/
+sbg:id: vamsikrishna14/idc/totalsegmentatorend-to-end/2
+sbg:revision: 2
 sbg:revisionNotes: ''
-sbg:modifiedOn: 1685411485
+sbg:modifiedOn: 1695396409
 sbg:modifiedBy: vamsikrishna14
 sbg:createdOn: 1685410682
 sbg:createdBy: vamsikrishna14
@@ -129,7 +133,7 @@ sbg:sbgMaintained: false
 sbg:validationErrors: []
 sbg:contributors:
 - vamsikrishna14
-sbg:latestRevision: 1
+sbg:latestRevision: 2
 sbg:publisher: sbg
-sbg:content_hash: a167b937f080f99d795d977209c6217bf0ca43aa483083f6fd0523c82ab323097
+sbg:content_hash: a1591a79810696eea5ddb434a5d742085374137bbe32ad15b03dd174e31b8f841
 sbg:workflowLanguage: CWL

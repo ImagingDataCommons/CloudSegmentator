@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends\
     ffmpeg=7:4.2.7-0ubuntu0.1\
     lz4=1.9.2-2ubuntu0.20.04.1\
     pigz=2.4-1\
-    plastimatch=1.8.0+dfsg.1-2build1\
+    #plastimatch=1.8.0+dfsg.1-2build1\
     python3-dev=3.8.2-0ubuntu2\
     python3-pip=20.0.2-5ubuntu1.9\
     unzip=6.0-25ubuntu1.1\
@@ -53,8 +53,8 @@ RUN chmod +x /root/weights_download.sh
 RUN /root/weights_download.sh
 
 # Download and install s5cmd for interacting with cloud storage
-ENV S5CMD_URL="https://github.com/peak/s5cmd/releases/download/v2.0.0/s5cmd_2.0.0_Linux-64bit.tar.gz"
-ENV S5CMD_FN="s5cmd_2.0.0_Linux-64bit.tar.gz"
+ENV S5CMD_URL="https://github.com/peak/s5cmd/releases/download/v2.2.2/s5cmd_2.2.2_Linux-64bit.tar.gz"
+ENV S5CMD_FN="s5cmd_2.2.2_Linux-64bit.tar.gz"
 RUN wget ${S5CMD_URL} \
   && tar -xvzf ${S5CMD_FN} \
   && rm ${S5CMD_FN} \

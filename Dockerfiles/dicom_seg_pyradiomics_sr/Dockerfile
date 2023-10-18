@@ -5,8 +5,8 @@ ARG GIT_HASH
 LABEL PYTHON_BASE_DOCKER_IMAGE="python:3.11.2-slim-buster"\
       MAINTAINER="IDC <vthiriveedhi@mgb.org>" \
       GIT_HASH=${GIT_HASH}\
-      PATH_TO_DOCKER_FILE="https://github.com/imagingdatacommons/Cloud-Resources-Workflows/blob/${GIT_HASH}/Dockerfiles/TotalSegmentator/splitWorkflow/task3/Dockerfile"\
-      IMAGE_NAME_ON_DOCKERHUB="imagingdatacommons/radiomics"
+      PATH_TO_DOCKER_FILE="https://github.com/imagingdatacommons/Cloud-Resources-Workflows/blob/${GIT_HASH}/Dockerfiles/dicom_seg_pyradiomics_sr/Dockerfile"\
+      IMAGE_NAME_ON_DOCKERHUB="imagingdatacommons/dicom_seg_pyradiomics_sr"
 
 # Install some basic system utilities
 RUN apt-get update \
@@ -15,7 +15,7 @@ RUN apt-get update \
     #dcm2niix\
     lz4=1.8.3-1+deb10u1\
     pigz=2.4-1\
-    plastimatch=1.7.4+dfsg.1-2\
+    #plastimatch=1.7.4+dfsg.1-2\
     python3-dev=3.7.3-1\
     unzip=6.0-23+deb10u3\
     wget=1.20.1-1.1\
@@ -39,8 +39,8 @@ RUN pip3 install --no-cache-dir \
     pyradiomics==3.0.1
 
 # Download and install s5cmd for interacting with cloud storage
-ENV S5CMD_URL="https://github.com/peak/s5cmd/releases/download/v2.0.0/s5cmd_2.0.0_Linux-64bit.tar.gz"
-ENV S5CMD_FN="s5cmd_2.0.0_Linux-64bit.tar.gz"
+ENV S5CMD_URL="https://github.com/peak/s5cmd/releases/download/v2.2.2/s5cmd_2.2.2_Linux-64bit.tar.gz"
+ENV S5CMD_FN="s5cmd_2.2.2_Linux-64bit.tar.gz"
 RUN wget ${S5CMD_URL} \
   && tar -xvzf ${S5CMD_FN} \
   && rm ${S5CMD_FN} \

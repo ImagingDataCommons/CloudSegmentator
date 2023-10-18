@@ -11,8 +11,8 @@ workflow TotalSegmentator {
    String dicomToNiftiConverterTool
 
    #Docker Images for each task
-   String downloadDicomAndConvertAndInferenceTotalSegmentatorDocker = "imagingdatacommons/totalsegmentator:task1and2_v4"
-   String dicomsegAndRadiomicsSR_Docker = "imagingdatacommons/totalsegmentator:task3_v4"
+   String downloadDicomAndConvertAndInferenceTotalSegmentatorDocker = "imagingdatacommons/download_convert_inference_totalseg"
+   String dicomsegAndRadiomicsSR_Docker = "imagingdatacommons/radiomics"
 
    #Preemptible retries
 

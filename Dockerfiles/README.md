@@ -1,6 +1,6 @@
 # An example docker command to run an image:
 
-##### `docker run --entrypoint="/bin/bash" -d --rm -it --name=nocudav1 vamsithiriveedhi/totalsegmentator:nocuda_v1`
+##### `docker run --entrypoint="/bin/bash" -d --rm -it --name=get_idc_data imagingdatacommons/download_convert`
 
 What's happening with the arguments chosen?
 - `entry-point`: will switch from the default entry point to bash 

@@ -1,4 +1,4 @@
-name: download_convert
+name: download_convert_inference_totalseg_dicom_seg_pyradiomics_sr
 
 on:
   push:
@@ -25,12 +25,16 @@ jobs:
           COMMIT_HASH=$(git rev-parse HEAD)
           echo "COMMIT_HASH=$COMMIT_HASH" >> $GITHUB_ENV
 
+      - name: Copy additional files to build context
+        run: |
+          cp Dockerfiles/download_convert_inference_totalseg_dicom_seg_pyradiomics_sr/weights_download.sh .
+
       - name: Build Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./Dockerfiles/download_convert/Dockerfile
-          tags: imagingdatacommons/download_convert
+          file: ./Dockerfiles/download_convert_inference_totalseg_dicom_seg_pyradiomics_sr/Dockerfile
+          tags: imagingdatacommons/download_convert_inference_totalseg_dicom_seg_pyradiomics_sr
           build-args: |
             GIT_HASH=${{ env.COMMIT_HASH }}
         env:
@@ -51,9 +55,9 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./Dockerfiles/download_convert/Dockerfile
+          file: ./Dockerfiles/download_convert_inference_totalseg_dicom_seg_pyradiomics_sr/Dockerfile
           push: true
-          tags: imagingdatacommons/download_convert
+          tags: imagingdatacommons/download_convert_inference_totalseg_dicom_seg_pyradiomics_sr
 
   push-ghcr:
     needs: build
@@ -71,6 +75,6 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./Dockerfiles/download_convert/Dockerfile
+          file: ./Dockerfiles/download_convert_inference_totalseg_dicom_seg_pyradiomics_sr/Dockerfile
           push: true
-          tags: ghcr.io/imagingdatacommons/download_convert
+          tags: ghcr.io/imagingdatacommons/download_convert_inference_totalseg_dicom_seg_pyradiomics_sr
