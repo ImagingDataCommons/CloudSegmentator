@@ -11,15 +11,15 @@ LABEL PYTHON_BASE_DOCKER_IMAGE="python:3.11.2-slim-buster"\
 # Install some basic system utilities
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
-    build-essential=12.6\
+    build-essential\
     #dcm2niix\
-    lz4=1.8.3-1+deb10u1\
-    pigz=2.4-1\
+    lz4\
+    pigz\
     #plastimatch=1.7.4+dfsg.1-2\
-    python3-dev=3.7.3-1\
-    unzip=6.0-23+deb10u3\
-    wget=1.20.1-1.1\
-    zip=3.0-11+b1\
+    python3-dev\
+    unzip\
+    wget\
+    zip\
   && rm -rf /var/lib/apt/lists/*
 
 # Install Jupyter utilities

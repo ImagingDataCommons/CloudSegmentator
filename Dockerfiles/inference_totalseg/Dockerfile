@@ -13,14 +13,14 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # Install some basic system utilities
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential=12.9ubuntu3\
-    ffmpeg=7:4.4.2-0ubuntu0.22.04.1 \
-    lz4=1.9.3-2build2\
-    python3-dev=3.10.6-1~22.04\
+    build-essential\
+    ffmpeg \
+    lz4\
+    python3-dev\
     python3-pip\
-    wget=1.21.2-2ubuntu1\
-    unzip=6.0-26ubuntu3.1\
-    xvfb=2:21.1.4-2ubuntu1.7~22.04.1\
+    wget\
+    unzip\
+    xvfb\
   && rm -rf /var/lib/apt/lists/*
 
 RUN pip install --no-cache-dir \

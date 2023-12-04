@@ -11,12 +11,12 @@ LABEL PYTHON_BASE_DOCKER_IMAGE="python:3.11.2-slim-buster"\
 # Install some basic system utilities
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
-    dcm2niix=1.0.20181125-1\
-    lz4=1.8.3-1+deb10u1\
-    pigz=2.4-1\
+    dcm2niix\
+    lz4\
+    pigz\
     #plastimatch=1.7.4+dfsg.1-2\
-    wget=1.20.1-1.1\
-    zip=3.0-11+b1\
+    wget\
+    zip\
   && rm -rf /var/lib/apt/lists/*
 
 
