@@ -47,12 +47,12 @@ RUN wget ${S5CMD_URL} \
   && mv s5cmd /usr/local/bin/s5cmd
 
 # Download dcmqi for itkimage2segimage
-ENV DCMQI_URL="https://github.com/QIICR/dcmqi/releases/download/v1.2.5/dcmqi-1.2.5-linux.tar.gz"
-ENV DCMQI_FN="dcmqi-1.2.5-linux.tar.gz"
+ENV DCMQI_URL="https://github.com/QIICR/dcmqi/releases/download/v1.3.0/dcmqi-1.3.0-linux.tar.gz"
+ENV DCMQI_FN="dcmqi-1.3.0-linux.tar.gz"
 RUN wget ${DCMQI_URL} \
   && tar -xvzf ${DCMQI_FN} \
   && rm ${DCMQI_FN} \
-  && mv dcmqi-1.2.5-linux/bin/* /bin
+  && mv dcmqi-1.3.0-linux/bin/* /bin
 
 
 #Install dcm2niix

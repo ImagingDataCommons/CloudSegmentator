@@ -44,7 +44,7 @@ RUN pip install --no-cache-dir \
     "scipy>=1.8,<1.9.2; python_version <= '3.9'"\
     scikit-learn==1.2.2\
     scikit-image==0.20.0\
-    TotalSegmentator==1.5.5\
+    TotalSegmentator==1.5.6\
     tqdm==4.65.0\
  && pip install --no-cache-dir\
     pyradiomics==3.0.1
@@ -65,9 +65,9 @@ RUN wget ${S5CMD_URL} \
   && mv s5cmd /usr/local/bin/s5cmd
 
 # Download dcmqi for itkimage2segimage
-ENV DCMQI_URL="https://github.com/QIICR/dcmqi/releases/download/v1.2.5/dcmqi-1.2.5-linux.tar.gz"
-ENV DCMQI_FN="dcmqi-1.2.5-linux.tar.gz"
+ENV DCMQI_URL="https://github.com/QIICR/dcmqi/releases/download/v1.3.0/dcmqi-1.3.0-linux.tar.gz"
+ENV DCMQI_FN="dcmqi-1.3.0-linux.tar.gz"
 RUN wget ${DCMQI_URL} \
   && tar -xvzf ${DCMQI_FN} \
   && rm ${DCMQI_FN} \
-  && mv dcmqi-1.2.5-linux/bin/* /bin
+  && mv dcmqi-1.3.0-linux/bin/* /bin

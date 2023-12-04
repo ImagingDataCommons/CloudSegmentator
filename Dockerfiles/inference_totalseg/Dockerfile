@@ -30,7 +30,7 @@ RUN pip install --no-cache-dir \
     jupyter==1.0.0\
     papermill==2.4.0\
     nvidia-ml-py3==7.352.0\
-    TotalSegmentator==1.5.5\
+    TotalSegmentator==1.5.6\
  && pip install --no-cache-dir \
     pyradiomics==3.0.1
 
