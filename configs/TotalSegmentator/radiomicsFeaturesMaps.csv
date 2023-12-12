@@ -26,4 +26,4 @@
 24,Skewness,firstorder,,IBSI,KE2A,Skewness,UCUM,1,no units
 25,Uniformity,firstorder,,IBSI,BJ5W,Intensity histogram uniformity,UCUM,1,no units
 26,Variance,firstorder,,IBSI,ECT3,Variance,UCUM,[hnsf'U]2,square Hounsfield Unit
-27,Kurtosis,firstorder,,IBSI,IPH6,Kurtosis,UCUM,[hnsf'U],Hounsfield Unit
+27,Kurtosis,firstorder,,IBSI,IPH6,Kurtosis,UCUM,[hnsf'U]2,square Hounsfield Unit
