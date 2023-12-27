@@ -37,21 +37,21 @@ outputs:
   sbg:y: 811.4134521484375
 - id: totalsegmentatorErrors
   outputSource:
-  - inferencetotalsegmentatordocker/totalsegmentatorErrors
+  - inferencetotalsegmentator/totalsegmentatorErrors
   sbg:fileTypes: CSV
   type: File?
   sbg:x: 1249.3201904296875
   sbg:y: -127.86664581298828
 - id: inferenceUsageMetrics
   outputSource:
-  - inferencetotalsegmentatordocker/inferenceUsageMetrics
+  - inferencetotalsegmentator/inferenceUsageMetrics
   sbg:fileTypes: LZ4
   type: File?
   sbg:x: 1033.7835693359375
   sbg:y: -290.6988525390625
 - id: inferenceOutputJupyterNotebook
   outputSource:
-  - inferencetotalsegmentatordocker/inferenceOutputJupyterNotebook
+  - inferencetotalsegmentator/inferenceOutputJupyterNotebook
   sbg:fileTypes: IPYNB
   type: File?
   sbg:x: 915.3206176757812
@@ -129,7 +129,7 @@ steps:
     cwlVersion: v1.2
     "$namespaces":
       sbg: https://sevenbridges.com
-    id: vamsikrishna14/idc/downloaddicomandconvert/3
+    id: downloaddicomandconvert
     baseCommand:
     - wget
     - https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/downloadDicomAndConvertNotebook.ipynb
@@ -197,47 +197,10 @@ steps:
     hints:
     - class: sbg:AWSInstanceType
       value: c5.large;ebs-gp2;10
-    sbg:projectName: IDC
-    sbg:revisionsInfo:
-    - sbg:revision: 0
-      sbg:modifiedBy: vamsikrishna14
-      sbg:modifiedOn: 1681833288
-      sbg:revisionNotes: Copy of vamsikrishna14/idc/itkimage2segimage/9
-    - sbg:revision: 1
-      sbg:modifiedBy: vamsikrishna14
-      sbg:modifiedOn: 1681834267
-      sbg:revisionNotes: ''
-    - sbg:revision: 2
-      sbg:modifiedBy: vamsikrishna14
-      sbg:modifiedOn: 1681840727
-      sbg:revisionNotes: ''
-    - sbg:revision: 3
-      sbg:modifiedBy: vamsikrishna14
-      sbg:modifiedOn: 1695396114
-      sbg:revisionNotes: ''
-    sbg:image_url:
-    sbg:appVersion:
-    - v1.2
-    sbg:id: vamsikrishna14/idc/downloaddicomandconvert/3
-    sbg:revision: 3
-    sbg:revisionNotes: ''
-    sbg:modifiedOn: 1695396114
-    sbg:modifiedBy: vamsikrishna14
-    sbg:createdOn: 1681833288
-    sbg:createdBy: vamsikrishna14
-    sbg:project: vamsikrishna14/idc
-    sbg:sbgMaintained: false
-    sbg:validationErrors: []
-    sbg:contributors:
-    - vamsikrishna14
-    sbg:latestRevision: 3
-    sbg:publisher: sbg
-    sbg:content_hash: a2fff83cdce6f5974ed918b5730d473ca7bbe4c51fc8899051f9f8ed2542055e5
-    sbg:workflowLanguage: CWL
   label: downloadDicomAndConvert
   sbg:x: 259.817138671875
   sbg:y: 353.5
-- id: inferencetotalsegmentatordocker
+- id: inferencetotalsegmentator
   in:
   - id: downloadDicomAndConvertNiftiFiles
     source: downloaddicomandconvert/downloadDicomAndConvertNiftiFiles
@@ -253,7 +216,7 @@ steps:
     cwlVersion: v1.2
     "$namespaces":
       sbg: https://sevenbridges.com
-    id: vamsikrishna14/idc/inferencetotalsegmentatordocker/7
+    id: inferencetotalsegmentator
     baseCommand:
     - wget
     - https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/inferenceTotalSegmentatorNotebook.ipynb
@@ -322,59 +285,6 @@ steps:
     hints:
     - class: sbg:AWSInstanceType
       value: g4dn.xlarge;ebs-gp2;25
-    sbg:projectName: IDC
-    sbg:revisionsInfo:
-    - sbg:revision: 0
-      sbg:modifiedBy: vamsikrishna14
-      sbg:modifiedOn: 1681836278
-      sbg:revisionNotes: Copy of vamsikrishna14/idc/downloaddicomandconvert/1
-    - sbg:revision: 1
-      sbg:modifiedBy: vamsikrishna14
-      sbg:modifiedOn: 1681836986
-      sbg:revisionNotes: ''
-    - sbg:revision: 2
-      sbg:modifiedBy: vamsikrishna14
-      sbg:modifiedOn: 1681839774
-      sbg:revisionNotes: ''
-    - sbg:revision: 3
-      sbg:modifiedBy: vamsikrishna14
-      sbg:modifiedOn: 1681841312
-      sbg:revisionNotes: ''
-    - sbg:revision: 4
-      sbg:modifiedBy: vamsikrishna14
-      sbg:modifiedOn: 1681843996
-      sbg:revisionNotes: ''
-    - sbg:revision: 5
-      sbg:modifiedBy: vamsikrishna14
-      sbg:modifiedOn: 1681859327
-      sbg:revisionNotes: ''
-    - sbg:revision: 6
-      sbg:modifiedBy: vamsikrishna14
-      sbg:modifiedOn: 1685297796
-      sbg:revisionNotes: removed metadata as required outputs
-    - sbg:revision: 7
-      sbg:modifiedBy: vamsikrishna14
-      sbg:modifiedOn: 1695396371
-      sbg:revisionNotes: ''
-    sbg:image_url:
-    sbg:appVersion:
-    - v1.2
-    sbg:id: vamsikrishna14/idc/inferencetotalsegmentatordocker/7
-    sbg:revision: 7
-    sbg:revisionNotes: ''
-    sbg:modifiedOn: 1695396371
-    sbg:modifiedBy: vamsikrishna14
-    sbg:createdOn: 1681836278
-    sbg:createdBy: vamsikrishna14
-    sbg:project: vamsikrishna14/idc
-    sbg:sbgMaintained: false
-    sbg:validationErrors: []
-    sbg:contributors:
-    - vamsikrishna14
-    sbg:latestRevision: 7
-    sbg:publisher: sbg
-    sbg:content_hash: ab851c5f011008d0250dffee373ec54ae770f1b34b524501f01b040d8d9ee68a0
-    sbg:workflowLanguage: CWL
   label: inferenceTotalSegmentator
   sbg:x: 795.6659545898438
   sbg:y: 193
@@ -383,7 +293,7 @@ steps:
   - id: s5cmdUrls
     source: s5cmdUrls
   - id: downloadDicomAndConvertAndInferenceTotalSegmentatorZipFile
-    source: inferencetotalsegmentatordocker/inferenceZipFile
+    source: inferencetotalsegmentator/inferenceZipFile
   out:
   - id: dicomsegAndRadiomicsSR_OutputJupyterNotebook
   - id: dicomsegAndRadiomicsSR_CompressedFiles
@@ -398,7 +308,7 @@ steps:
     cwlVersion: v1.2
     "$namespaces":
       sbg: https://sevenbridges.com
-    id: vamsikrishna14/idc/dicomsegandradiomicssr/2
+    id: dicomsegandradiomicssr
     baseCommand:
     - wget
     - https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/dicomsegAndRadiomicsSR_Notebook.ipynb
@@ -487,88 +397,9 @@ steps:
     hints:
     - class: sbg:AWSInstanceType
       value: m5.xlarge;ebs-gp2;25
-    sbg:projectName: IDC
-    sbg:revisionsInfo:
-    - sbg:revision: 0
-      sbg:modifiedBy: vamsikrishna14
-      sbg:modifiedOn: 1685298038
-      sbg:revisionNotes: Copy of vamsikrishna14/idc/itkimage2segimage/9
-    - sbg:revision: 1
-      sbg:modifiedBy: vamsikrishna14
-      sbg:modifiedOn: 1685298787
-      sbg:revisionNotes: updated task3
-    - sbg:revision: 2
-      sbg:modifiedBy: vamsikrishna14
-      sbg:modifiedOn: 1695396190
-      sbg:revisionNotes: ''
-    sbg:image_url:
-    sbg:appVersion:
-    - v1.2
-    sbg:id: vamsikrishna14/idc/dicomsegandradiomicssr/2
-    sbg:revision: 2
-    sbg:revisionNotes: ''
-    sbg:modifiedOn: 1695396190
-    sbg:modifiedBy: vamsikrishna14
-    sbg:createdOn: 1685298038
-    sbg:createdBy: vamsikrishna14
-    sbg:project: vamsikrishna14/idc
-    sbg:sbgMaintained: false
-    sbg:validationErrors: []
-    sbg:contributors:
-    - vamsikrishna14
-    sbg:latestRevision: 2
-    sbg:publisher: sbg
-    sbg:content_hash: a32120ab84bdb935639d78709618996d0108b5048e4eb87e3e5beeb31cb0dae64
-    sbg:workflowLanguage: CWL
   label: dicomsegAndRadiomicsSR
   sbg:x: 1274.7718505859375
   sbg:y: 535
 requirements:
 - class: InlineJavascriptRequirement
 - class: StepInputExpressionRequirement
-sbg:projectName: IDC
-sbg:revisionsInfo:
-- sbg:revision: 0
-  sbg:modifiedBy: vamsikrishna14
-  sbg:modifiedOn: 1685299575
-  sbg:revisionNotes: Copy of vamsikrishna14/idc/totalsegmentatortwovmworkflow/3
-- sbg:revision: 1
-  sbg:modifiedBy: vamsikrishna14
-  sbg:modifiedOn: 1685299685
-  sbg:revisionNotes: ''
-- sbg:revision: 2
-  sbg:modifiedBy: vamsikrishna14
-  sbg:modifiedOn: 1685301381
-  sbg:revisionNotes: ''
-- sbg:revision: 3
-  sbg:modifiedBy: vamsikrishna14
-  sbg:modifiedOn: 1685301607
-  sbg:revisionNotes: ''
-- sbg:revision: 4
-  sbg:modifiedBy: vamsikrishna14
-  sbg:modifiedOn: 1685301628
-  sbg:revisionNotes: ''
-- sbg:revision: 5
-  sbg:modifiedBy: vamsikrishna14
-  sbg:modifiedOn: 1695396679
-  sbg:revisionNotes: ''
-sbg:image_url: https://cgc.sbgenomics.com/ns/brood/images/vamsikrishna14/idc/totalsegmentatorthreevmworkflow/5.png
-sbg:appVersion:
-- v1.2
-id: https://cgc-api.sbgenomics.com/v2/apps/vamsikrishna14/idc/totalsegmentatorthreevmworkflow/5/raw/
-sbg:id: vamsikrishna14/idc/totalsegmentatorthreevmworkflow/5
-sbg:revision: 5
-sbg:revisionNotes: ''
-sbg:modifiedOn: 1695396679
-sbg:modifiedBy: vamsikrishna14
-sbg:createdOn: 1685299575
-sbg:createdBy: vamsikrishna14
-sbg:project: vamsikrishna14/idc
-sbg:sbgMaintained: false
-sbg:validationErrors: []
-sbg:contributors:
-- vamsikrishna14
-sbg:latestRevision: 5
-sbg:publisher: sbg
-sbg:content_hash: a9e9ea5f19f18761b3dbcb4babc86e58ae5011bc602f60c1988548307cb9a8be9
-sbg:workflowLanguage: CWL
