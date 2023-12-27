@@ -20,7 +20,16 @@
   --values of sliceIntervalDifference less than 0.01
   
   WITH
-  -- Create a common table expression (CTE) named nonLocalizerRawData
+  -- Create a common table expression (CTE) named localizerAndJpegCompressedSeries
+  localizerAndJpegCompressedSeries AS (
+  Select SeriesInstanceUID  from 
+  `bigquery-public-data.idc_v17.dicom_all` bid, bid.ImageType image_type 
+   where 
+   image_type='LOCALIZER' OR  
+   TransferSyntaxUID  IN ( '1.2.840.10008.1.2.4.70','1.2.840.10008.1.2.4.51')
+   --these are the classes that require additional processing before converting DICOM files to NIfTI using dcm2niix
+  ),
+  -- Create a common table expression (CTE) named nonLocalizerRawData 
   nonLocalizerRawData AS (
     SELECT
       SeriesInstanceUID,
@@ -28,6 +37,12 @@
       PatientID,
       SOPInstanceUID,
       SliceThickness,
+      ImageType,
+      TransferSyntaxUID,
+      SeriesNumber,
+      aws_bucket,
+      crdc_series_uuid,
+
       -- Cast Exposure column as FLOAT64 data type
       SAFE_CAST(Exposure AS FLOAT64) Exposure,
       -- Cast unnested Image Patient Position column as FLOAT64 data type and rename it as zImagePosition as we filter for the z-axis
@@ -55,14 +70,10 @@
       -- Store the number of rows and columns in the pixel matrix
       `Rows` AS pixelRows,
       `Columns` AS pixelColumns,
-      -- Store the GCS URL of the SOP Instance
-      gcs_url AS sopInstanceUrl,
       -- Store the size of the SOP Instance in bytes
       instance_size AS instanceSize,
-      -- Concatenate viewer URL with StudyInstanceUID and SeriesInstanceUID parameters to create a link for viewing the series
-      CONCAT('https://viewer.imaging.datacommons.cancer.gov/viewer/', StudyInstanceUID, '?seriesInstanceUID=', SeriesInstanceUID) AS viewerUrl
     FROM
-      `bigquery-public-data.idc_current.dicom_all` bid
+      `bigquery-public-data.idc_v17.dicom_all` bid
     LEFT JOIN
       UNNEST(bid.ImagePositionPatient) ipp WITH OFFSET AS axes
     LEFT JOIN
@@ -72,7 +83,8 @@
     WHERE
       -- Filter for CT images in the NLST collection that are not localizers 
       --and removing the transfer syntax ids that require additional processing (decompression before passing to dcm2niix)
-      collection_id = 'nlst' AND Modality = 'CT' AND axes = 2 AND axis1 = 0 AND axis2 = 1 AND 'LOCALIZER' NOT IN UNNEST(ImageType) AND TransferSyntaxUID NOT IN ( '1.2.840.10008.1.2.4.70','1.2.840.10008.1.2.4.51')
+      collection_id = 'nlst' AND Modality = 'CT' AND axes = 2 AND axis1 = 0 AND axis2 = 1 
+      AND SeriesInstanceUID not in (Select SeriesInstanceuID from  localizerAndJpegCompressedSeries)
   )
 ,
 crossProduct AS (
@@ -105,6 +117,9 @@ dotProduct AS (
 geometryChecks AS (
   SELECT
     SeriesInstanceUID,
+    seriesNumber,
+    aws_bucket,
+    crdc_series_uuid,
     StudyInstanceUID,
     PatientID,
     -- Aggregate distinct slice_interval values into an array 
@@ -131,22 +146,19 @@ geometryChecks AS (
      COUNT(Distinct pixelColumns) pixelColumnCount,
      --Determining maximum dotProduct..ideally this should be zero
      max(xyDotProduct) dotProduct,
-     viewerUrl,
+     #viewerUrl,
      -- Calculate sum of instanceSize divided by 1024*1024 to get te size in MB
-     sum(instanceSize)/1024/1024 seriesSizeInMB,
-      -- Concatenate "cp ", replace "gs://" with "s3://" in sopInstanceUrl to make the urls work with s5cmd,
-      -- add " idc_data/" which acts as destination folder for s5cmd and
-      -- at end for each row separated by new line character "\n" so it will be
-      -- ready for creating a manifest file later in the workflow
-      string_agg (CONCAT("cp ",REPLACE(sopInstanceUrl, "gs://", "s3://"), " idc_data/"), "\n") as s5cmdUrls
+     sum(instanceSize)/1024/1024 seriesSizeInMiB,
   FROM
       nonLocalizerRawData
   JOIN dotProduct using (SeriesInstanceUID, SOPInstanceUID)
   GROUP BY
       SeriesInstanceUID, 
+      seriesNumber,
+      aws_bucket,
+      crdc_series_uuid,
       StudyInstanceUID,
-      PatientID,
-      viewerUrl
+      PatientID
   HAVING
     iopCount=1 --we expect only one image orientation in a series
     AND pixelSpacingCount=1  --we expect identical pixel spacing in a series
@@ -160,9 +172,10 @@ geometryChecks AS (
     --AND exposureCount=1
 
 )
-#finally displaying the attributes that we would be interested
+
 SELECT
   SeriesInstanceUID,
+  seriesNumber,
   StudyInstanceUID,
   PatientID,
   iopCount,
@@ -181,9 +194,10 @@ SELECT
   max(de) as maxExposure,
   min(de) as minExposure,
   max(de) -min (de) as maxExposureDifference,
-  seriesSizeInMB,
-  viewerUrl,
-  s5cmdUrls
+  seriesSizeInMiB,
+  CONCAT("cp --show-progress s3://",aws_bucket,"/",crdc_series_uuid,"/* idc_data/") AS s5cmdUrls,
+  CONCAT('https://viewer.imaging.datacommons.cancer.gov/viewer/', StudyInstanceUID, '?seriesInstanceUID=', SeriesInstanceUID) viewerUrl,
+
 FROM
   geometryChecks
 LEFT JOIN
@@ -193,6 +207,7 @@ LEFT JOIN
 
 GROUP BY
   SeriesInstanceUID,
+  seriesNumber,
   StudyInstanceUID,
   PatientID,
   iopCount,
@@ -205,11 +220,12 @@ GROUP BY
   pixelRowCount,
   pixelColumnCount,
   exposureCount,
-  seriesSizeInMB,
+  seriesSizeInMiB,
   viewerUrl,
   s5cmdUrls
+
 #Setting the minimum number of Series to be 50
-HAVING sliceIntervalifferenceTolerance<0.01 and sopInstanceCount >=50
+HAVING sliceIntervalifferenceTolerance<0.01 and sopInstanceCount >=50 
 ORDER BY
 sliceIntervalifferenceTolerance desc,
 maxExposureDifference desc,
