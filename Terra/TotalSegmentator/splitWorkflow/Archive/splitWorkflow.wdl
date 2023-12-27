@@ -113,7 +113,7 @@ task downloadAndConvert {
     String downloadAndConvertCpuFamily
  }
  command {
-   wget https://raw.githubusercontent.com/vkt1414/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/downloadDicomAndConvertNotebook.ipynb
+   wget https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/downloadDicomAndConvertNotebook.ipynb
    set -e
    papermill -p converterType ~{dicomToNiftiConverterTool} -p csvFilePath ~{seriesInstanceS5cmdUrls} downloadDicomAndConvertNotebook.ipynb downloadAndConvertOutputJupyterNotebook.ipynb 
  }
@@ -157,7 +157,7 @@ task inferenceTotalSegmentator {
  }
 
  command {
-   wget https://raw.githubusercontent.com/vkt1414/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/inferenceTotalSegmentatorNotebook.ipynb
+   wget https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/inferenceTotalSegmentatorNotebook.ipynb
    set -e
    papermill -p converterType ~{dicomToNiftiConverterTool}  -p niftiFilePath ~{NiftiFiles} inferenceTotalSegmentatorNotebook.ipynb inferenceOutputJupyterNotebook.ipynb
  }
@@ -201,7 +201,7 @@ task itkimage2segimage {
     File inferenceZipFile
  }
  command {
-   wget https://raw.githubusercontent.com/vkt1414/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/itkimage2segimageNotebook.ipynb
+   wget https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/itkimage2segimageNotebook.ipynb
    set -e
    papermill -p csvFilePath ~{seriesInstanceS5cmdUrls} -p inferenceNiftiFilePath ~{inferenceZipFile}  itkimage2segimageNotebook.ipynb itkimage2segimageOutputJupyterNotebook.ipynb 
  }

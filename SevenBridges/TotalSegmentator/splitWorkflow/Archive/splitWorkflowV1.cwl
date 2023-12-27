@@ -110,7 +110,7 @@ steps:
     id: vamsikrishna14/idc/downloaddicomandconvert/2
     baseCommand:
     - wget
-    - https://raw.githubusercontent.com/vkt1414/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/downloadDicomAndConvertNotebook.ipynb
+    - https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/downloadDicomAndConvertNotebook.ipynb
     - "&&"
     - set
     - "-e"
@@ -231,7 +231,7 @@ steps:
     id: vamsikrishna14/idc/inferencetotalsegmentatordocker/5
     baseCommand:
     - wget
-    - https://raw.githubusercontent.com/vkt1414/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/inferenceTotalSegmentatorNotebook.ipynb
+    - https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/inferenceTotalSegmentatorNotebook.ipynb
     - "&&"
     - set
     - "-e"
@@ -368,7 +368,7 @@ steps:
     id: vamsikrishna14/idc/itkimage2segimage/9
     baseCommand:
     - wget
-    - https://raw.githubusercontent.com/vkt1414/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/itkimage2segimageNotebook.ipynb
+    - https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/itkimage2segimageNotebook.ipynb
     - "&&"
     - set
     - "-e"

@@ -6,7 +6,7 @@
   },
   "baseCommand": [
     "wget",
-    "https://raw.githubusercontent.com/vkt1414/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/itkimage2segimageNotebook.ipynb",
+    "https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/itkimage2segimageNotebook.ipynb",
     "&&",
     "set",
     "-e",
