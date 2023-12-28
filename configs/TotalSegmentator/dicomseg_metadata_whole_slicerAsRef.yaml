@@ -9,197 +9,9 @@ InstanceNumber: '1'
 SeriesDescription: TotalSegmentator Segmentation
 SeriesNumber: '42'
 segmentAttributes:
-- - SegmentAlgorithmName: TotalSegmentator v1.5.5
+- - SegmentAlgorithmName: TotalSegmentator v1.5.6
     SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Spleen
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Spleen
-      CodeValue: '78961009'
-      CodingSchemeDesignator: SCT
-    labelID: 1
-    recommendedDisplayRGBValue:
-    - 157
-    - 108
-    - 162
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Right kidney
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Kidney
-      CodeValue: '64033007'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Right
-      CodeValue: '24028007'
-      CodingSchemeDesignator: SCT
-    labelID: 2
-    recommendedDisplayRGBValue:
-    - 212
-    - 126
-    - 151
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Left kidney
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Kidney
-      CodeValue: '64033007'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Left
-      CodeValue: '7771000'
-      CodingSchemeDesignator: SCT
-    labelID: 3
-    recommendedDisplayRGBValue:
-    - 212
-    - 126
-    - 151
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Gallbladder
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Gallbladder
-      CodeValue: '28231008'
-      CodingSchemeDesignator: SCT
-    labelID: 4
-    recommendedDisplayRGBValue:
-    - 139
-    - 150
-    - 98
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Liver
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Liver
-      CodeValue: '10200004'
-      CodingSchemeDesignator: SCT
-    labelID: 5
-    recommendedDisplayRGBValue:
-    - 221
-    - 130
-    - 101
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Stomach
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Stomach
-      CodeValue: '69695003'
-      CodingSchemeDesignator: SCT
-    labelID: 6
-    recommendedDisplayRGBValue:
-    - 216
-    - 132
-    - 105
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Aorta
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Aorta
-      CodeValue: '15825003'
-      CodingSchemeDesignator: SCT
-    labelID: 7
-    recommendedDisplayRGBValue:
-    - 224
-    - 97
-    - 76
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Inferior vena cava
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Inferior vena cava
-      CodeValue: '64131007'
-      CodingSchemeDesignator: SCT
-    labelID: 8
-    recommendedDisplayRGBValue:
-    - 110
-    - 165
-    - 54
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Portal and splenic vein
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Portal vein and splenic vein
-      CodeValue: '110765007'
-      CodingSchemeDesignator: SCT
-    labelID: 9
-    recommendedDisplayRGBValue:
-    - 0
-    - 151
-    - 206
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Pancreas
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Pancreas
-      CodeValue: '15776009'
-      CodingSchemeDesignator: SCT
-    labelID: 10
-    recommendedDisplayRGBValue:
-    - 249
-    - 180
-    - 111
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Right adrenal gland
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Adrenal gland
-      CodeValue: '23451007'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Right
-      CodeValue: '24028007'
-      CodingSchemeDesignator: SCT
-    labelID: 11
-    recommendedDisplayRGBValue:
-    - 199
-    - 27
-    - 27
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Left adrenal gland
+    SegmentDescription: Left Adrenal gland
     SegmentedPropertyCategoryCodeSequence:
       CodeMeaning: Anatomical Structure
       CodeValue: '123037004'
@@ -217,1590 +29,45 @@ segmentAttributes:
     - 199
     - 27
     - 27
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
     SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Left upper lung lobe
+    SegmentDescription: Right Adrenal gland
     SegmentedPropertyCategoryCodeSequence:
       CodeMeaning: Anatomical Structure
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Upper lobe of lung
-      CodeValue: '45653009'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Left
-      CodeValue: '7771000'
-      CodingSchemeDesignator: SCT
-    labelID: 13
-    recommendedDisplayRGBValue:
-    - 112
-    - 162
-    - 95
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Left lower lung lobe
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Lower lobe of lung
-      CodeValue: '90572001'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Left
-      CodeValue: '7771000'
-      CodingSchemeDesignator: SCT
-    labelID: 14
-    recommendedDisplayRGBValue:
-    - 242
-    - 150
-    - 232
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Right upper lung lobe
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Upper lobe of lung
-      CodeValue: '45653009'
+      CodeMeaning: Adrenal gland
+      CodeValue: '23451007'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeModifierCodeSequence:
       CodeMeaning: Right
       CodeValue: '24028007'
       CodingSchemeDesignator: SCT
-    labelID: 15
-    recommendedDisplayRGBValue:
-    - 173
-    - 69
-    - 44
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Right middle lung lobe
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Middle lobe of right lung
-      CodeValue: '72481006'
-      CodingSchemeDesignator: SCT
-    labelID: 16
-    recommendedDisplayRGBValue:
-    - 202
-    - 164
-    - 140
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Right lower lung lobe
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Lower lobe of lung
-      CodeValue: '90572001'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Right
-      CodeValue: '24028007'
-      CodingSchemeDesignator: SCT
-    labelID: 17
-    recommendedDisplayRGBValue:
-    - 117
-    - 212
-    - 208
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Vertebrae L5
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: L5 vertebra
-      CodeValue: '49668003'
-      CodingSchemeDesignator: SCT
-    labelID: 18
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Vertebrae L4
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: L4 vertebra
-      CodeValue: '11994002'
-      CodingSchemeDesignator: SCT
-    labelID: 19
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Vertebrae L3
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: L3 vertebra
-      CodeValue: '36470004'
-      CodingSchemeDesignator: SCT
-    labelID: 20
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Vertebrae L2
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: L2 vertebra
-      CodeValue: '14293000'
-      CodingSchemeDesignator: SCT
-    labelID: 21
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Vertebrae L1
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: L1 vertebra
-      CodeValue: '66794005'
-      CodingSchemeDesignator: SCT
-    labelID: 22
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Vertebrae T12
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: T12 vertebra
-      CodeValue: '23215003'
-      CodingSchemeDesignator: SCT
-    labelID: 23
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Vertebrae T11
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: T11 vertebra
-      CodeValue: '12989004'
-      CodingSchemeDesignator: SCT
-    labelID: 24
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Vertebrae T10
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: T10 vertebra
-      CodeValue: '7610001'
-      CodingSchemeDesignator: SCT
-    labelID: 25
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Vertebrae T9
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: T9 vertebra
-      CodeValue: '82687006'
-      CodingSchemeDesignator: SCT
-    labelID: 26
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Vertebrae T8
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: T8 vertebra
-      CodeValue: '11068009'
-      CodingSchemeDesignator: SCT
-    labelID: 27
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Vertebrae T7
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: T7 vertebra
-      CodeValue: '62487009'
-      CodingSchemeDesignator: SCT
-    labelID: 28
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Vertebrae T6
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: T6 vertebra
-      CodeValue: '45296009'
-      CodingSchemeDesignator: SCT
-    labelID: 29
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Vertebrae T5
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: T5 vertebra
-      CodeValue: '56401006'
-      CodingSchemeDesignator: SCT
-    labelID: 30
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Vertebrae T4
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: T4 vertebra
-      CodeValue: '73071006'
-      CodingSchemeDesignator: SCT
-    labelID: 31
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Vertebrae T3
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: T3 vertebra
-      CodeValue: '1626008'
-      CodingSchemeDesignator: SCT
-    labelID: 32
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Vertebrae T2
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: T2 vertebra
-      CodeValue: '53733008'
-      CodingSchemeDesignator: SCT
-    labelID: 33
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Vertebrae T1
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: T1 vertebra
-      CodeValue: '64864005'
-      CodingSchemeDesignator: SCT
-    labelID: 34
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Vertebrae C7
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: C7 vertebra
-      CodeValue: '87391001'
-      CodingSchemeDesignator: SCT
-    labelID: 35
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Vertebrae C6
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: C6 vertebra
-      CodeValue: '36054005'
-      CodingSchemeDesignator: SCT
-    labelID: 36
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Vertebrae C5
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: C5 vertebra
-      CodeValue: '36978003'
-      CodingSchemeDesignator: SCT
-    labelID: 37
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Vertebrae C4
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: C4 vertebra
-      CodeValue: '5329002'
-      CodingSchemeDesignator: SCT
-    labelID: 38
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Vertebrae C3
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: C3 vertebra
-      CodeValue: '113205007'
-      CodingSchemeDesignator: SCT
-    labelID: 39
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Vertebrae C2
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: C2 vertebra
-      CodeValue: '39976000'
-      CodingSchemeDesignator: SCT
-    labelID: 40
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Vertebrae C1
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: C1 vertebra
-      CodeValue: '14806007'
-      CodingSchemeDesignator: SCT
-    labelID: 41
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Esophagus
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Esophagus
-      CodeValue: '32849002'
-      CodingSchemeDesignator: SCT
-    labelID: 42
-    recommendedDisplayRGBValue:
-    - 211
-    - 171
-    - 143
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Trachea
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Trachea
-      CodeValue: '44567001'
-      CodingSchemeDesignator: SCT
-    labelID: 43
-    recommendedDisplayRGBValue:
-    - 182
-    - 228
-    - 255
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Myocardium
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Myocardium
-      CodeValue: '74281007'
-      CodingSchemeDesignator: SCT
-    labelID: 44
-    recommendedDisplayRGBValue:
-    - 192
-    - 104
-    - 88
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Left atrium
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Left atrium
-      CodeValue: '82471001'
-      CodingSchemeDesignator: SCT
-    labelID: 45
-    recommendedDisplayRGBValue:
-    - 193
-    - 156
-    - 49
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Left ventricle
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Left ventricle of heart
-      CodeValue: '87878005'
-      CodingSchemeDesignator: SCT
-    labelID: 46
-    recommendedDisplayRGBValue:
-    - 152
-    - 55
-    - 13
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Right atrium
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Right atrium
-      CodeValue: '73829009'
-      CodingSchemeDesignator: SCT
-    labelID: 47
-    recommendedDisplayRGBValue:
-    - 193
-    - 156
-    - 49
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Right ventricle
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Right ventricle of heart
-      CodeValue: '53085002'
-      CodingSchemeDesignator: SCT
-    labelID: 48
-    recommendedDisplayRGBValue:
-    - 181
-    - 85
-    - 57
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Pulmonary artery
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Pulmonary artery
-      CodeValue: '81040000'
-      CodingSchemeDesignator: SCT
-    labelID: 49
-    recommendedDisplayRGBValue:
-    - 0
-    - 122
-    - 171
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Brain
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Brain
-      CodeValue: '12738006'
-      CodingSchemeDesignator: SCT
-    labelID: 50
-    recommendedDisplayRGBValue:
-    - 250
-    - 250
-    - 225
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Left iliac artery
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Common iliac artery
-      CodeValue: '73634005'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Left
-      CodeValue: '7771000'
-      CodingSchemeDesignator: SCT
-    labelID: 51
-    recommendedDisplayRGBValue:
-    - 217
-    - 162
-    - 48
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Right iliac artery
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Common iliac artery
-      CodeValue: '73634005'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Right
-      CodeValue: '24028007'
-      CodingSchemeDesignator: SCT
-    labelID: 52
-    recommendedDisplayRGBValue:
-    - 217
-    - 162
-    - 48
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Left iliac vein
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Common iliac vein
-      CodeValue: '46027005'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Left
-      CodeValue: '7771000'
-      CodingSchemeDesignator: SCT
-    labelID: 53
-    recommendedDisplayRGBValue:
-    - 197
-    - 174
-    - 37
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Right iliac vein
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Common iliac vein
-      CodeValue: '46027005'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Right
-      CodeValue: '24028007'
-      CodingSchemeDesignator: SCT
-    labelID: 54
-    recommendedDisplayRGBValue:
-    - 197
-    - 174
-    - 37
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Small intestine
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Small Intestine
-      CodeValue: '30315005'
-      CodingSchemeDesignator: SCT
-    labelID: 55
-    recommendedDisplayRGBValue:
-    - 205
-    - 167
-    - 142
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Duodenum
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Duodenum
-      CodeValue: '38848004'
-      CodingSchemeDesignator: SCT
-    labelID: 56
-    recommendedDisplayRGBValue:
-    - 255
-    - 253
-    - 229
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Colon
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Colon
-      CodeValue: '71854001'
-      CodingSchemeDesignator: SCT
-    labelID: 57
-    recommendedDisplayRGBValue:
-    - 204
-    - 168
-    - 143
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Left rib 1
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: First rib
-      CodeValue: '48535007'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Left
-      CodeValue: '7771000'
-      CodingSchemeDesignator: SCT
-    labelID: 58
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Left rib 2
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Second rib
-      CodeValue: '78247007'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Left
-      CodeValue: '7771000'
-      CodingSchemeDesignator: SCT
-    labelID: 59
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Left rib 3
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Third rib
-      CodeValue: '25888004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Left
-      CodeValue: '7771000'
-      CodingSchemeDesignator: SCT
-    labelID: 60
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Left rib 4
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Fourth rib
-      CodeValue: '25523003'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Left
-      CodeValue: '7771000'
-      CodingSchemeDesignator: SCT
-    labelID: 61
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Left rib 5
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Fifth rib
-      CodeValue: '15339008'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Left
-      CodeValue: '7771000'
-      CodingSchemeDesignator: SCT
-    labelID: 62
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Left rib 6
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Sixth rib
-      CodeValue: '59558009'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Left
-      CodeValue: '7771000'
-      CodingSchemeDesignator: SCT
-    labelID: 63
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Left rib 7
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Seventh rib
-      CodeValue: '24915002'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Left
-      CodeValue: '7771000'
-      CodingSchemeDesignator: SCT
-    labelID: 64
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Left rib 8
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Eighth rib
-      CodeValue: '5953002'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Left
-      CodeValue: '7771000'
-      CodingSchemeDesignator: SCT
-    labelID: 65
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Left rib 9
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Ninth rib
-      CodeValue: '22565002'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Left
-      CodeValue: '7771000'
-      CodingSchemeDesignator: SCT
-    labelID: 66
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Left rib 10
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Tenth rib
-      CodeValue: '77644006'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Left
-      CodeValue: '7771000'
-      CodingSchemeDesignator: SCT
-    labelID: 67
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Left rib 11
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Eleventh rib
-      CodeValue: '58830002'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Left
-      CodeValue: '7771000'
-      CodingSchemeDesignator: SCT
-    labelID: 68
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Left rib 12
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Twelfth rib
-      CodeValue: '43993008'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Left
-      CodeValue: '7771000'
-      CodingSchemeDesignator: SCT
-    labelID: 69
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Right rib 1
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: First rib
-      CodeValue: '48535007'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Right
-      CodeValue: '24028007'
-      CodingSchemeDesignator: SCT
-    labelID: 70
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Right rib 2
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Second rib
-      CodeValue: '78247007'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Right
-      CodeValue: '24028007'
-      CodingSchemeDesignator: SCT
-    labelID: 71
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Right rib 3
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Third rib
-      CodeValue: '25888004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Right
-      CodeValue: '24028007'
-      CodingSchemeDesignator: SCT
-    labelID: 72
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Right rib 4
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Fourth rib
-      CodeValue: '25523003'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Right
-      CodeValue: '24028007'
-      CodingSchemeDesignator: SCT
-    labelID: 73
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Right rib 5
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Fifth rib
-      CodeValue: '15339008'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Right
-      CodeValue: '24028007'
-      CodingSchemeDesignator: SCT
-    labelID: 74
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Right rib 6
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Sixth rib
-      CodeValue: '59558009'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Right
-      CodeValue: '24028007'
-      CodingSchemeDesignator: SCT
-    labelID: 75
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Right rib 7
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Seventh rib
-      CodeValue: '24915002'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Right
-      CodeValue: '24028007'
-      CodingSchemeDesignator: SCT
-    labelID: 76
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Right rib 8
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Eighth rib
-      CodeValue: '5953002'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Right
-      CodeValue: '24028007'
-      CodingSchemeDesignator: SCT
-    labelID: 77
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Right rib 9
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Ninth rib
-      CodeValue: '22565002'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Right
-      CodeValue: '24028007'
-      CodingSchemeDesignator: SCT
-    labelID: 78
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Right rib 10
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Tenth rib
-      CodeValue: '77644006'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Right
-      CodeValue: '24028007'
-      CodingSchemeDesignator: SCT
-    labelID: 79
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Right rib 11
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Eleventh rib
-      CodeValue: '58830002'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Right
-      CodeValue: '24028007'
-      CodingSchemeDesignator: SCT
-    labelID: 80
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Right rib 12
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Twelfth rib
-      CodeValue: '43993008'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Right
-      CodeValue: '24028007'
-      CodingSchemeDesignator: SCT
-    labelID: 81
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Left humerus
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Humerus
-      CodeValue: '85050009'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Left
-      CodeValue: '7771000'
-      CodingSchemeDesignator: SCT
-    labelID: 82
-    recommendedDisplayRGBValue:
-    - 95
-    - 229
-    - 185
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Right humerus
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Humerus
-      CodeValue: '85050009'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Right
-      CodeValue: '24028007'
-      CodingSchemeDesignator: SCT
-    labelID: 83
-    recommendedDisplayRGBValue:
-    - 95
-    - 229
-    - 185
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Left scapula
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Scapula
-      CodeValue: '79601000'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Left
-      CodeValue: '7771000'
-      CodingSchemeDesignator: SCT
-    labelID: 84
+    labelID: 11
     recommendedDisplayRGBValue:
     - 199
-    - 204
-    - 131
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
+    - 27
+    - 27
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
     SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Right scapula
+    SegmentDescription: Aorta
     SegmentedPropertyCategoryCodeSequence:
       CodeMeaning: Anatomical Structure
       CodeValue: '123037004'
       CodingSchemeDesignator: SCT
     SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Scapula
-      CodeValue: '79601000'
+      CodeMeaning: Aorta
+      CodeValue: '15825003'
       CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Right
-      CodeValue: '24028007'
-      CodingSchemeDesignator: SCT
-    labelID: 85
+    labelID: 7
     recommendedDisplayRGBValue:
-    - 199
-    - 204
-    - 131
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
+    - 224
+    - 97
+    - 76
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
     SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Left clavicle
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Clavicle
-      CodeValue: '51299004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Left
-      CodeValue: '7771000'
-      CodingSchemeDesignator: SCT
-    labelID: 86
-    recommendedDisplayRGBValue:
-    - 241
-    - 188
-    - 38
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Right clavicle
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Clavicle
-      CodeValue: '51299004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Right
-      CodeValue: '24028007'
-      CodingSchemeDesignator: SCT
-    labelID: 87
-    recommendedDisplayRGBValue:
-    - 241
-    - 188
-    - 38
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Left femur
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Femur
-      CodeValue: '71341001'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Left
-      CodeValue: '7771000'
-      CodingSchemeDesignator: SCT
-    labelID: 88
-    recommendedDisplayRGBValue:
-    - 130
-    - 222
-    - 207
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Right femur
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Femur
-      CodeValue: '71341001'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Right
-      CodeValue: '24028007'
-      CodingSchemeDesignator: SCT
-    labelID: 89
-    recommendedDisplayRGBValue:
-    - 130
-    - 222
-    - 207
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Left hip
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Hip
-      CodeValue: '29836001'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Left
-      CodeValue: '7771000'
-      CodingSchemeDesignator: SCT
-    labelID: 90
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Right hip
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Hip
-      CodeValue: '29836001'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Right
-      CodeValue: '24028007'
-      CodingSchemeDesignator: SCT
-    labelID: 91
-    recommendedDisplayRGBValue:
-    - 241
-    - 214
-    - 145
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Sacrum
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Sacrum
-      CodeValue: '54735007'
-      CodingSchemeDesignator: SCT
-    labelID: 92
-    recommendedDisplayRGBValue:
-    - 163
-    - 140
-    - 140
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Face
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Face
-      CodeValue: '89545001'
-      CodingSchemeDesignator: SCT
-    labelID: 93
-    recommendedDisplayRGBValue: null
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Left gluteus maximus
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Gluteus maximus muscle
-      CodeValue: '181674001'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Left
-      CodeValue: '7771000'
-      CodingSchemeDesignator: SCT
-    labelID: 94
-    recommendedDisplayRGBValue:
-    - 192
-    - 104
-    - 88
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Right gluteus maximus
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Gluteus maximus muscle
-      CodeValue: '181674001'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Right
-      CodeValue: '24028007'
-      CodingSchemeDesignator: SCT
-    labelID: 95
-    recommendedDisplayRGBValue:
-    - 192
-    - 104
-    - 88
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Left gluteus medius
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Gluteus medius muscle
-      CodeValue: '78333006'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Left
-      CodeValue: '7771000'
-      CodingSchemeDesignator: SCT
-    labelID: 96
-    recommendedDisplayRGBValue:
-    - 192
-    - 104
-    - 88
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Right gluteus medius
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Gluteus medius muscle
-      CodeValue: '78333006'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Right
-      CodeValue: '24028007'
-      CodingSchemeDesignator: SCT
-    labelID: 97
-    recommendedDisplayRGBValue:
-    - 192
-    - 104
-    - 88
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Left gluteus minimus
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Gluteus minius muscle
-      CodeValue: '75297007'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Left
-      CodeValue: '7771000'
-      CodingSchemeDesignator: SCT
-    labelID: 98
-    recommendedDisplayRGBValue:
-    - 192
-    - 104
-    - 88
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Right gluteus minimus
-    SegmentedPropertyCategoryCodeSequence:
-      CodeMeaning: Anatomical Structure
-      CodeValue: '123037004'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeCodeSequence:
-      CodeMeaning: Gluteus minius muscle
-      CodeValue: '75297007'
-      CodingSchemeDesignator: SCT
-    SegmentedPropertyTypeModifierCodeSequence:
-      CodeMeaning: Right
-      CodeValue: '24028007'
-      CodingSchemeDesignator: SCT
-    labelID: 99
-    recommendedDisplayRGBValue:
-    - 192
-    - 104
-    - 88
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
-    SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Left autochthonous back muscle
+    SegmentDescription: Left Deep muscle of back
     SegmentedPropertyCategoryCodeSequence:
       CodeMeaning: Anatomical Structure
       CodeValue: '123037004'
@@ -1818,9 +85,9 @@ segmentAttributes:
     - 192
     - 104
     - 88
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
     SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Right autochthonous back muscle
+    SegmentDescription: Right Deep muscle of back
     SegmentedPropertyCategoryCodeSequence:
       CodeMeaning: Anatomical Structure
       CodeValue: '123037004'
@@ -1838,9 +105,545 @@ segmentAttributes:
     - 192
     - 104
     - 88
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
     SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Left iliopsoas
+    SegmentDescription: Brain
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Brain
+      CodeValue: '12738006'
+      CodingSchemeDesignator: SCT
+    labelID: 50
+    recommendedDisplayRGBValue:
+    - 250
+    - 250
+    - 225
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Left Clavicle
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Clavicle
+      CodeValue: '51299004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Left
+      CodeValue: '7771000'
+      CodingSchemeDesignator: SCT
+    labelID: 86
+    recommendedDisplayRGBValue:
+    - 241
+    - 188
+    - 38
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Right Clavicle
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Clavicle
+      CodeValue: '51299004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Right
+      CodeValue: '24028007'
+      CodingSchemeDesignator: SCT
+    labelID: 87
+    recommendedDisplayRGBValue:
+    - 241
+    - 188
+    - 38
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Colon
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Colon
+      CodeValue: '71854001'
+      CodingSchemeDesignator: SCT
+    labelID: 57
+    recommendedDisplayRGBValue:
+    - 204
+    - 168
+    - 143
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Duodenum
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Duodenum
+      CodeValue: '38848004'
+      CodingSchemeDesignator: SCT
+    labelID: 56
+    recommendedDisplayRGBValue:
+    - 255
+    - 253
+    - 229
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Esophagus
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Esophagus
+      CodeValue: '32849002'
+      CodingSchemeDesignator: SCT
+    labelID: 42
+    recommendedDisplayRGBValue:
+    - 211
+    - 171
+    - 143
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Face
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Face
+      CodeValue: '89545001'
+      CodingSchemeDesignator: SCT
+    labelID: 93
+    recommendedDisplayRGBValue:
+    - 255
+    - 182
+    - 193
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Left Femur
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Femur
+      CodeValue: '71341001'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Left
+      CodeValue: '7771000'
+      CodingSchemeDesignator: SCT
+    labelID: 88
+    recommendedDisplayRGBValue:
+    - 130
+    - 222
+    - 207
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Right Femur
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Femur
+      CodeValue: '71341001'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Right
+      CodeValue: '24028007'
+      CodingSchemeDesignator: SCT
+    labelID: 89
+    recommendedDisplayRGBValue:
+    - 130
+    - 222
+    - 207
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Gallbladder
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Gallbladder
+      CodeValue: '28231008'
+      CodingSchemeDesignator: SCT
+    labelID: 4
+    recommendedDisplayRGBValue:
+    - 139
+    - 150
+    - 98
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Left Gluteus maximus muscle
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Gluteus maximus muscle
+      CodeValue: '181674001'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Left
+      CodeValue: '7771000'
+      CodingSchemeDesignator: SCT
+    labelID: 94
+    recommendedDisplayRGBValue:
+    - 192
+    - 104
+    - 88
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Right Gluteus maximus muscle
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Gluteus maximus muscle
+      CodeValue: '181674001'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Right
+      CodeValue: '24028007'
+      CodingSchemeDesignator: SCT
+    labelID: 95
+    recommendedDisplayRGBValue:
+    - 192
+    - 104
+    - 88
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Left Gluteus medius muscle
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Gluteus medius muscle
+      CodeValue: '78333006'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Left
+      CodeValue: '7771000'
+      CodingSchemeDesignator: SCT
+    labelID: 96
+    recommendedDisplayRGBValue:
+    - 192
+    - 104
+    - 88
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Right Gluteus medius muscle
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Gluteus medius muscle
+      CodeValue: '78333006'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Right
+      CodeValue: '24028007'
+      CodingSchemeDesignator: SCT
+    labelID: 97
+    recommendedDisplayRGBValue:
+    - 192
+    - 104
+    - 88
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Left Gluteus minius muscle
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Gluteus minius muscle
+      CodeValue: '75297007'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Left
+      CodeValue: '7771000'
+      CodingSchemeDesignator: SCT
+    labelID: 98
+    recommendedDisplayRGBValue:
+    - 192
+    - 104
+    - 88
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Right Gluteus minius muscle
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Gluteus minius muscle
+      CodeValue: '75297007'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Right
+      CodeValue: '24028007'
+      CodingSchemeDesignator: SCT
+    labelID: 99
+    recommendedDisplayRGBValue:
+    - 192
+    - 104
+    - 88
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Left atrium
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Left atrium
+      CodeValue: '82471001'
+      CodingSchemeDesignator: SCT
+    labelID: 45
+    recommendedDisplayRGBValue:
+    - 221
+    - 129
+    - 37
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Right atrium
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Right atrium
+      CodeValue: '73829009'
+      CodingSchemeDesignator: SCT
+    labelID: 47
+    recommendedDisplayRGBValue:
+    - 221
+    - 129
+    - 37
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Myocardium
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Myocardium
+      CodeValue: '74281007'
+      CodingSchemeDesignator: SCT
+    labelID: 44
+    recommendedDisplayRGBValue:
+    - 192
+    - 104
+    - 88
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Left ventricle of heart
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Left ventricle of heart
+      CodeValue: '87878005'
+      CodingSchemeDesignator: SCT
+    labelID: 46
+    recommendedDisplayRGBValue:
+    - 152
+    - 55
+    - 13
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Right ventricle of heart
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Right ventricle of heart
+      CodeValue: '53085002'
+      CodingSchemeDesignator: SCT
+    labelID: 48
+    recommendedDisplayRGBValue:
+    - 181
+    - 85
+    - 57
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Left Hip
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Hip
+      CodeValue: '29836001'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Left
+      CodeValue: '7771000'
+      CodingSchemeDesignator: SCT
+    labelID: 90
+    recommendedDisplayRGBValue:
+    - 241
+    - 214
+    - 145
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Right Hip
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Hip
+      CodeValue: '29836001'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Right
+      CodeValue: '24028007'
+      CodingSchemeDesignator: SCT
+    labelID: 91
+    recommendedDisplayRGBValue:
+    - 241
+    - 214
+    - 145
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Left Humerus
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Humerus
+      CodeValue: '85050009'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Left
+      CodeValue: '7771000'
+      CodingSchemeDesignator: SCT
+    labelID: 82
+    recommendedDisplayRGBValue:
+    - 95
+    - 229
+    - 185
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Right Humerus
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Humerus
+      CodeValue: '85050009'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Right
+      CodeValue: '24028007'
+      CodingSchemeDesignator: SCT
+    labelID: 83
+    recommendedDisplayRGBValue:
+    - 95
+    - 229
+    - 185
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Left Common iliac artery
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Common iliac artery
+      CodeValue: '73634005'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Left
+      CodeValue: '7771000'
+      CodingSchemeDesignator: SCT
+    labelID: 51
+    recommendedDisplayRGBValue:
+    - 217
+    - 162
+    - 48
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Right Common iliac artery
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Common iliac artery
+      CodeValue: '73634005'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Right
+      CodeValue: '24028007'
+      CodingSchemeDesignator: SCT
+    labelID: 52
+    recommendedDisplayRGBValue:
+    - 217
+    - 162
+    - 48
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Left Common iliac vein
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Common iliac vein
+      CodeValue: '46027005'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Left
+      CodeValue: '7771000'
+      CodingSchemeDesignator: SCT
+    labelID: 53
+    recommendedDisplayRGBValue:
+    - 197
+    - 174
+    - 37
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Right Common iliac vein
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Common iliac vein
+      CodeValue: '46027005'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Right
+      CodeValue: '24028007'
+      CodingSchemeDesignator: SCT
+    labelID: 54
+    recommendedDisplayRGBValue:
+    - 197
+    - 174
+    - 37
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Left Iliopsoas muscle
     SegmentedPropertyCategoryCodeSequence:
       CodeMeaning: Anatomical Structure
       CodeValue: '123037004'
@@ -1858,9 +661,9 @@ segmentAttributes:
     - 192
     - 104
     - 88
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
     SegmentAlgorithmType: AUTOMATIC
-    SegmentDescription: Right iliopsoas
+    SegmentDescription: Right Iliopsoas muscle
     SegmentedPropertyCategoryCodeSequence:
       CodeMeaning: Anatomical Structure
       CodeValue: '123037004'
@@ -1878,7 +681,823 @@ segmentAttributes:
     - 192
     - 104
     - 88
-  - SegmentAlgorithmName: TotalSegmentator v1.5.5
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Inferior vena cava
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Inferior vena cava
+      CodeValue: '64131007'
+      CodingSchemeDesignator: SCT
+    labelID: 8
+    recommendedDisplayRGBValue:
+    - 110
+    - 165
+    - 54
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Left Kidney
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Kidney
+      CodeValue: '64033007'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Left
+      CodeValue: '7771000'
+      CodingSchemeDesignator: SCT
+    labelID: 3
+    recommendedDisplayRGBValue:
+    - 212
+    - 126
+    - 151
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Right Kidney
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Kidney
+      CodeValue: '64033007'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Right
+      CodeValue: '24028007'
+      CodingSchemeDesignator: SCT
+    labelID: 2
+    recommendedDisplayRGBValue:
+    - 212
+    - 126
+    - 151
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Liver
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Liver
+      CodeValue: '10200004'
+      CodingSchemeDesignator: SCT
+    labelID: 5
+    recommendedDisplayRGBValue:
+    - 221
+    - 130
+    - 101
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Left Lower lobe of lung
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Lower lobe of lung
+      CodeValue: '90572001'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Left
+      CodeValue: '7771000'
+      CodingSchemeDesignator: SCT
+    labelID: 14
+    recommendedDisplayRGBValue:
+    - 242
+    - 150
+    - 232
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Right Lower lobe of lung
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Lower lobe of lung
+      CodeValue: '90572001'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Right
+      CodeValue: '24028007'
+      CodingSchemeDesignator: SCT
+    labelID: 17
+    recommendedDisplayRGBValue:
+    - 212
+    - 191
+    - 32
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Middle lobe of right lung
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Middle lobe of right lung
+      CodeValue: '72481006'
+      CodingSchemeDesignator: SCT
+    labelID: 16
+    recommendedDisplayRGBValue:
+    - 202
+    - 164
+    - 140
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Left Upper lobe of lung
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Upper lobe of lung
+      CodeValue: '45653009'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Left
+      CodeValue: '7771000'
+      CodingSchemeDesignator: SCT
+    labelID: 13
+    recommendedDisplayRGBValue:
+    - 112
+    - 162
+    - 95
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Right Upper lobe of lung
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Upper lobe of lung
+      CodeValue: '45653009'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Right
+      CodeValue: '24028007'
+      CodingSchemeDesignator: SCT
+    labelID: 15
+    recommendedDisplayRGBValue:
+    - 173
+    - 69
+    - 44
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Pancreas
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Pancreas
+      CodeValue: '15776009'
+      CodingSchemeDesignator: SCT
+    labelID: 10
+    recommendedDisplayRGBValue:
+    - 249
+    - 180
+    - 111
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Portal vein and splenic vein
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Portal vein and splenic vein
+      CodeValue: '110765007'
+      CodingSchemeDesignator: SCT
+    labelID: 9
+    recommendedDisplayRGBValue:
+    - 0
+    - 151
+    - 206
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Pulmonary artery
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Pulmonary artery
+      CodeValue: '81040000'
+      CodingSchemeDesignator: SCT
+    labelID: 49
+    recommendedDisplayRGBValue:
+    - 0
+    - 122
+    - 171
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Left First rib
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: First rib
+      CodeValue: '48535007'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Left
+      CodeValue: '7771000'
+      CodingSchemeDesignator: SCT
+    labelID: 58
+    recommendedDisplayRGBValue:
+    - 0
+    - 2
+    - 145
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Left Second rib
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Second rib
+      CodeValue: '78247007'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Left
+      CodeValue: '7771000'
+      CodingSchemeDesignator: SCT
+    labelID: 59
+    recommendedDisplayRGBValue:
+    - 141
+    - 186
+    - 216
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Left Third rib
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Third rib
+      CodeValue: '25888004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Left
+      CodeValue: '7771000'
+      CodingSchemeDesignator: SCT
+    labelID: 60
+    recommendedDisplayRGBValue:
+    - 30
+    - 128
+    - 188
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Left Fourth rib
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Fourth rib
+      CodeValue: '25523003'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Left
+      CodeValue: '7771000'
+      CodingSchemeDesignator: SCT
+    labelID: 61
+    recommendedDisplayRGBValue:
+    - 73
+    - 228
+    - 202
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Left Fifth rib
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Fifth rib
+      CodeValue: '15339008'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Left
+      CodeValue: '7771000'
+      CodingSchemeDesignator: SCT
+    labelID: 62
+    recommendedDisplayRGBValue:
+    - 8
+    - 82
+    - 73
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Left Sixth rib
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Sixth rib
+      CodeValue: '59558009'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Left
+      CodeValue: '7771000'
+      CodingSchemeDesignator: SCT
+    labelID: 63
+    recommendedDisplayRGBValue:
+    - 88
+    - 119
+    - 255
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Left Seventh rib
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Seventh rib
+      CodeValue: '24915002'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Left
+      CodeValue: '7771000'
+      CodingSchemeDesignator: SCT
+    labelID: 64
+    recommendedDisplayRGBValue:
+    - 109
+    - 0
+    - 145
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Left Eighth rib
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Eighth rib
+      CodeValue: '5953002'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Left
+      CodeValue: '7771000'
+      CodingSchemeDesignator: SCT
+    labelID: 65
+    recommendedDisplayRGBValue:
+    - 164
+    - 216
+    - 199
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Left Ninth rib
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Ninth rib
+      CodeValue: '22565002'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Left
+      CodeValue: '7771000'
+      CodingSchemeDesignator: SCT
+    labelID: 66
+    recommendedDisplayRGBValue:
+    - 96
+    - 188
+    - 62
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Left Tenth rib
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Tenth rib
+      CodeValue: '77644006'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Left
+      CodeValue: '7771000'
+      CodingSchemeDesignator: SCT
+    labelID: 67
+    recommendedDisplayRGBValue:
+    - 26
+    - 97
+    - 228
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Left Eleventh rib
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Eleventh rib
+      CodeValue: '58830002'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Left
+      CodeValue: '7771000'
+      CodingSchemeDesignator: SCT
+    labelID: 68
+    recommendedDisplayRGBValue:
+    - 16
+    - 164
+    - 144
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Left Twelfth rib
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Twelfth rib
+      CodeValue: '43993008'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Left
+      CodeValue: '7771000'
+      CodingSchemeDesignator: SCT
+    labelID: 69
+    recommendedDisplayRGBValue:
+    - 166
+    - 89
+    - 255
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Right First rib
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: First rib
+      CodeValue: '48535007'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Right
+      CodeValue: '24028007'
+      CodingSchemeDesignator: SCT
+    labelID: 70
+    recommendedDisplayRGBValue:
+    - 0
+    - 2
+    - 145
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Right Second rib
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Second rib
+      CodeValue: '78247007'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Right
+      CodeValue: '24028007'
+      CodingSchemeDesignator: SCT
+    labelID: 71
+    recommendedDisplayRGBValue:
+    - 141
+    - 186
+    - 216
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Right Third rib
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Third rib
+      CodeValue: '25888004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Right
+      CodeValue: '24028007'
+      CodingSchemeDesignator: SCT
+    labelID: 72
+    recommendedDisplayRGBValue:
+    - 30
+    - 128
+    - 188
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Right Fourth rib
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Fourth rib
+      CodeValue: '25523003'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Right
+      CodeValue: '24028007'
+      CodingSchemeDesignator: SCT
+    labelID: 73
+    recommendedDisplayRGBValue:
+    - 73
+    - 228
+    - 202
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Right Fifth rib
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Fifth rib
+      CodeValue: '15339008'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Right
+      CodeValue: '24028007'
+      CodingSchemeDesignator: SCT
+    labelID: 74
+    recommendedDisplayRGBValue:
+    - 8
+    - 82
+    - 73
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Right Sixth rib
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Sixth rib
+      CodeValue: '59558009'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Right
+      CodeValue: '24028007'
+      CodingSchemeDesignator: SCT
+    labelID: 75
+    recommendedDisplayRGBValue:
+    - 88
+    - 119
+    - 255
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Right Seventh rib
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Seventh rib
+      CodeValue: '24915002'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Right
+      CodeValue: '24028007'
+      CodingSchemeDesignator: SCT
+    labelID: 76
+    recommendedDisplayRGBValue:
+    - 109
+    - 0
+    - 145
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Right Eighth rib
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Eighth rib
+      CodeValue: '5953002'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Right
+      CodeValue: '24028007'
+      CodingSchemeDesignator: SCT
+    labelID: 77
+    recommendedDisplayRGBValue:
+    - 164
+    - 216
+    - 199
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Right Ninth rib
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Ninth rib
+      CodeValue: '22565002'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Right
+      CodeValue: '24028007'
+      CodingSchemeDesignator: SCT
+    labelID: 78
+    recommendedDisplayRGBValue:
+    - 96
+    - 188
+    - 62
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Right Tenth rib
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Tenth rib
+      CodeValue: '77644006'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Right
+      CodeValue: '24028007'
+      CodingSchemeDesignator: SCT
+    labelID: 79
+    recommendedDisplayRGBValue:
+    - 26
+    - 97
+    - 228
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Right Eleventh rib
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Eleventh rib
+      CodeValue: '58830002'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Right
+      CodeValue: '24028007'
+      CodingSchemeDesignator: SCT
+    labelID: 80
+    recommendedDisplayRGBValue:
+    - 16
+    - 164
+    - 144
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Right Twelfth rib
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Twelfth rib
+      CodeValue: '43993008'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Right
+      CodeValue: '24028007'
+      CodingSchemeDesignator: SCT
+    labelID: 81
+    recommendedDisplayRGBValue:
+    - 166
+    - 89
+    - 255
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Sacrum
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Sacrum
+      CodeValue: '54735007'
+      CodingSchemeDesignator: SCT
+    labelID: 92
+    recommendedDisplayRGBValue:
+    - 163
+    - 140
+    - 140
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Left Scapula
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Scapula
+      CodeValue: '79601000'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Left
+      CodeValue: '7771000'
+      CodingSchemeDesignator: SCT
+    labelID: 84
+    recommendedDisplayRGBValue:
+    - 199
+    - 204
+    - 131
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Right Scapula
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Scapula
+      CodeValue: '79601000'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeModifierCodeSequence:
+      CodeMeaning: Right
+      CodeValue: '24028007'
+      CodingSchemeDesignator: SCT
+    labelID: 85
+    recommendedDisplayRGBValue:
+    - 199
+    - 204
+    - 131
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Small Intestine
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Small Intestine
+      CodeValue: '30315005'
+      CodingSchemeDesignator: SCT
+    labelID: 55
+    recommendedDisplayRGBValue:
+    - 205
+    - 167
+    - 142
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Spleen
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Spleen
+      CodeValue: '78961009'
+      CodingSchemeDesignator: SCT
+    labelID: 1
+    recommendedDisplayRGBValue:
+    - 157
+    - 108
+    - 162
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Stomach
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Stomach
+      CodeValue: '69695003'
+      CodingSchemeDesignator: SCT
+    labelID: 6
+    recommendedDisplayRGBValue:
+    - 160
+    - 139
+    - 76
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: Trachea
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: Trachea
+      CodeValue: '44567001'
+      CodingSchemeDesignator: SCT
+    labelID: 43
+    recommendedDisplayRGBValue:
+    - 182
+    - 228
+    - 255
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
     SegmentAlgorithmType: AUTOMATIC
     SegmentDescription: Urinary bladder
     SegmentedPropertyCategoryCodeSequence:
@@ -1894,3 +1513,387 @@ segmentAttributes:
     - 222
     - 154
     - 132
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: C1 vertebra
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: C1 vertebra
+      CodeValue: '14806007'
+      CodingSchemeDesignator: SCT
+    labelID: 41
+    recommendedDisplayRGBValue:
+    - 255
+    - 186
+    - 107
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: C2 vertebra
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: C2 vertebra
+      CodeValue: '39976000'
+      CodingSchemeDesignator: SCT
+    labelID: 40
+    recommendedDisplayRGBValue:
+    - 193
+    - 99
+    - 36
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: C3 vertebra
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: C3 vertebra
+      CodeValue: '113205007'
+      CodingSchemeDesignator: SCT
+    labelID: 39
+    recommendedDisplayRGBValue:
+    - 167
+    - 117
+    - 152
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: C4 vertebra
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: C4 vertebra
+      CodeValue: '5329002'
+      CodingSchemeDesignator: SCT
+    labelID: 38
+    recommendedDisplayRGBValue:
+    - 250
+    - 14
+    - 116
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: C5 vertebra
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: C5 vertebra
+      CodeValue: '36978003'
+      CodingSchemeDesignator: SCT
+    labelID: 37
+    recommendedDisplayRGBValue:
+    - 118
+    - 40
+    - 9
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: C6 vertebra
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: C6 vertebra
+      CodeValue: '36054005'
+      CodingSchemeDesignator: SCT
+    labelID: 36
+    recommendedDisplayRGBValue:
+    - 253
+    - 134
+    - 125
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: C7 vertebra
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: C7 vertebra
+      CodeValue: '87391001'
+      CodingSchemeDesignator: SCT
+    labelID: 35
+    recommendedDisplayRGBValue:
+    - 255
+    - 0
+    - 0
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: L1 vertebra
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: L1 vertebra
+      CodeValue: '66794005'
+      CodingSchemeDesignator: SCT
+    labelID: 22
+    recommendedDisplayRGBValue:
+    - 255
+    - 255
+    - 1
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: L2 vertebra
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: L2 vertebra
+      CodeValue: '14293000'
+      CodingSchemeDesignator: SCT
+    labelID: 21
+    recommendedDisplayRGBValue:
+    - 255
+    - 144
+    - 32
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: L3 vertebra
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: L3 vertebra
+      CodeValue: '36470004'
+      CodingSchemeDesignator: SCT
+    labelID: 20
+    recommendedDisplayRGBValue:
+    - 157
+    - 126
+    - 0
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: L4 vertebra
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: L4 vertebra
+      CodeValue: '11994002'
+      CodingSchemeDesignator: SCT
+    labelID: 19
+    recommendedDisplayRGBValue:
+    - 255
+    - 255
+    - 128
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: L5 vertebra
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: L5 vertebra
+      CodeValue: '49668003'
+      CodingSchemeDesignator: SCT
+    labelID: 18
+    recommendedDisplayRGBValue:
+    - 117
+    - 78
+    - 55
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: T1 vertebra
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: T1 vertebra
+      CodeValue: '64864005'
+      CodingSchemeDesignator: SCT
+    labelID: 34
+    recommendedDisplayRGBValue:
+    - 0
+    - 2
+    - 145
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: T2 vertebra
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: T2 vertebra
+      CodeValue: '53733008'
+      CodingSchemeDesignator: SCT
+    labelID: 33
+    recommendedDisplayRGBValue:
+    - 141
+    - 186
+    - 216
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: T3 vertebra
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: T3 vertebra
+      CodeValue: '1626008'
+      CodingSchemeDesignator: SCT
+    labelID: 32
+    recommendedDisplayRGBValue:
+    - 30
+    - 128
+    - 188
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: T4 vertebra
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: T4 vertebra
+      CodeValue: '73071006'
+      CodingSchemeDesignator: SCT
+    labelID: 31
+    recommendedDisplayRGBValue:
+    - 73
+    - 228
+    - 202
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: T5 vertebra
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: T5 vertebra
+      CodeValue: '56401006'
+      CodingSchemeDesignator: SCT
+    labelID: 30
+    recommendedDisplayRGBValue:
+    - 8
+    - 82
+    - 73
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: T6 vertebra
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: T6 vertebra
+      CodeValue: '45296009'
+      CodingSchemeDesignator: SCT
+    labelID: 29
+    recommendedDisplayRGBValue:
+    - 88
+    - 119
+    - 255
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: T7 vertebra
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: T7 vertebra
+      CodeValue: '62487009'
+      CodingSchemeDesignator: SCT
+    labelID: 28
+    recommendedDisplayRGBValue:
+    - 109
+    - 0
+    - 145
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: T8 vertebra
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: T8 vertebra
+      CodeValue: '11068009'
+      CodingSchemeDesignator: SCT
+    labelID: 27
+    recommendedDisplayRGBValue:
+    - 164
+    - 216
+    - 199
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: T9 vertebra
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: T9 vertebra
+      CodeValue: '82687006'
+      CodingSchemeDesignator: SCT
+    labelID: 26
+    recommendedDisplayRGBValue:
+    - 96
+    - 188
+    - 62
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: T10 vertebra
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: T10 vertebra
+      CodeValue: '7610001'
+      CodingSchemeDesignator: SCT
+    labelID: 25
+    recommendedDisplayRGBValue:
+    - 26
+    - 97
+    - 228
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: T11 vertebra
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: T11 vertebra
+      CodeValue: '12989004'
+      CodingSchemeDesignator: SCT
+    labelID: 24
+    recommendedDisplayRGBValue:
+    - 16
+    - 164
+    - 144
+  - SegmentAlgorithmName: TotalSegmentator v1.5.6
+    SegmentAlgorithmType: AUTOMATIC
+    SegmentDescription: T12 vertebra
+    SegmentedPropertyCategoryCodeSequence:
+      CodeMeaning: Anatomical Structure
+      CodeValue: '123037004'
+      CodingSchemeDesignator: SCT
+    SegmentedPropertyTypeCodeSequence:
+      CodeMeaning: T12 vertebra
+      CodeValue: '23215003'
+      CodingSchemeDesignator: SCT
+    labelID: 23
+    recommendedDisplayRGBValue:
+    - 166
+    - 89
+    - 255
