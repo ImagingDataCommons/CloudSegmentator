@@ -29,7 +29,7 @@ workflow TotalSegmentator {
    String totalSegmentatorGpuType = 'nvidia-tesla-t4'
    
    #Compute Datacenter Zones
-   String totalSegmentatorZones = "us-west4-a us-west4-b europe-west2-a europe-west2-b asia-east1-a asia-east1-c australia-southeast1-a australia-southeast1-c asia-northeast1-a asia-northeast1-c"
+   String totalSegmentatorZones = "us-west4-a us-west4-b us-east4-a us-east4-b us-east4-c europe-west2-a europe-west2-b asia-northeast1-a asia-northeast1-c asia-southeast1-a asia-southeast1-b asia-southeast1-c europe-west4-a europe-west4-b europe-west4-c"
    
  }
  #calling totalSegmentatorEndtoEnd Task with the inputs

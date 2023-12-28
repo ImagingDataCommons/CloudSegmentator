@@ -39,7 +39,7 @@ workflow TotalSegmentator {
    String downloadAndConvertZones = "us-central1-a us-central1-b us-central1-c us-central1-f"
    String inferenceTotalSegmentatorZones = "us-central1-a us-central1-b us-central1-c us-central1-f"
    #String dicomsegAndRadiomicsSR_Zones = "us-central1-a us-central1-b us-central1-c us-central1-f us-east1-b us-east1-c us-east1-d us-east5-a us-east5-b us-east5-c us-west1-a us-west1-b us-west1-c us-west4-a us-west4-b us-west4-c"
-   String dicomsegAndRadiomicsSR_Zones = "us-central1-a us-central1-b us-central1-c us-central1-f us-east1-b us-east1-c us-east1-d us-west1-a us-west1-b us-west1-c"
+   String dicomsegAndRadiomicsSR_Zones = "asia-northeast2-a asia-northeast2-b asia-northeast2-c europe-west4-a europe-west4-b europe-west4-c europe-north1-a europe-north1-b europe-north1-c us-central1-a us-central1-b us-central1-c us-central1-f us-east1-b us-east1-c us-east1-d us-west1-a us-west1-b us-west1-c"
 
  }
  #calling Papermill Task with the inputs
