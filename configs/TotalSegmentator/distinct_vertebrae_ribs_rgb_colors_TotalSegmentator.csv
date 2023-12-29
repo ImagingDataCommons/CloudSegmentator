@@ -1,0 +1,53 @@
+SegmentDescription,recommendedDisplayRGBValue,totalseg_labelname
+Vertebrae C1,"[255, 186, 107]",vertebrae_C1
+Vertebrae C2,"[193, 99, 36]",vertebrae_C2
+Vertebrae C3,"[167, 117, 152]",vertebrae_C3
+Vertebrae C4,"[250, 14, 116]",vertebrae_C4
+Vertebrae C5,"[118, 40, 9]",vertebrae_C5
+Vertebrae C6,"[253, 134, 125]",vertebrae_C6
+Vertebrae C7,"[255, 0, 0]",vertebrae_C7
+Vertebrae T1,"[0, 2, 145]",vertebrae_T1
+Vertebrae T2,"[141, 186, 216]",vertebrae_T2
+Vertebrae T3,"[30, 128, 188]",vertebrae_T3
+Vertebrae T4,"[73, 228, 202]",vertebrae_T4
+Vertebrae T5,"[8, 82, 73]",vertebrae_T5
+Vertebrae T6,"[88, 119, 255]",vertebrae_T6
+Vertebrae T7,"[109, 0, 145]",vertebrae_T7
+Vertebrae T8,"[164, 216, 199]",vertebrae_T8
+Vertebrae T9,"[96, 188, 62]",vertebrae_T9
+Vertebrae T10,"[26, 97, 228]",vertebrae_T10
+Vertebrae T11,"[16, 164, 144]",vertebrae_T11
+Vertebrae T12,"[166, 89, 255]",vertebrae_T12
+Vertebrae L1,"[255, 255, 1]",vertebrae_L1
+Vertebrae L2,"[255, 144, 32]",vertebrae_L2
+Vertebrae L3,"[157, 126, 0]",vertebrae_L3
+Vertebrae L4,"[255, 255, 128]",vertebrae_L4
+Vertebrae L5,"[117, 78, 55]",vertebrae_L5
+Left rib 1,"[0, 2, 145]",rib_left_1
+Left rib 2,"[141, 186, 216]",rib_left_2
+Left rib 3,"[30, 128, 188]",rib_left_3
+Left rib 4,"[73, 228, 202]",rib_left_4
+Left rib 5,"[8, 82, 73]",rib_left_5
+Left rib 6,"[88, 119, 255]",rib_left_6
+Left rib 7,"[109, 0, 145]",rib_left_7
+Left rib 8,"[164, 216, 199]",rib_left_8
+Left rib 9,"[96, 188, 62]",rib_left_9
+Left rib 10,"[26, 97, 228]",rib_left_10
+Left rib 11,"[16, 164, 144]",rib_left_11
+Left rib 12,"[166, 89, 255]",rib_left_12
+Right rib 1,"[0, 2, 145]",rib_right_1
+Right rib 2,"[141, 186, 216]",rib_right_2
+Right rib 3,"[30, 128, 188]",rib_right_3
+Right rib 4,"[73, 228, 202]",rib_right_4
+Right rib 5,"[8, 82, 73]",rib_right_5
+Right rib 6,"[88, 119, 255]",rib_right_6
+Right rib 7,"[109, 0, 145]",rib_right_7
+Right rib 8,"[164, 216, 199]",rib_right_8
+Right rib 9,"[96, 188, 62]",rib_right_9
+Right rib 10,"[26, 97, 228]",rib_right_10
+Right rib 11,"[16, 164, 144]",rib_right_11
+Right rib 12,"[166, 89, 255]",rib_right_12
+Stomach,"[160, 139, 76]",stomach
+Right lower lung lobe,"[212, 191, 32]",lung_lower_lobe_right
+Left atrium,"[221, 129, 37]",heart_atrium_left
+Right atrium,"[221, 129, 37]",heart_atrium_right
