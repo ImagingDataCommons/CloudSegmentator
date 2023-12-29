@@ -105,7 +105,7 @@ task downloadDicomAndConvertAndInferenceTotalSegmentator{
  }
 
  command {
-   wget https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/notebooks/Notebooks/Totalsegmentator/downloadDicomAndConvertAndInferenceTotalSegmentatorNotebook.ipynb
+   wget https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/downloadDicomAndConvertAndInferenceTotalSegmentatorNotebook.ipynb
    set -e
    papermill --log-level='INFO' -p converterType ~{dicomToNiftiConverterTool}  -p csvFilePath ~{seriesInstanceS5cmdUrls} downloadDicomAndConvertAndInferenceTotalSegmentatorNotebook.ipynb downloadDicomAndConvertAndInferenceTotalSegmentatorOutputJupyterNotebook.ipynb
  }
@@ -149,7 +149,7 @@ task dicomsegAndRadiomicsSR{
     File inferenceZipFile
  }
  command {
-   wget https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/notebooks/Notebooks/Totalsegmentator/dicomsegAndRadiomicsSR_Notebook.ipynb
+   wget https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/dicomsegAndRadiomicsSR_Notebook.ipynb
    
    set -o xtrace
    # For any command failures in the rest of this script, return the error.
