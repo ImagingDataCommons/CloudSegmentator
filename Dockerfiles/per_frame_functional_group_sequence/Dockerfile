@@ -10,10 +10,10 @@ LABEL BASE_DOCKER_IMAGE="python:3.11.2-slim-buster"\
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    lz4=1.8.3-1+deb10u1\
+    lz4\
     curl\
-    wget&&\
-    rm -rf /var/lib/apt/lists/*
+    wget\
+    && rm -rf /var/lib/apt/lists/*
 RUN pip3 install --no-cache-dir\   
     db-dtypes\
     ipykernel==6.22.0\    
