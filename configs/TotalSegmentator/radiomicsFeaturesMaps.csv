@@ -1,13 +1,13 @@
 ,feature,pyradiomics_feature_class,pyradiomics_notes,quantity_CodingSchemeDesignator,quantity_CodeValue,quantity_CodeMeaning,units_CodingSchemeDesignator,units_CodeValue,units_CodeMeaning
 0,Elongation,shape,,IBSI,Q3CK,Elongation,UCUM,1,no units
 1,Flatness,shape,,IBSI,N17B,Flatness,UCUM,1,no units
-2,LeastAxisLength,shape,,IBSI,7J51,Least Axis in 3D Length​,UCUM,mm,millimeter
+2,LeastAxisLength,shape,,IBSI,7J51,Least Axis in 3D Length,UCUM,mm,millimeter
 3,MajorAxisLength,shape,,IBSI,TDIC,Major Axis in 3D Length,UCUM,mm,millimeter
 4,Maximum3DDiameter,shape,https://pyradiomics.readthedocs.io/en/latest/features.html#radiomics.shape.RadiomicsShape.calculateDiameters,IBSI,L0JK,Maximum 3D Diameter of a Mesh,UCUM,mm,millimeter
 5,MeshVolume,shape,,IBSI,RNU0,Volume of Mesh,UCUM,mm3,cubic millimeter
 6,MinorAxisLength,shape,,IBSI,P9VJ,Minor Axis in 3D Length,UCUM,mm,millimeter
 7,Sphericity,shape,,IBSI,QCFX,Sphericity,UCUM,1,no units
-8,SurfaceArea,shape,Calculated using Marching Cubes,IBSI,C0JK,Surface Area of Mesh​,UCUM,mm2,square millimeter
+8,SurfaceArea,shape,Calculated using Marching Cubes,IBSI,C0JK,Surface Area of Mesh,UCUM,mm2,square millimeter
 9,SurfaceVolumeRatio,shape,,IBSI,2PR5,Surface to Volume Ratio,UCUM,/mm,per millimeter
 10,VoxelVolume,shape,,IBSI,YEKZ,Volume from Voxel Summation,UCUM,mm3,cubic millimeter
 11,10Percentile,firstorder,,IBSI,QG58,10th percentile,UCUM,[hnsf'U],Hounsfield Unit
