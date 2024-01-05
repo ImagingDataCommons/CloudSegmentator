@@ -11,5 +11,7 @@ Icon
 # Thumbnails
 ._*
 
-# Ignore all YAML files in the .github/workflows directory
-.github/workflows/**.yml
+#gcp service account keys
+gha-creds-*.json
+
+

@@ -5,17 +5,15 @@ ARG GIT_HASH
 LABEL PYTHON_BASE_DOCKER_IMAGE="python:3.11.2-slim-buster"\
       MAINTAINER="IDC <vthiriveedhi@mgb.org>" \
       GIT_HASH=${GIT_HASH}\
-      PATH_TO_DOCKER_FILE="https://github.com/imagingdatacommons/Cloud-Resources-Workflows/blob/${GIT_HASH}/Dockerfiles/dicom_seg_pyradiomics_sr/Dockerfile"\
+      PATH_TO_DOCKER_FILE="https://github.com/imagingdatacommons/CloudSegmentator/blob/${GIT_HASH}/workflows/TotalSegmentator/Dockerfiles/dicom_seg_pyradiomics_sr/Dockerfile"\
       IMAGE_NAME_ON_DOCKERHUB="imagingdatacommons/dicom_seg_pyradiomics_sr"
 
 # Install some basic system utilities
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     build-essential\
-    #dcm2niix\
     lz4\
     pigz\
-    #plastimatch=1.7.4+dfsg.1-2\
     python3-dev\
     unzip\
     wget\
@@ -24,6 +22,7 @@ RUN apt-get update \
 
 # Install Jupyter utilities
 RUN pip3 install --no-cache-dir \
+    idc-index==0.2.8\
     matplotlib==3.7.1\
     ipykernel==6.22.0\
     ipython==8.11.0\
@@ -41,7 +40,7 @@ RUN pip3 install --no-cache-dir \
 # Download and install s5cmd for interacting with cloud storage
 ENV S5CMD_URL="https://github.com/peak/s5cmd/releases/download/v2.2.2/s5cmd_2.2.2_Linux-64bit.tar.gz"
 ENV S5CMD_FN="s5cmd_2.2.2_Linux-64bit.tar.gz"
-RUN wget ${S5CMD_URL} \
+RUN wget -q ${S5CMD_URL} 2>&1 \
   && tar -xvzf ${S5CMD_FN} \
   && rm ${S5CMD_FN} \
   && mv s5cmd /usr/local/bin/s5cmd
@@ -49,7 +48,7 @@ RUN wget ${S5CMD_URL} \
 # Download dcmqi for itkimage2segimage
 ENV DCMQI_URL="https://github.com/QIICR/dcmqi/releases/download/v1.3.0/dcmqi-1.3.0-linux.tar.gz"
 ENV DCMQI_FN="dcmqi-1.3.0-linux.tar.gz"
-RUN wget ${DCMQI_URL} \
+RUN wget -q ${DCMQI_URL} 2>&1 \
   && tar -xvzf ${DCMQI_FN} \
   && rm ${DCMQI_FN} \
   && mv dcmqi-1.3.0-linux/bin/* /bin
@@ -58,7 +57,7 @@ RUN wget ${DCMQI_URL} \
 #Install dcm2niix
 ENV DCM2NIIX_URL="https://github.com/rordenlab/dcm2niix/releases/download/v1.0.20230411/dcm2niix_lnx.zip"
 ENV DCM2NIIX_FN="dcm2niix_lnx.zip"
-RUN wget ${DCM2NIIX_URL} \
+RUN wget -q ${DCM2NIIX_URL} 2>&1 \
   && unzip ${DCM2NIIX_FN} \
   && rm ${DCM2NIIX_FN} \
   && mv dcm2niix /usr/local/bin/dcm2niix

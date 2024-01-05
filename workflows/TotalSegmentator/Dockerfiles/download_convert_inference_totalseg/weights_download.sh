@@ -14,7 +14,7 @@ weights_dir="${TOTALSEG_WEIGHTS_PATH}/nnUNet/3d_fullres/"
 for url in "${weights_urls[@]}"; do
   fn=$(basename $url)
   echo "Downloading $fn from $url to $weights_dir"
-  wget --directory-prefix $weights_dir $url
+  wget -q --directory-prefix $weights_dir $url 2>&1
   unzip $weights_dir$fn -d $weights_dir
   rm $weights_dir$fn
 done

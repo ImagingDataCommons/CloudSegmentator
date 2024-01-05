@@ -2,13 +2,22 @@ name: dicom_seg_pyradiomics_sr
 
 on:
   push:
-    branches: [ "main" ]
+    branches: 
+      - "main" 
+    paths:
+      - ".github/workflows/dicom_seg_pyradiomics_sr.yml"
+      - "workflows/TotalSegmentator/Dockerfiles/dicom_seg_pyradiomics_sr/Dockerfile"
+    tags:
+      - 'v*'
   pull_request:
-    branches: [ "main" ]
-  workflow_dispatch: 
+    branches:
+      - "main" 
+    paths:
+      - ".github/workflows/dicom_seg_pyradiomics_sr.yml"
+      - "workflows/TotalSegmentator/Dockerfiles/dicom_seg_pyradiomics_sr/Dockerfile"
+  workflow_dispatch:  
     
 jobs:
-
   build:
     runs-on: ubuntu-latest
     steps:
@@ -26,35 +35,29 @@ jobs:
           COMMIT_HASH=$(git rev-parse HEAD)
           echo "COMMIT_HASH=$COMMIT_HASH" >> $GITHUB_ENV
 
-      - name: Build Docker image
-        uses: docker/build-push-action@v5
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v5
         with:
-          context: .
-          file: ./Dockerfiles/dicom_seg_pyradiomics_sr/Dockerfile
-          tags: imagingdatacommons/dicom_seg_pyradiomics_sr
-          build-args: |
-            GIT_HASH=${{ env.COMMIT_HASH }}
-        env:
-          COMMIT_HASH: ${{ env.COMMIT_HASH }}
+          images: |
+           imagingdatacommons/dicom_seg_pyradiomics_sr
 
       - name: Login to Docker Hub
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.event_name != 'pull_request'
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Push Docker image to Docker Hub 
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'           
+      - name: Build and Push Docker image to Docker Hub 
+        if:           
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./Dockerfiles/dicom_seg_pyradiomics_sr/Dockerfile
-          push: true
-          tags: |
-            imagingdatacommons/dicom_seg_pyradiomics_sr
+          file: ./workflows/TotalSegmentator/Dockerfiles/dicom_seg_pyradiomics_sr/Dockerfile
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
           build-args: |
             GIT_HASH=${{ env.COMMIT_HASH }}
         env:
           COMMIT_HASH: ${{ env.COMMIT_HASH }}
-      

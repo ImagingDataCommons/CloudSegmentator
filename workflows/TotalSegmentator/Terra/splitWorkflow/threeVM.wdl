@@ -5,15 +5,14 @@ workflow TotalSegmentator {
    #all the inputs entered here but not hardcoded will appear in the UI as required fields
    #And the hardcoded inputs will appear as optional to override the values entered here
    #File yamlParameters
-   File seriesInstanceS5cmdUrls
 
    #Parameters
-   String dicomToNiftiConverterTool
+   String yamlListOfSeriesInstanceUIDs
 
    #Docker Images for each task
-   String downloadDicomAndConvertDocker = "imagingdatacommons/download_convert"
-   String inferenceTotalSegmentatorDocker = "imagingdatacommons/inference_totalseg"
-   String dicomsegAndRadiomicsSR_Docker = "imagingdatacommons/radiomics"
+   String downloadDicomAndConvertDocker = "imagingdatacommons/download_convert:main"
+   String inferenceTotalSegmentatorDocker = "imagingdatacommons/inference_totalseg:main"
+   String dicomsegAndRadiomicsSR_Docker = "imagingdatacommons/dicom_seg_pyradiomics_sr:main"
 
    #Preemptible retries
    Int downloadAndConvertPreemptibleTries = 3
@@ -25,7 +24,7 @@ workflow TotalSegmentator {
    Int inferenceTotalSegmentatorCpus = 2
    Int dicomsegAndRadiomicsSR_Cpus = 4
 
-   Int downloadAndConvertRAM = 1
+   Int downloadAndConvertRAM = 2
    Int inferenceTotalSegmentatorRAM = 13
    Int dicomsegAndRadiomicsSR_RAM = 16
 
@@ -46,8 +45,7 @@ workflow TotalSegmentator {
  call downloadAndConvert{
    input :
         #yamlParameters = yamlParameters,
-        dicomToNiftiConverterTool = dicomToNiftiConverterTool,
-        seriesInstanceS5cmdUrls = seriesInstanceS5cmdUrls,
+        yamlListOfSeriesInstanceUIDs = yamlListOfSeriesInstanceUIDs,
         downloadDicomAndConvertDocker = downloadDicomAndConvertDocker,
         downloadAndConvertPreemptibleTries = downloadAndConvertPreemptibleTries,
         downloadAndConvertCpus = downloadAndConvertCpus,
@@ -57,7 +55,7 @@ workflow TotalSegmentator {
  }
  call inferenceTotalSegmentator{
    input :
-     dicomToNiftiConverterTool = dicomToNiftiConverterTool,
+     yamlListOfSeriesInstanceUIDs = yamlListOfSeriesInstanceUIDs,
      inferenceTotalSegmentatorDocker = inferenceTotalSegmentatorDocker ,
      inferenceTotalSegmentatorPreemptibleTries = inferenceTotalSegmentatorPreemptibleTries ,
      inferenceTotalSegmentatorCpus = inferenceTotalSegmentatorCpus ,
@@ -70,7 +68,6 @@ workflow TotalSegmentator {
  }
  call dicomsegAndRadiomicsSR{
    input:
-    seriesInstanceS5cmdUrls = seriesInstanceS5cmdUrls,
     dicomsegAndRadiomicsSR_Docker = dicomsegAndRadiomicsSR_Docker,
     dicomsegAndRadiomicsSR_PreemptibleTries = dicomsegAndRadiomicsSR_PreemptibleTries,
     dicomsegAndRadiomicsSR_Cpus = dicomsegAndRadiomicsSR_Cpus,
@@ -101,7 +98,8 @@ workflow TotalSegmentator {
    File? dcm2niix_errors = downloadAndConvert.dcm2niix_errors
    File? totalsegmentatorErrors = inferenceTotalSegmentator.totalsegmentatorErrors
    File? dicomsegAndRadiomicsSR_Errors = dicomsegAndRadiomicsSR.dicomsegAndRadiomicsSR_SRErrors
-   #File inferenceMetaData = inferenceTotalSegmentator.inferenceMetaData
+   File? downloadDicomAndConvert_modality_errors = downloadAndConvert.downloadDicomAndConvert_modality_errors
+   File? dicomsegAndRadiomicsSR_modality_errors = dicomsegAndRadiomicsSR.dicomsegAndRadiomicsSR_modality_errors
  }
 
 }
@@ -109,8 +107,7 @@ workflow TotalSegmentator {
 task downloadAndConvert {
  input {
     #File yamlParameters
-    String dicomToNiftiConverterTool
-    File seriesInstanceS5cmdUrls
+    String yamlListOfSeriesInstanceUIDs
     String downloadDicomAndConvertDocker
     Int downloadAndConvertPreemptibleTries 
     Int downloadAndConvertCpus 
@@ -119,9 +116,9 @@ task downloadAndConvert {
     String downloadAndConvertCpuFamily
  }
  command {
-   wget https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/downloadDicomAndConvertNotebook.ipynb
+   wget https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/TotalSegmentator/Notebooks/downloadDicomAndConvertNotebook.ipynb
    set -e
-   papermill -p converterType ~{dicomToNiftiConverterTool} -p csvFilePath ~{seriesInstanceS5cmdUrls} downloadDicomAndConvertNotebook.ipynb downloadAndConvertOutputJupyterNotebook.ipynb 
+   papermill downloadDicomAndConvertNotebook.ipynb downloadAndConvertOutputJupyterNotebook.ipynb -y "~{yamlListOfSeriesInstanceUIDs}"
  }
  #Run time attributes:
  runtime {
@@ -132,7 +129,7 @@ task downloadAndConvert {
    memory: downloadAndConvertRAM + " GiB"
    disks: "local-disk 10 HDD"  #ToDo: Dynamically calculate disk space using the no of bytes of yaml file size. 64 characters is the max size I found in a seriesInstanceUID
    preemptible: downloadAndConvertPreemptibleTries
-   maxRetries: 3
+   maxRetries: 1
  }
   
  output {
@@ -140,6 +137,7 @@ task downloadAndConvert {
    File downloadDicomAndConvertUsageMetrics = "downloadDicomAndConvertUsageMetrics.lz4"
    File downloadDicomAndConvertNiftiFiles = "downloadDicomAndConvertNiftiFiles.tar.lz4"
    File? dcm2niix_errors = "dcm2niix_errors.csv"
+   File? downloadDicomAndConvert_modality_errors = "modality_error_file.txt"
  }
 }
 
@@ -149,7 +147,7 @@ task inferenceTotalSegmentator {
    #Just like the workflow inputs, any new inputs entered here but not hardcoded will appear in the UI as required fields
    #And the hardcoded inputs will appear as optional to override the values entered here
    # Command parameters
-    String dicomToNiftiConverterTool
+    String yamlListOfSeriesInstanceUIDs
     String inferenceTotalSegmentatorDocker 
     Int inferenceTotalSegmentatorPreemptibleTries 
     Int inferenceTotalSegmentatorCpus 
@@ -163,9 +161,9 @@ task inferenceTotalSegmentator {
  }
 
  command {
-   wget https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/inferenceTotalSegmentatorNotebook.ipynb
+   wget https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/TotalSegmentator/Notebooks/inferenceTotalSegmentatorNotebook.ipynb
    set -e
-   papermill -p converterType ~{dicomToNiftiConverterTool}  -p niftiFilePath ~{NiftiFiles} inferenceTotalSegmentatorNotebook.ipynb inferenceOutputJupyterNotebook.ipynb
+   papermill -p niftiFilePath ~{NiftiFiles} inferenceTotalSegmentatorNotebook.ipynb inferenceOutputJupyterNotebook.ipynb
  }
  #Run time attributes:
  runtime {
@@ -176,7 +174,7 @@ task inferenceTotalSegmentator {
    memory: inferenceTotalSegmentatorRAM + " GiB"
    disks: "local-disk 10 HDD"  #ToDo: Dynamically calculate disk space using the no of bytes of yaml file size. 64 characters is the max size I found in a seriesInstanceUID
    preemptible: inferenceTotalSegmentatorPreemptibleTries
-   maxRetries: 3
+   maxRetries: 1
    gpuType: inferenceTotalSegmentatorGpuType
    gpuCount: 1
  }
@@ -195,7 +193,6 @@ task dicomsegAndRadiomicsSR{
  input {
    #Just like the workflow inputs, any new inputs entered here but not hardcoded will appear in the UI as required fields
    #And the hardcoded inputs will appear as optional to override the values entered here
-    File seriesInstanceS5cmdUrls 
     String dicomsegAndRadiomicsSR_Docker
     Int dicomsegAndRadiomicsSR_PreemptibleTries 
     Int dicomsegAndRadiomicsSR_Cpus 
@@ -206,9 +203,9 @@ task dicomsegAndRadiomicsSR{
     File inferenceZipFile
  }
  command {
-   wget https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/dicomsegAndRadiomicsSR_Notebook.ipynb
+   wget https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/TotalSegmentator/Notebooks/dicomsegAndRadiomicsSR_Notebook.ipynb
    set -e
-   papermill -p csvFilePath ~{seriesInstanceS5cmdUrls} -p inferenceNiftiFilePath ~{inferenceZipFile}  dicomsegAndRadiomicsSR_Notebook.ipynb dicomsegAndRadiomicsSR_OutputJupyterNotebook.ipynb || (>&2 echo "Killed" && exit 1)
+   papermill -p inferenceNiftiFilePath ~{inferenceZipFile}  dicomsegAndRadiomicsSR_Notebook.ipynb dicomsegAndRadiomicsSR_OutputJupyterNotebook.ipynb || (>&2 echo "Killed" && exit 1)
  }
 
  #Run time attributes:
@@ -220,7 +217,7 @@ task dicomsegAndRadiomicsSR{
    memory: dicomsegAndRadiomicsSR_RAM + " GiB"
    disks: "local-disk 10 HDD"  #ToDo: Dynamically calculate disk space using the no of bytes of yaml file size. 64 characters is the max size I found in a seriesInstanceUID
    preemptible: dicomsegAndRadiomicsSR_PreemptibleTries
-   maxRetries: 3
+   maxRetries: 1
  }
  output {
    File dicomsegAndRadiomicsSR_OutputJupyterNotebook = "dicomsegAndRadiomicsSR_OutputJupyterNotebook.ipynb"
@@ -231,6 +228,6 @@ task dicomsegAndRadiomicsSR{
    File dicomsegAndRadiomicsSR_UsageMetrics = "dicomsegAndRadiomicsSR_UsageMetrics.lz4"
    File? dicomsegAndRadiomicsSR_RadiomicsErrors = "radiomics_error_file.txt"
    File? dicomsegAndRadiomicsSR_SRErrors = "sr_error_file.txt"   
-   
+   File? dicomsegAndRadiomicsSR_modality_errors = "modality_error_file.txt"
  }
 }

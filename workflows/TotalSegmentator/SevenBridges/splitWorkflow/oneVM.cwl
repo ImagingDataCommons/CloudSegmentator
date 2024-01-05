@@ -4,14 +4,10 @@ label: TotalSegmentatorOneVmWorkflow
 $namespaces:
   sbg: 'https://sevenbridges.com'
 inputs:
-  - id: s5cmdUrls
-    type: File
+  - id: yamlListOfSeriesInstanceUIDs
+    type: String
     'sbg:x': 0
     'sbg:y': 481.5
-  - id: dicomToNiftiConverterTool
-    type: string
-    'sbg:x': 0
-    'sbg:y': 588.5
 outputs:
   - id: structuredReportsDICOM
     outputSource:
@@ -88,14 +84,18 @@ outputs:
     type: File?
     'sbg:x': 888.5424194335938
     'sbg:y': 107
+  - id: modality_errors
+    outputSource:
+      - TotalSegmentatorOneVmWorkflow/modality_errors
+    'sbg:fileTypes': TXT
+    type: File?
+    'sbg:x': 888.5424194335938
+    'sbg:y': 107
 steps:
   - id: TotalSegmentatorOneVmWorkflow
     in:
-      - id: s5cmdUrls
-        source: s5cmdUrls
-      - id: dicomToNiftiConverterTool
-        source: dicomToNiftiConverterTool
-        valueFrom: '"dcm2niix"'
+      - id: yamlListOfSeriesInstanceUIDs
+        source: yamlListOfSeriesInstanceUIDs
     out:
       - id: endToEndTotalSegmentatorOutputJupyterNotebook
       - id: dicomsegAndRadiomicsSR_CompressedFiles
@@ -116,7 +116,7 @@ steps:
       id: _total_segmentator_one_vm_workflow
       baseCommand:
         - wget
-        - https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/endToEndTotalSegmentatorNotebook.ipynb
+        - https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/Totalsegmentator/Notebooks/endToEndTotalSegmentatorNotebook.ipynb
         - '&&'
         - set
         - '-e'
@@ -209,7 +209,7 @@ steps:
         - class: ShellCommandRequirement
         - class: LoadListingRequirement
         - class: DockerRequirement
-          dockerPull: imagingdatacommons/download_convert_inference_totalseg_radiomics
+          dockerPull: imagingdatacommons/download_convert_inference_totalseg_radiomics:main
         - class: InlineJavascriptRequirement
       hints:
         - class: 'sbg:AWSInstanceType'

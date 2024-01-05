@@ -2,36 +2,34 @@ version: 1.2
 workflows:
    - name: TotalSegmentatortwoVmWorkflowOnTerra
      subclass: WDL
-     primaryDescriptorPath: /Terra/TotalSegmentator/splitWorkflow/twoVM.wdl
+     primaryDescriptorPath: /workflows/TotalSegmentator/Terra/splitWorkflow/twoVM.wdl
      testParameterFiles:
-     -  /sampleManifests/batch_1.csv
+     -  /workflows/TotalSegmentator/Docs/sampleManifests/terra_data_table_manifest_2024_01_09_20_38.tsv
    - name: TotalSegmentatorthreeVmWorkflowOnTerra
      subclass: WDL
-     primaryDescriptorPath: /Terra/TotalSegmentator/splitWorkflow/threeVM.wdl
+     primaryDescriptorPath: /workflows/TotalSegmentator/Terra/splitWorkflow/threeVM.wdl
      testParameterFiles:
-     -  /sampleManifests/batch_1.csv 
+     -  /workflows/TotalSegmentator/Docs/sampleManifests/terra_data_table_manifest_2024_01_09_20_38.tsv
    - name: TotalSegmentatorOneVmWorkflowOnTerra
      subclass: WDL
-     primaryDescriptorPath: /Terra/TotalSegmentator/splitWorkflow/oneVM.wdl
+     primaryDescriptorPath: /workflows/TotalSegmentator/Terra/splitWorkflow/oneVM.wdl
      testParameterFiles:
-     -  /sampleManifests/batch_1.csv      
+     -  /workflows/TotalSegmentator/Docs/sampleManifests/terra_data_table_manifest_2024_01_09_20_38.tsv
    - name: perFrameFunctionalGroupSequenceExtractionOnTerra
      subclass: WDL
-     primaryDescriptorPath: /Terra/TotalSegmentator/postProcessing/perFrame.wdl      
+     primaryDescriptorPath: /workflows/TotalSegmentator/Terra/postProcessing/perFrame.wdl      
    - name: TotalSegmentatortwoVmWorkflowOnSB-CGC
      subclass: CWL
-     primaryDescriptorPath: /SevenBridges/TotalSegmentator/splitWorkflow/twoVM.cwl
+     primaryDescriptorPath: /workflows/TotalSegmentator/SevenBridges/splitWorkflow/twoVM.cwl
      testParameterFiles:
-     -  /sampleManifests/batch_1.csv
+     -  /workflows/TotalSegmentator/Docs/sampleManifests/batch_1.csv
    - name: TotalSegmentatorthreeVmWorkflowOnSB-CGC
      subclass: CWL
-     primaryDescriptorPath: /SevenBridges/TotalSegmentator/splitWorkflow/threeVM.cwl
+     primaryDescriptorPath: /workflows/TotalSegmentator/SevenBridges/splitWorkflow/threeVM.cwl
      testParameterFiles:
-     -  /sampleManifests/batch_1.csv
-tools:
+     -  /workflows/TotalSegmentator/Docs/sampleManifests/sampleManifests/batch_1.csv
    - name: TotalSegmentatorOneVmWorkflowOnSB-CGC
      subclass: CWL
-     primaryDescriptorPath: /SevenBridges/TotalSegmentator/splitWorkflow/oneVM.cwl
+     primaryDescriptorPath: /workflows/TotalSegmentator/SevenBridges/splitWorkflow/oneVM.cwl
      testParameterFiles:
-     -  /sampleManifests/batch_1.csv         
-    
+     -  /workflows/TotalSegmentator/Docs/sampleManifests/batch_1.csv         

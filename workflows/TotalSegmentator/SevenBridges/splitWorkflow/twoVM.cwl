@@ -120,7 +120,7 @@ steps:
     id: downloadDicomAndConvertAndInferenceTotalSegmentator
     baseCommand:
     - wget
-    - https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/downloadDicomAndConvertAndInferenceTotalSegmentatorNotebook.ipynb
+    - https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/Totalsegmentator/Notebooks/downloadDicomAndConvertAndInferenceTotalSegmentatorNotebook.ipynb
     - "&&"
     - set
     - "-e"
@@ -185,7 +185,7 @@ steps:
     - class: ShellCommandRequirement
     - class: LoadListingRequirement
     - class: DockerRequirement
-      dockerPull: imagingdatacommons/download_convert_inference_totalseg
+      dockerPull: imagingdatacommons/download_convert_inference_totalseg:main
     - class: InlineJavascriptRequirement
     hints:
     - class: sbg:AWSInstanceType
@@ -297,7 +297,7 @@ steps:
     - class: ShellCommandRequirement
     - class: LoadListingRequirement
     - class: DockerRequirement
-      dockerPull: imagingdatacommons/radiomics
+      dockerPull: imagingdatacommons/radiomics:main
     - class: InlineJavascriptRequirement
     hints:
     - class: sbg:AWSInstanceType

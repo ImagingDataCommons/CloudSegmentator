@@ -5,7 +5,7 @@ ARG GIT_HASH
 LABEL BASE_DOCKER_IMAGE="python:3.11.2-slim-buster"\
       MAINTAINER="IDC <vthiriveedhi@mgb.org>" \
       GIT_HASH=${GIT_HASH}\
-      PATH_TO_DOCKER_FILE="https://github.com/imagingdatacommons/Cloud-Resources-Workflows/blob/${GIT_HASH}/Dockerfiles/per_frame_functional_group_sequence/Dockerfile"\
+      PATH_TO_DOCKER_FILE="https://github.com/imagingdatacommons/CloudSegmentator/blob/${GIT_HASH}/workflows/TotalSegmentator/Dockerfiles/per_frame_functional_group_sequence/Dockerfile"\
       IMAGE_NAME_ON_DOCKERHUB="imagingdatacommons/per_frame_functional_group_sequence"
 
 RUN apt-get update && \
