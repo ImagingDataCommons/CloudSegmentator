@@ -5,7 +5,7 @@ ARG GIT_HASH
 LABEL BASE_DOCKER_IMAGE="nvidia/cuda:12.1.0-base-ubuntu20.04"\
       MAINTAINER="IDC <vthiriveedhi@mgb.org>" \
       GIT_HASH=${GIT_HASH}\
-      PATH_TO_DOCKER_FILE="https://github.com/imagingdatacommons/Cloud-Resources-Workflows/blob/${GIT_HASH}/Dockerfiles/download_convert_inference_totalseg_dicom_seg_pyradiomics_sr/Dockerfile"\
+      PATH_TO_DOCKER_FILE="https://github.com/imagingdatacommons/CloudSegmentator/blob/${GIT_HASH}/workflows/TotalSegmentator/Dockerfiles/download_convert_inference_totalseg_dicom_seg_pyradiomics_sr/Dockerfile"\
       IMAGE_NAME_ON_DOCKERHUB="imagingdatacommons/download_convert_inference_totalseg_dicom_seg_pyradiomics_sr"
 
 
@@ -21,7 +21,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ffmpeg\
     lz4\
     pigz\
-    #plastimatch=1.8.0+dfsg.1-2build1\
     python3-dev\
     python3-pip\
     unzip\
@@ -31,6 +30,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pip install --no-cache-dir \
+    idc-index==0.2.8\
     ipykernel==6.22.0\
     ipython==8.12.0\
     ipywidgets==8.0.6 \
@@ -41,6 +41,7 @@ RUN pip install --no-cache-dir \
     papermill==2.4.0\
     p_tqdm==1.4.0\
     pydicom==2.3.1\
+    requests==2.27.1\
     "scipy>=1.8,<1.9.2; python_version <= '3.9'"\
     scikit-learn==1.2.2\
     scikit-image==0.20.0\
@@ -59,7 +60,7 @@ RUN /root/weights_download.sh
 # Download and install s5cmd for interacting with cloud storage
 ENV S5CMD_URL="https://github.com/peak/s5cmd/releases/download/v2.2.2/s5cmd_2.2.2_Linux-64bit.tar.gz"
 ENV S5CMD_FN="s5cmd_2.2.2_Linux-64bit.tar.gz"
-RUN wget ${S5CMD_URL} \
+RUN wget -q ${S5CMD_URL} 2>&1 \
   && tar -xvzf ${S5CMD_FN} \
   && rm ${S5CMD_FN} \
   && mv s5cmd /usr/local/bin/s5cmd
@@ -67,7 +68,7 @@ RUN wget ${S5CMD_URL} \
 # Download dcmqi for itkimage2segimage
 ENV DCMQI_URL="https://github.com/QIICR/dcmqi/releases/download/v1.3.0/dcmqi-1.3.0-linux.tar.gz"
 ENV DCMQI_FN="dcmqi-1.3.0-linux.tar.gz"
-RUN wget ${DCMQI_URL} \
+RUN wget -q ${DCMQI_URL} 2>&1 \
   && tar -xvzf ${DCMQI_FN} \
   && rm ${DCMQI_FN} \
   && mv dcmqi-1.3.0-linux/bin/* /bin

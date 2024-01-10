@@ -5,13 +5,12 @@ workflow TotalSegmentator {
    #all the inputs entered here but not hardcoded will appear in the UI as required fields
    #And the hardcoded inputs will appear as optional to override the values entered here
    #File yamlParameters
-   File seriesInstanceS5cmdUrls
-   
+
    #Parameters
-   String dicomToNiftiConverterTool
+   String yamlListOfSeriesInstanceUIDs
 
    #Docker Images for each task
-   String totalSegmentatorDocker = "imagingdatacommons/download_convert_inference_totalseg_radiomics" 
+   String totalSegmentatorDocker = "imagingdatacommons/download_convert_inference_totalseg_dicom_seg_pyradiomics_sr:main" 
 
    #Preemptible retries
    Int totalSegmentatorPreemptibleTries = 3
@@ -36,8 +35,7 @@ workflow TotalSegmentator {
 
  call totalSegmentatorEndToEnd{
    input:
-    seriesInstanceS5cmdUrls = seriesInstanceS5cmdUrls,
-    dicomToNiftiConverterTool = dicomToNiftiConverterTool,
+    yamlListOfSeriesInstanceUIDs = yamlListOfSeriesInstanceUIDs,
     totalSegmentatorDocker = totalSegmentatorDocker,
     totalSegmentatorPreemptibleTries = totalSegmentatorPreemptibleTries,
     totalSegmentatorCpus = totalSegmentatorCpus,
@@ -63,6 +61,7 @@ workflow TotalSegmentator {
    File? dicomSegErrors = totalSegmentatorEndToEnd.dicomSegErrors
    File? dicomsegAndRadiomicsSR_RadiomicsErrors = totalSegmentatorEndToEnd.dicomsegAndRadiomicsSR_RadiomicsErrors
    File? dicomsegAndRadiomicsSR_SRErrors = totalSegmentatorEndToEnd.dicomsegAndRadiomicsSR_SRErrors
+   File? modality_errors= totalSegmentatorEndToEnd.modality_errors
  }
 
 }
@@ -72,8 +71,7 @@ task totalSegmentatorEndToEnd{
  input {
    #Just like the workflow inputs, any new inputs entered here but not hardcoded will appear in the UI as required fields
    #And the hardcoded inputs will appear as optional to override the values entered here
-    File seriesInstanceS5cmdUrls
-    String dicomToNiftiConverterTool 
+    String yamlListOfSeriesInstanceUIDs 
     String totalSegmentatorDocker
     Int totalSegmentatorPreemptibleTries 
     Int totalSegmentatorCpus 
@@ -83,9 +81,9 @@ task totalSegmentatorEndToEnd{
 
  }
  command {
-   wget https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/endToEndTotalSegmentatorNotebook.ipynb
+   wget https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/TotalSegmentator/Notebooks/endToEndTotalSegmentatorNotebook.ipynb
    set -e
-   papermill -p csvFilePath ~{seriesInstanceS5cmdUrls} -p converterType ~{dicomToNiftiConverterTool}  endToEndTotalSegmentatorNotebook.ipynb endToEndTotalSegmentatorOutputJupyterNotebook.ipynb || (>&2 echo "Killed" && exit 1)
+   papermill endToEndTotalSegmentatorNotebook.ipynb endToEndTotalSegmentatorOutputJupyterNotebook.ipynb -y  "~{yamlListOfSeriesInstanceUIDs}" || (>&2 echo "Killed" && exit 1)
  }
 
  #Run time attributes:
@@ -99,7 +97,7 @@ task totalSegmentatorEndToEnd{
    memory: totalSegmentatorRAM + " GiB"
    disks: "local-disk 10 HDD"  #ToDo: Dynamically calculate disk space using the no of bytes of yaml file size. 64 characters is the max size I found in a seriesInstanceUID
    preemptible: totalSegmentatorPreemptibleTries
-   maxRetries: 3
+   maxRetries: 1
  }
  output {
    File endToEndTotalSegmentatorOutputJupyterNotebook = "endToEndTotalSegmentatorOutputJupyterNotebook.ipynb"
@@ -115,6 +113,7 @@ task totalSegmentatorEndToEnd{
    File? dicomSegErrors = "itkimage2segimage_error_file.txt"  
    File? dicomsegAndRadiomicsSR_RadiomicsErrors = "radiomics_error_file.txt" 
    File? dicomsegAndRadiomicsSR_SRErrors = "sr_error_file.txt"
+   File? modality_errors = "modality_error_file.txt"
    
  }
 }

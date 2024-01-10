@@ -5,14 +5,13 @@ workflow TotalSegmentator {
    #all the inputs entered here but not hardcoded will appear in the UI as required fields
    #And the hardcoded inputs will appear as optional to override the values entered here
    #File yamlParameters
-   File seriesInstanceS5cmdUrls
    
    #Parameters
-   String dicomToNiftiConverterTool
+   String yamlListOfSeriesInstanceUIDs
 
    #Docker Images for each task
-   String downloadDicomAndConvertAndInferenceTotalSegmentatorDocker = "imagingdatacommons/download_convert_inference_totalseg"
-   String dicomsegAndRadiomicsSR_Docker = "imagingdatacommons/radiomics"
+   String downloadDicomAndConvertAndInferenceTotalSegmentatorDocker = "imagingdatacommons/download_convert_inference_totalseg:main"
+   String dicomsegAndRadiomicsSR_Docker = "imagingdatacommons/dicom_seg_pyradiomics_sr:main"
 
    #Preemptible retries
 
@@ -39,8 +38,7 @@ workflow TotalSegmentator {
  #calling Papermill Task with the inputs
  call downloadDicomAndConvertAndInferenceTotalSegmentator{
    input :
-     seriesInstanceS5cmdUrls = seriesInstanceS5cmdUrls,
-     dicomToNiftiConverterTool = dicomToNiftiConverterTool,
+     yamlListOfSeriesInstanceUIDs = yamlListOfSeriesInstanceUIDs,
      downloadDicomAndConvertAndInferenceTotalSegmentatorDocker = downloadDicomAndConvertAndInferenceTotalSegmentatorDocker ,
      downloadDicomAndConvertAndInferenceTotalSegmentatorPreemptibleTries = downloadDicomAndConvertAndInferenceTotalSegmentatorPreemptibleTries ,
      downloadDicomAndConvertAndInferenceTotalSegmentatorCpus = downloadDicomAndConvertAndInferenceTotalSegmentatorCpus ,
@@ -50,7 +48,6 @@ workflow TotalSegmentator {
  }
  call dicomsegAndRadiomicsSR{
    input:
-    seriesInstanceS5cmdUrls = seriesInstanceS5cmdUrls,
     dicomsegAndRadiomicsSR_Docker = dicomsegAndRadiomicsSR_Docker,
     dicomsegAndRadiomicsSR_PreemptibleTries = dicomsegAndRadiomicsSR_PreemptibleTries,
     dicomsegAndRadiomicsSR_Cpus = dicomsegAndRadiomicsSR_Cpus,
@@ -60,7 +57,6 @@ workflow TotalSegmentator {
     #Nifti files converted in the first step are provided as input here
     inferenceZipFile = downloadDicomAndConvertAndInferenceTotalSegmentator.downloadDicomAndConvertAndInferenceTotalSegmentatorZipFile
 }
-
 
  output {
   #output notebooks
@@ -80,7 +76,8 @@ workflow TotalSegmentator {
    File? dcm2niixErrors = downloadDicomAndConvertAndInferenceTotalSegmentator.dcm2niixErrors
    File? totalsegmentatorErrors = downloadDicomAndConvertAndInferenceTotalSegmentator.totalsegmentatorErrors
    File? dicomsegAndRadiomicsSR_Errors = dicomsegAndRadiomicsSR.dicomsegAndRadiomicsSR_SRErrors
-   #File inferenceMetaData = downloadDicomAndConvertAndInferenceTotalSegmentator.downloadDicomAndConvertAndInferenceTotalSegmentatorMetaData
+   File? downloadDicomAndConvertAndInferenceTotalSegmentator_modality_errors = downloadDicomAndConvertAndInferenceTotalSegmentator.downloadDicomAndConvertAndInferenceTotalSegmentator_modality_errors
+   File? dicomsegAndRadiomicsSR_modality_errors = dicomsegAndRadiomicsSR.dicomsegAndRadiomicsSR_modality_errors
  }
 
 }
@@ -91,23 +88,19 @@ task downloadDicomAndConvertAndInferenceTotalSegmentator{
    #Just like the workflow inputs, any new inputs entered here but not hardcoded will appear in the UI as required fields
    #And the hardcoded inputs will appear as optional to override the values entered here
    # Command parameters
-    File seriesInstanceS5cmdUrls 
-    String dicomToNiftiConverterTool
+    String yamlListOfSeriesInstanceUIDs
     String downloadDicomAndConvertAndInferenceTotalSegmentatorDocker 
     Int downloadDicomAndConvertAndInferenceTotalSegmentatorPreemptibleTries 
     Int downloadDicomAndConvertAndInferenceTotalSegmentatorCpus 
     Int downloadDicomAndConvertAndInferenceTotalSegmentatorRAM 
     String downloadDicomAndConvertAndInferenceTotalSegmentatorZones 
-
     String downloadDicomAndConvertAndInferenceTotalSegmentatorGpuType 
-
-
  }
 
  command {
-   wget https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/downloadDicomAndConvertAndInferenceTotalSegmentatorNotebook.ipynb
+   wget https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/TotalSegmentator/Notebooks/downloadDicomAndConvertAndInferenceTotalSegmentatorNotebook.ipynb
    set -e
-   papermill --log-level='INFO' -p converterType ~{dicomToNiftiConverterTool}  -p csvFilePath ~{seriesInstanceS5cmdUrls} downloadDicomAndConvertAndInferenceTotalSegmentatorNotebook.ipynb downloadDicomAndConvertAndInferenceTotalSegmentatorOutputJupyterNotebook.ipynb
+   papermill downloadDicomAndConvertAndInferenceTotalSegmentatorNotebook.ipynb downloadDicomAndConvertAndInferenceTotalSegmentatorOutputJupyterNotebook.ipynb -y "~{yamlListOfSeriesInstanceUIDs}"
  }
  #Run time attributes:
  runtime {
@@ -130,6 +123,7 @@ task downloadDicomAndConvertAndInferenceTotalSegmentator{
    #File downloadDicomAndConvertAndInferenceTotalSegmentatorMetaData = "inferenceMetaData.tar.lz4"
    File? dcm2niixErrors = "error_file.txt"
    File? totalsegmentatorErrors = "totalsegmentator_errors.txt"
+   File? downloadDicomAndConvertAndInferenceTotalSegmentator_modality_errors = "modality_error_file.txt"
  }
 }
 
@@ -138,7 +132,6 @@ task dicomsegAndRadiomicsSR{
  input {
    #Just like the workflow inputs, any new inputs entered here but not hardcoded will appear in the UI as required fields
    #And the hardcoded inputs will appear as optional to override the values entered here
-    File seriesInstanceS5cmdUrls 
     String dicomsegAndRadiomicsSR_Docker
     Int dicomsegAndRadiomicsSR_PreemptibleTries 
     Int dicomsegAndRadiomicsSR_Cpus 
@@ -149,14 +142,14 @@ task dicomsegAndRadiomicsSR{
     File inferenceZipFile
  }
  command {
-   wget https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/dicomsegAndRadiomicsSR_Notebook.ipynb
+   wget https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/TotalSegmentator/Notebooks/dicomsegAndRadiomicsSR_Notebook.ipynb
    
    set -o xtrace
    # For any command failures in the rest of this script, return the error.
    set -o pipefail
    set +o errexit
    
-   papermill --log-level='INFO' -p csvFilePath ~{seriesInstanceS5cmdUrls} -p inferenceNiftiFilePath ~{inferenceZipFile}  dicomsegAndRadiomicsSR_Notebook.ipynb dicomsegAndRadiomicsSR_OutputJupyterNotebook.ipynb
+   papermill  -p inferenceNiftiFilePath ~{inferenceZipFile}  dicomsegAndRadiomicsSR_Notebook.ipynb dicomsegAndRadiomicsSR_OutputJupyterNotebook.ipynb
    
    set -o errexit
    exit $?
@@ -181,7 +174,7 @@ task dicomsegAndRadiomicsSR{
    File structuredReportsJSON = "structuredReportsJSON.tar.lz4"
    File dicomsegAndRadiomicsSR_UsageMetrics = "dicomsegAndRadiomicsSR_UsageMetrics.lz4"
    File? dicomsegAndRadiomicsSR_RadiomicsErrors = "radiomics_error_file.txt"
-   File? dicomsegAndRadiomicsSR_SRErrors = "sr_error_file.txt"   
-   
+   File? dicomsegAndRadiomicsSR_SRErrors = "sr_error_file.txt"  
+   File? dicomsegAndRadiomicsSR_modality_errors = "modality_error_file.txt" 
  }
 }

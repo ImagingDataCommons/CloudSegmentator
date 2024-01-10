@@ -5,7 +5,7 @@ ARG GIT_HASH
 LABEL BASE_DOCKER_IMAGE="nvidia/cuda:12.1.0-base-ubuntu22.04"\
       MAINTAINER="IDC <vthiriveedhi@mgb.org>" \
       GIT_HASH=${GIT_HASH}\
-      PATH_TO_DOCKER_FILE="https://github.com/imagingdatacommons/Cloud-Resources-Workflows/blob/${GIT_HASH}/Dockerfiles/inference_totalseg/Dockerfile"\
+      PATH_TO_DOCKER_FILE="https://github.com/imagingdatacommons/CloudSegmentator/blob/${GIT_HASH}/workflows/TotalSegmentator/Dockerfiles/inference_totalseg/Dockerfile"\
       IMAGE_NAME_ON_DOCKERHUB="imagingdatacommons/inference_totalseg"
 
 # Set noninteractive mode to avoid geographic area prompt during package installation
@@ -28,8 +28,9 @@ RUN pip install --no-cache-dir \
     ipython==8.12.0\
     ipywidgets==8.0.6\
     jupyter==1.0.0\
-    papermill==2.4.0\
     nvidia-ml-py3==7.352.0\
+    papermill==2.4.0\
+    requests==2.27.1\
     TotalSegmentator==1.5.6\
  && pip install --no-cache-dir \
     pyradiomics==3.0.1

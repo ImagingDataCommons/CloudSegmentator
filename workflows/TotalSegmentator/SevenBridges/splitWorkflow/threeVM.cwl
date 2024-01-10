@@ -132,7 +132,7 @@ steps:
     id: downloaddicomandconvert
     baseCommand:
     - wget
-    - https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/downloadDicomAndConvertNotebook.ipynb
+    - https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/Totalsegmentator/Notebooks/downloadDicomAndConvertNotebook.ipynb
     - "&&"
     - set
     - "-e"
@@ -192,7 +192,7 @@ steps:
     - class: ShellCommandRequirement
     - class: LoadListingRequirement
     - class: DockerRequirement
-      dockerPull: imagingdatacommons/download_convert
+      dockerPull: imagingdatacommons/download_convert:main
     - class: InlineJavascriptRequirement
     hints:
     - class: sbg:AWSInstanceType
@@ -219,7 +219,7 @@ steps:
     id: inferencetotalsegmentator
     baseCommand:
     - wget
-    - https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/inferenceTotalSegmentatorNotebook.ipynb
+    - https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/Totalsegmentator/Notebooks/inferenceTotalSegmentatorNotebook.ipynb
     - "&&"
     - set
     - "-e"
@@ -280,7 +280,7 @@ steps:
     - class: ShellCommandRequirement
     - class: LoadListingRequirement
     - class: DockerRequirement
-      dockerPull: imagingdatacommons/inference_totalseg
+      dockerPull: imagingdatacommons/inference_totalseg:main
     - class: InlineJavascriptRequirement
     hints:
     - class: sbg:AWSInstanceType
@@ -311,7 +311,7 @@ steps:
     id: dicomsegandradiomicssr
     baseCommand:
     - wget
-    - https://raw.githubusercontent.com/ImagingDataCommons/Cloud-Resources-Workflows/main/Notebooks/Totalsegmentator/dicomsegAndRadiomicsSR_Notebook.ipynb
+    - https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/Totalsegmentator/Notebooks/dicomsegAndRadiomicsSR_Notebook.ipynb
     - "&&"
     - set
     - "-e"
@@ -392,7 +392,7 @@ steps:
     - class: ShellCommandRequirement
     - class: LoadListingRequirement
     - class: DockerRequirement
-      dockerPull: imagingdatacommons/radiomics
+      dockerPull: imagingdatacommons/radiomics:main
     - class: InlineJavascriptRequirement
     hints:
     - class: sbg:AWSInstanceType

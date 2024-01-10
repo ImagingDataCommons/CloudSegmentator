@@ -2,9 +2,19 @@ name: download_convert
 
 on:
   push:
-    branches: [ "main" ]
+    branches: 
+      - "main" 
+    paths:
+      - ".github/workflows/download_convert.yml"
+      - "workflows/TotalSegmentator/Dockerfiles/download_convert/Dockerfile"
+    tags:
+      - 'v*'     
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - "main" 
+    paths:
+      - ".github/workflows/download_convert.yml"
+      - "workflows/TotalSegmentator/Dockerfiles/download_convert/Dockerfile"
   workflow_dispatch:  
     
 jobs:
@@ -25,34 +35,34 @@ jobs:
           COMMIT_HASH=$(git rev-parse HEAD)
           echo "COMMIT_HASH=$COMMIT_HASH" >> $GITHUB_ENV
 
-      - name: Build Docker image
-        uses: docker/build-push-action@v5
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v5
         with:
-          context: .
-          file: ./Dockerfiles/download_convert/Dockerfile
-          tags: imagingdatacommons/download_convert
-          build-args: |
-            GIT_HASH=${{ env.COMMIT_HASH }}
-        env:
-          COMMIT_HASH: ${{ env.COMMIT_HASH }}
+          images: |
+           imagingdatacommons/download_convert
 
       - name: Login to Docker Hub
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.event_name != 'pull_request'
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Push Docker image to Docker Hub and ghcr.io
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'           
+      - name: Build and Push Docker image to Docker Hub 
+        if:           
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./Dockerfiles/download_convert/Dockerfile
-          push: true
-          tags: |
-            imagingdatacommons/download_convert
+          file: ./workflows/TotalSegmentator/Dockerfiles/download_convert/Dockerfile
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
           build-args: |
             GIT_HASH=${{ env.COMMIT_HASH }}
         env:
           COMMIT_HASH: ${{ env.COMMIT_HASH }}
+             
+
+
+
+      
