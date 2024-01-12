@@ -35,7 +35,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                }
+                },
+                "SegmentLabel": "Left Adrenal gland"
             },
             {
                 "labelID": 11,
@@ -61,7 +62,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                }
+                },
+                "SegmentLabel": "Right Adrenal gland"
             },
             {
                 "labelID": 7,
@@ -82,7 +84,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "15825003",
                     "CodeMeaning": "Aorta"
-                }
+                },
+                "SegmentLabel": "Aorta"
             },
             {
                 "labelID": 100,
@@ -108,7 +111,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                }
+                },
+                "SegmentLabel": "Left Deep muscle of back"
             },
             {
                 "labelID": 101,
@@ -134,7 +138,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                }
+                },
+                "SegmentLabel": "Right Deep muscle of back"
             },
             {
                 "labelID": 50,
@@ -155,7 +160,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "12738006",
                     "CodeMeaning": "Brain"
-                }
+                },
+                "SegmentLabel": "Brain"
             },
             {
                 "labelID": 86,
@@ -181,7 +187,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                }
+                },
+                "SegmentLabel": "Left Clavicle"
             },
             {
                 "labelID": 87,
@@ -207,7 +214,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                }
+                },
+                "SegmentLabel": "Right Clavicle"
             },
             {
                 "labelID": 57,
@@ -228,7 +236,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "71854001",
                     "CodeMeaning": "Colon"
-                }
+                },
+                "SegmentLabel": "Colon"
             },
             {
                 "labelID": 56,
@@ -249,7 +258,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "38848004",
                     "CodeMeaning": "Duodenum"
-                }
+                },
+                "SegmentLabel": "Duodenum"
             },
             {
                 "labelID": 42,
@@ -270,7 +280,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "32849002",
                     "CodeMeaning": "Esophagus"
-                }
+                },
+                "SegmentLabel": "Esophagus"
             },
             {
                 "labelID": 93,
@@ -291,7 +302,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "89545001",
                     "CodeMeaning": "Face"
-                }
+                },
+                "SegmentLabel": "Face"
             },
             {
                 "labelID": 88,
@@ -317,7 +329,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                }
+                },
+                "SegmentLabel": "Left Femur"
             },
             {
                 "labelID": 89,
@@ -343,7 +356,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                }
+                },
+                "SegmentLabel": "Right Femur"
             },
             {
                 "labelID": 4,
@@ -364,7 +378,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "28231008",
                     "CodeMeaning": "Gallbladder"
-                }
+                },
+                "SegmentLabel": "Gallbladder"
             },
             {
                 "labelID": 94,
@@ -390,7 +405,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                }
+                },
+                "SegmentLabel": "Left Gluteus maximus muscle"
             },
             {
                 "labelID": 95,
@@ -416,7 +432,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                }
+                },
+                "SegmentLabel": "Right Gluteus maximus muscle"
             },
             {
                 "labelID": 96,
@@ -442,7 +459,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                }
+                },
+                "SegmentLabel": "Left Gluteus medius muscle"
             },
             {
                 "labelID": 97,
@@ -468,7 +486,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                }
+                },
+                "SegmentLabel": "Right Gluteus medius muscle"
             },
             {
                 "labelID": 98,
@@ -494,7 +513,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                }
+                },
+                "SegmentLabel": "Left Gluteus minius muscle"
             },
             {
                 "labelID": 99,
@@ -520,7 +540,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                }
+                },
+                "SegmentLabel": "Right Gluteus minius muscle"
             },
             {
                 "labelID": 45,
@@ -541,7 +562,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "82471001",
                     "CodeMeaning": "Left atrium"
-                }
+                },
+                "SegmentLabel": "Left atrium"
             },
             {
                 "labelID": 47,
@@ -562,7 +584,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "73829009",
                     "CodeMeaning": "Right atrium"
-                }
+                },
+                "SegmentLabel": "Right atrium"
             },
             {
                 "labelID": 44,
@@ -583,7 +606,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "74281007",
                     "CodeMeaning": "Myocardium"
-                }
+                },
+                "SegmentLabel": "Myocardium"
             },
             {
                 "labelID": 46,
@@ -604,7 +628,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "87878005",
                     "CodeMeaning": "Left ventricle of heart"
-                }
+                },
+                "SegmentLabel": "Left ventricle of heart"
             },
             {
                 "labelID": 48,
@@ -625,7 +650,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "53085002",
                     "CodeMeaning": "Right ventricle of heart"
-                }
+                },
+                "SegmentLabel": "Right ventricle of heart"
             },
             {
                 "labelID": 90,
@@ -651,7 +677,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                }
+                },
+                "SegmentLabel": "Left Hip"
             },
             {
                 "labelID": 91,
@@ -677,7 +704,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                }
+                },
+                "SegmentLabel": "Right Hip"
             },
             {
                 "labelID": 82,
@@ -703,7 +731,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                }
+                },
+                "SegmentLabel": "Left Humerus"
             },
             {
                 "labelID": 83,
@@ -729,7 +758,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                }
+                },
+                "SegmentLabel": "Right Humerus"
             },
             {
                 "labelID": 51,
@@ -755,7 +785,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                }
+                },
+                "SegmentLabel": "Left Common iliac artery"
             },
             {
                 "labelID": 52,
@@ -781,7 +812,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                }
+                },
+                "SegmentLabel": "Right Common iliac artery"
             },
             {
                 "labelID": 53,
@@ -807,7 +839,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                }
+                },
+                "SegmentLabel": "Left Common iliac vein"
             },
             {
                 "labelID": 54,
@@ -833,7 +866,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                }
+                },
+                "SegmentLabel": "Right Common iliac vein"
             },
             {
                 "labelID": 102,
@@ -859,7 +893,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                }
+                },
+                "SegmentLabel": "Left Iliopsoas muscle"
             },
             {
                 "labelID": 103,
@@ -885,7 +920,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                }
+                },
+                "SegmentLabel": "Right Iliopsoas muscle"
             },
             {
                 "labelID": 8,
@@ -906,7 +942,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "64131007",
                     "CodeMeaning": "Inferior vena cava"
-                }
+                },
+                "SegmentLabel": "Inferior vena cava"
             },
             {
                 "labelID": 3,
@@ -932,7 +969,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                }
+                },
+                "SegmentLabel": "Left Kidney"
             },
             {
                 "labelID": 2,
@@ -958,7 +996,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                }
+                },
+                "SegmentLabel": "Right Kidney"
             },
             {
                 "labelID": 5,
@@ -979,7 +1018,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "10200004",
                     "CodeMeaning": "Liver"
-                }
+                },
+                "SegmentLabel": "Liver"
             },
             {
                 "labelID": 14,
@@ -1005,7 +1045,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                }
+                },
+                "SegmentLabel": "Left Lower lobe of lung"
             },
             {
                 "labelID": 17,
@@ -1031,7 +1072,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                }
+                },
+                "SegmentLabel": "Right Lower lobe of lung"
             },
             {
                 "labelID": 16,
@@ -1052,7 +1094,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "72481006",
                     "CodeMeaning": "Middle lobe of right lung"
-                }
+                },
+                "SegmentLabel": "Middle lobe of right lung"
             },
             {
                 "labelID": 13,
@@ -1078,7 +1121,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                }
+                },
+                "SegmentLabel": "Left Upper lobe of lung"
             },
             {
                 "labelID": 15,
@@ -1104,7 +1148,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                }
+                },
+                "SegmentLabel": "Right Upper lobe of lung"
             },
             {
                 "labelID": 10,
@@ -1125,7 +1170,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "15776009",
                     "CodeMeaning": "Pancreas"
-                }
+                },
+                "SegmentLabel": "Pancreas"
             },
             {
                 "labelID": 9,
@@ -1146,7 +1192,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "110765007",
                     "CodeMeaning": "Portal vein and splenic vein"
-                }
+                },
+                "SegmentLabel": "Portal vein and splenic vein"
             },
             {
                 "labelID": 49,
@@ -1167,7 +1214,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "81040000",
                     "CodeMeaning": "Pulmonary artery"
-                }
+                },
+                "SegmentLabel": "Pulmonary artery"
             },
             {
                 "labelID": 58,
@@ -1193,7 +1241,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                }
+                },
+                "SegmentLabel": "Left First rib"
             },
             {
                 "labelID": 59,
@@ -1219,7 +1268,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                }
+                },
+                "SegmentLabel": "Left Second rib"
             },
             {
                 "labelID": 60,
@@ -1245,7 +1295,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                }
+                },
+                "SegmentLabel": "Left Third rib"
             },
             {
                 "labelID": 61,
@@ -1271,7 +1322,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                }
+                },
+                "SegmentLabel": "Left Fourth rib"
             },
             {
                 "labelID": 62,
@@ -1297,7 +1349,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                }
+                },
+                "SegmentLabel": "Left Fifth rib"
             },
             {
                 "labelID": 63,
@@ -1323,7 +1376,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                }
+                },
+                "SegmentLabel": "Left Sixth rib"
             },
             {
                 "labelID": 64,
@@ -1349,7 +1403,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                }
+                },
+                "SegmentLabel": "Left Seventh rib"
             },
             {
                 "labelID": 65,
@@ -1375,7 +1430,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                }
+                },
+                "SegmentLabel": "Left Eighth rib"
             },
             {
                 "labelID": 66,
@@ -1401,7 +1457,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                }
+                },
+                "SegmentLabel": "Left Ninth rib"
             },
             {
                 "labelID": 67,
@@ -1427,7 +1484,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                }
+                },
+                "SegmentLabel": "Left Tenth rib"
             },
             {
                 "labelID": 68,
@@ -1453,7 +1511,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                }
+                },
+                "SegmentLabel": "Left Eleventh rib"
             },
             {
                 "labelID": 69,
@@ -1479,7 +1538,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                }
+                },
+                "SegmentLabel": "Left Twelfth rib"
             },
             {
                 "labelID": 70,
@@ -1505,7 +1565,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                }
+                },
+                "SegmentLabel": "Right First rib"
             },
             {
                 "labelID": 71,
@@ -1531,7 +1592,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                }
+                },
+                "SegmentLabel": "Right Second rib"
             },
             {
                 "labelID": 72,
@@ -1557,7 +1619,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                }
+                },
+                "SegmentLabel": "Right Third rib"
             },
             {
                 "labelID": 73,
@@ -1583,7 +1646,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                }
+                },
+                "SegmentLabel": "Right Fourth rib"
             },
             {
                 "labelID": 74,
@@ -1609,7 +1673,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                }
+                },
+                "SegmentLabel": "Right Fifth rib"
             },
             {
                 "labelID": 75,
@@ -1635,7 +1700,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                }
+                },
+                "SegmentLabel": "Right Sixth rib"
             },
             {
                 "labelID": 76,
@@ -1661,7 +1727,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                }
+                },
+                "SegmentLabel": "Right Seventh rib"
             },
             {
                 "labelID": 77,
@@ -1687,7 +1754,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                }
+                },
+                "SegmentLabel": "Right Eighth rib"
             },
             {
                 "labelID": 78,
@@ -1713,7 +1781,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                }
+                },
+                "SegmentLabel": "Right Ninth rib"
             },
             {
                 "labelID": 79,
@@ -1739,7 +1808,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                }
+                },
+                "SegmentLabel": "Right Tenth rib"
             },
             {
                 "labelID": 80,
@@ -1765,7 +1835,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                }
+                },
+                "SegmentLabel": "Right Eleventh rib"
             },
             {
                 "labelID": 81,
@@ -1791,7 +1862,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                }
+                },
+                "SegmentLabel": "Right Twelfth rib"
             },
             {
                 "labelID": 92,
@@ -1812,7 +1884,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "54735007",
                     "CodeMeaning": "Sacrum"
-                }
+                },
+                "SegmentLabel": "Sacrum"
             },
             {
                 "labelID": 84,
@@ -1838,7 +1911,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                }
+                },
+                "SegmentLabel": "Left Scapula"
             },
             {
                 "labelID": 85,
@@ -1864,7 +1938,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                }
+                },
+                "SegmentLabel": "Right Scapula"
             },
             {
                 "labelID": 55,
@@ -1885,7 +1960,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "30315005",
                     "CodeMeaning": "Small Intestine"
-                }
+                },
+                "SegmentLabel": "Small Intestine"
             },
             {
                 "labelID": 1,
@@ -1906,7 +1982,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "78961009",
                     "CodeMeaning": "Spleen"
-                }
+                },
+                "SegmentLabel": "Spleen"
             },
             {
                 "labelID": 6,
@@ -1927,7 +2004,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "69695003",
                     "CodeMeaning": "Stomach"
-                }
+                },
+                "SegmentLabel": "Stomach"
             },
             {
                 "labelID": 43,
@@ -1948,7 +2026,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "44567001",
                     "CodeMeaning": "Trachea"
-                }
+                },
+                "SegmentLabel": "Trachea"
             },
             {
                 "labelID": 104,
@@ -1969,7 +2048,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "89837001",
                     "CodeMeaning": "Urinary bladder"
-                }
+                },
+                "SegmentLabel": "Urinary bladder"
             },
             {
                 "labelID": 41,
@@ -1990,7 +2070,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "14806007",
                     "CodeMeaning": "C1 vertebra"
-                }
+                },
+                "SegmentLabel": "C1 vertebra"
             },
             {
                 "labelID": 40,
@@ -2011,7 +2092,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "39976000",
                     "CodeMeaning": "C2 vertebra"
-                }
+                },
+                "SegmentLabel": "C2 vertebra"
             },
             {
                 "labelID": 39,
@@ -2032,7 +2114,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "113205007",
                     "CodeMeaning": "C3 vertebra"
-                }
+                },
+                "SegmentLabel": "C3 vertebra"
             },
             {
                 "labelID": 38,
@@ -2053,7 +2136,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "5329002",
                     "CodeMeaning": "C4 vertebra"
-                }
+                },
+                "SegmentLabel": "C4 vertebra"
             },
             {
                 "labelID": 37,
@@ -2074,7 +2158,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "36978003",
                     "CodeMeaning": "C5 vertebra"
-                }
+                },
+                "SegmentLabel": "C5 vertebra"
             },
             {
                 "labelID": 36,
@@ -2095,7 +2180,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "36054005",
                     "CodeMeaning": "C6 vertebra"
-                }
+                },
+                "SegmentLabel": "C6 vertebra"
             },
             {
                 "labelID": 35,
@@ -2116,7 +2202,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "87391001",
                     "CodeMeaning": "C7 vertebra"
-                }
+                },
+                "SegmentLabel": "C7 vertebra"
             },
             {
                 "labelID": 22,
@@ -2137,7 +2224,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "66794005",
                     "CodeMeaning": "L1 vertebra"
-                }
+                },
+                "SegmentLabel": "L1 vertebra"
             },
             {
                 "labelID": 21,
@@ -2158,7 +2246,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "14293000",
                     "CodeMeaning": "L2 vertebra"
-                }
+                },
+                "SegmentLabel": "L2 vertebra"
             },
             {
                 "labelID": 20,
@@ -2179,7 +2268,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "36470004",
                     "CodeMeaning": "L3 vertebra"
-                }
+                },
+                "SegmentLabel": "L3 vertebra"
             },
             {
                 "labelID": 19,
@@ -2200,7 +2290,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "11994002",
                     "CodeMeaning": "L4 vertebra"
-                }
+                },
+                "SegmentLabel": "L4 vertebra"
             },
             {
                 "labelID": 18,
@@ -2221,7 +2312,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "49668003",
                     "CodeMeaning": "L5 vertebra"
-                }
+                },
+                "SegmentLabel": "L5 vertebra"
             },
             {
                 "labelID": 34,
@@ -2242,7 +2334,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "64864005",
                     "CodeMeaning": "T1 vertebra"
-                }
+                },
+                "SegmentLabel": "T1 vertebra"
             },
             {
                 "labelID": 33,
@@ -2263,7 +2356,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "53733008",
                     "CodeMeaning": "T2 vertebra"
-                }
+                },
+                "SegmentLabel": "T2 vertebra"
             },
             {
                 "labelID": 32,
@@ -2284,7 +2378,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "1626008",
                     "CodeMeaning": "T3 vertebra"
-                }
+                },
+                "SegmentLabel": "T3 vertebra"
             },
             {
                 "labelID": 31,
@@ -2305,7 +2400,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "73071006",
                     "CodeMeaning": "T4 vertebra"
-                }
+                },
+                "SegmentLabel": "T4 vertebra"
             },
             {
                 "labelID": 30,
@@ -2326,7 +2422,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "56401006",
                     "CodeMeaning": "T5 vertebra"
-                }
+                },
+                "SegmentLabel": "T5 vertebra"
             },
             {
                 "labelID": 29,
@@ -2347,7 +2444,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "45296009",
                     "CodeMeaning": "T6 vertebra"
-                }
+                },
+                "SegmentLabel": "T6 vertebra"
             },
             {
                 "labelID": 28,
@@ -2368,7 +2466,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "62487009",
                     "CodeMeaning": "T7 vertebra"
-                }
+                },
+                "SegmentLabel": "T7 vertebra"
             },
             {
                 "labelID": 27,
@@ -2389,7 +2488,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "11068009",
                     "CodeMeaning": "T8 vertebra"
-                }
+                },
+                "SegmentLabel": "T8 vertebra"
             },
             {
                 "labelID": 26,
@@ -2410,7 +2510,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "82687006",
                     "CodeMeaning": "T9 vertebra"
-                }
+                },
+                "SegmentLabel": "T9 vertebra"
             },
             {
                 "labelID": 25,
@@ -2431,7 +2532,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7610001",
                     "CodeMeaning": "T10 vertebra"
-                }
+                },
+                "SegmentLabel": "T10 vertebra"
             },
             {
                 "labelID": 24,
@@ -2452,7 +2554,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "12989004",
                     "CodeMeaning": "T11 vertebra"
-                }
+                },
+                "SegmentLabel": "T11 vertebra"
             },
             {
                 "labelID": 23,
@@ -2473,7 +2576,8 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "23215003",
                     "CodeMeaning": "T12 vertebra"
-                }
+                },
+                "SegmentLabel": "T12 vertebra"
             }
         ]
     ]
