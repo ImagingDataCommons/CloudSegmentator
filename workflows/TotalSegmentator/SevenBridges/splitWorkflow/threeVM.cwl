@@ -5,125 +5,130 @@ label: TotalSegmentatorThreeVmWorkflow
 "$namespaces":
   sbg: https://sevenbridges.com
 inputs:
-- id: dicomToNiftiConverterTool
-  type: string
+- id: yamlListOfSeriesInstanceUIDs
+  type: File
   sbg:x: 0
   sbg:y: 428
-- id: s5cmdUrls
-  type: File
-  sbg:x: 31.26104736328125
-  sbg:y: 85.71949005126953
 outputs:
 - id: downloadDicomAndConvertUsageMetrics
   outputSource:
   - downloaddicomandconvert/downloadDicomAndConvertUsageMetrics
-  sbg:fileTypes: LZ4
   type: File?
-  sbg:x: 158.2618408203125
-  sbg:y: -233.47225952148438
+  sbg:x: 869.0360717773438
+  sbg:y: 321
 - id: downloadDicomAndConvertOutputJupyterNotebook
   outputSource:
   - downloaddicomandconvert/downloadDicomAndConvertOutputJupyterNotebook
-  sbg:fileTypes: IPYNB
   type: File?
-  sbg:x: 465.93634033203125
-  sbg:y: -292.6493835449219
+  sbg:x: 869.0360717773438
+  sbg:y: 428
+- id: downloadDicomAndConvert_modality_errors
+  outputSource:
+  - downloaddicomandconvert/downloadDicomAndConvert_modality_errors
+  type: File?
+  sbg:x: 869.0360717773438
+  sbg:y: 535
 - id: dcm2niix_errors
   outputSource:
   - downloaddicomandconvert/dcm2niix_errors
-  sbg:fileTypes: CSV
   type: File?
-  sbg:x: 806.5172119140625
-  sbg:y: 811.4134521484375
+  sbg:x: 869.0360717773438
+  sbg:y: 642
 - id: totalsegmentatorErrors
   outputSource:
   - inferencetotalsegmentator/totalsegmentatorErrors
   sbg:fileTypes: CSV
   type: File?
-  sbg:x: 1249.3201904296875
-  sbg:y: -127.86664581298828
+  sbg:x: 1352.885498046875
+  sbg:y: 211.5
 - id: inferenceUsageMetrics
   outputSource:
   - inferencetotalsegmentator/inferenceUsageMetrics
   sbg:fileTypes: LZ4
   type: File?
-  sbg:x: 1033.7835693359375
-  sbg:y: -290.6988525390625
+  sbg:x: 1352.885498046875
+  sbg:y: 318.5
 - id: inferenceOutputJupyterNotebook
   outputSource:
   - inferencetotalsegmentator/inferenceOutputJupyterNotebook
   sbg:fileTypes: IPYNB
   type: File?
-  sbg:x: 915.3206176757812
-  sbg:y: -231.41307067871094
+  sbg:x: 1352.885498046875
+  sbg:y: 425.5
 - id: structuredReportsJSON
   outputSource:
   - dicomsegandradiomicssr/structuredReportsJSON
   sbg:fileTypes: LZ4
   type: File?
-  sbg:x: 2055.107177734375
+  sbg:x: 2162.428955078125
   sbg:y: 0
+- id: structuredReportsDICOM
+  outputSource:
+  - dicomsegandradiomicssr/structuredReportsDICOM
+  sbg:fileTypes: LZ4
+  type: File?
+  sbg:x: 2162.428955078125
+  sbg:y: 107
 - id: pyradiomicsRadiomicsFeatures
   outputSource:
   - dicomsegandradiomicssr/pyradiomicsRadiomicsFeatures
   sbg:fileTypes: LZ4
   type: File?
-  sbg:x: 2055.107177734375
+  sbg:x: 2162.428955078125
   sbg:y: 214
+- id: dicomsegAndRadiomicsSR_UsageMetrics
+  outputSource:
+  - dicomsegandradiomicssr/dicomsegAndRadiomicsSR_UsageMetrics
+  sbg:fileTypes: LZ4
+  type: File?
+  sbg:x: 2162.428955078125
+  sbg:y: 321
 - id: dicomsegAndRadiomicsSR_SRErrors
   outputSource:
   - dicomsegandradiomicssr/dicomsegAndRadiomicsSR_SRErrors
   sbg:fileTypes: TXT
   type: File?
-  sbg:x: 2055.107177734375
+  sbg:x: 2162.428955078125
   sbg:y: 428
 - id: dicomsegAndRadiomicsSR_RadiomicsErrors
   outputSource:
   - dicomsegandradiomicssr/dicomsegAndRadiomicsSR_RadiomicsErrors
   sbg:fileTypes: TXT
   type: File?
-  sbg:x: 2055.107177734375
+  sbg:x: 2162.428955078125
   sbg:y: 535
 - id: dicomsegAndRadiomicsSR_OutputJupyterNotebook
   outputSource:
   - dicomsegandradiomicssr/dicomsegAndRadiomicsSR_OutputJupyterNotebook
   sbg:fileTypes: IPYNB
   type: File?
-  sbg:x: 2055.107177734375
+  sbg:x: 2162.428955078125
   sbg:y: 642
+- id: dicomsegAndRadiomicsSR_modality_errors
+  outputSource:
+  - dicomsegandradiomicssr/dicomsegAndRadiomicsSR_modality_errors
+  sbg:fileTypes: TXT
+  type: File?
+  sbg:x: 2162.428955078125
+  sbg:y: 749
 - id: dicomsegAndRadiomicsSR_CompressedFiles
   outputSource:
   - dicomsegandradiomicssr/dicomsegAndRadiomicsSR_CompressedFiles
   sbg:fileTypes: LZ4
   type: File?
-  sbg:x: 2055.107177734375
-  sbg:y: 749
-- id: structuredReportsDICOM
-  outputSource:
-  - dicomsegandradiomicssr/structuredReportsDICOM
-  sbg:fileTypes: LZ4
-  type: File?
-  sbg:x: 2055.107177734375
-  sbg:y: 107
-- id: dicomsegAndRadiomicsSR_UsageMetrics
-  outputSource:
-  - dicomsegandradiomicssr/dicomsegAndRadiomicsSR_UsageMetrics
-  sbg:fileTypes: LZ4
-  type: File?
-  sbg:x: 2055.107177734375
-  sbg:y: 321
+  sbg:x: 2162.428955078125
+  sbg:y: 856
 steps:
 - id: downloaddicomandconvert
   in:
-  - id: s5cmdUrls
-    source: s5cmdUrls
-  - id: dicomToNiftiConverterTool
-    source: dicomToNiftiConverterTool
+  - id: yamlListOfSeriesInstanceUIDs
+    source: yamlListOfSeriesInstanceUIDs
   out:
   - id: downloadDicomAndConvertOutputJupyterNotebook
   - id: dcm2niix_errors
   - id: downloadDicomAndConvertNiftiFiles
   - id: downloadDicomAndConvertUsageMetrics
+  - id: downloadDicomAndConvert_modality_errors
   run:
     class: CommandLineTool
     cwlVersion: v1.2
@@ -132,80 +137,71 @@ steps:
     id: downloaddicomandconvert
     baseCommand:
     - wget
-    - https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/Totalsegmentator/Notebooks/downloadDicomAndConvertNotebook.ipynb
+    - https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/TotalSegmentator/Notebooks/downloadDicomAndConvertNotebook.ipynb
     - "&&"
     - set
     - "-e"
     - "&&"
     - papermill
     inputs:
-    - id: s5cmdUrls
+    - id: yamlListOfSeriesInstanceUIDs
       type: File
       inputBinding:
+        prefix: "-f"
         shellQuote: false
-        position: 3
-    - id: dicomToNiftiConverterTool
-      type: string
-      inputBinding:
-        shellQuote: true
-        position: 2
+        position: 1
     outputs:
     - id: downloadDicomAndConvertOutputJupyterNotebook
       type: File?
       outputBinding:
         glob: downloadDicomAndConvertOutputJupyterNotebook.ipynb
-      sbg:fileTypes: IPYNB
     - id: dcm2niix_errors
       type: File?
       outputBinding:
         glob: dcm2niix_errors.csv
-      sbg:fileTypes: CSV
     - id: downloadDicomAndConvertNiftiFiles
       type: File?
       outputBinding:
         glob: downloadDicomAndConvertNiftiFiles.tar.lz4
-      sbg:fileTypes: LZ4
     - id: downloadDicomAndConvertUsageMetrics
       type: File?
       outputBinding:
         glob: downloadDicomAndConvertUsageMetrics.lz4
-      sbg:fileTypes: LZ4
+    - id: downloadDicomAndConvert_modality_errors
+      type: File?
+      outputBinding:
+        glob: modality_error_file.txt
     label: downloadDicomAndConvert
     arguments:
-    - prefix: "-p"
-      shellQuote: false
-      position: 2
-      valueFrom: converterType
-    - prefix: "-p"
-      shellQuote: false
-      position: 3
-      valueFrom: csvFilePath
     - prefix: ''
       shellQuote: false
-      position: 5
+      position: 0
       valueFrom: downloadDicomAndConvertNotebook.ipynb
     - prefix: ''
       shellQuote: false
-      position: 6
+      position: 1
       valueFrom: downloadDicomAndConvertOutputJupyterNotebook.ipynb
     requirements:
     - class: ShellCommandRequirement
     - class: LoadListingRequirement
+    - class: NetworkAccess
+      networkAccess: true
     - class: DockerRequirement
-      dockerPull: imagingdatacommons/download_convert:main
+      dockerPull: imagingdatacommons/download_convert
     - class: InlineJavascriptRequirement
     hints:
     - class: sbg:AWSInstanceType
       value: c5.large;ebs-gp2;10
   label: downloadDicomAndConvert
-  sbg:x: 259.817138671875
-  sbg:y: 353.5
+  hints:
+  - class: sbg:AWSInstanceType
+    value: c5.large;ebs-gp2;10
+  sbg:x: 294.943115234375
+  sbg:y: 400
 - id: inferencetotalsegmentator
   in:
   - id: downloadDicomAndConvertNiftiFiles
     source: downloaddicomandconvert/downloadDicomAndConvertNiftiFiles
-  - id: dicomToNiftiConverterTool
-    source: dicomToNiftiConverterTool
   out:
   - id: inferenceOutputJupyterNotebook
   - id: totalsegmentatorErrors
@@ -219,7 +215,7 @@ steps:
     id: inferencetotalsegmentator
     baseCommand:
     - wget
-    - https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/Totalsegmentator/Notebooks/inferenceTotalSegmentatorNotebook.ipynb
+    - https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/TotalSegmentator/Notebooks/inferenceTotalSegmentatorNotebook.ipynb
     - "&&"
     - set
     - "-e"
@@ -230,13 +226,8 @@ steps:
       type: File
       inputBinding:
         shellQuote: false
-        position: 3
-      sbg:fileTypes: LZ4
-    - id: dicomToNiftiConverterTool
-      type: string
-      inputBinding:
-        shellQuote: true
         position: 2
+      sbg:fileTypes: LZ4
     outputs:
     - id: inferenceOutputJupyterNotebook
       type: File?
@@ -262,19 +253,15 @@ steps:
     arguments:
     - prefix: "-p"
       shellQuote: false
-      position: 2
-      valueFrom: converterType
-    - prefix: "-p"
-      shellQuote: false
-      position: 3
+      position: 1
       valueFrom: niftiFilePath
     - prefix: ''
       shellQuote: false
-      position: 5
+      position: 3
       valueFrom: inferenceTotalSegmentatorNotebook.ipynb
     - prefix: ''
       shellQuote: false
-      position: 6
+      position: 4
       valueFrom: inferenceOutputJupyterNotebook.ipynb
     requirements:
     - class: ShellCommandRequirement
@@ -286,12 +273,13 @@ steps:
     - class: sbg:AWSInstanceType
       value: g4dn.xlarge;ebs-gp2;25
   label: inferenceTotalSegmentator
-  sbg:x: 795.6659545898438
+  hints:
+  - class: sbg:AWSInstanceType
+    value: g4dn.xlarge;ebs-gp2;25
+  sbg:x: 869.0360717773438
   sbg:y: 193
 - id: dicomsegandradiomicssr
   in:
-  - id: s5cmdUrls
-    source: s5cmdUrls
   - id: downloadDicomAndConvertAndInferenceTotalSegmentatorZipFile
     source: inferencetotalsegmentator/inferenceZipFile
   out:
@@ -303,6 +291,7 @@ steps:
   - id: dicomsegAndRadiomicsSR_UsageMetrics
   - id: dicomsegAndRadiomicsSR_RadiomicsErrors
   - id: dicomsegAndRadiomicsSR_SRErrors
+  - id: dicomsegAndRadiomicsSR_modality_errors
   run:
     class: CommandLineTool
     cwlVersion: v1.2
@@ -311,18 +300,13 @@ steps:
     id: dicomsegandradiomicssr
     baseCommand:
     - wget
-    - https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/Totalsegmentator/Notebooks/dicomsegAndRadiomicsSR_Notebook.ipynb
+    - https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/TotalSegmentator/Notebooks/dicomsegAndRadiomicsSR_Notebook.ipynb
     - "&&"
     - set
     - "-e"
     - "&&"
     - papermill
     inputs:
-    - id: s5cmdUrls
-      type: File
-      inputBinding:
-        shellQuote: false
-        position: 3
     - id: downloadDicomAndConvertAndInferenceTotalSegmentatorZipFile
       type: File
       inputBinding:
@@ -370,36 +354,40 @@ steps:
       outputBinding:
         glob: sr_error_file.txt
       sbg:fileTypes: TXT
+    - id: dicomsegAndRadiomicsSR_modality_errors
+      type: File?
+      outputBinding:
+        glob: modality_error_file.txt
+      sbg:fileTypes: TXT
     label: dicomsegAndRadiomicsSR
     arguments:
     - prefix: "-p"
       shellQuote: false
-      position: 2
+      position: 1
       valueFrom: inferenceNiftiFilePath
-    - prefix: "-p"
-      shellQuote: false
-      position: 3
-      valueFrom: csvFilePath
     - prefix: ''
       shellQuote: false
-      position: 5
+      position: 3
       valueFrom: dicomsegAndRadiomicsSR_Notebook.ipynb
     - prefix: ''
       shellQuote: false
-      position: 6
+      position: 4
       valueFrom: dicomsegAndRadiomicsSR_OutputJupyterNotebook.ipynb
     requirements:
     - class: ShellCommandRequirement
     - class: LoadListingRequirement
     - class: DockerRequirement
-      dockerPull: imagingdatacommons/radiomics:main
+      dockerPull: imagingdatacommons/dicom_seg_pyradiomics_sr:main
     - class: InlineJavascriptRequirement
     hints:
     - class: sbg:AWSInstanceType
       value: m5.xlarge;ebs-gp2;25
   label: dicomsegAndRadiomicsSR
-  sbg:x: 1274.7718505859375
-  sbg:y: 535
+  hints:
+  - class: sbg:AWSInstanceType
+    value: m5.xlarge;ebs-gp2;10
+  sbg:x: 1352.885498046875
+  sbg:y: 588.5
 requirements:
 - class: InlineJavascriptRequirement
 - class: StepInputExpressionRequirement

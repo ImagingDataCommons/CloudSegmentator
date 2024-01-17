@@ -116,7 +116,7 @@ task downloadAndConvert {
     String downloadAndConvertCpuFamily
  }
  command {
-   wget https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/TotalSegmentator/Notebooks/downloadDicomAndConvertNotebook.ipynb
+   wget https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/TotalSegmentator/Notebooks/downloadDicomAndConvertNotebook.ipynb
    set -e
    papermill downloadDicomAndConvertNotebook.ipynb downloadAndConvertOutputJupyterNotebook.ipynb -y "~{yamlListOfSeriesInstanceUIDs}"
  }
