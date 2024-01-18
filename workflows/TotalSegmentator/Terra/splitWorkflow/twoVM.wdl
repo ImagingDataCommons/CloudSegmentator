@@ -79,7 +79,6 @@ workflow TotalSegmentator {
    File? downloadDicomAndConvertAndInferenceTotalSegmentator_modality_errors = downloadDicomAndConvertAndInferenceTotalSegmentator.downloadDicomAndConvertAndInferenceTotalSegmentator_modality_errors
    File? dicomsegAndRadiomicsSR_modality_errors = dicomsegAndRadiomicsSR.dicomsegAndRadiomicsSR_modality_errors
  }
-
 }
 
 #Task Definitions

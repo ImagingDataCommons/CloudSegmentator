@@ -101,7 +101,6 @@ workflow TotalSegmentator {
    File? downloadDicomAndConvert_modality_errors = downloadAndConvert.downloadDicomAndConvert_modality_errors
    File? dicomsegAndRadiomicsSR_modality_errors = dicomsegAndRadiomicsSR.dicomsegAndRadiomicsSR_modality_errors
  }
-
 }
 #Task Definitions
 task downloadAndConvert {
