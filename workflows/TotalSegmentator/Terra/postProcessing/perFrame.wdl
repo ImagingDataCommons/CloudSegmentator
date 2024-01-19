@@ -1,11 +1,10 @@
 version 1.0
 #WORKFLOW DEFINITION
-workflow PerFrameFunctionalGroupsSequence {
+workflow PerFrame {
  input {
    #all the inputs entered here but not hardcoded will appear in the UI as required fields
    #And the hardcoded inputs will appear as optional to override the values entered here
-   File segFilesCsv
-   File jsonServiceAccountFile
+   Array[File] segFiles
 
    #Docker Images for each task
    String docker_PerFrameFunctionalGroupsSequence = "imagingdatacommons/per_frame_functional_group_sequence:main"
@@ -25,8 +24,8 @@ workflow PerFrameFunctionalGroupsSequence {
  #calling Papermill Task with the inputs
  call PerFrameFunctionalGroupsSequence{
    input:
-    segFilesCsv = segFilesCsv,
-    jsonServiceAccountFile = jsonServiceAccountFile,
+    segFiles = segFiles,
+    #jsonServiceAccountFile = jsonServiceAccountFile,
     docker_PerFrameFunctionalGroupsSequence = docker_PerFrameFunctionalGroupsSequence,
     preemptibleTries_PerFrameFunctionalGroupsSequence = preemptibleTries_PerFrameFunctionalGroupsSequence,
     cpus_PerFrameFunctionalGroupsSequence = cpus_PerFrameFunctionalGroupsSequence,
@@ -34,7 +33,6 @@ workflow PerFrameFunctionalGroupsSequence {
     cpuFamily_PerFrameFunctionalGroupsSequence = cpuFamily_PerFrameFunctionalGroupsSequence, 
     zones_PerFrameFunctionalGroupsSequence = zones_PerFrameFunctionalGroupsSequence
 }
-
 
  output {
   #output notebooks
@@ -49,8 +47,7 @@ task PerFrameFunctionalGroupsSequence{
  input {
    #Just like the workflow inputs, any new inputs entered here but not hardcoded will appear in the UI as required fields
    #And the hardcoded inputs will appear as optional to override the values entered here
-    File segFilesCsv 
-    File jsonServiceAccountFile
+    Array[File] segFiles
     #Docker Images for task
     String docker_PerFrameFunctionalGroupsSequence
     #Preemptible retries
@@ -63,14 +60,14 @@ task PerFrameFunctionalGroupsSequence{
     String zones_PerFrameFunctionalGroupsSequence
  }
  command {
-   wget https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/Totalsegmentator/Notebooks/postProcessingExtractPerframe.ipynb
+   wget https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/TotalSegmentator/Notebooks/postProcessingExtractPerframe.ipynb
    
    set -o xtrace
    # For any command failures in the rest of this script, return the error.
    set -o pipefail
    set +o errexit
    
-   papermill -p segFilesCsv ~{segFilesCsv} -p jsonServiceAccountFile ~{jsonServiceAccountFile}  postProcessingExtractPerframe.ipynb outputNotebook_postProcessingExtractPerframe.ipynb
+   papermill postProcessingExtractPerframe.ipynb outputNotebook_postProcessingExtractPerframe.ipynb -p segFiles ~{sep="," segFiles}
    
    set -o errexit
    exit $?
@@ -85,7 +82,7 @@ task PerFrameFunctionalGroupsSequence{
    memory: ram_PerFrameFunctionalGroupsSequence + " GiB"
    disks: "local-disk 10 HDD" 
    preemptible: preemptibleTries_PerFrameFunctionalGroupsSequence
-   maxRetries: 3
+   maxRetries: 1
  }
  output {
    File outputNotebook_postProcessingExtractPerframe = "outputNotebook_postProcessingExtractPerframe.ipynb"
