@@ -63,7 +63,6 @@ workflow TotalSegmentator {
    File? dicomsegAndRadiomicsSR_SRErrors = totalSegmentatorEndToEnd.dicomsegAndRadiomicsSR_SRErrors
    File? modality_errors= totalSegmentatorEndToEnd.modality_errors
  }
-
 }
 
 #Task Definitions

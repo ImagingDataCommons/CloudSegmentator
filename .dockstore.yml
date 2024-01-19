@@ -3,33 +3,42 @@ workflows:
    - name: TotalSegmentatortwoVmWorkflowOnTerra
      subclass: WDL
      primaryDescriptorPath: /workflows/TotalSegmentator/Terra/splitWorkflow/twoVM.wdl
-     testParameterFiles:
-     -  /workflows/TotalSegmentator/Docs/sampleManifests/terra_data_table_manifest_2024_01_09_20_38.tsv
+     authors:
+      - name: ImagingDataCommons
+        email: vthiriveedhi@mgb.org  
    - name: TotalSegmentatorthreeVmWorkflowOnTerra
      subclass: WDL
      primaryDescriptorPath: /workflows/TotalSegmentator/Terra/splitWorkflow/threeVM.wdl
-     testParameterFiles:
-     -  /workflows/TotalSegmentator/Docs/sampleManifests/terra_data_table_manifest_2024_01_09_20_38.tsv
+     authors:
+      - name: ImagingDataCommons
+        email: vthiriveedhi@mgb.org 
    - name: TotalSegmentatorOneVmWorkflowOnTerra
      subclass: WDL
      primaryDescriptorPath: /workflows/TotalSegmentator/Terra/splitWorkflow/oneVM.wdl
-     testParameterFiles:
-     -  /workflows/TotalSegmentator/Docs/sampleManifests/terra_data_table_manifest_2024_01_09_20_38.tsv
+     authors:
+      - name: ImagingDataCommons
+        email: vthiriveedhi@mgb.org      
    - name: perFrameFunctionalGroupSequenceExtractionOnTerra
      subclass: WDL
-     primaryDescriptorPath: /workflows/TotalSegmentator/Terra/postProcessing/perFrame.wdl      
+     primaryDescriptorPath: /workflows/TotalSegmentator/Terra/postProcessing/perFrame.wdl   
+     authors:
+      - name: ImagingDataCommons
+        email: vthiriveedhi@mgb.org        
    - name: TotalSegmentatortwoVmWorkflowOnSB-CGC
      subclass: CWL
      primaryDescriptorPath: /workflows/TotalSegmentator/SevenBridges/splitWorkflow/twoVM.cwl
-     testParameterFiles:
-     -  /workflows/TotalSegmentator/Docs/sampleManifests/batch_1.csv
+     authors:
+      - name: ImagingDataCommons
+        email: vthiriveedhi@mgb.org    
    - name: TotalSegmentatorthreeVmWorkflowOnSB-CGC
      subclass: CWL
      primaryDescriptorPath: /workflows/TotalSegmentator/SevenBridges/splitWorkflow/threeVM.cwl
-     testParameterFiles:
-     -  /workflows/TotalSegmentator/Docs/sampleManifests/sampleManifests/batch_1.csv
+     authors:
+      - name: ImagingDataCommons
+        email: vthiriveedhi@mgb.org
    - name: TotalSegmentatorOneVmWorkflowOnSB-CGC
      subclass: CWL
      primaryDescriptorPath: /workflows/TotalSegmentator/SevenBridges/splitWorkflow/oneVM.cwl
-     testParameterFiles:
-     -  /workflows/TotalSegmentator/Docs/sampleManifests/batch_1.csv         
+     authors:
+      - name: ImagingDataCommons
+        email: vthiriveedhi@mgb.org
