@@ -113,5 +113,5 @@
     - Find the imported workflow from the `Apps` tab 
     - Click `Run`
     - Unlike Terra, SB-CGC does not use a data table model.
-    - For the purposes of this demo, [download and provide this input file](!https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/TotalSegmentator/Docs/sampleManifests/batch_1.yaml)   to `yamlListOfSeriesInstanceUIDs`
+    - For the purposes of this demo, [download and provide this input file](https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/TotalSegmentator/Docs/sampleManifests/batch_1.yaml)   to `yamlListOfSeriesInstanceUIDs`
     - Click `Run` on the top right to start the workflow
