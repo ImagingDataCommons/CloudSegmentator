@@ -18,7 +18,8 @@
                     27,
                     27
                 ],
-                "SegmentDescription": "Left Adrenal gland",
+                "SegmentLabel": "Left Adrenal gland",
+                "SegmentDescription": "TotalSegmentator 12 : adrenal_gland_left",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -35,8 +36,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                },
-                "SegmentLabel": "Left Adrenal gland"
+                }
             },
             {
                 "labelID": 11,
@@ -45,7 +45,8 @@
                     27,
                     27
                 ],
-                "SegmentDescription": "Right Adrenal gland",
+                "SegmentLabel": "Right Adrenal gland",
+                "SegmentDescription": "TotalSegmentator 11 : adrenal_gland_right",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -62,8 +63,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                },
-                "SegmentLabel": "Right Adrenal gland"
+                }
             },
             {
                 "labelID": 7,
@@ -72,7 +72,8 @@
                     97,
                     76
                 ],
-                "SegmentDescription": "Aorta",
+                "SegmentLabel": "Aorta",
+                "SegmentDescription": "TotalSegmentator 7 : aorta",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -84,8 +85,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "15825003",
                     "CodeMeaning": "Aorta"
-                },
-                "SegmentLabel": "Aorta"
+                }
             },
             {
                 "labelID": 100,
@@ -94,7 +94,8 @@
                     104,
                     88
                 ],
-                "SegmentDescription": "Left Deep muscle of back",
+                "SegmentLabel": "Left Deep muscle of back",
+                "SegmentDescription": "TotalSegmentator 100 : autochthon_left",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -111,8 +112,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                },
-                "SegmentLabel": "Left Deep muscle of back"
+                }
             },
             {
                 "labelID": 101,
@@ -121,7 +121,8 @@
                     104,
                     88
                 ],
-                "SegmentDescription": "Right Deep muscle of back",
+                "SegmentLabel": "Right Deep muscle of back",
+                "SegmentDescription": "TotalSegmentator 101 : autochthon_right",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -138,8 +139,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                },
-                "SegmentLabel": "Right Deep muscle of back"
+                }
             },
             {
                 "labelID": 50,
@@ -148,7 +148,8 @@
                     250,
                     225
                 ],
-                "SegmentDescription": "Brain",
+                "SegmentLabel": "Brain",
+                "SegmentDescription": "TotalSegmentator 50 : brain",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -160,8 +161,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "12738006",
                     "CodeMeaning": "Brain"
-                },
-                "SegmentLabel": "Brain"
+                }
             },
             {
                 "labelID": 86,
@@ -170,7 +170,8 @@
                     188,
                     38
                 ],
-                "SegmentDescription": "Left Clavicle",
+                "SegmentLabel": "Left Clavicle",
+                "SegmentDescription": "TotalSegmentator 86 : clavicula_left",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -187,8 +188,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                },
-                "SegmentLabel": "Left Clavicle"
+                }
             },
             {
                 "labelID": 87,
@@ -197,7 +197,8 @@
                     188,
                     38
                 ],
-                "SegmentDescription": "Right Clavicle",
+                "SegmentLabel": "Right Clavicle",
+                "SegmentDescription": "TotalSegmentator 87 : clavicula_right",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -214,8 +215,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                },
-                "SegmentLabel": "Right Clavicle"
+                }
             },
             {
                 "labelID": 57,
@@ -224,7 +224,8 @@
                     168,
                     143
                 ],
-                "SegmentDescription": "Colon",
+                "SegmentLabel": "Colon",
+                "SegmentDescription": "TotalSegmentator 57 : colon",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -236,8 +237,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "71854001",
                     "CodeMeaning": "Colon"
-                },
-                "SegmentLabel": "Colon"
+                }
             },
             {
                 "labelID": 56,
@@ -246,7 +246,8 @@
                     253,
                     229
                 ],
-                "SegmentDescription": "Duodenum",
+                "SegmentLabel": "Duodenum",
+                "SegmentDescription": "TotalSegmentator 56 : duodenum",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -258,8 +259,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "38848004",
                     "CodeMeaning": "Duodenum"
-                },
-                "SegmentLabel": "Duodenum"
+                }
             },
             {
                 "labelID": 42,
@@ -268,7 +268,8 @@
                     171,
                     143
                 ],
-                "SegmentDescription": "Esophagus",
+                "SegmentLabel": "Esophagus",
+                "SegmentDescription": "TotalSegmentator 42 : esophagus",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -280,8 +281,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "32849002",
                     "CodeMeaning": "Esophagus"
-                },
-                "SegmentLabel": "Esophagus"
+                }
             },
             {
                 "labelID": 93,
@@ -290,7 +290,8 @@
                     182,
                     193
                 ],
-                "SegmentDescription": "Face",
+                "SegmentLabel": "Face",
+                "SegmentDescription": "TotalSegmentator 93 : face",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -302,8 +303,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "89545001",
                     "CodeMeaning": "Face"
-                },
-                "SegmentLabel": "Face"
+                }
             },
             {
                 "labelID": 88,
@@ -312,7 +312,8 @@
                     222,
                     207
                 ],
-                "SegmentDescription": "Left Femur",
+                "SegmentLabel": "Left Femur",
+                "SegmentDescription": "TotalSegmentator 88 : femur_left",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -329,8 +330,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                },
-                "SegmentLabel": "Left Femur"
+                }
             },
             {
                 "labelID": 89,
@@ -339,7 +339,8 @@
                     222,
                     207
                 ],
-                "SegmentDescription": "Right Femur",
+                "SegmentLabel": "Right Femur",
+                "SegmentDescription": "TotalSegmentator 89 : femur_right",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -356,8 +357,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                },
-                "SegmentLabel": "Right Femur"
+                }
             },
             {
                 "labelID": 4,
@@ -366,7 +366,8 @@
                     150,
                     98
                 ],
-                "SegmentDescription": "Gallbladder",
+                "SegmentLabel": "Gallbladder",
+                "SegmentDescription": "TotalSegmentator 4 : gallbladder",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -378,8 +379,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "28231008",
                     "CodeMeaning": "Gallbladder"
-                },
-                "SegmentLabel": "Gallbladder"
+                }
             },
             {
                 "labelID": 94,
@@ -388,7 +388,8 @@
                     104,
                     88
                 ],
-                "SegmentDescription": "Left Gluteus maximus muscle",
+                "SegmentLabel": "Left Gluteus maximus muscle",
+                "SegmentDescription": "TotalSegmentator 94 : gluteus_maximus_left",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -405,8 +406,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                },
-                "SegmentLabel": "Left Gluteus maximus muscle"
+                }
             },
             {
                 "labelID": 95,
@@ -415,7 +415,8 @@
                     104,
                     88
                 ],
-                "SegmentDescription": "Right Gluteus maximus muscle",
+                "SegmentLabel": "Right Gluteus maximus muscle",
+                "SegmentDescription": "TotalSegmentator 95 : gluteus_maximus_right",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -432,8 +433,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                },
-                "SegmentLabel": "Right Gluteus maximus muscle"
+                }
             },
             {
                 "labelID": 96,
@@ -442,7 +442,8 @@
                     104,
                     88
                 ],
-                "SegmentDescription": "Left Gluteus medius muscle",
+                "SegmentLabel": "Left Gluteus medius muscle",
+                "SegmentDescription": "TotalSegmentator 96 : gluteus_medius_left",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -459,8 +460,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                },
-                "SegmentLabel": "Left Gluteus medius muscle"
+                }
             },
             {
                 "labelID": 97,
@@ -469,7 +469,8 @@
                     104,
                     88
                 ],
-                "SegmentDescription": "Right Gluteus medius muscle",
+                "SegmentLabel": "Right Gluteus medius muscle",
+                "SegmentDescription": "TotalSegmentator 97 : gluteus_medius_right",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -486,8 +487,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                },
-                "SegmentLabel": "Right Gluteus medius muscle"
+                }
             },
             {
                 "labelID": 98,
@@ -496,7 +496,8 @@
                     104,
                     88
                 ],
-                "SegmentDescription": "Left Gluteus minius muscle",
+                "SegmentLabel": "Left Gluteus minius muscle",
+                "SegmentDescription": "TotalSegmentator 98 : gluteus_minimus_left",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -513,8 +514,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                },
-                "SegmentLabel": "Left Gluteus minius muscle"
+                }
             },
             {
                 "labelID": 99,
@@ -523,7 +523,8 @@
                     104,
                     88
                 ],
-                "SegmentDescription": "Right Gluteus minius muscle",
+                "SegmentLabel": "Right Gluteus minius muscle",
+                "SegmentDescription": "TotalSegmentator 99 : gluteus_minimus_right",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -540,8 +541,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                },
-                "SegmentLabel": "Right Gluteus minius muscle"
+                }
             },
             {
                 "labelID": 45,
@@ -550,7 +550,8 @@
                     129,
                     37
                 ],
-                "SegmentDescription": "Left atrium",
+                "SegmentLabel": "Left atrium",
+                "SegmentDescription": "TotalSegmentator 45 : heart_atrium_left",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -562,8 +563,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "82471001",
                     "CodeMeaning": "Left atrium"
-                },
-                "SegmentLabel": "Left atrium"
+                }
             },
             {
                 "labelID": 47,
@@ -572,7 +572,8 @@
                     129,
                     37
                 ],
-                "SegmentDescription": "Right atrium",
+                "SegmentLabel": "Right atrium",
+                "SegmentDescription": "TotalSegmentator 47 : heart_atrium_right",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -584,8 +585,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "73829009",
                     "CodeMeaning": "Right atrium"
-                },
-                "SegmentLabel": "Right atrium"
+                }
             },
             {
                 "labelID": 44,
@@ -594,7 +594,8 @@
                     104,
                     88
                 ],
-                "SegmentDescription": "Myocardium",
+                "SegmentLabel": "Myocardium",
+                "SegmentDescription": "TotalSegmentator 44 : heart_myocardium",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -606,8 +607,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "74281007",
                     "CodeMeaning": "Myocardium"
-                },
-                "SegmentLabel": "Myocardium"
+                }
             },
             {
                 "labelID": 46,
@@ -616,7 +616,8 @@
                     55,
                     13
                 ],
-                "SegmentDescription": "Left ventricle of heart",
+                "SegmentLabel": "Left ventricle of heart",
+                "SegmentDescription": "TotalSegmentator 46 : heart_ventricle_left",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -628,8 +629,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "87878005",
                     "CodeMeaning": "Left ventricle of heart"
-                },
-                "SegmentLabel": "Left ventricle of heart"
+                }
             },
             {
                 "labelID": 48,
@@ -638,7 +638,8 @@
                     85,
                     57
                 ],
-                "SegmentDescription": "Right ventricle of heart",
+                "SegmentLabel": "Right ventricle of heart",
+                "SegmentDescription": "TotalSegmentator 48 : heart_ventricle_right",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -650,8 +651,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "53085002",
                     "CodeMeaning": "Right ventricle of heart"
-                },
-                "SegmentLabel": "Right ventricle of heart"
+                }
             },
             {
                 "labelID": 90,
@@ -660,7 +660,8 @@
                     214,
                     145
                 ],
-                "SegmentDescription": "Left Hip",
+                "SegmentLabel": "Left Hip",
+                "SegmentDescription": "TotalSegmentator 90 : hip_left",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -677,8 +678,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                },
-                "SegmentLabel": "Left Hip"
+                }
             },
             {
                 "labelID": 91,
@@ -687,7 +687,8 @@
                     214,
                     145
                 ],
-                "SegmentDescription": "Right Hip",
+                "SegmentLabel": "Right Hip",
+                "SegmentDescription": "TotalSegmentator 91 : hip_right",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -704,8 +705,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                },
-                "SegmentLabel": "Right Hip"
+                }
             },
             {
                 "labelID": 82,
@@ -714,7 +714,8 @@
                     229,
                     185
                 ],
-                "SegmentDescription": "Left Humerus",
+                "SegmentLabel": "Left Humerus",
+                "SegmentDescription": "TotalSegmentator 82 : humerus_left",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -731,8 +732,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                },
-                "SegmentLabel": "Left Humerus"
+                }
             },
             {
                 "labelID": 83,
@@ -741,7 +741,8 @@
                     229,
                     185
                 ],
-                "SegmentDescription": "Right Humerus",
+                "SegmentLabel": "Right Humerus",
+                "SegmentDescription": "TotalSegmentator 83 : humerus_right",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -758,8 +759,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                },
-                "SegmentLabel": "Right Humerus"
+                }
             },
             {
                 "labelID": 51,
@@ -768,7 +768,8 @@
                     162,
                     48
                 ],
-                "SegmentDescription": "Left Common iliac artery",
+                "SegmentLabel": "Left Common iliac artery",
+                "SegmentDescription": "TotalSegmentator 51 : iliac_artery_left",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -785,8 +786,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                },
-                "SegmentLabel": "Left Common iliac artery"
+                }
             },
             {
                 "labelID": 52,
@@ -795,7 +795,8 @@
                     162,
                     48
                 ],
-                "SegmentDescription": "Right Common iliac artery",
+                "SegmentLabel": "Right Common iliac artery",
+                "SegmentDescription": "TotalSegmentator 52 : iliac_artery_right",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -812,8 +813,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                },
-                "SegmentLabel": "Right Common iliac artery"
+                }
             },
             {
                 "labelID": 53,
@@ -822,7 +822,8 @@
                     174,
                     37
                 ],
-                "SegmentDescription": "Left Common iliac vein",
+                "SegmentLabel": "Left Common iliac vein",
+                "SegmentDescription": "TotalSegmentator 53 : iliac_vena_left",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -839,8 +840,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                },
-                "SegmentLabel": "Left Common iliac vein"
+                }
             },
             {
                 "labelID": 54,
@@ -849,7 +849,8 @@
                     174,
                     37
                 ],
-                "SegmentDescription": "Right Common iliac vein",
+                "SegmentLabel": "Right Common iliac vein",
+                "SegmentDescription": "TotalSegmentator 54 : iliac_vena_right",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -866,8 +867,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                },
-                "SegmentLabel": "Right Common iliac vein"
+                }
             },
             {
                 "labelID": 102,
@@ -876,7 +876,8 @@
                     104,
                     88
                 ],
-                "SegmentDescription": "Left Iliopsoas muscle",
+                "SegmentLabel": "Left Iliopsoas muscle",
+                "SegmentDescription": "TotalSegmentator 102 : iliopsoas_left",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -893,8 +894,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                },
-                "SegmentLabel": "Left Iliopsoas muscle"
+                }
             },
             {
                 "labelID": 103,
@@ -903,7 +903,8 @@
                     104,
                     88
                 ],
-                "SegmentDescription": "Right Iliopsoas muscle",
+                "SegmentLabel": "Right Iliopsoas muscle",
+                "SegmentDescription": "TotalSegmentator 103 : iliopsoas_right",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -920,8 +921,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                },
-                "SegmentLabel": "Right Iliopsoas muscle"
+                }
             },
             {
                 "labelID": 8,
@@ -930,7 +930,8 @@
                     165,
                     54
                 ],
-                "SegmentDescription": "Inferior vena cava",
+                "SegmentLabel": "Inferior vena cava",
+                "SegmentDescription": "TotalSegmentator 8 : inferior_vena_cava",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -942,8 +943,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "64131007",
                     "CodeMeaning": "Inferior vena cava"
-                },
-                "SegmentLabel": "Inferior vena cava"
+                }
             },
             {
                 "labelID": 3,
@@ -952,7 +952,8 @@
                     126,
                     151
                 ],
-                "SegmentDescription": "Left Kidney",
+                "SegmentLabel": "Left Kidney",
+                "SegmentDescription": "TotalSegmentator 3 : kidney_left",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -969,8 +970,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                },
-                "SegmentLabel": "Left Kidney"
+                }
             },
             {
                 "labelID": 2,
@@ -979,7 +979,8 @@
                     126,
                     151
                 ],
-                "SegmentDescription": "Right Kidney",
+                "SegmentLabel": "Right Kidney",
+                "SegmentDescription": "TotalSegmentator 2 : kidney_right",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -996,8 +997,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                },
-                "SegmentLabel": "Right Kidney"
+                }
             },
             {
                 "labelID": 5,
@@ -1006,7 +1006,8 @@
                     130,
                     101
                 ],
-                "SegmentDescription": "Liver",
+                "SegmentLabel": "Liver",
+                "SegmentDescription": "TotalSegmentator 5 : liver",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1018,8 +1019,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "10200004",
                     "CodeMeaning": "Liver"
-                },
-                "SegmentLabel": "Liver"
+                }
             },
             {
                 "labelID": 14,
@@ -1028,7 +1028,8 @@
                     150,
                     232
                 ],
-                "SegmentDescription": "Left Lower lobe of lung",
+                "SegmentLabel": "Left Lower lobe of lung",
+                "SegmentDescription": "TotalSegmentator 14 : lung_lower_lobe_left",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1045,8 +1046,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                },
-                "SegmentLabel": "Left Lower lobe of lung"
+                }
             },
             {
                 "labelID": 17,
@@ -1055,7 +1055,8 @@
                     191,
                     32
                 ],
-                "SegmentDescription": "Right Lower lobe of lung",
+                "SegmentLabel": "Right Lower lobe of lung",
+                "SegmentDescription": "TotalSegmentator 17 : lung_lower_lobe_right",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1072,8 +1073,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                },
-                "SegmentLabel": "Right Lower lobe of lung"
+                }
             },
             {
                 "labelID": 16,
@@ -1082,7 +1082,8 @@
                     164,
                     140
                 ],
-                "SegmentDescription": "Middle lobe of right lung",
+                "SegmentLabel": "Middle lobe of right lung",
+                "SegmentDescription": "TotalSegmentator 16 : lung_middle_lobe_right",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1094,8 +1095,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "72481006",
                     "CodeMeaning": "Middle lobe of right lung"
-                },
-                "SegmentLabel": "Middle lobe of right lung"
+                }
             },
             {
                 "labelID": 13,
@@ -1104,7 +1104,8 @@
                     162,
                     95
                 ],
-                "SegmentDescription": "Left Upper lobe of lung",
+                "SegmentLabel": "Left Upper lobe of lung",
+                "SegmentDescription": "TotalSegmentator 13 : lung_upper_lobe_left",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1121,8 +1122,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                },
-                "SegmentLabel": "Left Upper lobe of lung"
+                }
             },
             {
                 "labelID": 15,
@@ -1131,7 +1131,8 @@
                     69,
                     44
                 ],
-                "SegmentDescription": "Right Upper lobe of lung",
+                "SegmentLabel": "Right Upper lobe of lung",
+                "SegmentDescription": "TotalSegmentator 15 : lung_upper_lobe_right",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1148,8 +1149,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                },
-                "SegmentLabel": "Right Upper lobe of lung"
+                }
             },
             {
                 "labelID": 10,
@@ -1158,7 +1158,8 @@
                     180,
                     111
                 ],
-                "SegmentDescription": "Pancreas",
+                "SegmentLabel": "Pancreas",
+                "SegmentDescription": "TotalSegmentator 10 : pancreas",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1170,8 +1171,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "15776009",
                     "CodeMeaning": "Pancreas"
-                },
-                "SegmentLabel": "Pancreas"
+                }
             },
             {
                 "labelID": 9,
@@ -1180,7 +1180,8 @@
                     151,
                     206
                 ],
-                "SegmentDescription": "Portal vein and splenic vein",
+                "SegmentLabel": "Portal vein and splenic vein",
+                "SegmentDescription": "TotalSegmentator 9 : portal_vein_and_splenic_vein",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1192,8 +1193,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "110765007",
                     "CodeMeaning": "Portal vein and splenic vein"
-                },
-                "SegmentLabel": "Portal vein and splenic vein"
+                }
             },
             {
                 "labelID": 49,
@@ -1202,7 +1202,8 @@
                     122,
                     171
                 ],
-                "SegmentDescription": "Pulmonary artery",
+                "SegmentLabel": "Pulmonary artery",
+                "SegmentDescription": "TotalSegmentator 49 : pulmonary_artery",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1214,8 +1215,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "81040000",
                     "CodeMeaning": "Pulmonary artery"
-                },
-                "SegmentLabel": "Pulmonary artery"
+                }
             },
             {
                 "labelID": 58,
@@ -1224,7 +1224,8 @@
                     2,
                     145
                 ],
-                "SegmentDescription": "Left First rib",
+                "SegmentLabel": "Left First rib",
+                "SegmentDescription": "TotalSegmentator 58 : rib_left_1",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1241,8 +1242,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                },
-                "SegmentLabel": "Left First rib"
+                }
             },
             {
                 "labelID": 59,
@@ -1251,7 +1251,8 @@
                     186,
                     216
                 ],
-                "SegmentDescription": "Left Second rib",
+                "SegmentLabel": "Left Second rib",
+                "SegmentDescription": "TotalSegmentator 59 : rib_left_2",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1268,8 +1269,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                },
-                "SegmentLabel": "Left Second rib"
+                }
             },
             {
                 "labelID": 60,
@@ -1278,7 +1278,8 @@
                     128,
                     188
                 ],
-                "SegmentDescription": "Left Third rib",
+                "SegmentLabel": "Left Third rib",
+                "SegmentDescription": "TotalSegmentator 60 : rib_left_3",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1295,8 +1296,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                },
-                "SegmentLabel": "Left Third rib"
+                }
             },
             {
                 "labelID": 61,
@@ -1305,7 +1305,8 @@
                     228,
                     202
                 ],
-                "SegmentDescription": "Left Fourth rib",
+                "SegmentLabel": "Left Fourth rib",
+                "SegmentDescription": "TotalSegmentator 61 : rib_left_4",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1322,8 +1323,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                },
-                "SegmentLabel": "Left Fourth rib"
+                }
             },
             {
                 "labelID": 62,
@@ -1332,7 +1332,8 @@
                     82,
                     73
                 ],
-                "SegmentDescription": "Left Fifth rib",
+                "SegmentLabel": "Left Fifth rib",
+                "SegmentDescription": "TotalSegmentator 62 : rib_left_5",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1349,8 +1350,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                },
-                "SegmentLabel": "Left Fifth rib"
+                }
             },
             {
                 "labelID": 63,
@@ -1359,7 +1359,8 @@
                     119,
                     255
                 ],
-                "SegmentDescription": "Left Sixth rib",
+                "SegmentLabel": "Left Sixth rib",
+                "SegmentDescription": "TotalSegmentator 63 : rib_left_6",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1376,8 +1377,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                },
-                "SegmentLabel": "Left Sixth rib"
+                }
             },
             {
                 "labelID": 64,
@@ -1386,7 +1386,8 @@
                     0,
                     145
                 ],
-                "SegmentDescription": "Left Seventh rib",
+                "SegmentLabel": "Left Seventh rib",
+                "SegmentDescription": "TotalSegmentator 64 : rib_left_7",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1403,8 +1404,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                },
-                "SegmentLabel": "Left Seventh rib"
+                }
             },
             {
                 "labelID": 65,
@@ -1413,7 +1413,8 @@
                     216,
                     199
                 ],
-                "SegmentDescription": "Left Eighth rib",
+                "SegmentLabel": "Left Eighth rib",
+                "SegmentDescription": "TotalSegmentator 65 : rib_left_8",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1430,8 +1431,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                },
-                "SegmentLabel": "Left Eighth rib"
+                }
             },
             {
                 "labelID": 66,
@@ -1440,7 +1440,8 @@
                     188,
                     62
                 ],
-                "SegmentDescription": "Left Ninth rib",
+                "SegmentLabel": "Left Ninth rib",
+                "SegmentDescription": "TotalSegmentator 66 : rib_left_9",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1457,8 +1458,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                },
-                "SegmentLabel": "Left Ninth rib"
+                }
             },
             {
                 "labelID": 67,
@@ -1467,7 +1467,8 @@
                     97,
                     228
                 ],
-                "SegmentDescription": "Left Tenth rib",
+                "SegmentLabel": "Left Tenth rib",
+                "SegmentDescription": "TotalSegmentator 67 : rib_left_10",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1484,8 +1485,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                },
-                "SegmentLabel": "Left Tenth rib"
+                }
             },
             {
                 "labelID": 68,
@@ -1494,7 +1494,8 @@
                     164,
                     144
                 ],
-                "SegmentDescription": "Left Eleventh rib",
+                "SegmentLabel": "Left Eleventh rib",
+                "SegmentDescription": "TotalSegmentator 68 : rib_left_11",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1511,8 +1512,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                },
-                "SegmentLabel": "Left Eleventh rib"
+                }
             },
             {
                 "labelID": 69,
@@ -1521,7 +1521,8 @@
                     89,
                     255
                 ],
-                "SegmentDescription": "Left Twelfth rib",
+                "SegmentLabel": "Left Twelfth rib",
+                "SegmentDescription": "TotalSegmentator 69 : rib_left_12",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1538,8 +1539,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                },
-                "SegmentLabel": "Left Twelfth rib"
+                }
             },
             {
                 "labelID": 70,
@@ -1548,7 +1548,8 @@
                     2,
                     145
                 ],
-                "SegmentDescription": "Right First rib",
+                "SegmentLabel": "Right First rib",
+                "SegmentDescription": "TotalSegmentator 70 : rib_right_1",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1565,8 +1566,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                },
-                "SegmentLabel": "Right First rib"
+                }
             },
             {
                 "labelID": 71,
@@ -1575,7 +1575,8 @@
                     186,
                     216
                 ],
-                "SegmentDescription": "Right Second rib",
+                "SegmentLabel": "Right Second rib",
+                "SegmentDescription": "TotalSegmentator 71 : rib_right_2",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1592,8 +1593,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                },
-                "SegmentLabel": "Right Second rib"
+                }
             },
             {
                 "labelID": 72,
@@ -1602,7 +1602,8 @@
                     128,
                     188
                 ],
-                "SegmentDescription": "Right Third rib",
+                "SegmentLabel": "Right Third rib",
+                "SegmentDescription": "TotalSegmentator 72 : rib_right_3",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1619,8 +1620,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                },
-                "SegmentLabel": "Right Third rib"
+                }
             },
             {
                 "labelID": 73,
@@ -1629,7 +1629,8 @@
                     228,
                     202
                 ],
-                "SegmentDescription": "Right Fourth rib",
+                "SegmentLabel": "Right Fourth rib",
+                "SegmentDescription": "TotalSegmentator 73 : rib_right_4",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1646,8 +1647,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                },
-                "SegmentLabel": "Right Fourth rib"
+                }
             },
             {
                 "labelID": 74,
@@ -1656,7 +1656,8 @@
                     82,
                     73
                 ],
-                "SegmentDescription": "Right Fifth rib",
+                "SegmentLabel": "Right Fifth rib",
+                "SegmentDescription": "TotalSegmentator 74 : rib_right_5",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1673,8 +1674,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                },
-                "SegmentLabel": "Right Fifth rib"
+                }
             },
             {
                 "labelID": 75,
@@ -1683,7 +1683,8 @@
                     119,
                     255
                 ],
-                "SegmentDescription": "Right Sixth rib",
+                "SegmentLabel": "Right Sixth rib",
+                "SegmentDescription": "TotalSegmentator 75 : rib_right_6",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1700,8 +1701,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                },
-                "SegmentLabel": "Right Sixth rib"
+                }
             },
             {
                 "labelID": 76,
@@ -1710,7 +1710,8 @@
                     0,
                     145
                 ],
-                "SegmentDescription": "Right Seventh rib",
+                "SegmentLabel": "Right Seventh rib",
+                "SegmentDescription": "TotalSegmentator 76 : rib_right_7",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1727,8 +1728,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                },
-                "SegmentLabel": "Right Seventh rib"
+                }
             },
             {
                 "labelID": 77,
@@ -1737,7 +1737,8 @@
                     216,
                     199
                 ],
-                "SegmentDescription": "Right Eighth rib",
+                "SegmentLabel": "Right Eighth rib",
+                "SegmentDescription": "TotalSegmentator 77 : rib_right_8",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1754,8 +1755,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                },
-                "SegmentLabel": "Right Eighth rib"
+                }
             },
             {
                 "labelID": 78,
@@ -1764,7 +1764,8 @@
                     188,
                     62
                 ],
-                "SegmentDescription": "Right Ninth rib",
+                "SegmentLabel": "Right Ninth rib",
+                "SegmentDescription": "TotalSegmentator 78 : rib_right_9",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1781,8 +1782,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                },
-                "SegmentLabel": "Right Ninth rib"
+                }
             },
             {
                 "labelID": 79,
@@ -1791,7 +1791,8 @@
                     97,
                     228
                 ],
-                "SegmentDescription": "Right Tenth rib",
+                "SegmentLabel": "Right Tenth rib",
+                "SegmentDescription": "TotalSegmentator 79 : rib_right_10",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1808,8 +1809,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                },
-                "SegmentLabel": "Right Tenth rib"
+                }
             },
             {
                 "labelID": 80,
@@ -1818,7 +1818,8 @@
                     164,
                     144
                 ],
-                "SegmentDescription": "Right Eleventh rib",
+                "SegmentLabel": "Right Eleventh rib",
+                "SegmentDescription": "TotalSegmentator 80 : rib_right_11",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1835,8 +1836,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                },
-                "SegmentLabel": "Right Eleventh rib"
+                }
             },
             {
                 "labelID": 81,
@@ -1845,7 +1845,8 @@
                     89,
                     255
                 ],
-                "SegmentDescription": "Right Twelfth rib",
+                "SegmentLabel": "Right Twelfth rib",
+                "SegmentDescription": "TotalSegmentator 81 : rib_right_12",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1862,8 +1863,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                },
-                "SegmentLabel": "Right Twelfth rib"
+                }
             },
             {
                 "labelID": 92,
@@ -1872,7 +1872,8 @@
                     140,
                     140
                 ],
-                "SegmentDescription": "Sacrum",
+                "SegmentLabel": "Sacrum",
+                "SegmentDescription": "TotalSegmentator 92 : sacrum",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1884,8 +1885,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "54735007",
                     "CodeMeaning": "Sacrum"
-                },
-                "SegmentLabel": "Sacrum"
+                }
             },
             {
                 "labelID": 84,
@@ -1894,7 +1894,8 @@
                     204,
                     131
                 ],
-                "SegmentDescription": "Left Scapula",
+                "SegmentLabel": "Left Scapula",
+                "SegmentDescription": "TotalSegmentator 84 : scapula_left",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1911,8 +1912,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7771000",
                     "CodeMeaning": "Left"
-                },
-                "SegmentLabel": "Left Scapula"
+                }
             },
             {
                 "labelID": 85,
@@ -1921,7 +1921,8 @@
                     204,
                     131
                 ],
-                "SegmentDescription": "Right Scapula",
+                "SegmentLabel": "Right Scapula",
+                "SegmentDescription": "TotalSegmentator 85 : scapula_right",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1938,8 +1939,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "24028007",
                     "CodeMeaning": "Right"
-                },
-                "SegmentLabel": "Right Scapula"
+                }
             },
             {
                 "labelID": 55,
@@ -1948,7 +1948,8 @@
                     167,
                     142
                 ],
-                "SegmentDescription": "Small Intestine",
+                "SegmentLabel": "Small Intestine",
+                "SegmentDescription": "TotalSegmentator 55 : small_bowel",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1960,8 +1961,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "30315005",
                     "CodeMeaning": "Small Intestine"
-                },
-                "SegmentLabel": "Small Intestine"
+                }
             },
             {
                 "labelID": 1,
@@ -1970,7 +1970,8 @@
                     108,
                     162
                 ],
-                "SegmentDescription": "Spleen",
+                "SegmentLabel": "Spleen",
+                "SegmentDescription": "TotalSegmentator 1 : spleen",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -1982,8 +1983,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "78961009",
                     "CodeMeaning": "Spleen"
-                },
-                "SegmentLabel": "Spleen"
+                }
             },
             {
                 "labelID": 6,
@@ -1992,7 +1992,8 @@
                     139,
                     76
                 ],
-                "SegmentDescription": "Stomach",
+                "SegmentLabel": "Stomach",
+                "SegmentDescription": "TotalSegmentator 6 : stomach",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -2004,8 +2005,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "69695003",
                     "CodeMeaning": "Stomach"
-                },
-                "SegmentLabel": "Stomach"
+                }
             },
             {
                 "labelID": 43,
@@ -2014,7 +2014,8 @@
                     228,
                     255
                 ],
-                "SegmentDescription": "Trachea",
+                "SegmentLabel": "Trachea",
+                "SegmentDescription": "TotalSegmentator 43 : trachea",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -2026,8 +2027,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "44567001",
                     "CodeMeaning": "Trachea"
-                },
-                "SegmentLabel": "Trachea"
+                }
             },
             {
                 "labelID": 104,
@@ -2036,7 +2036,8 @@
                     154,
                     132
                 ],
-                "SegmentDescription": "Urinary bladder",
+                "SegmentLabel": "Urinary bladder",
+                "SegmentDescription": "TotalSegmentator 104 : urinary_bladder",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -2048,8 +2049,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "89837001",
                     "CodeMeaning": "Urinary bladder"
-                },
-                "SegmentLabel": "Urinary bladder"
+                }
             },
             {
                 "labelID": 41,
@@ -2058,7 +2058,8 @@
                     186,
                     107
                 ],
-                "SegmentDescription": "C1 vertebra",
+                "SegmentLabel": "C1 vertebra",
+                "SegmentDescription": "TotalSegmentator 41 : vertebrae_C1",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -2070,8 +2071,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "14806007",
                     "CodeMeaning": "C1 vertebra"
-                },
-                "SegmentLabel": "C1 vertebra"
+                }
             },
             {
                 "labelID": 40,
@@ -2080,7 +2080,8 @@
                     99,
                     36
                 ],
-                "SegmentDescription": "C2 vertebra",
+                "SegmentLabel": "C2 vertebra",
+                "SegmentDescription": "TotalSegmentator 40 : vertebrae_C2",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -2092,8 +2093,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "39976000",
                     "CodeMeaning": "C2 vertebra"
-                },
-                "SegmentLabel": "C2 vertebra"
+                }
             },
             {
                 "labelID": 39,
@@ -2102,7 +2102,8 @@
                     117,
                     152
                 ],
-                "SegmentDescription": "C3 vertebra",
+                "SegmentLabel": "C3 vertebra",
+                "SegmentDescription": "TotalSegmentator 39 : vertebrae_C3",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -2114,8 +2115,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "113205007",
                     "CodeMeaning": "C3 vertebra"
-                },
-                "SegmentLabel": "C3 vertebra"
+                }
             },
             {
                 "labelID": 38,
@@ -2124,7 +2124,8 @@
                     14,
                     116
                 ],
-                "SegmentDescription": "C4 vertebra",
+                "SegmentLabel": "C4 vertebra",
+                "SegmentDescription": "TotalSegmentator 38 : vertebrae_C4",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -2136,8 +2137,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "5329002",
                     "CodeMeaning": "C4 vertebra"
-                },
-                "SegmentLabel": "C4 vertebra"
+                }
             },
             {
                 "labelID": 37,
@@ -2146,7 +2146,8 @@
                     40,
                     9
                 ],
-                "SegmentDescription": "C5 vertebra",
+                "SegmentLabel": "C5 vertebra",
+                "SegmentDescription": "TotalSegmentator 37 : vertebrae_C5",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -2158,8 +2159,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "36978003",
                     "CodeMeaning": "C5 vertebra"
-                },
-                "SegmentLabel": "C5 vertebra"
+                }
             },
             {
                 "labelID": 36,
@@ -2168,7 +2168,8 @@
                     134,
                     125
                 ],
-                "SegmentDescription": "C6 vertebra",
+                "SegmentLabel": "C6 vertebra",
+                "SegmentDescription": "TotalSegmentator 36 : vertebrae_C6",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -2180,8 +2181,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "36054005",
                     "CodeMeaning": "C6 vertebra"
-                },
-                "SegmentLabel": "C6 vertebra"
+                }
             },
             {
                 "labelID": 35,
@@ -2190,7 +2190,8 @@
                     0,
                     0
                 ],
-                "SegmentDescription": "C7 vertebra",
+                "SegmentLabel": "C7 vertebra",
+                "SegmentDescription": "TotalSegmentator 35 : vertebrae_C7",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -2202,8 +2203,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "87391001",
                     "CodeMeaning": "C7 vertebra"
-                },
-                "SegmentLabel": "C7 vertebra"
+                }
             },
             {
                 "labelID": 22,
@@ -2212,7 +2212,8 @@
                     255,
                     1
                 ],
-                "SegmentDescription": "L1 vertebra",
+                "SegmentLabel": "L1 vertebra",
+                "SegmentDescription": "TotalSegmentator 22 : vertebrae_L1",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -2224,8 +2225,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "66794005",
                     "CodeMeaning": "L1 vertebra"
-                },
-                "SegmentLabel": "L1 vertebra"
+                }
             },
             {
                 "labelID": 21,
@@ -2234,7 +2234,8 @@
                     144,
                     32
                 ],
-                "SegmentDescription": "L2 vertebra",
+                "SegmentLabel": "L2 vertebra",
+                "SegmentDescription": "TotalSegmentator 21 : vertebrae_L2",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -2246,8 +2247,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "14293000",
                     "CodeMeaning": "L2 vertebra"
-                },
-                "SegmentLabel": "L2 vertebra"
+                }
             },
             {
                 "labelID": 20,
@@ -2256,7 +2256,8 @@
                     126,
                     0
                 ],
-                "SegmentDescription": "L3 vertebra",
+                "SegmentLabel": "L3 vertebra",
+                "SegmentDescription": "TotalSegmentator 20 : vertebrae_L3",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -2268,8 +2269,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "36470004",
                     "CodeMeaning": "L3 vertebra"
-                },
-                "SegmentLabel": "L3 vertebra"
+                }
             },
             {
                 "labelID": 19,
@@ -2278,7 +2278,8 @@
                     255,
                     128
                 ],
-                "SegmentDescription": "L4 vertebra",
+                "SegmentLabel": "L4 vertebra",
+                "SegmentDescription": "TotalSegmentator 19 : vertebrae_L4",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -2290,8 +2291,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "11994002",
                     "CodeMeaning": "L4 vertebra"
-                },
-                "SegmentLabel": "L4 vertebra"
+                }
             },
             {
                 "labelID": 18,
@@ -2300,7 +2300,8 @@
                     78,
                     55
                 ],
-                "SegmentDescription": "L5 vertebra",
+                "SegmentLabel": "L5 vertebra",
+                "SegmentDescription": "TotalSegmentator 18 : vertebrae_L5",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -2312,8 +2313,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "49668003",
                     "CodeMeaning": "L5 vertebra"
-                },
-                "SegmentLabel": "L5 vertebra"
+                }
             },
             {
                 "labelID": 34,
@@ -2322,7 +2322,8 @@
                     2,
                     145
                 ],
-                "SegmentDescription": "T1 vertebra",
+                "SegmentLabel": "T1 vertebra",
+                "SegmentDescription": "TotalSegmentator 34 : vertebrae_T1",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -2334,8 +2335,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "64864005",
                     "CodeMeaning": "T1 vertebra"
-                },
-                "SegmentLabel": "T1 vertebra"
+                }
             },
             {
                 "labelID": 33,
@@ -2344,7 +2344,8 @@
                     186,
                     216
                 ],
-                "SegmentDescription": "T2 vertebra",
+                "SegmentLabel": "T2 vertebra",
+                "SegmentDescription": "TotalSegmentator 33 : vertebrae_T2",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -2356,8 +2357,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "53733008",
                     "CodeMeaning": "T2 vertebra"
-                },
-                "SegmentLabel": "T2 vertebra"
+                }
             },
             {
                 "labelID": 32,
@@ -2366,7 +2366,8 @@
                     128,
                     188
                 ],
-                "SegmentDescription": "T3 vertebra",
+                "SegmentLabel": "T3 vertebra",
+                "SegmentDescription": "TotalSegmentator 32 : vertebrae_T3",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -2378,8 +2379,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "1626008",
                     "CodeMeaning": "T3 vertebra"
-                },
-                "SegmentLabel": "T3 vertebra"
+                }
             },
             {
                 "labelID": 31,
@@ -2388,7 +2388,8 @@
                     228,
                     202
                 ],
-                "SegmentDescription": "T4 vertebra",
+                "SegmentLabel": "T4 vertebra",
+                "SegmentDescription": "TotalSegmentator 31 : vertebrae_T4",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -2400,8 +2401,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "73071006",
                     "CodeMeaning": "T4 vertebra"
-                },
-                "SegmentLabel": "T4 vertebra"
+                }
             },
             {
                 "labelID": 30,
@@ -2410,7 +2410,8 @@
                     82,
                     73
                 ],
-                "SegmentDescription": "T5 vertebra",
+                "SegmentLabel": "T5 vertebra",
+                "SegmentDescription": "TotalSegmentator 30 : vertebrae_T5",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -2422,8 +2423,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "56401006",
                     "CodeMeaning": "T5 vertebra"
-                },
-                "SegmentLabel": "T5 vertebra"
+                }
             },
             {
                 "labelID": 29,
@@ -2432,7 +2432,8 @@
                     119,
                     255
                 ],
-                "SegmentDescription": "T6 vertebra",
+                "SegmentLabel": "T6 vertebra",
+                "SegmentDescription": "TotalSegmentator 29 : vertebrae_T6",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -2444,8 +2445,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "45296009",
                     "CodeMeaning": "T6 vertebra"
-                },
-                "SegmentLabel": "T6 vertebra"
+                }
             },
             {
                 "labelID": 28,
@@ -2454,7 +2454,8 @@
                     0,
                     145
                 ],
-                "SegmentDescription": "T7 vertebra",
+                "SegmentLabel": "T7 vertebra",
+                "SegmentDescription": "TotalSegmentator 28 : vertebrae_T7",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -2466,8 +2467,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "62487009",
                     "CodeMeaning": "T7 vertebra"
-                },
-                "SegmentLabel": "T7 vertebra"
+                }
             },
             {
                 "labelID": 27,
@@ -2476,7 +2476,8 @@
                     216,
                     199
                 ],
-                "SegmentDescription": "T8 vertebra",
+                "SegmentLabel": "T8 vertebra",
+                "SegmentDescription": "TotalSegmentator 27 : vertebrae_T8",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -2488,8 +2489,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "11068009",
                     "CodeMeaning": "T8 vertebra"
-                },
-                "SegmentLabel": "T8 vertebra"
+                }
             },
             {
                 "labelID": 26,
@@ -2498,7 +2498,8 @@
                     188,
                     62
                 ],
-                "SegmentDescription": "T9 vertebra",
+                "SegmentLabel": "T9 vertebra",
+                "SegmentDescription": "TotalSegmentator 26 : vertebrae_T9",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -2510,8 +2511,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "82687006",
                     "CodeMeaning": "T9 vertebra"
-                },
-                "SegmentLabel": "T9 vertebra"
+                }
             },
             {
                 "labelID": 25,
@@ -2520,7 +2520,8 @@
                     97,
                     228
                 ],
-                "SegmentDescription": "T10 vertebra",
+                "SegmentLabel": "T10 vertebra",
+                "SegmentDescription": "TotalSegmentator 25 : vertebrae_T10",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -2532,8 +2533,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "7610001",
                     "CodeMeaning": "T10 vertebra"
-                },
-                "SegmentLabel": "T10 vertebra"
+                }
             },
             {
                 "labelID": 24,
@@ -2542,7 +2542,8 @@
                     164,
                     144
                 ],
-                "SegmentDescription": "T11 vertebra",
+                "SegmentLabel": "T11 vertebra",
+                "SegmentDescription": "TotalSegmentator 24 : vertebrae_T11",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -2554,8 +2555,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "12989004",
                     "CodeMeaning": "T11 vertebra"
-                },
-                "SegmentLabel": "T11 vertebra"
+                }
             },
             {
                 "labelID": 23,
@@ -2564,7 +2564,8 @@
                     89,
                     255
                 ],
-                "SegmentDescription": "T12 vertebra",
+                "SegmentLabel": "T12 vertebra",
+                "SegmentDescription": "TotalSegmentator 23 : vertebrae_T12",
                 "SegmentAlgorithmName": "TotalSegmentator v1.5.6",
                 "SegmentAlgorithmType": "AUTOMATIC",
                 "SegmentedPropertyCategoryCodeSequence": {
@@ -2576,8 +2577,7 @@
                     "CodingSchemeDesignator": "SCT",
                     "CodeValue": "23215003",
                     "CodeMeaning": "T12 vertebra"
-                },
-                "SegmentLabel": "T12 vertebra"
+                }
             }
         ]
     ]
