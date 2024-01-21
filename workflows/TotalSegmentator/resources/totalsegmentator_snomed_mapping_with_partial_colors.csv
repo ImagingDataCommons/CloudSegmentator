@@ -10,7 +10,7 @@ clavicula_right,SCT,123037004,Anatomical Structure,SCT,51299004,Clavicle,SCT,240
 colon,SCT,123037004,Anatomical Structure,SCT,71854001,Colon,,,,,,,,,,"[204, 168, 143]"
 duodenum,SCT,123037004,Anatomical Structure,SCT,38848004,Duodenum,,,,,,,,,,"[255, 253, 229]"
 esophagus,SCT,123037004,Anatomical Structure,SCT,32849002,Esophagus,,,,,,,,,,"[211, 171, 143]"
-face,SCT,123037004,Anatomical Structure,SCT,89545001,Face,,,,,,,,,,
+face,SCT,123037004,Anatomical Structure,SCT,89545001,Face,,,,,,,,,,"[255, 182, 193]"
 femur_left,SCT,123037004,Anatomical Structure,SCT,71341001,Femur,SCT,7771000,Left,,,,,,,"[130, 222, 207]"
 femur_right,SCT,123037004,Anatomical Structure,SCT,71341001,Femur,SCT,24028007,Right,,,,,,,"[130, 222, 207]"
 gallbladder,SCT,123037004,Anatomical Structure,SCT,28231008,Gallbladder,,,,,,,,,,"[139, 150, 98]"
