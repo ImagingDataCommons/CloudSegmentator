@@ -10,7 +10,7 @@ workflow TotalSegmentator {
    String yamlListOfSeriesInstanceUIDs
 
    #Docker Images for each task
-   String totalSegmentatorDocker = "imagingdatacommons/download_convert_inference_totalseg_dicom_seg_pyradiomics_sr:v1.2.0"
+   String totalSegmentatorDocker = "imagingdatacommons/download_convert_inference_totalseg_dicom_seg_pyradiomics_sr:main"
 
    #Preemptible retries
    Int totalSegmentatorPreemptibleTries = 3
@@ -80,7 +80,7 @@ task totalSegmentatorEndToEnd{
 
  }
  command {
-   wget https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/v1.2.0/workflows/TotalSegmentator/Notebooks/endToEndTotalSegmentatorNotebook.ipynb
+   wget https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/TotalSegmentator/Notebooks/endToEndTotalSegmentatorNotebook.ipynb
    set -e
    papermill endToEndTotalSegmentatorNotebook.ipynb endToEndTotalSegmentatorOutputJupyterNotebook.ipynb -y  "~{yamlListOfSeriesInstanceUIDs}" || (>&2 echo "Killed" && exit 1)
  }
