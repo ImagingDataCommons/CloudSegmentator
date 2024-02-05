@@ -110,7 +110,7 @@ task downloadDicomAndConvertAndInferenceTotalSegmentator{
    memory: downloadDicomAndConvertAndInferenceTotalSegmentatorRAM + " GiB"
    disks: "local-disk 10 HDD"  #ToDo: Dynamically calculate disk space using the no of bytes of yaml file size. 64 characters is the max size I found in a seriesInstanceUID
    preemptible: downloadDicomAndConvertAndInferenceTotalSegmentatorPreemptibleTries 
-   maxRetries: 3
+   maxRetries: 1
    gpuType: downloadDicomAndConvertAndInferenceTotalSegmentatorGpuType 
    gpuCount: 1
  }
@@ -163,7 +163,7 @@ task dicomsegAndRadiomicsSR{
    memory: dicomsegAndRadiomicsSR_RAM + " GiB"
    disks: "local-disk 10 HDD"  #ToDo: Dynamically calculate disk space using the no of bytes of yaml file size. 64 characters is the max size I found in a seriesInstanceUID
    preemptible: dicomsegAndRadiomicsSR_PreemptibleTries
-   maxRetries: 3
+   maxRetries: 1
  }
  output {
    File dicomsegAndRadiomicsSR_OutputJupyterNotebook = "dicomsegAndRadiomicsSR_OutputJupyterNotebook.ipynb"
