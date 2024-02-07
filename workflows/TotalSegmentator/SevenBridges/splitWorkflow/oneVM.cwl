@@ -117,7 +117,7 @@ steps:
     id: TotalSegmentatorOneVmWorkflow
     baseCommand:
     - wget
-    - https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/v1.3.0/workflows/TotalSegmentator/Notebooks/endToEndTotalSegmentatorNotebook.ipynb
+    - https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/v1.3.1/workflows/TotalSegmentator/Notebooks/endToEndTotalSegmentatorNotebook.ipynb
     - "&&"
     - set
     - "-e"
@@ -204,7 +204,7 @@ steps:
     - class: ShellCommandRequirement
     - class: LoadListingRequirement
     - class: DockerRequirement
-      dockerPull: "imagingdatacommons/download_convert_inference_totalseg_dicom_seg_pyradiomics_sr:v1.3.0"
+      dockerPull: "imagingdatacommons/download_convert_inference_totalseg_dicom_seg_pyradiomics_sr:v1.3.1"
     - class: InlineJavascriptRequirement
     hints:
     - class: sbg:AWSInstanceType
