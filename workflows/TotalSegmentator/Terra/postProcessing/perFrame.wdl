@@ -7,7 +7,7 @@ workflow PerFrame {
    Array[File] segFiles
 
    #Docker Images for each task
-   String docker_PerFrameFunctionalGroupsSequence = "imagingdatacommons/per_frame_functional_group_sequence:main"
+   String docker_PerFrameFunctionalGroupsSequence = "imagingdatacommons/per_frame_functional_group_sequence:v1.3.0"
 
    #Preemptible retries
    Int preemptibleTries_PerFrameFunctionalGroupsSequence = 3
@@ -60,7 +60,7 @@ task PerFrameFunctionalGroupsSequence{
     String zones_PerFrameFunctionalGroupsSequence
  }
  command {
-   wget https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/TotalSegmentator/Notebooks/postProcessingExtractPerframe.ipynb
+   wget https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/v1.3.0/workflows/TotalSegmentator/Notebooks/postProcessingExtractPerframe.ipynb
    
    set -o xtrace
    # For any command failures in the rest of this script, return the error.

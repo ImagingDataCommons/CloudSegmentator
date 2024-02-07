@@ -10,8 +10,8 @@ workflow TotalSegmentator {
    String yamlListOfSeriesInstanceUIDs
 
    #Docker Images for each task
-   String downloadDicomAndConvertAndInferenceTotalSegmentatorDocker = "imagingdatacommons/download_convert_inference_totalseg:main"
-   String dicomsegAndRadiomicsSR_Docker = "imagingdatacommons/dicom_seg_pyradiomics_sr:main"
+   String downloadDicomAndConvertAndInferenceTotalSegmentatorDocker = "imagingdatacommons/download_convert_inference_totalseg:v1.3.0"
+   String dicomsegAndRadiomicsSR_Docker = "imagingdatacommons/dicom_seg_pyradiomics_sr:v1.3.0"
 
    #Preemptible retries
 
@@ -78,6 +78,7 @@ workflow TotalSegmentator {
    File? dicomsegAndRadiomicsSR_Errors = dicomsegAndRadiomicsSR.dicomsegAndRadiomicsSR_SRErrors
    File? downloadDicomAndConvertAndInferenceTotalSegmentator_modality_errors = downloadDicomAndConvertAndInferenceTotalSegmentator.downloadDicomAndConvertAndInferenceTotalSegmentator_modality_errors
    File? dicomsegAndRadiomicsSR_modality_errors = dicomsegAndRadiomicsSR.dicomsegAndRadiomicsSR_modality_errors
+   File? dicomsegAndRadiomicsSR_SEGErrors = dicomsegAndRadiomicsSR.dicomsegAndRadiomicsSR_SEGErrors
  }
 }
 
@@ -97,7 +98,7 @@ task downloadDicomAndConvertAndInferenceTotalSegmentator{
  }
 
  command {
-   wget https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/TotalSegmentator/Notebooks/downloadDicomAndConvertAndInferenceTotalSegmentatorNotebook.ipynb
+   wget https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/v1.3.0/workflows/TotalSegmentator/Notebooks/downloadDicomAndConvertAndInferenceTotalSegmentatorNotebook.ipynb
    set -e
    papermill downloadDicomAndConvertAndInferenceTotalSegmentatorNotebook.ipynb downloadDicomAndConvertAndInferenceTotalSegmentatorOutputJupyterNotebook.ipynb -y "~{yamlListOfSeriesInstanceUIDs}"
  }
@@ -141,7 +142,7 @@ task dicomsegAndRadiomicsSR{
     File inferenceZipFile
  }
  command {
-   wget https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/TotalSegmentator/Notebooks/dicomsegAndRadiomicsSR_Notebook.ipynb
+   wget https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/v1.3.0/workflows/TotalSegmentator/Notebooks/dicomsegAndRadiomicsSR_Notebook.ipynb
    
    set -o xtrace
    # For any command failures in the rest of this script, return the error.
@@ -175,5 +176,6 @@ task dicomsegAndRadiomicsSR{
    File? dicomsegAndRadiomicsSR_RadiomicsErrors = "radiomics_error_file.txt"
    File? dicomsegAndRadiomicsSR_SRErrors = "sr_error_file.txt"  
    File? dicomsegAndRadiomicsSR_modality_errors = "modality_error_file.txt" 
+   File? dicomsegAndRadiomicsSR_SEGErrors = "itkimage2segimage_error_file.txt"
  }
 }

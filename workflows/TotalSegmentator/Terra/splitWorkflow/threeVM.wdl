@@ -10,9 +10,9 @@ workflow TotalSegmentator {
    String yamlListOfSeriesInstanceUIDs
 
    #Docker Images for each task
-   String downloadDicomAndConvertDocker = "imagingdatacommons/download_convert:main"
-   String inferenceTotalSegmentatorDocker = "imagingdatacommons/inference_totalseg:main"
-   String dicomsegAndRadiomicsSR_Docker = "imagingdatacommons/dicom_seg_pyradiomics_sr:main"
+   String downloadDicomAndConvertDocker = "imagingdatacommons/download_convert:v1.3.0"
+   String inferenceTotalSegmentatorDocker = "imagingdatacommons/inference_totalseg:v1.3.0"
+   String dicomsegAndRadiomicsSR_Docker = "imagingdatacommons/dicom_seg_pyradiomics_sr:v1.3.0"
 
    #Preemptible retries
    Int downloadAndConvertPreemptibleTries = 3
@@ -100,6 +100,7 @@ workflow TotalSegmentator {
    File? dicomsegAndRadiomicsSR_Errors = dicomsegAndRadiomicsSR.dicomsegAndRadiomicsSR_SRErrors
    File? downloadDicomAndConvert_modality_errors = downloadAndConvert.downloadDicomAndConvert_modality_errors
    File? dicomsegAndRadiomicsSR_modality_errors = dicomsegAndRadiomicsSR.dicomsegAndRadiomicsSR_modality_errors
+   File? dicomsegAndRadiomicsSR_SEGErrors = dicomsegAndRadiomicsSR.dicomsegAndRadiomicsSR_SEGErrors
  }
 }
 #Task Definitions
@@ -115,7 +116,7 @@ task downloadAndConvert {
     String downloadAndConvertCpuFamily
  }
  command {
-   wget https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/TotalSegmentator/Notebooks/downloadDicomAndConvertNotebook.ipynb
+   wget https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/v1.3.0/workflows/TotalSegmentator/Notebooks/downloadDicomAndConvertNotebook.ipynb
    set -e
    papermill downloadDicomAndConvertNotebook.ipynb downloadAndConvertOutputJupyterNotebook.ipynb -y "~{yamlListOfSeriesInstanceUIDs}"
  }
@@ -160,7 +161,7 @@ task inferenceTotalSegmentator {
  }
 
  command {
-   wget https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/TotalSegmentator/Notebooks/inferenceTotalSegmentatorNotebook.ipynb
+   wget https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/v1.3.0/workflows/TotalSegmentator/Notebooks/inferenceTotalSegmentatorNotebook.ipynb
    set -e
    papermill -p niftiFilePath ~{NiftiFiles} inferenceTotalSegmentatorNotebook.ipynb inferenceOutputJupyterNotebook.ipynb
  }
@@ -202,7 +203,7 @@ task dicomsegAndRadiomicsSR{
     File inferenceZipFile
  }
  command {
-   wget https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/TotalSegmentator/Notebooks/dicomsegAndRadiomicsSR_Notebook.ipynb
+   wget https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/v1.3.0/workflows/TotalSegmentator/Notebooks/dicomsegAndRadiomicsSR_Notebook.ipynb
    set -e
    papermill -p inferenceNiftiFilePath ~{inferenceZipFile}  dicomsegAndRadiomicsSR_Notebook.ipynb dicomsegAndRadiomicsSR_OutputJupyterNotebook.ipynb || (>&2 echo "Killed" && exit 1)
  }
@@ -228,5 +229,6 @@ task dicomsegAndRadiomicsSR{
    File? dicomsegAndRadiomicsSR_RadiomicsErrors = "radiomics_error_file.txt"
    File? dicomsegAndRadiomicsSR_SRErrors = "sr_error_file.txt"   
    File? dicomsegAndRadiomicsSR_modality_errors = "modality_error_file.txt"
+   File? dicomsegAndRadiomicsSR_SEGErrors = "itkimage2segimage_error_file.txt"
  }
 }

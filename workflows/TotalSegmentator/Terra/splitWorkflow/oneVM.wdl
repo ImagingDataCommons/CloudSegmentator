@@ -10,7 +10,7 @@ workflow TotalSegmentator {
    String yamlListOfSeriesInstanceUIDs
 
    #Docker Images for each task
-   String totalSegmentatorDocker = "imagingdatacommons/download_convert_inference_totalseg_dicom_seg_pyradiomics_sr:main"
+   String totalSegmentatorDocker = "imagingdatacommons/download_convert_inference_totalseg_dicom_seg_pyradiomics_sr:v1.3.0"
 
    #Preemptible retries
    Int totalSegmentatorPreemptibleTries = 3
@@ -62,6 +62,7 @@ workflow TotalSegmentator {
    File? dicomsegAndRadiomicsSR_RadiomicsErrors = totalSegmentatorEndToEnd.dicomsegAndRadiomicsSR_RadiomicsErrors
    File? dicomsegAndRadiomicsSR_SRErrors = totalSegmentatorEndToEnd.dicomsegAndRadiomicsSR_SRErrors
    File? modality_errors= totalSegmentatorEndToEnd.modality_errors
+   File? dicomsegAndRadiomicsSR_SEGErrors = dicomsegAndRadiomicsSR.dicomsegAndRadiomicsSR_SEGErrors
  }
 }
 
@@ -80,7 +81,7 @@ task totalSegmentatorEndToEnd{
 
  }
  command {
-   wget https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/TotalSegmentator/Notebooks/endToEndTotalSegmentatorNotebook.ipynb
+   wget https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/v1.3.0/workflows/TotalSegmentator/Notebooks/endToEndTotalSegmentatorNotebook.ipynb
    set -e
    papermill endToEndTotalSegmentatorNotebook.ipynb endToEndTotalSegmentatorOutputJupyterNotebook.ipynb -y  "~{yamlListOfSeriesInstanceUIDs}" || (>&2 echo "Killed" && exit 1)
  }
@@ -106,13 +107,12 @@ task totalSegmentatorEndToEnd{
    File structuredReportsJSON = "structuredReportsJSON.tar.lz4"
    File endToEndTotalSegmentator_UsageMetrics = "endToEndTotalSegmentator_UsageMetrics.lz4"
 
-
    File? dcm2niixErrors = 'error_file.txt'
    File? totalsegmentatorErrors = "totalsegmentator_errors.txt"
    File? dicomSegErrors = "itkimage2segimage_error_file.txt"  
    File? dicomsegAndRadiomicsSR_RadiomicsErrors = "radiomics_error_file.txt" 
    File? dicomsegAndRadiomicsSR_SRErrors = "sr_error_file.txt"
    File? modality_errors = "modality_error_file.txt"
-   
+   File? dicomsegAndRadiomicsSR_SEGErrors = "itkimage2segimage_error_file.txt"
  }
 }

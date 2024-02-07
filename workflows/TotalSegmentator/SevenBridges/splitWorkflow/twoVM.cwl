@@ -121,7 +121,7 @@ steps:
     id: downloadDicomAndConvertAndInferenceTotalSegmentator
     baseCommand:
     - wget
-    - https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/TotalSegmentator/Notebooks/downloadDicomAndConvertAndInferenceTotalSegmentatorNotebook.ipynb
+    - https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/v1.3.0/workflows/TotalSegmentator/Notebooks/downloadDicomAndConvertAndInferenceTotalSegmentatorNotebook.ipynb
     - "&&"
     - set
     - "-e"
@@ -179,7 +179,7 @@ steps:
     - class: ShellCommandRequirement
     - class: LoadListingRequirement
     - class: DockerRequirement
-      dockerPull: "imagingdatacommons/download_convert_inference_totalseg:main"
+      dockerPull: "imagingdatacommons/download_convert_inference_totalseg:v1.3.0"
     - class: InlineJavascriptRequirement
     hints:
     - class: sbg:AWSInstanceType
@@ -209,7 +209,7 @@ steps:
     id: vamsikrishna14/test/dicomsegandradiomicssr/1
     baseCommand:
     - wget
-    - https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/TotalSegmentator/Notebooks/dicomsegAndRadiomicsSR_Notebook.ipynb
+    - https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/v1.3.0/workflows/TotalSegmentator/Notebooks/dicomsegAndRadiomicsSR_Notebook.ipynb
     - "&&"
     - set
     - "-e"
@@ -286,7 +286,7 @@ steps:
     - class: ShellCommandRequirement
     - class: LoadListingRequirement
     - class: DockerRequirement
-      dockerPull: "imagingdatacommons/dicom_seg_pyradiomics_sr:main"
+      dockerPull: "imagingdatacommons/dicom_seg_pyradiomics_sr:v1.3.0"
     - class: InlineJavascriptRequirement
     hints:
     - class: sbg:AWSInstanceType
