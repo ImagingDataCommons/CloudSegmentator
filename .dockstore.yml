@@ -23,7 +23,13 @@ workflows:
      primaryDescriptorPath: /workflows/TotalSegmentator/Terra/postProcessing/perFrame.wdl   
      authors:
       - name: ImagingDataCommons
-        email: vthiriveedhi@mgb.org        
+        email: vthiriveedhi@mgb.org
+   - name: convertRadiomicsJsonToDataframeOnTerra
+     subclass: WDL
+     primaryDescriptorPath: /workflows/TotalSegmentator/Terra/postProcessing/convertRadiomicsJsonToDataframe.wdl   
+     authors:
+      - name: ImagingDataCommons
+        email: vthiriveedhi@mgb.org           
    - name: TotalSegmentatortwoVmWorkflowOnSB-CGC
      subclass: CWL
      primaryDescriptorPath: /workflows/TotalSegmentator/SevenBridges/splitWorkflow/twoVM.cwl
