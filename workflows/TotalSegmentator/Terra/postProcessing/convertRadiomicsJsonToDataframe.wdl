@@ -59,7 +59,7 @@ task radiomicsJsonToDataFrame{
     String zones_radiomicsJsonToDataFrame
  }
  command {
-   wget https://raw.githubusercontent.com/vkt1414/CloudSegmentator/feat-convert-raw-radiomics-to-dataframe/workflows/TotalSegmentator/Notebooks/postProcessingRadiomicsJsonToDataFrame.ipynb
+   wget https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/TotalSegmentator/Notebooks/postProcessingRadiomicsJsonToDataFrame.ipynb
    
    set -o xtrace
    # For any command failures in the rest of this script, return the error.
