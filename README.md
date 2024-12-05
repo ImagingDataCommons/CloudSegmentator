@@ -2,8 +2,14 @@
 
 ## This repository contains the complete source code used to develop workflows for analysis on FireCloud (Terra) or Seven Bridges Cancer Genomics Cloud.
 
+To learn more about the background for this study, see the preprint below
+
+> Thiriveedhi, V. K., Krishnaswamy, D., Clunie, D., Pieper, S., Kikinis, R. & Fedorov, A. Cloud-based large-scale curation of medical imaging data using AI segmentation. Research Square (2024). https://doi.org/10.21203/rs.3.rs-4351526/v1
+  
+
+
 ### What is this repo about?
-- There is more than 40TB of publicly available data on Imaging Data Commons (IDC) and even more on The Cancer Imaging Archive (TCIA)
+- There is more than 85TB of publicly available data on Imaging Data Commons (IDC) and even more on The Cancer Imaging Archive (TCIA)
 - Much of this data is not annotated due to various reasons such as lack of access to Radiologists or the data may be too large to annotate all by humans
 - This is where AI and deep learning models come into play to help annotate data. 
 - For instance, one of the most prominent segmentation models, TotalSegmentator, can segment up to 104 body parts (v1)
