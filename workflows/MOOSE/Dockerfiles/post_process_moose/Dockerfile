@@ -20,6 +20,7 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 RUN pip3 install --no-cache-dir \
+    dcmqi==1.5.5 \
     google-auth==2.29.0 \
     google-cloud-storage==2.16.0 \
     idc-index \
@@ -42,15 +43,6 @@ RUN wget -q ${S5CMD_URL} 2>&1 \
   && tar -xvzf ${S5CMD_FN} \
   && rm ${S5CMD_FN} \
   && mv s5cmd /usr/local/bin/s5cmd
-
-# Download dcmqi 1.5.4 — minimum version for --segmentationType labelmap support
-# (added in https://github.com/QIICR/dcmqi/pull/536, released 2026-05-18)
-ENV DCMQI_URL="https://github.com/QIICR/dcmqi/releases/download/v1.5.4/dcmqi-1.5.4-linux.tar.gz"
-ENV DCMQI_FN="dcmqi-1.5.4-linux.tar.gz"
-RUN wget -q ${DCMQI_URL} 2>&1 \
-  && tar -xvzf ${DCMQI_FN} \
-  && rm ${DCMQI_FN} \
-  && mv dcmqi-1.5.4-linux/bin/* /bin
 
 # Install dcm2niix
 ENV DCM2NIIX_URL="https://github.com/rordenlab/dcm2niix/releases/download/v1.0.20230411/dcm2niix_lnx.zip"

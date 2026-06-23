@@ -32,7 +32,6 @@ RUN pip install --no-cache-dir "nnunetv2>=2.6.0" moosez
 
 # Install remaining packages without re-pinning what moosez already owns.
 RUN pip install --no-cache-dir \
-    dcmqi==1.5.5 \
     google-cloud-storage \
     idc-index \
     ipykernel \
