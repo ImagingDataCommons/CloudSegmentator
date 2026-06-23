@@ -19,8 +19,12 @@ RUN apt-get update \
     zip \
   && rm -rf /var/lib/apt/lists/*
 
+# dcmqi provides itkimage2segimage. The PyPI `dcmqi` package bundles the
+# compiled dcmqi CLI binaries; its package version is independent of the dcmqi
+# release -- package 0.4.1 ships dcmqi binaries v1.5.5 (first with
+# --segmentationType labelmap). Pin the package version, not "1.5.5".
 RUN pip3 install --no-cache-dir \
-    dcmqi==1.5.5 \
+    dcmqi==0.4.1 \
     google-auth==2.29.0 \
     google-cloud-storage==2.16.0 \
     idc-index \
