@@ -147,8 +147,10 @@ workflow MOOSE {
     File moosePostProcessNotebook = moosePostProcess.outputNotebook
 
     # Usage metrics (CPU/GPU/RAM over time)
-    File mooseInferenceUsageMetrics   = mooseInference.usageMetrics
-    File moosePostProcessUsageMetrics = moosePostProcess.usageMetrics
+    File mooseInferenceUsageMetrics      = mooseInference.usageMetrics
+    File mooseInferenceUsageMetricsCsv   = mooseInference.usageMetricsCsv
+    File moosePostProcessUsageMetrics    = moosePostProcess.usageMetrics
+    File moosePostProcessUsageMetricsCsv = moosePostProcess.usageMetricsCsv
 
     # Primary outputs
     File mooseSegmentations    = mooseInference.segmentationArchive
@@ -243,6 +245,7 @@ task mooseInference {
     File outputNotebook       = "mooseInferenceOutputNotebook.ipynb"
     File segmentationArchive  = "moose_segmentations.tar.lz4"
     File usageMetrics         = "moose_inference_UsageMetrics.lz4"
+    File usageMetricsCsv      = "moose_inference_UsageMetrics.csv"
     File mooseStatsArchive    = "moose_stats.tar.lz4"
 
     File? downloadErrors      = "download_error_file.txt"
@@ -419,6 +422,7 @@ PY
     File outputNotebook     = "moosePostProcessOutputNotebook.ipynb"
     File dicomSegArchive    = "moose_dicom_seg.tar.lz4"
     File usageMetrics       = "moose_postprocess_UsageMetrics.lz4"
+    File usageMetricsCsv    = "moose_postprocess_UsageMetrics.csv"
 
     File? dicomSegErrors    = "dicom_seg_error_file.txt"
     File? postProcessInputArchiveListing = "moose_postprocess_input_tar_list.txt"
