@@ -193,9 +193,6 @@ task mooseInference {
 
     # Pin to a specific commit for reproducibility (update SHA as needed)
     wget https://raw.githubusercontent.com/Sunderlandkyl/CloudSegmentator/moose_test/workflows/MOOSE/Notebooks/mooseInferenceNotebook.ipynb
-    # Curated label->SNOMED mapping (category/type/laterality modifier/region/rgb);
-    # the inference notebook bundles it into moose_organ_indices.json for the SEG step.
-    wget https://raw.githubusercontent.com/Sunderlandkyl/CloudSegmentator/moose_test/workflows/MOOSE/resources/moose_snomed_mapping.csv
 
     papermill mooseInferenceNotebook.ipynb mooseInferenceOutputNotebook.ipynb -y "~{yamlListOfSeriesInstanceUIDs}" -p moose_models "~{mooseModels}" -p accelerator "~{accelerator}" -p checkpoint_gcs "~{checkpointGcsPath}" || (>&2 echo "Inference task failed" && exit 1)
 
@@ -285,6 +282,9 @@ task moosePostProcess {
     set +o errexit
 
     wget https://raw.githubusercontent.com/Sunderlandkyl/CloudSegmentator/moose_test/workflows/MOOSE/Notebooks/moosePostProcessNotebook.ipynb
+    # Curated label->SNOMED mapping (category/type/laterality modifier/region/rgb);
+    # the post-process notebook resolves each moosez label name against it.
+    wget https://raw.githubusercontent.com/Sunderlandkyl/CloudSegmentator/moose_test/workflows/MOOSE/resources/moose_snomed_mapping.csv
 
     # Normalize inference archive layout for compatibility:
     # - Current expected: <uid>/moosez-<model>-<timestamp>/segmentations/*.nii.gz
