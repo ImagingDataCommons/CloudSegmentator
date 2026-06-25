@@ -125,18 +125,17 @@ workflow MOOSE {
   # ==========================================================================
   call moosePostProcess {
     input:
-      inferenceOutputArchive    = mooseInference.segmentationArchive,
-      inferenceUsageMetricsCsv  = mooseInference.usageMetricsCsv,
-      docker                    = moosePostProcessDocker,
-      preemptibleTries          = moosePostProcessPreemptibleTries,
-      cpus                      = moosePostProcessCpus,
-      ram                       = moosePostProcessRAM,
-      diskGB                    = moosePostProcessDiskGB,
-      diskType                  = moosePostProcessDiskType,
-      cpuFamily                 = moosePostProcessCpuFamily,
-      zones                     = moosePostProcessZones,
-      dicomSegBucketUri         = dicomSegBucketUri,
-      dicomStoreImportUri       = dicomStoreImportUri
+      inferenceOutputArchive = mooseInference.segmentationArchive,
+      docker                 = moosePostProcessDocker,
+      preemptibleTries       = moosePostProcessPreemptibleTries,
+      cpus                   = moosePostProcessCpus,
+      ram                    = moosePostProcessRAM,
+      diskGB                 = moosePostProcessDiskGB,
+      diskType               = moosePostProcessDiskType,
+      cpuFamily              = moosePostProcessCpuFamily,
+      zones                  = moosePostProcessZones,
+      dicomSegBucketUri      = dicomSegBucketUri,
+      dicomStoreImportUri    = dicomStoreImportUri
   }
 
   # ==========================================================================
@@ -148,10 +147,10 @@ workflow MOOSE {
     File moosePostProcessNotebook = moosePostProcess.outputNotebook
 
     # Usage metrics (CPU/GPU/RAM over time)
+    File mooseInferenceUsageMetrics      = mooseInference.usageMetrics
     File mooseInferenceUsageMetricsCsv   = mooseInference.usageMetricsCsv
+    File moosePostProcessUsageMetrics    = moosePostProcess.usageMetrics
     File moosePostProcessUsageMetricsCsv = moosePostProcess.usageMetricsCsv
-    File combinedUsageMetricsCsv         = moosePostProcess.combinedUsageMetricsCsv
-    File? usageMetricsUploadErrors       = moosePostProcess.usageMetricsUploadErrors
 
     # Primary outputs
     File mooseSegmentations    = mooseInference.segmentationArchive
@@ -245,6 +244,7 @@ task mooseInference {
   output {
     File outputNotebook       = "mooseInferenceOutputNotebook.ipynb"
     File segmentationArchive  = "moose_segmentations.tar.lz4"
+    File usageMetrics         = "moose_inference_UsageMetrics.json"
     File usageMetricsCsv      = "moose_inference_UsageMetrics.csv"
     File mooseStatsArchive    = "moose_stats.tar.lz4"
 
@@ -264,7 +264,6 @@ task mooseInference {
 task moosePostProcess {
   input {
     File   inferenceOutputArchive
-    File   inferenceUsageMetricsCsv
     String docker
     Int    preemptibleTries
     Int    cpus
@@ -380,7 +379,7 @@ PY
       exit 1
     fi
 
-    if ! papermill moosePostProcessNotebook.ipynb moosePostProcessOutputNotebook.ipynb -p segmentationArchivePath "moose_segmentations.normalized.tar.lz4" -p dicomSegBucketUri "~{dicomSegBucketUri}" -p dicomStoreImportUri "~{dicomStoreImportUri}" -p inferenceUsageMetricsCsvPath "~{inferenceUsageMetricsCsv}"; then
+    if ! papermill moosePostProcessNotebook.ipynb moosePostProcessOutputNotebook.ipynb -p segmentationArchivePath "moose_segmentations.normalized.tar.lz4" -p dicomSegBucketUri "~{dicomSegBucketUri}" -p dicomStoreImportUri "~{dicomStoreImportUri}"; then
       >&2 echo "Post-process notebook failed"
       if [ -f dicom_seg_error_file.txt ]; then
         >&2 echo "----- dicom_seg_error_file.txt -----"
@@ -424,11 +423,10 @@ PY
   output {
     File outputNotebook     = "moosePostProcessOutputNotebook.ipynb"
     File dicomSegArchive    = "moose_dicom_seg.tar.lz4"
+    File usageMetrics       = "moose_postprocess_UsageMetrics.json"
     File usageMetricsCsv    = "moose_postprocess_UsageMetrics.csv"
-    File combinedUsageMetricsCsv = "moose_UsageMetrics.csv"
 
     File? dicomSegErrors    = "dicom_seg_error_file.txt"
-    File? usageMetricsUploadErrors = "metrics_bucket_error_file.txt"
     File? postProcessInputArchiveListing = "moose_postprocess_input_tar_list.txt"
   }
 }
