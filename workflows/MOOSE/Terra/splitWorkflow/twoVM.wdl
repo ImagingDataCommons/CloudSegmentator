@@ -12,11 +12,39 @@ version 1.0
 workflow MOOSE {
   input {
     # ------------------------------------------------------------------------
-    # REQUIRED INPUTS (no defaults — user must provide via Terra UI)
+    # INPUT SOURCE: IDC series list (default) OR a GCS bucket
     # ------------------------------------------------------------------------
+    # Using a GCS bucket (inputUri) requires one-time setup, since s5cmd needs
+    # HMAC keys rather than the VM's own pet service account / ADC:
+    #   1. In the GCP project that owns the data bucket, create a dedicated
+    #      service account (e.g. s5cmd-data-reader) and grant it
+    #      roles/storage.objectViewer on that bucket.
+    #   2. Generate an HMAC key for that service account (Cloud Storage >
+    #      Settings > Interoperability, or `gcloud storage hmac create`) --
+    #      save the access key ID and secret, the secret is shown only once.
+    #   3. In a GCP project you control (this is what secretProject below
+    #      points at -- it can be any project, the data bucket's project or
+    #      otherwise), enable the Secret Manager API and store the HMAC key as
+    #      two secrets: s5cmd-hmac-key-id and s5cmd-hmac-secret.
+    #   4. Find your Terra proxy group on your Terra profile page (looks like
+    #      PROXY_<hash>@firecloud.org) and grant it
+    #      roles/secretmanager.secretAccessor on both secrets, so that
+    #      workflows running under your Terra identity can fetch them at
+    #      runtime.
 
-    # YAML list of SeriesInstanceUIDs to process (passed verbatim to papermill -y)
-    String yamlListOfSeriesInstanceUIDs
+    # YAML list of SeriesInstanceUIDs to process via IDC (passed verbatim to
+    # papermill -y). Required for IDC mode; ignored when inputUri is set.
+    String yamlListOfSeriesInstanceUIDs = ""
+
+    # If empty, downloads DICOM from IDC using yamlListOfSeriesInstanceUIDs (default).
+    # If set to a gs:// URI, downloads from that GCS path instead and discovers
+    # series by SeriesInstanceUID DICOM tag. yamlListOfSeriesInstanceUIDs is ignored
+    # when this is set. Requires the one-time setup above.
+    String inputUri = ""
+
+    # GCP project where the s5cmd-hmac-key-id / s5cmd-hmac-secret secrets live
+    # (step 3 above). Only needed when inputUri is set.
+    String secretProject = ""
 
     # ------------------------------------------------------------------------
     # ANALYSIS PARAMETERS (commonly overridden per run)
@@ -65,6 +93,14 @@ workflow MOOSE {
     Int moosePostProcessPreemptibleTries = 3
     Int moosePostProcessCpus = 4
     Int moosePostProcessRAM = 16
+
+    # In IDC mode each series' raw DICOM is downloaded, used, and deleted one at a
+    # time, so disk usage stays bounded to ~1 series regardless of cohort size. In
+    # GCS mode (inputUri set) all series under inputUri are downloaded and sorted
+    # before any per-series cleanup runs (their SeriesInstanceUID isn't known until
+    # read from the file), and anything outside this run's cohort is pruned right
+    # after -- but a single large inputUri cohort may still need more disk than the
+    # default below.
     Int moosePostProcessDiskGB = 20
     String moosePostProcessDiskType = "HDD"
 
@@ -106,6 +142,8 @@ workflow MOOSE {
   call mooseInference {
     input:
       yamlListOfSeriesInstanceUIDs = yamlListOfSeriesInstanceUIDs,
+      inputUri                     = inputUri,
+      secretProject                = secretProject,
       mooseModels                  = mooseModels,
       accelerator                  = accelerator,
       checkpointGcsPath            = checkpointGcsPath,
@@ -136,7 +174,9 @@ workflow MOOSE {
       cpuFamily                 = moosePostProcessCpuFamily,
       zones                     = moosePostProcessZones,
       dicomSegBucketUri         = dicomSegBucketUri,
-      dicomStoreImportUri       = dicomStoreImportUri
+      dicomStoreImportUri       = dicomStoreImportUri,
+      inputUri                  = inputUri,
+      secretProject             = secretProject
   }
 
   # ==========================================================================
@@ -175,6 +215,8 @@ workflow MOOSE {
 task mooseInference {
   input {
     String yamlListOfSeriesInstanceUIDs
+    String inputUri
+    String secretProject
     String mooseModels
     String accelerator
     String checkpointGcsPath
@@ -195,7 +237,14 @@ task mooseInference {
     # Pin to a specific commit for reproducibility (update SHA as needed)
     wget https://raw.githubusercontent.com/Sunderlandkyl/CloudSegmentator/moose_test/workflows/MOOSE/Notebooks/mooseInferenceNotebook.ipynb
 
-    papermill mooseInferenceNotebook.ipynb mooseInferenceOutputNotebook.ipynb -y "~{yamlListOfSeriesInstanceUIDs}" -p moose_models "~{mooseModels}" -p accelerator "~{accelerator}" -p checkpoint_gcs "~{checkpointGcsPath}" || (>&2 echo "Inference task failed" && exit 1)
+    papermill mooseInferenceNotebook.ipynb mooseInferenceOutputNotebook.ipynb \
+      -y "~{yamlListOfSeriesInstanceUIDs}" \
+      -p moose_models "~{mooseModels}" \
+      -p accelerator "~{accelerator}" \
+      -p checkpoint_gcs "~{checkpointGcsPath}" \
+      -p input_uri "~{inputUri}" \
+      -p secret_project "~{secretProject}" \
+      || (>&2 echo "Inference task failed" && exit 1)
 
     if [ ! -f moose_segmentations.tar.lz4 ]; then
       >&2 echo "Expected output archive moose_segmentations.tar.lz4 was not created"
@@ -275,6 +324,8 @@ task moosePostProcess {
     String zones
     String dicomSegBucketUri
     String dicomStoreImportUri
+    String inputUri
+    String secretProject
   }
 
   command <<<
@@ -380,7 +431,13 @@ PY
       exit 1
     fi
 
-    if ! papermill moosePostProcessNotebook.ipynb moosePostProcessOutputNotebook.ipynb -p segmentationArchivePath "moose_segmentations.normalized.tar.lz4" -p dicomSegBucketUri "~{dicomSegBucketUri}" -p dicomStoreImportUri "~{dicomStoreImportUri}" -p inferenceUsageMetricsCsvPath "~{inferenceUsageMetricsCsv}"; then
+    if ! papermill moosePostProcessNotebook.ipynb moosePostProcessOutputNotebook.ipynb \
+      -p segmentationArchivePath "moose_segmentations.normalized.tar.lz4" \
+      -p dicomSegBucketUri "~{dicomSegBucketUri}" \
+      -p dicomStoreImportUri "~{dicomStoreImportUri}" \
+      -p inferenceUsageMetricsCsvPath "~{inferenceUsageMetricsCsv}" \
+      -p input_uri "~{inputUri}" \
+      -p secret_project "~{secretProject}"; then
       >&2 echo "Post-process notebook failed"
       if [ -f dicom_seg_error_file.txt ]; then
         >&2 echo "----- dicom_seg_error_file.txt -----"
