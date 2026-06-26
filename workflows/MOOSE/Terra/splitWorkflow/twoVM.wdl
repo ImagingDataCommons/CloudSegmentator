@@ -165,6 +165,7 @@ workflow MOOSE {
     input:
       inferenceOutputArchive    = mooseInference.segmentationArchive,
       inferenceUsageMetricsCsv  = mooseInference.usageMetricsCsv,
+      inferenceStatsArchive     = mooseInference.mooseStatsArchive,
       docker                    = moosePostProcessDocker,
       preemptibleTries          = moosePostProcessPreemptibleTries,
       cpus                      = moosePostProcessCpus,
@@ -203,6 +204,7 @@ workflow MOOSE {
     File? dcm2niixErrors       = mooseInference.dcm2niixErrors
     File? mooseInferenceErrors = mooseInference.inferenceErrors
     File? dicomSegErrors       = moosePostProcess.dicomSegErrors
+    File? statsUploadErrors    = moosePostProcess.statsUploadErrors
   }
 }
 
@@ -314,6 +316,7 @@ task moosePostProcess {
   input {
     File   inferenceOutputArchive
     File   inferenceUsageMetricsCsv
+    File   inferenceStatsArchive
     String docker
     Int    preemptibleTries
     Int    cpus
@@ -436,6 +439,7 @@ PY
       -p dicomSegBucketUri "~{dicomSegBucketUri}" \
       -p dicomStoreImportUri "~{dicomStoreImportUri}" \
       -p inferenceUsageMetricsCsvPath "~{inferenceUsageMetricsCsv}" \
+      -p statsArchivePath "~{inferenceStatsArchive}" \
       -p input_uri "~{inputUri}" \
       -p secret_project "~{secretProject}"; then
       >&2 echo "Post-process notebook failed"
@@ -486,6 +490,7 @@ PY
 
     File? dicomSegErrors    = "dicom_seg_error_file.txt"
     File? usageMetricsUploadErrors = "metrics_bucket_error_file.txt"
+    File? statsUploadErrors = "stats_bucket_error_file.txt"
     File? postProcessInputArchiveListing = "moose_postprocess_input_tar_list.txt"
   }
 }
