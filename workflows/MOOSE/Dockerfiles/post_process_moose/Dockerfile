@@ -26,6 +26,7 @@ RUN apt-get update \
 RUN pip3 install --no-cache-dir \
     dcmqi==0.4.1 \
     google-auth==2.29.0 \
+    google-cloud-secret-manager==2.20.0 \
     google-cloud-storage==2.16.0 \
     idc-index \
     ipykernel==6.22.0 \
