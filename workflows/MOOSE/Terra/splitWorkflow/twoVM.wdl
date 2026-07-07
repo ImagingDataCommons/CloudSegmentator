@@ -192,6 +192,7 @@ workflow MOOSE {
     File mooseInferenceUsageMetricsCsv   = mooseInference.usageMetricsCsv
     File moosePostProcessUsageMetricsCsv = moosePostProcess.usageMetricsCsv
     File combinedUsageMetricsCsv         = moosePostProcess.combinedUsageMetricsCsv
+    File? mooseRunSummary                = moosePostProcess.runSummary
     File? usageMetricsUploadErrors       = moosePostProcess.usageMetricsUploadErrors
 
     # Primary outputs
@@ -336,6 +337,29 @@ task moosePostProcess {
     set -o pipefail
     set +o errexit
 
+    # ------------------------------------------------------------------------
+    # Derive a per-run identifier for the usage-metrics subfolder, so each run's
+    # moose_UsageMetrics.csv lands in gs://.../_metrics/<RUN_ID>/ instead of
+    # overwriting a single shared file. On Terra (Cromwell PAPIv2 / GCP Batch
+    # backends) the auto-generated GCS transfer scripts placed in this task's
+    # execution directory embed the full delocalization path, which contains the
+    # Terra submission id and the Cromwell workflow id:
+    #   gs://<bucket>/submissions/<submissionId>/<wfName>/<workflowId>/call-.../
+    # Parse RUN_ID=<submissionId>_<workflowId> from there. Fall back to just the
+    # bare workflow-id UUID (non-Terra Cromwell layouts), then to a
+    # timestamp+uuid (local backend / standalone) so the id is always unique.
+    # ------------------------------------------------------------------------
+    RUN_ID=$(grep -hoE 'submissions/[0-9a-fA-F-]+/[^/]+/[0-9a-fA-F-]+/call-' ./*.sh 2>/dev/null \
+      | head -n1 | awk -F/ '{print $2"_"$4}')
+    if [ -z "$RUN_ID" ]; then
+      RUN_ID=$(grep -hoE '/[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}/call-' ./*.sh 2>/dev/null \
+        | head -n1 | sed -E 's#^/([0-9a-fA-F-]+)/call-$#\1#')
+    fi
+    if [ -z "$RUN_ID" ]; then
+      RUN_ID="run_$(date -u +%Y%m%dT%H%M%SZ)_$( (cat /proc/sys/kernel/random/uuid 2>/dev/null || echo "$RANDOM$RANDOM") | tr -d '\n' | cut -c1-8)"
+    fi
+    echo "Derived RUN_ID=$RUN_ID"
+
     wget https://raw.githubusercontent.com/Sunderlandkyl/CloudSegmentator/moose_test/workflows/MOOSE/Notebooks/moosePostProcessNotebook.ipynb
     # Curated label->SNOMED mapping (category/type/laterality modifier/region/rgb);
     # the post-process notebook resolves each moosez label name against it.
@@ -441,7 +465,8 @@ PY
       -p inferenceUsageMetricsCsvPath "~{inferenceUsageMetricsCsv}" \
       -p statsArchivePath "~{inferenceStatsArchive}" \
       -p input_uri "~{inputUri}" \
-      -p secret_project "~{secretProject}"; then
+      -p secret_project "~{secretProject}" \
+      -p runId "$RUN_ID"; then
       >&2 echo "Post-process notebook failed"
       if [ -f dicom_seg_error_file.txt ]; then
         >&2 echo "----- dicom_seg_error_file.txt -----"
@@ -487,6 +512,7 @@ PY
     File dicomSegArchive    = "moose_dicom_seg.tar.lz4"
     File usageMetricsCsv    = "moose_postprocess_UsageMetrics.csv"
     File combinedUsageMetricsCsv = "moose_UsageMetrics.csv"
+    File? runSummary        = "moose_run_summary.json"
 
     File? dicomSegErrors    = "dicom_seg_error_file.txt"
     File? usageMetricsUploadErrors = "metrics_bucket_error_file.txt"
