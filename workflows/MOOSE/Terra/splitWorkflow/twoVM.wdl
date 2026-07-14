@@ -361,9 +361,9 @@ task moosePostProcess {
     echo "Derived RUN_ID=$RUN_ID"
 
     wget https://raw.githubusercontent.com/Sunderlandkyl/CloudSegmentator/moose_test/workflows/MOOSE/Notebooks/moosePostProcessNotebook.ipynb
-    # Curated label->SNOMED mapping (category/type/laterality modifier/region/rgb);
-    # the post-process notebook resolves each moosez label name against it.
-    wget https://raw.githubusercontent.com/Sunderlandkyl/CloudSegmentator/moose_test/workflows/MOOSE/resources/moose_snomed_mapping.csv
+    # The label->SNOMED mapping is sourced from the moosez package (ENHANCE-PET/
+    # MOOSE) and bundled into the inference archive, so the post-process notebook
+    # reads it from the extracted archive -- nothing to fetch here.
 
     # Normalize inference archive layout for compatibility:
     # - Current expected: <uid>/moosez-<model>-<timestamp>/segmentations/*.nii.gz

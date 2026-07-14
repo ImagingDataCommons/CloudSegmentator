@@ -18,6 +18,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     dcm2niix \
     ffmpeg \
+    git \
     lz4 \
     pigz \
     python3-dev \
@@ -29,6 +30,18 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Install moosez and its core deps first so transitive pins
 # (pydicom, nibabel, nnunetv2>=2.6.0) are resolved before the second layer.
 RUN pip install --no-cache-dir "nnunetv2>=2.6.0" moosez
+
+# The label->SNOMED mapping table (moosez/mappings/moose_snomed_mapping.csv) is
+# the maintained source of truth in the MOOSE repo, but the published moosez
+# wheel does not ship it yet (PyPI 3.2.2 predates ENHANCE-PET/MOOSE#241). moosez
+# itself is installed from PyPI above for inference; fetch only the mapping via a
+# shallow clone and drop it into the installed moosez package, so the inference
+# notebook can bundle it into each run's output archive (discoverable via
+# importlib.resources). Remove this step once a moosez release ships the CSV.
+RUN git clone --depth 1 https://github.com/ENHANCE-PET/MOOSE.git /tmp/moose_src \
+    && cp /tmp/moose_src/moosez/mappings/moose_snomed_mapping.csv \
+          "$(python3 -c 'import os, moosez.mappings as m; print(os.path.dirname(m.__file__))')/moose_snomed_mapping.csv" \
+    && rm -rf /tmp/moose_src
 
 # Install remaining packages without re-pinning what moosez already owns.
 RUN pip install --no-cache-dir \
