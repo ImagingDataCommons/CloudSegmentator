@@ -121,3 +121,8 @@ To learn more about the background for this study, see the preprint below
     - Unlike Terra, SB-CGC does not use a data table model.
     - For the purposes of this demo, [download and provide this input file](https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/TotalSegmentator/Docs/sampleManifests/batch_1.yaml)   to `yamlListOfSeriesInstanceUIDs`
     - Click `Run` on the top right to start the workflow
+
+- ## MOOSE workflow
+
+    - The steps above use TotalSegmentator as the running example, but apply the same way to the MOOSE workflow
+    - For MOOSE-specific documentation — full argument reference, downloading private (non-IDC) data and storing the required secrets, and setting up an output bucket — see [workflows/MOOSE/Docs/README.md](workflows/MOOSE/Docs/README.md)
