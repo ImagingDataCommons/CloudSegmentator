@@ -30,6 +30,18 @@ workflows:
      authors:
       - name: ImagingDataCommons
         email: vthiriveedhi@mgb.org           
+   - name: MooseOneVmWorkflowOnTerra
+     subclass: WDL
+     primaryDescriptorPath: /workflows/MOOSE/Terra/splitWorkflow/oneVM.wdl
+     authors:
+      - name: ImagingDataCommons
+        email: vthiriveedhi@mgb.org
+   - name: MooseTwoVmWorkflowOnTerra
+     subclass: WDL
+     primaryDescriptorPath: /workflows/MOOSE/Terra/splitWorkflow/twoVM.wdl
+     authors:
+      - name: ImagingDataCommons
+        email: vthiriveedhi@mgb.org
    - name: TotalSegmentatortwoVmWorkflowOnSB-CGC
      subclass: CWL
      primaryDescriptorPath: /workflows/TotalSegmentator/SevenBridges/splitWorkflow/twoVM.cwl
