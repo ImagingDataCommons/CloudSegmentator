@@ -126,3 +126,8 @@ To learn more about the background for this study, see the preprint below
 
     - The steps above use TotalSegmentator as the running example, but apply the same way to the MOOSE workflow
     - For MOOSE-specific documentation — full argument reference, downloading private (non-IDC) data and storing the required secrets, and setting up an output bucket — see [workflows/MOOSE/Docs/README.md](workflows/MOOSE/Docs/README.md)
+
+- ## Harmonized (multi-model) workflow
+
+    - A single, model-agnostic workflow where only the *inference* step is model-specific — input conversion and output conversion (DICOM-SEG, radiomics) are shared across MOOSE, TotalSegmentator, and future models. Adding a model means writing one inference notebook + one Docker image (`FROM` a shared base) and reusing everything else.
+    - Pre-release; see [workflows/harmonized/Docs/README.md](workflows/harmonized/Docs/README.md) for the architecture, the nb1/nb2/nb3 contracts, and how to add a model. The per-model `MOOSE` and `TotalSegmentator` workflows above remain the supported path until it is validated end-to-end.

@@ -1,0 +1,15 @@
+{
+  "Segmentator.yamlListOfSeriesInstanceUIDs": "this.SeriesInstanceUIDs",
+
+  "Segmentator.modelName": "total",
+  "Segmentator.inferenceDocker": "imagingdatacommons/inference_totalseg:main",
+  "Segmentator.inferenceNotebookPath": "workflows/models/totalseg/Notebooks/inference.ipynb",
+  "Segmentator.snomedMappingPath": "workflows/models/totalseg/resources/snomed_mapping.csv",
+  "Segmentator.inferenceParamsYaml": "fast: false",
+
+  "Segmentator.gitRepo": "ImagingDataCommons/CloudSegmentator",
+  "Segmentator.gitBranch": "main",
+
+  "Segmentator.runRadiomics": true,
+  "Segmentator.runStructuredReport": true
+}
