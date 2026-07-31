@@ -37,4 +37,7 @@ RUN pip install --no-cache-dir \
 ENV TOTALSEG_WEIGHTS_PATH=/totalsegmentator_weights
 RUN mkdir -p $TOTALSEG_WEIGHTS_PATH
 COPY weights_download.sh /root/weights_download.sh
-RUN chmod +x /root/weights_download.sh && /root/weights_download.sh
+# Strip any CR (Windows CRLF checkout) so the shebang isn't `/bin/bash\r`.
+RUN sed -i 's/\r$//' /root/weights_download.sh \
+ && chmod +x /root/weights_download.sh \
+ && /root/weights_download.sh
