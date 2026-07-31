@@ -6,8 +6,12 @@
 # model weights. Conversion (nb1) / output conversion (nb3) tooling is inherited
 # from the base image; this image runs nb2 (inference) on the GPU VM.
 # ============================================================================
+# Registry/tag of the base image are build-args so the whole stack can be pushed
+# to a personal Docker Hub org during dev, e.g.
+#   --build-arg BASE_IMAGE=sunderlandkyl/segmentator-base
+ARG BASE_IMAGE=imagingdatacommons/segmentator-base
 ARG BASE_TAG=main
-FROM imagingdatacommons/segmentator-base:${BASE_TAG}
+FROM ${BASE_IMAGE}:${BASE_TAG}
 
 ARG GIT_HASH
 
