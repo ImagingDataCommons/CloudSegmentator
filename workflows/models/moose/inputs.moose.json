@@ -3,7 +3,7 @@
 
   "Segmentator.modelName": "moose",
   "Segmentator.inferenceDocker": "sunderlandkyl/inference_moose:main",
-  "Segmentator.outputConversionDocker": "sunderlandkyl/segmentator-base:main",
+  "Segmentator.outputConversionDocker": "sunderlandkyl/output_conversion:main",
   "Segmentator.inferenceNotebookPath": "workflows/models/moose/Notebooks/inference.ipynb",
   "Segmentator.snomedMappingPath": "workflows/models/moose/resources/snomed_mapping.csv",
   "Segmentator.inferenceParamsYaml": "moose_models: clin_ct_body,clin_ct_body_composition,clin_ct_cardiac,clin_ct_digestive,clin_ct_lungs,clin_ct_muscles,clin_ct_organs,clin_ct_peripheral_bones,clin_ct_ribs,clin_ct_vertebrae",

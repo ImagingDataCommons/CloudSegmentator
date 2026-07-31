@@ -19,7 +19,7 @@ Three notebooks, two hand-off contracts, one parameterized WDL
 ([`Terra/twoVM.wdl`](../Terra/twoVM.wdl), `workflow Segmentator`):
 
 ```
-Task 1  (GPU, per-model image)          Task 2  (CPU, segmentator-base image)
+Task 1  (GPU, per-model image)          Task 2  (CPU, output_conversion image)
 ┌───────────────────────────────┐      ┌───────────────────────────────────┐
 │ nb1  convert  (SHARED)         │      │ nb3  output conversion  (SHARED)  │
 │   DICOM → NIfTI                │      │   NIfTI seg → DICOM-SEG           │
@@ -92,20 +92,34 @@ nb1, nb3, the base image, and the WDL are reused unchanged.
 
 ## Docker build order
 
+Four images. The GPU side (base + model inference) is **Python 3.12** on a CUDA
+base; the CPU output-conversion image is **Python 3.11**, because the DICOM-SEG /
+pyradiomics stack (`dcmqi`, `pyradiomics`, `pandas==1.5.3`) has no Python 3.12
+wheels — this is the same proven 3.11 environment the previous post-process images
+used.
+
 ```
-# 1. Base (shared tooling: dcm2niix, dcmqi, s5cmd, pyradiomics, jupyter, gcloud libs)
+GIT_HASH=$(git rev-parse HEAD)
+
+# 1. CUDA base (convert + inference shared tooling: dcm2niix, s5cmd, papermill,
+#    idc-index, gcloud libs). Python 3.12.
 docker build -t imagingdatacommons/segmentator-base:main \
-  --build-arg GIT_HASH=$(git rev-parse HEAD) workflows/common/Dockerfiles/base
+  --build-arg GIT_HASH=$GIT_HASH workflows/common/Dockerfiles/base
 
-# 2. Per-model images (FROM the base)
+# 2. Per-model inference images (FROM the base + ML framework + weights)
 docker build -t imagingdatacommons/inference_moose:main \
-  --build-arg GIT_HASH=$(git rev-parse HEAD) workflows/models/moose
+  --build-arg GIT_HASH=$GIT_HASH workflows/models/moose
 docker build -t imagingdatacommons/inference_totalseg:main \
-  --build-arg GIT_HASH=$(git rev-parse HEAD) workflows/models/totalseg
+  --build-arg GIT_HASH=$GIT_HASH workflows/models/totalseg
+
+# 3. Output-conversion image (nb3: DICOM-SEG + pyradiomics). Python 3.11.
+docker build -t imagingdatacommons/output_conversion:main \
+  --build-arg GIT_HASH=$GIT_HASH workflows/common/Dockerfiles/output_conversion
 ```
 
-nb1 and nb3 run on `segmentator-base` (the CPU output-conversion task and the
-convert step of the GPU task). Each model image is base + one ML framework.
+nb1 (convert) runs on the model inference image (which is `FROM segmentator-base`);
+nb3 (output conversion) runs on `output_conversion`. Each model image is base + one
+ML framework.
 
 ## Verifying the contracts locally
 

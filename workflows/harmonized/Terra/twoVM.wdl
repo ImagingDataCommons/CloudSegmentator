@@ -102,7 +102,7 @@ workflow Segmentator {
     # ------------------------------------------------------------------------
     # OUTPUT-CONVERSION TASK (CPU-only) compute shape
     # ------------------------------------------------------------------------
-    String outputConversionDocker = "imagingdatacommons/segmentator-base:main"
+    String outputConversionDocker = "imagingdatacommons/output_conversion:main"
     Int    outputConversionPreemptibleTries = 3
     Int    outputConversionCpus   = 4
     Int    outputConversionRAM    = 16
