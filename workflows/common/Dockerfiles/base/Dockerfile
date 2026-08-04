@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 # ============================================================================
 # imagingdatacommons/segmentator-base
 # ----------------------------------------------------------------------------
@@ -46,7 +47,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Shared conversion / orchestration stack. Left unpinned so pip resolves wheels
 # compatible with this base's Python 3.12 (idc-index pulls a matching pandas).
 # These are all pure-Python or ship cp312 wheels — no source builds.
-RUN pip3 install --no-cache-dir \
+# Cache mount so re-pulling this layer (e.g. after editing anything below it
+# in images that derive FROM this one) reuses previously downloaded wheels.
+RUN --mount=type=cache,target=/root/.cache/pip \
+    pip3 install \
     PyYAML \
     google-auth \
     google-cloud-secret-manager \

@@ -239,11 +239,19 @@ YAML
     [ -s inference_params.yaml ] || echo "{}" > inference_params.yaml
 
     # ---- Step 1: convert (nb1) -> converted_nifti.tar.lz4 (Boundary A)
-    papermill convertNotebook.ipynb convertOutputNotebook.ipynb \
+    # --log-output streams each cell's print()s into this task's stdout/stderr
+    # log so per-series failures are visible without digging through the
+    # execution bucket for the output notebook.
+    papermill --log-output convertNotebook.ipynb convertOutputNotebook.ipynb \
       -y "~{yamlListOfSeriesInstanceUIDs}" \
       -p input_uri "~{inputUri}" \
       -p secret_project "~{secretProject}" \
-      || (>&2 echo "Convert task failed" && exit 1)
+      || {
+        >&2 echo "Convert task failed"
+        [ -f download_error_file.txt ] && { >&2 echo "----- download_error_file.txt -----"; cat download_error_file.txt >&2; }
+        [ -f dcm2niix_error_file.txt ] && { >&2 echo "----- dcm2niix_error_file.txt -----"; cat dcm2niix_error_file.txt >&2; }
+        exit 1
+      }
 
     if [ ! -f converted_nifti.tar.lz4 ]; then
       >&2 echo "Expected Boundary-A archive converted_nifti.tar.lz4 was not created"
@@ -251,17 +259,23 @@ YAML
     fi
 
     # ---- Step 2: inference (nb2) -> segmentations.tar.lz4 (Boundary B)
-    papermill inferenceNotebook.ipynb inferenceOutputNotebook.ipynb \
+    papermill --log-output inferenceNotebook.ipynb inferenceOutputNotebook.ipynb \
       -f inference_params.yaml \
       -p converted_nifti_path "converted_nifti.tar.lz4" \
       -p model_name "~{modelName}" \
       -p accelerator "cuda" \
       -p checkpoint_gcs "~{checkpointGcsPath}" \
-      || (>&2 echo "Inference task failed" && exit 1)
+      || {
+        >&2 echo "Inference task failed"
+        [ -f inference_errors.txt ] && { >&2 echo "----- inference_errors.txt -----"; cat inference_errors.txt >&2; }
+        exit 1
+      }
 
     if [ ! -f segmentations.tar.lz4 ]; then
       >&2 echo "Expected Boundary-B archive segmentations.tar.lz4 was not created"
-      if [ ! -f inference_errors.txt ]; then
+      if [ -f inference_errors.txt ]; then
+        >&2 echo "----- inference_errors.txt -----"; cat inference_errors.txt >&2
+      else
         echo "Inference completed without producing segmentations.tar.lz4" > inference_errors.txt
       fi
       exit 1

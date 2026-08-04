@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 # ============================================================================
 # imagingdatacommons/inference_totalseg
 # ----------------------------------------------------------------------------
@@ -38,7 +39,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # torch>=2.6 flipped torch.load's default to weights_only=True, which rejects
 # the numpy.core.multiarray.scalar global used by the baked nnU-Net checkpoints
 # (predates safetensors-style loading) — pin below 2.6 so nnU-Net can load them.
-RUN pip install --no-cache-dir \
+# Cache mount keyed on /root/.cache/pip: wheels already downloaded in a prior
+# build are reused even when this layer's own cache is invalidated (e.g. by a
+# BASE_IMAGE/BASE_TAG bump during dev iteration), without changing what ends
+# up installed or the final image size (the mount isn't part of the layer).
+RUN --mount=type=cache,target=/root/.cache/pip \
+    pip install \
     "setuptools<81" \
     "torch<2.6" \
     nvidia-ml-py3==7.352.0 \
@@ -51,5 +57,9 @@ RUN mkdir -p $TOTALSEG_WEIGHTS_PATH
 COPY weights_download.sh /root/weights_download.sh
 # Strip any CR (Windows CRLF checkout) so the shebang isn't `/bin/bash\r`.
 RUN sed -i 's/\r$//' /root/weights_download.sh \
- && chmod +x /root/weights_download.sh \
- && /root/weights_download.sh
+ && chmod +x /root/weights_download.sh
+# Same idea as the pip cache above: persist the downloaded weight zips across
+# builds so a cache miss on this layer re-unzips instead of re-downloading
+# ~5GB from GitHub releases every time.
+RUN --mount=type=cache,target=/weights_cache \
+    WEIGHTS_CACHE_DIR=/weights_cache /root/weights_download.sh
