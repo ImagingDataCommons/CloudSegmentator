@@ -28,7 +28,19 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     xvfb \
   && rm -rf /var/lib/apt/lists/*
 
+
+# TotalSegmentator's console-script entry point does `from pkg_resources import
+# require`. setuptools>=81 dropped pkg_resources entirely, and one of
+# TotalSegmentator/nnU-Net's transitive deps upgrades past the apt-provided
+# 68.1.2 (which still has it) — pin below 81 so the CLI has pkg_resources at
+# runtime.
+#
+# torch>=2.6 flipped torch.load's default to weights_only=True, which rejects
+# the numpy.core.multiarray.scalar global used by the baked nnU-Net checkpoints
+# (predates safetensors-style loading) — pin below 2.6 so nnU-Net can load them.
 RUN pip install --no-cache-dir \
+    "setuptools<81" \
+    "torch<2.6" \
     nvidia-ml-py3==7.352.0 \
     TotalSegmentator==1.5.6
 
