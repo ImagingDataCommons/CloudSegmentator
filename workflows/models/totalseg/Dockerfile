@@ -39,6 +39,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # torch>=2.6 flipped torch.load's default to weights_only=True, which rejects
 # the numpy.core.multiarray.scalar global used by the baked nnU-Net checkpoints
 # (predates safetensors-style loading) — pin below 2.6 so nnU-Net can load them.
+#
+# nnUNetTrainer.py (from TotalSegmentator's pinned nnunet-customized==1.2 dep)
+# does an unconditional `import matplotlib`, but that package's own metadata
+# never lists matplotlib as a dependency — pip legitimately never installs it,
+# so every inference call crashes at import time unless it's added explicitly.
 # Cache mount keyed on /root/.cache/pip: wheels already downloaded in a prior
 # build are reused even when this layer's own cache is invalidated (e.g. by a
 # BASE_IMAGE/BASE_TAG bump during dev iteration), without changing what ends
@@ -47,6 +52,7 @@ RUN --mount=type=cache,target=/root/.cache/pip \
     pip install \
     "setuptools<81" \
     "torch<2.6" \
+    matplotlib \
     nvidia-ml-py3==7.352.0 \
     TotalSegmentator==1.5.6
 
