@@ -17,7 +17,7 @@ workflow MOOSE {
    String accelerator = "cuda"
 
    # Docker image
-   String mooseDocker = "sunderlandkyl/moose-test:latest"
+   String mooseDocker = "imagingdatacommons/inference_moose:main"
 
    # Preemptible retries (Terra will retry on spot-instance interruption)
    Int moosePreemptibleTries = 3
@@ -75,7 +75,7 @@ task mooseEndToEnd {
  }
 
  command {
-   wget https://raw.githubusercontent.com/Sunderlandkyl/CloudSegmentator/moose_test/workflows/MOOSE/Notebooks/endToEndMOOSENotebook.ipynb
+   wget https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/MOOSE/Notebooks/endToEndMOOSENotebook.ipynb
    set -e
    papermill endToEndMOOSENotebook.ipynb mooseOutputNotebook.ipynb \
      -y "~{yamlListOfSeriesInstanceUIDs}" \

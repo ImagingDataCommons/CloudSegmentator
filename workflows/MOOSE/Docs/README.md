@@ -66,7 +66,7 @@ setup, then a couple of extra workflow inputs per run.
 
 | Argument | Default | Description |
 |---|---|---|
-| `mooseInferenceDocker` | `sunderlandkyl/moose-test:latest` | Docker image for Task 1. Built from [`Dockerfiles/inference_moose`](../Dockerfiles/inference_moose/Dockerfile). |
+| `mooseInferenceDocker` | `imagingdatacommons/inference_moose:main` | Docker image for Task 1. Built from [`Dockerfiles/inference_moose`](../Dockerfiles/inference_moose/Dockerfile). |
 | `mooseInferencePreemptibleTries` | `3` | Preemptible retry count. |
 | `mooseInferenceCpus` | `4` | vCPUs. |
 | `mooseInferenceRAM` | `16` | RAM, GiB. |
@@ -80,7 +80,7 @@ setup, then a couple of extra workflow inputs per run.
 
 | Argument | Default | Description |
 |---|---|---|
-| `moosePostProcessDocker` | `sunderlandkyl/post_process_moose:latest` | Docker image for Task 2. Built from [`Dockerfiles/post_process_moose`](../Dockerfiles/post_process_moose/Dockerfile). |
+| `moosePostProcessDocker` | `imagingdatacommons/post_process_moose:main` | Docker image for Task 2. Built from [`Dockerfiles/post_process_moose`](../Dockerfiles/post_process_moose/Dockerfile). |
 | `moosePostProcessPreemptibleTries` | `3` | Preemptible retry count. |
 | `moosePostProcessCpus` | `4` | vCPUs. |
 | `moosePostProcessRAM` | `16` | RAM, GiB. |

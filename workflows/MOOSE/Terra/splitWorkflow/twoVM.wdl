@@ -70,7 +70,7 @@ workflow MOOSE {
     # INFERENCE TASK (GPU) — download, convert, run moosez
     # ------------------------------------------------------------------------
 
-    String mooseInferenceDocker = "sunderlandkyl/moose-test:latest"
+    String mooseInferenceDocker = "imagingdatacommons/inference_moose:main"
 
     Int mooseInferencePreemptibleTries = 3
     Int mooseInferenceCpus = 4
@@ -88,7 +88,7 @@ workflow MOOSE {
     # POST-PROCESSING TASK (CPU-only) — DICOM-SEG generation, compression
     # ------------------------------------------------------------------------
 
-    String moosePostProcessDocker = "sunderlandkyl/post_process_moose:latest"
+    String moosePostProcessDocker = "imagingdatacommons/post_process_moose:main"
 
     Int moosePostProcessPreemptibleTries = 3
     Int moosePostProcessCpus = 4
@@ -237,8 +237,7 @@ task mooseInference {
   command <<<
     set -e
 
-    # Pin to a specific commit for reproducibility (update SHA as needed)
-    wget https://raw.githubusercontent.com/Sunderlandkyl/CloudSegmentator/moose_test/workflows/MOOSE/Notebooks/mooseInferenceNotebook.ipynb
+    wget https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/MOOSE/Notebooks/mooseInferenceNotebook.ipynb
 
     papermill mooseInferenceNotebook.ipynb mooseInferenceOutputNotebook.ipynb \
       -y "~{yamlListOfSeriesInstanceUIDs}" \
@@ -360,7 +359,7 @@ task moosePostProcess {
     fi
     echo "Derived RUN_ID=$RUN_ID"
 
-    wget https://raw.githubusercontent.com/Sunderlandkyl/CloudSegmentator/moose_test/workflows/MOOSE/Notebooks/moosePostProcessNotebook.ipynb
+    wget https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/MOOSE/Notebooks/moosePostProcessNotebook.ipynb
     # The label->SNOMED mapping is sourced from the moosez package (ENHANCE-PET/
     # MOOSE) and bundled into the inference archive, so the post-process notebook
     # reads it from the extracted archive -- nothing to fetch here.
