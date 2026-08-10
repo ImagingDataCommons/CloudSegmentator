@@ -1,0 +1,82 @@
+name: inference_moose
+
+on:
+  push:
+    branches:
+      - "main"
+    paths:
+      - ".github/workflows/inference_moose.yml"
+      - "workflows/MOOSE/Dockerfiles/inference_moose/Dockerfile"
+    tags:
+      - 'v*'
+  pull_request:
+    branches:
+      - "main"
+    paths:
+      - ".github/workflows/inference_moose.yml"
+      - "workflows/MOOSE/Dockerfiles/inference_moose/Dockerfile"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # This image is ~21 GB uncompressed (a 6 GB torch/nnunetv2 layer plus
+      # ~5.5 GB of pre-baked moosez weights), which does not fit in the free
+      # space an ubuntu-latest runner ships with. Drop the preinstalled
+      # toolchains -- none of them are used by this build -- to roughly double
+      # the available space. Safe to remove hostedtoolcache since no
+      # setup-python/setup-node step runs here.
+      - name: Free up disk space
+        run: |
+          df -h /
+          sudo rm -rf \
+            /usr/local/lib/android \
+            /opt/hostedtoolcache \
+            /usr/share/dotnet \
+            /usr/share/swift \
+            /opt/ghc \
+            /usr/local/.ghcup \
+            /usr/local/share/boost
+          sudo docker image prune --all --force
+          df -h /
+
+      - name: Set up Git
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+
+      - name: Get Git Commit Hash
+        id: git-commit-hash
+        run: |
+          COMMIT_HASH=$(git rev-parse HEAD)
+          echo "COMMIT_HASH=$COMMIT_HASH" >> $GITHUB_ENV
+
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: |
+           imagingdatacommons/inference_moose
+
+      - name: Login to Docker Hub
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and Push Docker image to Docker Hub
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./workflows/MOOSE/Dockerfiles/inference_moose/Dockerfile
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          build-args: |
+            GIT_HASH=${{ env.COMMIT_HASH }}
+        env:
+          COMMIT_HASH: ${{ env.COMMIT_HASH }}
