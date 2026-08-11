@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       # This image is ~21 GB uncompressed (a 6 GB torch/nnunetv2 layer plus
       # ~5.5 GB of pre-baked moosez weights), which does not fit in the free
