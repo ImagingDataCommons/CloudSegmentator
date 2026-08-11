@@ -43,7 +43,7 @@ jobs:
 
       - name: Docker meta
         id: meta
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@v6
         with:
           images: |
            imagingdatacommons/download_convert_inference_totalseg_dicom_seg_pyradiomics_sr
