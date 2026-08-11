@@ -52,7 +52,10 @@ workflow Segmentator {
 
     # Repo path to the model's unified SNOMED mapping CSV
     # (schema: model,label_name,label_id, + SegmentedProperty*/AnatomicRegion*/RGB).
-    String snomedMappingPath
+    # Leave empty when the model bundles its own SNOMED table into the
+    # segmentation archive (e.g. MOOSE ships moosez's moose_snomed_mapping.csv);
+    # nb3 then prefers the bundled copy.
+    String snomedMappingPath = ""
 
     # Generic papermill parameters passthrough for model-specific knobs, e.g.
     #   "moose_models: clin_ct_organs,clin_ct_ribs\naccelerator: cuda"
@@ -366,7 +369,12 @@ task outputConversion {
     echo "Derived RUN_ID=$RUN_ID"
 
     wget -O outputConversionNotebook.ipynb "${RAW}/~{outputConversionNotebookPath}"
-    wget -O snomed_mapping.csv             "${RAW}/~{snomedMappingPath}"
+    # snomedMappingPath may be empty when the model bundles its own SNOMED table
+    # into the segmentation archive (e.g. MOOSE ships moosez's
+    # moose_snomed_mapping.csv); nb3 then reads the bundled copy instead.
+    if [ -n "~{snomedMappingPath}" ]; then
+      wget -O snomed_mapping.csv "${RAW}/~{snomedMappingPath}"
+    fi
 
     if ! papermill outputConversionNotebook.ipynb outputConversionOutputNotebook.ipynb \
       -p segmentationArchivePath "~{segmentationArchive}" \

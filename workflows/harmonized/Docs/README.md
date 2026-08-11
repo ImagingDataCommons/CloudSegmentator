@@ -134,9 +134,12 @@ papermill models/moose/Notebooks/inference.ipynb out2.ipynb \
   -p moose_models clin_ct_organs                         # → segmentations.tar.lz4
 papermill common/Notebooks/outputConversionNotebook.ipynb out3.ipynb \
   -p segmentationArchivePath segmentations.tar.lz4 \
-  -p snomedMappingPath models/moose/resources/snomed_mapping.csv \
   -p modelName moose                                     # → dicom_seg.tar.lz4 + radiomics.tar.lz4
 ```
+For MOOSE, `snomedMappingPath` is omitted: nb2 bundles moosez's own
+`moose_snomed_mapping.csv` into the archive and nb3 reads that bundled copy.
+Models whose engine ships no SNOMED table (e.g. TotalSegmentator v1.5.6) instead
+pass a curated CSV, e.g. `-p snomedMappingPath models/totalseg/resources/snomed_mapping.csv`.
 Confirm each archive matches the layout in *Contracts* above, and that
 `dicom_seg.tar.lz4` imported into a Healthcare API store renders in OHIF
 (`itkimage2segimage` preserves the source `StudyInstanceUID`).
