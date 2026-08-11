@@ -57,7 +57,7 @@ jobs:
 
       - name: Build and Push Docker image to Docker Hub 
         if:           
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v7
         with:
           context: .
           file: ./workflows/TotalSegmentator/Dockerfiles/download_convert_inference_totalseg/Dockerfile
