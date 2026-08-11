@@ -77,3 +77,28 @@ RUN wget -q ${DCM2NIIX_URL} \
   && unzip ${DCM2NIIX_FN} \
   && rm ${DCM2NIIX_FN} \
   && mv dcm2niix /usr/local/bin/dcm2niix
+
+# ============================================================================
+# Julia + Radiomics.jl — the alternative radiomics engine, selected at runtime
+# via the WDL `radiomicsMethod=radiomicsjl` input. The driver script
+# (radiomics_jl_extract.jl) is fetched next to nb3 by the WDL task; the Julia
+# runtime and packages must be baked into the image. pyradiomics (above) stays
+# the default engine, so this is purely additive.
+#
+# Julia 1.10 (LTS) satisfies Radiomics.jl's `julia = "1.10"` compat bound.
+# ============================================================================
+ENV JULIA_VERSION=1.10.5
+ENV JULIA_URL="https://julialang-s3.julialang.org/bin/linux/x64/1.10/julia-${JULIA_VERSION}-linux-x86_64.tar.gz"
+RUN wget -q "${JULIA_URL}" -O julia.tar.gz \
+  && tar -xzf julia.tar.gz -C /opt \
+  && rm julia.tar.gz \
+  && ln -s /opt/julia-${JULIA_VERSION}/bin/julia /usr/local/bin/julia
+
+# Shared depot so packages resolve at runtime regardless of HOME; auto threads
+# let Radiomics.jl parallelize multi-label extraction (see radiomics_jl_extract.jl).
+ENV JULIA_DEPOT_PATH=/opt/julia-depot
+ENV JULIA_NUM_THREADS=auto
+# Install + precompile at build time so runtime avoids first-use precompilation.
+# pzaffino/Radiomics.jl is the registered package `Radiomics` (pinned for
+# reproducibility, matching the rest of this image); NIfTI + JSON back the driver.
+RUN julia -e 'import Pkg; Pkg.add([Pkg.PackageSpec(name="Radiomics", version="1.3.3"), Pkg.PackageSpec(name="NIfTI"), Pkg.PackageSpec(name="JSON")]); Pkg.precompile()'

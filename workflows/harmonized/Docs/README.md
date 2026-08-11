@@ -73,6 +73,7 @@ model's SNOMED CSV to build the dcmqi labelmap config.
 | `inferenceParamsYaml` | Generic papermill passthrough for model knobs (`moose_models`, `fast`, …) — new models need **no WDL change**. |
 | `gitRepo` / `gitBranch` | Where notebooks + SNOMED CSV are fetched from (override for dev/fork branches). |
 | `runRadiomics` / `runStructuredReport` | Harmonized output toggles (nb3). |
+| `radiomicsMethod` | Radiomics engine when `runRadiomics=true`: `pyradiomics` (default) or `radiomicsjl` (JuliaHealth-style [`pzaffino/Radiomics.jl`](https://github.com/pzaffino/Radiomics.jl)). One engine per run — see *Comparing radiomics engines*. |
 | `inputUri` / `secretProject` | Private-GCS input (optional). |
 | `dicomSegBucketUri` / `dicomStoreImportUri` | GCS upload + Healthcare API import (optional). |
 
@@ -112,7 +113,9 @@ docker build -t imagingdatacommons/inference_moose:main \
 docker build -t imagingdatacommons/inference_totalseg:main \
   --build-arg GIT_HASH=$GIT_HASH workflows/models/totalseg
 
-# 3. Output-conversion image (nb3: DICOM-SEG + pyradiomics). Python 3.11.
+# 3. Output-conversion image (nb3: DICOM-SEG + pyradiomics + Radiomics.jl). Python
+#    3.11 for the DICOM-SEG/pyradiomics stack, plus a Julia 1.10 runtime with
+#    Radiomics.jl precompiled for the `radiomicsMethod=radiomicsjl` path.
 docker build -t imagingdatacommons/output_conversion:main \
   --build-arg GIT_HASH=$GIT_HASH workflows/common/Dockerfiles/output_conversion
 ```
@@ -143,6 +146,41 @@ pass a curated CSV, e.g. `-p snomedMappingPath models/totalseg/resources/snomed_
 Confirm each archive matches the layout in *Contracts* above, and that
 `dicom_seg.tar.lz4` imported into a Healthcare API store renders in OHIF
 (`itkimage2segimage` preserves the source `StudyInstanceUID`).
+
+## Comparing radiomics engines
+
+nb3 can compute radiomics with either **pyradiomics** (Python, default) or
+**Radiomics.jl** (Julia, [`pzaffino/Radiomics.jl`](https://github.com/pzaffino/Radiomics.jl),
+IBSI-1 compliant). It is a **selector — one engine per run**; compare by running
+the workflow twice with the same series list and different `radiomicsMethod`:
+
+```
+papermill common/Notebooks/outputConversionNotebook.ipynb out_py.ipynb \
+  -p segmentationArchivePath segmentations.tar.lz4 -p modelName moose        # pyradiomics
+papermill common/Notebooks/outputConversionNotebook.ipynb out_jl.ipynb \
+  -p segmentationArchivePath segmentations.tar.lz4 -p modelName moose \
+  -p radiomicsMethod radiomicsjl                                             # Radiomics.jl
+```
+
+Each emitted radiomics JSON row is stamped with `radiomics_method`, and
+`run_summary.json` records the engine, so archives from the two runs are
+self-describing when diffed.
+
+**How it is wired.** Radiomics runs entirely in nb3, so `radiomicsMethod` is a
+plain `String` WDL input threaded to the `outputConversion` task and on to the
+notebook (mirroring `runRadiomics`). The Julia runtime + Radiomics.jl are baked
+into the `output_conversion` image; the thin driver
+[`common/Notebooks/radiomics_jl_extract.jl`](../../common/Notebooks/radiomics_jl_extract.jl)
+(fetched next to nb3 by the WDL, so it can be iterated without an image rebuild)
+owns all Radiomics.jl-specific API. Feature scope for each engine is a one-line
+edit: `PYRADIOMICS_FEATURE_CLASSES` in nb3, `FEATURES` in the `.jl` driver.
+
+> **Feature-set caveat.** The two engines' feature *names/definitions* differ, so a
+> head-to-head only makes sense on matching feature classes. The pyradiomics config
+> defaults to first-order + shape; Radiomics.jl additionally offers texture matrices
+> (GLCM/GLSZM/GLRLM/NGTDM/GLDM). To compare a given class, enable it on **both**
+> sides (e.g. add `glcm`/`firstorder` to `PYRADIOMICS_FEATURE_CLASSES` and the
+> corresponding `:glcm`/`:first_order` to the driver's `FEATURES`).
 
 ## Known gaps
 

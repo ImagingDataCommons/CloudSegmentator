@@ -78,6 +78,12 @@ workflow Segmentator {
     Boolean runRadiomics = true
     Boolean runStructuredReport = true
 
+    # Radiomics engine to use when runRadiomics is true. One method per run;
+    # run the workflow twice to compare engines. Valid values:
+    #   "pyradiomics" (default) - AIM-Harvard pyradiomics (Python)
+    #   "radiomicsjl"           - JuliaHealth Radiomics.jl (Julia)
+    String radiomicsMethod = "pyradiomics"
+
     # ------------------------------------------------------------------------
     # OPTIONAL: checkpoint/resume on preemption (inference task)
     # ------------------------------------------------------------------------
@@ -156,6 +162,7 @@ workflow Segmentator {
       snomedMappingPath         = snomedMappingPath,
       runRadiomics              = runRadiomics,
       runStructuredReport       = runStructuredReport,
+      radiomicsMethod           = radiomicsMethod,
       docker                    = outputConversionDocker,
       preemptibleTries          = outputConversionPreemptibleTries,
       cpus                      = outputConversionCpus,
@@ -337,6 +344,7 @@ task outputConversion {
     String  snomedMappingPath
     Boolean runRadiomics
     Boolean runStructuredReport
+    String  radiomicsMethod
     String  docker
     Int     preemptibleTries
     Int     cpus
@@ -369,6 +377,14 @@ task outputConversion {
     echo "Derived RUN_ID=$RUN_ID"
 
     wget -O outputConversionNotebook.ipynb "${RAW}/~{outputConversionNotebookPath}"
+
+    # Radiomics.jl driver script — only used when radiomicsMethod=radiomicsjl (the
+    # Julia runtime + Radiomics.jl live in the output_conversion image). Fetched
+    # alongside the notebook so the extraction logic can be iterated without an
+    # image rebuild; errexit is off here, so a miss just leaves the notebook to
+    # record a clear "driver not found" radiomics error.
+    wget -O radiomics_jl_extract.jl "${RAW}/workflows/common/Notebooks/radiomics_jl_extract.jl"
+
     # snomedMappingPath may be empty when the model bundles its own SNOMED table
     # into the segmentation archive (e.g. MOOSE ships moosez's
     # moose_snomed_mapping.csv); nb3 then reads the bundled copy instead.
@@ -382,6 +398,7 @@ task outputConversion {
       -p modelName "~{modelName}" \
       -p runRadiomics ~{runRadiomics} \
       -p runStructuredReport ~{runStructuredReport} \
+      -p radiomicsMethod "~{radiomicsMethod}" \
       -p dicomSegBucketUri "~{dicomSegBucketUri}" \
       -p dicomStoreImportUri "~{dicomStoreImportUri}" \
       -p inferenceUsageMetricsCsvPath "~{inferenceUsageMetricsCsv}" \
