@@ -29,12 +29,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends\
     && rm -rf /var/lib/apt/lists/*
 
 # Install pip packages
-RUN pip install --no-cache-dir\
+RUN pip install --default-timeout=100 --retries 5 --no-cache-dir\
     idc-index==0.2.8\
     ipykernel==6.22.0\
     ipython==8.12.0\
     ipywidgets==8.0.6\
     jupyter==1.0.0\
+    "notebook<7"\
+    python-gdcm==3.0.25\
+    SimpleITK==2.4.1\
     nvidia-ml-py3==7.352.0\
     papermill==2.4.0 \
     "scipy>=1.8,<1.9.2; python_version <= '3.9'"\
@@ -42,7 +45,7 @@ RUN pip install --no-cache-dir\
     scikit-learn==1.2.2\
     scikit-image==0.20.0\
     TotalSegmentator==1.5.6\
- && pip install --no-cache-dir\
+ && pip install --default-timeout=100 --retries 5 --no-cache-dir\
     pyradiomics==3.0.1
 
 # Download TotalSegmentator weights
