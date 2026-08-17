@@ -10,6 +10,7 @@ weights_urls=(
   "https://github.com/wasserth/TotalSegmentator/releases/download/v1.5.6-weights/Task254_TotalSegmentator_part4_muscles_1139subj.zip"
   "https://github.com/wasserth/TotalSegmentator/releases/download/v1.5.6-weights/Task255_TotalSegmentator_part5_ribs_1139subj.zip"
   "https://github.com/wasserth/TotalSegmentator/releases/download/v1.5.6-weights/Task256_TotalSegmentator_3mm_1139subj.zip"
+  "https://zenodo.org/record/7064718/files/Task258_lung_vessels_248subj.zip?download=1"
 )
 
 weights_dir="${TOTALSEG_WEIGHTS_PATH}/nnUNet/3d_fullres/"
@@ -22,7 +23,7 @@ mkdir -p "$weights_dir" "$cache_dir"
 # assets), skipping any already present in the cache dir.
 pids=()
 for url in "${weights_urls[@]}"; do
-  fn=$(basename "$url")
+  fn=$(basename "${url%%\?*}")
   if [ -f "$cache_dir/$fn" ]; then
     echo "$fn already cached, skipping download"
     continue
@@ -34,7 +35,7 @@ done
 for pid in "${pids[@]}"; do wait "$pid"; done
 
 for url in "${weights_urls[@]}"; do
-  fn=$(basename "$url")
+  fn=$(basename "${url%%\?*}")
   echo "Unzipping $fn to $weights_dir"
   unzip -q "$cache_dir/$fn" -d "$weights_dir"
 done
