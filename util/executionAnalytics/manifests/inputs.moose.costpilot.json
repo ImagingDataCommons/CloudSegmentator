@@ -1,0 +1,16 @@
+{
+  "Segmentator.modelName": "moose",
+  "Segmentator.inferenceDocker": "sunderlandkyl/inference_moose:main",
+  "Segmentator.outputConversionDocker": "sunderlandkyl/output_conversion:main",
+  "Segmentator.inferenceNotebookPath": "workflows/models/moose/Notebooks/inference.ipynb",
+  "Segmentator.snomedMappingPath": "",
+  "Segmentator.inferenceParamsYaml": "moose_models: clin_ct_body,clin_ct_body_composition,clin_ct_cardiac,clin_ct_digestive,clin_ct_lungs,clin_ct_muscles,clin_ct_organs,clin_ct_peripheral_bones,clin_ct_ribs,clin_ct_vertebrae",
+  "Segmentator.gitRepo": "Sunderlandkyl/CloudSegmentator",
+  "Segmentator.gitBranch": "harmonized_models",
+  "Segmentator.runRadiomics": true,
+  "Segmentator.runStructuredReport": true,
+  "Segmentator.yamlListOfSeriesInstanceUIDs": "this.SeriesInstanceUIDs",
+  "Segmentator.radiomicsMethod": "radiomicsjl",
+  "Segmentator.inferenceZones": "us-west4-a us-west4-b",
+  "Segmentator.outputConversionZones": "us-west4-a us-west4-b"
+}

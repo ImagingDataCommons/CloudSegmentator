@@ -155,6 +155,7 @@ workflow Segmentator {
     input:
       segmentationArchive       = inference.segmentationArchive,
       inferenceUsageMetricsCsv  = inference.usageMetricsCsv,
+      convertUsageMetricsCsv    = inference.convertUsageMetricsCsv,
       modelName                 = modelName,
       gitRepo                   = gitRepo,
       gitBranch                 = gitBranch,
@@ -185,6 +186,7 @@ workflow Segmentator {
 
     # Usage metrics
     File inferenceUsageMetricsCsv        = inference.usageMetricsCsv
+    File? convertUsageMetricsCsv         = inference.convertUsageMetricsCsv
     File outputConversionUsageMetricsCsv = outputConversion.usageMetricsCsv
     File combinedUsageMetricsCsv         = outputConversion.combinedUsageMetricsCsv
     File? runSummary                     = outputConversion.runSummary
@@ -319,6 +321,9 @@ YAML
     File inferenceOutputNotebook = "inferenceOutputNotebook.ipynb"
     File segmentationArchive     = "segmentations.tar.lz4"
     File usageMetricsCsv         = "inference_UsageMetrics.csv"
+    # nb1 per-series download / dcm2niix timings (same VM as nb2); folded into the
+    # combined usage metrics by nb3 and used by util/executionAnalytics for profiling.
+    File? convertUsageMetricsCsv = "convert_UsageMetrics.csv"
 
     File? downloadErrors  = "download_error_file.txt"
     File? dcm2niixErrors  = "dcm2niix_error_file.txt"
@@ -337,6 +342,7 @@ task outputConversion {
   input {
     File    segmentationArchive
     File    inferenceUsageMetricsCsv
+    File?   convertUsageMetricsCsv
     String  modelName
     String  gitRepo
     String  gitBranch
@@ -401,7 +407,7 @@ task outputConversion {
       -p radiomicsMethod "~{radiomicsMethod}" \
       -p dicomSegBucketUri "~{dicomSegBucketUri}" \
       -p dicomStoreImportUri "~{dicomStoreImportUri}" \
-      -p inferenceUsageMetricsCsvPath "~{inferenceUsageMetricsCsv}" \
+      -p inferenceUsageMetricsCsvPath "~{inferenceUsageMetricsCsv}"       -p convertUsageMetricsCsvPath "~{default='' convertUsageMetricsCsv}" \
       -p input_uri "~{inputUri}" \
       -p secret_project "~{secretProject}" \
       -p runId "$RUN_ID"; then

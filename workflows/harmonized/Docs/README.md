@@ -182,6 +182,19 @@ edit: `PYRADIOMICS_FEATURE_CLASSES` in nb3, `FEATURES` in the `.jl` driver.
 > sides (e.g. add `glcm`/`firstorder` to `PYRADIOMICS_FEATURE_CLASSES` and the
 > corresponding `:glcm`/`:first_order` to the driver's `FEATURES`).
 
+## Estimating cost
+
+`util/executionAnalytics/` holds the cost-measurement protocol: pick the cheapest region
+for the two VM shapes (`region_prices.py`), build a designed pilot + a full-run Terra data
+table from the same IDC cohort (`make_terra_manifest.py`), pull per-task billing and
+per-series timings for a submission (`submission_cost.py`), fit a per-task
+`a + b·nSeries + c·Mvoxels` model on the pilot and predict / evaluate the larger run
+(`cost_model.py`), with figures of cost vs #series / voxels / slices and a per-phase time
+profile. See [`util/executionAnalytics/README.md`](../../../util/executionAnalytics/README.md).
+For the pilot and the full run keep the configuration identical (image digests,
+`radiomicsMethod`, region, machine shapes); `radiomicsMethod=radiomicsjl` makes nb3 ~8×
+cheaper than pyradiomics on the same series.
+
 ## Known gaps
 
 - **End-to-end Terra/GPU validation** has not been run yet.
