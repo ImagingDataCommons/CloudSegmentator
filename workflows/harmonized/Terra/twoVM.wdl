@@ -84,6 +84,17 @@ workflow Segmentator {
     #   "radiomicsjl"           - JuliaHealth Radiomics.jl (Julia)
     String radiomicsMethod = "pyradiomics"
 
+    # Julia threads for the Radiomics.jl worker (radiomicsMethod=radiomicsjl only):
+    # 0 = auto (all vCPUs of the output-conversion VM). One Julia process serves the
+    # whole run; Radiomics.jl parallelises across labels when threads > 1.
+    Int outputConversionJuliaThreads = 0
+
+    # Skip radiomics for any label whose ROI exceeds this many Mvoxels (SEG is still
+    # written). Radiomics cost scales with ROI size; whole-body masks (MOOSE clin_ct_body,
+    # 10-60 Mvox) took ~20 min/series in the Aug-2026 pilot vs < 1 min for any organ.
+    # Organs/lungs/liver are < ~3 Mvox, so 5 separates anatomy from "everything". <= 0 disables.
+    Float radiomicsMaxRoiMvox = 5.0
+
     # ------------------------------------------------------------------------
     # OPTIONAL: checkpoint/resume on preemption (inference task)
     # ------------------------------------------------------------------------
@@ -164,6 +175,8 @@ workflow Segmentator {
       runRadiomics              = runRadiomics,
       runStructuredReport       = runStructuredReport,
       radiomicsMethod           = radiomicsMethod,
+      juliaThreads              = outputConversionJuliaThreads,
+      maxRoiMvox                = radiomicsMaxRoiMvox,
       docker                    = outputConversionDocker,
       preemptibleTries          = outputConversionPreemptibleTries,
       cpus                      = outputConversionCpus,
@@ -351,6 +364,8 @@ task outputConversion {
     Boolean runRadiomics
     Boolean runStructuredReport
     String  radiomicsMethod
+    Int     juliaThreads
+    Float   maxRoiMvox
     String  docker
     Int     preemptibleTries
     Int     cpus
@@ -405,6 +420,8 @@ task outputConversion {
       -p runRadiomics ~{runRadiomics} \
       -p runStructuredReport ~{runStructuredReport} \
       -p radiomicsMethod "~{radiomicsMethod}" \
+      -p radiomicsJlThreads ~{juliaThreads} \
+      -p radiomicsMaxRoiMvox ~{maxRoiMvox} \
       -p dicomSegBucketUri "~{dicomSegBucketUri}" \
       -p dicomStoreImportUri "~{dicomStoreImportUri}" \
       -p inferenceUsageMetricsCsvPath "~{inferenceUsageMetricsCsv}"       -p convertUsageMetricsCsvPath "~{default='' convertUsageMetricsCsv}" \

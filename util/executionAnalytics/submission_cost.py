@@ -108,7 +108,10 @@ def estimate_task_cost(r, rates=None):
     Returns {gpu, cpu, ram, disk, total, tier, rate_hr, rate_shape}. With a rate file the
     breakdown comes from that region's shape (gpu/vcpu/ram/disk components); otherwise the
     hard-coded US list prices are used. CPU here = n1 vCPU + RAM (the VM compute)."""
-    hours = (r.get("runtimeMin") or 0) / 60.0
+    mins = r.get("billedMinEst")
+    if mins is None:
+        mins = r.get("vmMin") if r.get("vmMin") is not None else (r.get("runtimeMin") or 0)
+    hours = mins / 60.0
     tier = "spot" if _num(r.get("preemptible")) > 0 else "ondemand"
     hit = rate_for_task(r, rates)
     if hit:
@@ -264,6 +267,13 @@ def duration_min(start, end):
     return None
 
 
+def _running_start(call):
+    """startTime of the last Batch 'SCHEDULED to RUNNING' execution event, or None."""
+    ev = [e for e in call.get("executionEvents", [])
+          if "to RUNNING" in str(e.get("description", ""))]
+    return sorted(ev, key=lambda e: e.get("startTime", ""))[-1].get("startTime") if ev else None
+
+
 def gsutil(arg_str):
     """Run gsutil (shell=True so Windows resolves gsutil.cmd) and return CompletedProcess."""
     return subprocess.run(f"gsutil {arg_str}", capture_output=True, shell=True)
@@ -366,6 +376,8 @@ def load_harmonized_metrics(submission_root, wf_ids):
                 if "model_radiomics_s" in cols:        # newer nb3 (per-phase profiling columns)
                     s.setdefault("radiomics_s", {})[r.get("model") or ""] = _f(r.get("model_radiomics_s"))
                     s.setdefault("n_labels", {})[r.get("model") or ""] = _f(r.get("n_labels"))
+                    if "n_labels_skipped_large" in cols:
+                        s.setdefault("n_labels_skipped", {})[r.get("model") or ""] = _f(r.get("n_labels_skipped_large"))
                     s["ref_download_s"] = _f(r.get("ref_download_s"))
                     if r.get("radiomics_method"):
                         s["radiomics_method"] = r.get("radiomics_method")
@@ -393,6 +405,8 @@ def load_harmonized_metrics(submission_root, wf_ids):
                 s["radiomics_total_s"] = sum(v or 0 for v in s["radiomics_s"].values())
             if "n_labels" in s:
                 s["n_labels_total"] = sum(v or 0 for v in s["n_labels"].values())
+            if "n_labels_skipped" in s:
+                s["n_labels_skipped_total"] = sum(v or 0 for v in s["n_labels_skipped"].values())
     return out
 
 
@@ -504,10 +518,46 @@ def main():
                     "start": a.get("start"),
                     "end": a.get("end"),
                     "runtimeMin": duration_min(a.get("start"), a.get("end")),
+                    # Billed VM lifetime (Cromwell/Batch backend); call time minus this is
+                    # queue / quota wait / provisioning, which is not billed.
+                    "vmStart": a.get("vmStartTime"),
+                    "vmEnd": a.get("vmEndTime"),
+                    "vmMin": duration_min(a.get("vmStartTime"), a.get("vmEndTime")),
+                    "vmCostPerHourCromwell": a.get("vmCostPerHour"),
+                    "quotaWaitEvents": sum(1 for e in a.get("executionEvents", [])
+                                           if "QUOTA_EXCEEDED" in str(e.get("description", ""))),
+                    # Batch RUNNING -> vmEnd: container executing (localize, notebooks,
+                    # delocalize). vmStartTime is set at SCHEDULED, before the VM exists,
+                    # so with quota waits it overstates billed time.
+                    "runMin": duration_min(_running_start(a), a.get("vmEndTime")),
+                    "provisionMin": duration_min(a.get("vmStartTime"), _running_start(a)),
                 })
 
     if not rows:
         sys.exit("No workflows found for this submission.")
+
+    # Billed-time estimate per call: RUNNING->vmEnd plus a provisioning allowance (VM
+    # create -> container running) taken as the median over calls that did NOT hit a
+    # GPU-quota wait (their vmStartTime is a real VM start). Falls back to vmMin.
+    # Per task: GPU VMs take longer to come up than CPU VMs.
+    prov_by_task = {}
+    for t in {r.get("wdlTask") for r in rows if r.get("wdlTask")}:
+        clean = sorted(r["provisionMin"] for r in rows if r.get("wdlTask") == t
+                       and r.get("provisionMin") is not None and not r.get("quotaWaitEvents"))
+        if clean:
+            prov_by_task[t] = clean[len(clean) // 2]
+    for r in rows:
+        prov = prov_by_task.get(r.get("wdlTask"))
+        if r.get("runMin") is not None and prov is not None:
+            r["billedMinEst"] = round(r["runMin"] + prov, 2)
+        elif r.get("vmMin") is not None:
+            r["billedMinEst"] = r["vmMin"]
+        else:
+            r["billedMinEst"] = r.get("runtimeMin")
+    if prov_by_task:
+        print("\n[vm] provisioning allowance per task (VM create -> RUNNING, median of quota-free calls): "
+              + ", ".join(f"{t} {v:.1f} min" for t, v in prov_by_task.items())
+              + "; billedMinEst = runMin + allowance")
 
     cols = list(dict.fromkeys(k for r in rows for k in r))
     with open(out_path, "w", newline="") as f:
@@ -811,6 +861,7 @@ def main():
                 "radiomicsSec": hs.get("radiomics_total_s"),
                 "refDownloadSec": hs.get("ref_download_s"),
                 "nLabels": hs.get("n_labels_total"),
+                "nLabelsRadiomicsSkipped": hs.get("n_labels_skipped_total"),
                 "outputConversionSec": hs.get("series_total_s"),
                 "modelTimings": json.dumps(models_s) if models_s else None,
             })
@@ -821,6 +872,12 @@ def main():
             "radiomicsMethod": rs.get("radiomics_method") or next(
                 (v.get("radiomics_method") for v in (hm.get("series") or {}).values() if v.get("radiomics_method")), ""),
             "radiomicsEnabled": rs.get("radiomics_enabled"),
+            "radiomicsJlThreads": rs.get("radiomics_jl_threads"),
+            "radiomicsMaxRoiMvox": rs.get("radiomics_max_roi_mvox"),
+            # workflow-level WDL inputs that define the configuration being priced
+            "inferenceParams": (wf_meta.get(w) or {}).get("inputs", {}).get("Segmentator.inferenceParamsYaml"),
+            "wdlRadiomicsMethod": (wf_meta.get(w) or {}).get("inputs", {}).get("Segmentator.radiomicsMethod"),
+            "wdlRunRadiomics": (wf_meta.get(w) or {}).get("inputs", {}).get("Segmentator.runRadiomics"),
             "nSeries": len(uids), "nSeriesWithFeatures": n_feat,
             "sumVoxels": int(vox), "sumSlices": int(slices), "sumSizeMb": round(mb, 1),
             "meanVoxels": int(vox / n_feat) if n_feat else None, "maxVoxels": int(max_vox) or None,
@@ -838,8 +895,15 @@ def main():
             done = [c for c in calls if c.get("executionStatus") == "Done"]
             total_runtime += rt_sum
             region = region or _region_of(calls[0].get("zone")) if calls else region
+            has_vm = any(c.get("billedMinEst") is not None for c in calls)
+            vm_sum = sum((c.get("billedMinEst") or 0) for c in calls)
             row[f"{t}_runtimeMin"] = round(rt_sum, 2) if calls else None
+            row[f"{t}_vmMin"] = round(vm_sum, 2) if has_vm else None          # billed-time estimate
+            row[f"{t}_runMin"] = round(sum((c.get("runMin") or 0) for c in calls), 2) if calls else None
+            row[f"{t}_queueMin"] = round(rt_sum - vm_sum, 2) if has_vm else None
+            row[f"{t}_quotaWaits"] = sum(c.get("quotaWaitEvents") or 0 for c in calls) if calls else None
             row[f"{t}_doneRuntimeMin"] = round(done[-1].get("runtimeMin") or 0, 2) if done else None
+            row[f"{t}_doneVmMin"] = round(done[-1].get("billedMinEst") or 0, 2) if done and has_vm else None
             row[f"{t}_attempts"] = len(calls) or None
             row[f"{t}_preempted"] = (len(calls) - 1) if calls else None
             row[f"{t}_machine"] = calls[-1].get("machineType") if calls else None
@@ -889,12 +953,12 @@ def main():
         print(f"\n  Per-workflow workload vs cost ({wf_rows[0]['costSource']} $):")
         tcols = [t for t in task_names]
         hdr = (f"    {'case':>5} {'series':>6} {'Mvox':>8} {'slices':>6} "
-               + " ".join(f"{t[:14]+'min':>17}" for t in tcols)
+               + " ".join(f"{t[:11]+'VMmin':>17}" for t in tcols)
                + f" {'$total':>7} {'$/series':>8} {'$/Mvox':>8}")
         print(hdr)
         for r in sorted(wf_rows, key=lambda r: -(r["sumVoxels"] or 0)):
             print(f"    {str(r['entity']):>5} {r['nSeries']:>6} {r['sumVoxels']/1e6:>8.1f} {r['sumSlices']:>6} "
-                  + " ".join(f"{(r.get(t+'_runtimeMin') or 0):>13.1f}(x{r.get(t+'_attempts') or 0})"
+                  + " ".join(f"{(r.get(t+'_vmMin') if r.get(t+'_vmMin') is not None else r.get(t+'_runtimeMin') or 0):>13.1f}(x{r.get(t+'_attempts') or 0})"
                              for t in tcols)
                   + f" {(r['totalCost'] or 0):>7.3f} {(r['costPerSeries'] or 0):>8.4f} "
                     f"{(r['costPerMvoxel'] or 0):>8.5f}")
@@ -902,12 +966,21 @@ def main():
         v_s = sum(r["sumVoxels"] for r in wf_rows) / 1e6
         c_s = sum((r["totalCost"] or 0) for r in wf_rows)
         print(f"    {'TOT':>5} {n_s:>6} {v_s:>8.1f} {'':>6} "
-              + " ".join(f"{sum((r.get(t+'_runtimeMin') or 0) for r in wf_rows):>13.1f}     "
+              + " ".join(f"{sum((r.get(t+'_vmMin') if r.get(t+'_vmMin') is not None else r.get(t+'_runtimeMin') or 0) for r in wf_rows):>13.1f}     "
                          for t in tcols)
               + f" {c_s:>7.3f} {(c_s/n_s if n_s else 0):>8.4f} {(c_s/v_s if v_s else 0):>8.5f}")
-        cfg = {k: v for k, v in wf_rows[0].items() if k.endswith("_docker") or k in
-               ("model", "radiomicsMethod", "region")}
+        cfg_row = next((r for r in wf_rows if (r.get("status") or "").lower() == "succeeded"), wf_rows[0])
+        cfg = {k: v for k, v in cfg_row.items() if k.endswith("_docker") or k in
+               ("model", "radiomicsMethod", "radiomicsJlThreads", "radiomicsMaxRoiMvox",
+                "inferenceParams", "region")}
         print(f"    config: {json.dumps(cfg)}")
+        for t in tcols:
+            q = [r.get(t + "_queueMin") for r in wf_rows if r.get(t + "_queueMin") is not None]
+            if q:
+                qw = sum(r.get(t + "_quotaWaits") or 0 for r in wf_rows)
+                print(f"    {t}: unbilled queue/provisioning time per workflow "
+                      f"min/median/max = {min(q):.1f}/{sorted(q)[len(q)//2]:.1f}/{max(q):.1f} min"
+                      + (f"  ({qw} GPU-quota-exceeded events)" if qw else ""))
 
     print(f"\nWrote: {', '.join(written)}")
 

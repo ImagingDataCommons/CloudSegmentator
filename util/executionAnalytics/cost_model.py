@@ -146,7 +146,9 @@ def fmt_eq(fit, unit):
 def _cfg(df, tasks):
     """Run configuration that a prediction is only valid for."""
     cfg = {}
-    for c in ["model", "radiomicsMethod", "radiomicsEnabled", "region"]:
+    for c in ["model", "radiomicsMethod", "radiomicsEnabled", "radiomicsJlThreads",
+              "radiomicsMaxRoiMvox", "inferenceParams", "wdlRadiomicsMethod", "wdlRunRadiomics",
+              "region"]:
         if c in df.columns:
             vals = sorted({str(v) for v in df[c].dropna().unique()})
             if vals:
@@ -205,11 +207,17 @@ def cmd_fit(args):
     total_cost = 0.0
     for t in tasks:
         tm = {}
-        rt = pd.to_numeric(wf[f"{t}_runtimeMin"], errors="coerce")
+        use_vm = f"{t}_vmMin" in wf.columns and wf[f"{t}_vmMin"].notna().all()
+        rt = pd.to_numeric(wf[f"{t}_vmMin" if use_vm else f"{t}_runtimeMin"], errors="coerce")
+        tm["time_col"] = f"{t}_vmMin" if use_vm else f"{t}_runtimeMin"
         tm["time"] = fit_reduced(wf, rt)
         print(f"\n  {t}")
-        print(f"    time : {fmt_eq(tm['time'], 'min')}")
-        done_col = f"{t}_doneRuntimeMin"
+        print(f"    time : {fmt_eq(tm['time'], 'min')}   [{tm['time_col']}]")
+        if use_vm and f"{t}_queueMin" in wf.columns:
+            q = pd.to_numeric(wf[f"{t}_queueMin"], errors="coerce")
+            tm["queue_min_mean"] = float(q.mean())
+            print(f"    unbilled queue/provisioning: mean {q.mean():.1f} min/workflow (max {q.max():.1f})")
+        done_col = f"{t}_doneVmMin" if use_vm else f"{t}_doneRuntimeMin"
         if done_col in wf.columns:
             done = pd.to_numeric(wf[done_col], errors="coerce")
             if done.notna().any() and done.sum() > 0:
@@ -422,15 +430,19 @@ def cmd_evaluate(args):
         col = f"{t}_cost" if f"{t}_cost" in m.columns else f"{t}_estCost"
         if col in m.columns:
             p_, a_ = m[f"{t}_predCost"].sum(), m[col].sum()
-            pm, am = m[f"{t}_predMin"].sum(), m[f"{t}_runtimeMin"].sum()
+            tcol = f"{t}_vmMin" if f"{t}_vmMin" in m.columns and m[f"{t}_vmMin"].notna().all() else f"{t}_runtimeMin"
+            pm, am = m[f"{t}_predMin"].sum(), m[tcol].sum()
             print(f"  {t:<18} $ pred {p_:>7.2f} act {a_:>7.2f} ({100 * (p_ - a_) / a_ if a_ else float('nan'):+.1f}%)"
                   f"   min pred {pm:>7.0f} act {am:>7.0f} ({100 * (pm - am) / am if am else float('nan'):+.1f}%)")
     print(f"  per-workflow MAPE {m['pctErr'].abs().mean():.1f}%   median APE {m['pctErr'].abs().median():.1f}%"
           f"   95%-interval coverage {100 * m['inInterval'].mean():.0f}%")
     print(f"  $/series  pred {tp / m['nSeries'].sum():.4f}  act {ta / m['nSeries'].sum():.4f};   "
           f"$/Mvox pred {tp / m['Mvox'].sum():.5f}  act {ta / m['Mvox'].sum():.5f}")
-    if "actualRuntimeMin" in m.columns:
-        print(f"  VM-hours  pred {m['predRuntimeMin'].sum() / 60:.1f}  act {m['actualRuntimeMin'].sum() / 60:.1f}")
+    vm_cols = [f"{t}_vmMin" for t in tasks if f"{t}_vmMin" in m.columns]
+    if vm_cols and m[vm_cols].notna().all().all():
+        print(f"  VM-hours  pred {m['predRuntimeMin'].sum() / 60:.1f}  act {m[vm_cols].sum().sum() / 60:.1f}")
+    elif "actualRuntimeMin" in m.columns:
+        print(f"  call-hours pred {m['predRuntimeMin'].sum() / 60:.1f}  act {m['actualRuntimeMin'].sum() / 60:.1f}")
     out = args.out or Path(args.predicted).with_name(Path(args.predicted).stem + "_evaluation.csv")
     keep = ["entity", "nSeries", "Mvox", "sumSlices", "predCost", "predCostLo95", "predCostHi95",
             "actualCost", "absErr", "pctErr", "inInterval", "predRuntimeMin", "actualRuntimeMin"]
@@ -504,9 +516,11 @@ def plot_report(wf, se, bill, tasks, model, outdir):
     # 2. per-task runtime vs voxels / series
     fig, axes = plt.subplots(len(tasks), 2, figsize=(11, 3.6 * len(tasks)), squeeze=False)
     for i, t in enumerate(tasks):
-        rt = pd.to_numeric(wf[f"{t}_runtimeMin"], errors="coerce")
-        _scatter_fit(axes[i, 0], wf["Mvox"], rt, grp, "Mvoxels per workflow", "minutes", f"{t} runtime vs voxels")
-        _scatter_fit(axes[i, 1], wf["nSeries"], rt, grp, "series per workflow", "minutes", f"{t} runtime vs #series")
+        tcol = f"{t}_vmMin" if f"{t}_vmMin" in wf.columns and wf[f"{t}_vmMin"].notna().all() else f"{t}_runtimeMin"
+        rt = pd.to_numeric(wf[tcol], errors="coerce")
+        lab = "VM minutes" if tcol.endswith("_vmMin") else "call minutes"
+        _scatter_fit(axes[i, 0], wf["Mvox"], rt, grp, "Mvoxels per workflow", lab, f"{t} time vs voxels")
+        _scatter_fit(axes[i, 1], wf["nSeries"], rt, grp, "series per workflow", lab, f"{t} time vs #series")
     fig.suptitle("Task wall-clock vs workload"); fig.tight_layout()
     p = outdir / "task_runtime_vs_workload.png"; fig.savefig(p, dpi=120); plt.close(fig); made.append(p)
 
@@ -565,9 +579,14 @@ def plot_report(wf, se, bill, tasks, model, outdir):
             for c in cols:
                 ax.bar(range(len(agg)), agg[c].to_numpy(), bottom=bottom, label=c)
                 bottom += agg[c].to_numpy()
-            tot_rt = wfo["totalRuntimeMin"].fillna(0).to_numpy(float)
-            ax.bar(range(len(agg)), np.maximum(tot_rt - bottom, 0), bottom=bottom, label="VM time not in phases (boot/pull/queue/etc.)",
-                   color="lightgray")
+            vm_cols = [f"{t}_vmMin" for t in tasks if f"{t}_vmMin" in wfo.columns]
+            if vm_cols and wfo[vm_cols].notna().all().all():
+                tot_rt = wfo[vm_cols].sum(axis=1).to_numpy(float)
+                lab = "VM time not in phases (boot/pull/weights/packaging)"
+            else:
+                tot_rt = wfo["totalRuntimeMin"].fillna(0).to_numpy(float)
+                lab = "call time not in phases (queue/boot/pull/etc.)"
+            ax.bar(range(len(agg)), np.maximum(tot_rt - bottom, 0), bottom=bottom, label=lab, color="lightgray")
             ax.set_xticks(range(len(agg)))
             ax.set_xticklabels([f"{e}\n{n:.0f}s/{m:.0f}M" for e, n, m in zip(wfo["entity"], wfo["nSeries"], wfo["Mvox"])],
                                fontsize=6, rotation=90)
@@ -660,7 +679,8 @@ def cmd_report(args):
     P("| task | VM-min total | VM-min/series | VM-min/Mvox | attempts | preempted | $ | $ share | eff $/h | catalog $/h |")
     P("|---|---|---|---|---|---|---|---|---|---|")
     for t in tasks:
-        rt = pd.to_numeric(wf[f"{t}_runtimeMin"], errors="coerce").sum()
+        tcol = f"{t}_vmMin" if f"{t}_vmMin" in wf.columns and wf[f"{t}_vmMin"].notna().all() else f"{t}_runtimeMin"
+        rt = pd.to_numeric(wf[tcol], errors="coerce").sum()
         cc = f"{t}_cost" if f"{t}_cost" in wf.columns else f"{t}_estCost"
         c = pd.to_numeric(wf[cc], errors="coerce").sum()
         att = pd.to_numeric(wf.get(f"{t}_attempts"), errors="coerce").sum()

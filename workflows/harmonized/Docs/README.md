@@ -74,6 +74,8 @@ model's SNOMED CSV to build the dcmqi labelmap config.
 | `gitRepo` / `gitBranch` | Where notebooks + SNOMED CSV are fetched from (override for dev/fork branches). |
 | `runRadiomics` / `runStructuredReport` | Harmonized output toggles (nb3). |
 | `radiomicsMethod` | Radiomics engine when `runRadiomics=true`: `pyradiomics` (default) or `radiomicsjl` (JuliaHealth-style [`pzaffino/Radiomics.jl`](https://github.com/pzaffino/Radiomics.jl)). One engine per run — see *Comparing radiomics engines*. |
+| `radiomicsMaxRoiMvox` | Skip radiomics (SEG still written) for any label whose ROI exceeds this many Mvoxels; default `5.0` (organs/lungs/liver are < ~3 Mvox, a whole-body mask is 10–60). Skipped labels are listed in the radiomics JSON with a `radiomics_skipped` reason and counted in `output_conversion_UsageMetrics.csv` / `run_summary.json`. `<= 0` disables. |
+| `outputConversionJuliaThreads` | Julia threads for the Radiomics.jl worker (`0` = all vCPUs). |
 | `inputUri` / `secretProject` | Private-GCS input (optional). |
 | `dicomSegBucketUri` / `dicomStoreImportUri` | GCS upload + Healthcare API import (optional). |
 
@@ -172,8 +174,20 @@ notebook (mirroring `runRadiomics`). The Julia runtime + Radiomics.jl are baked
 into the `output_conversion` image; the thin driver
 [`common/Notebooks/radiomics_jl_extract.jl`](../../common/Notebooks/radiomics_jl_extract.jl)
 (fetched next to nb3 by the WDL, so it can be iterated without an image rebuild)
-owns all Radiomics.jl-specific API. Feature scope for each engine is a one-line
-edit: `PYRADIOMICS_FEATURE_CLASSES` in nb3, `FEATURES` in the `.jl` driver.
+owns all Radiomics.jl-specific API. nb3 runs it as **one persistent worker per
+run** (`julia -t <outputConversionJuliaThreads|auto> radiomics_jl_extract.jl --worker`,
+JSON request per segmentation file over stdin/stdout, all labels at once) so the
+~8–10 s Julia startup/JIT is paid once per workflow rather than once per
+(series × sub-model) — MOOSE emits 10 seg files per series — and Radiomics.jl can
+parallelise across labels on the VM's vCPUs. The one-shot CLI form is kept for
+manual use. Feature scope for each engine is a one-line edit:
+`PYRADIOMICS_FEATURE_CLASSES` in nb3, `FEATURES` in the `.jl` driver.
+
+> **Cost note (pilot, Aug 2026).** Radiomics time scales with ROI voxels; MOOSE's
+> `clin_ct_body` (whole-body mask, 2 labels) alone took ~1170 s/series of the
+> ~1500 s/series MOOSE nb3 total, with only first-order + 3D shape enabled. This is
+> why `radiomicsMaxRoiMvox` (default 5) skips radiomics for such labels; set it to
+> `0` to compute everything.
 
 > **Feature-set caveat.** The two engines' feature *names/definitions* differ, so a
 > head-to-head only makes sense on matching feature classes. The pyradiomics config
