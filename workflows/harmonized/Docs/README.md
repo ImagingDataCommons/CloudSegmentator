@@ -74,6 +74,7 @@ model's SNOMED CSV to build the dcmqi labelmap config.
 | `gitRepo` / `gitBranch` | Where notebooks + SNOMED CSV are fetched from (override for dev/fork branches). |
 | `runRadiomics` / `runStructuredReport` | Harmonized output toggles (nb3). |
 | `radiomicsMethod` | Radiomics engine when `runRadiomics=true`: `pyradiomics` (default) or `radiomicsjl` (JuliaHealth-style [`pzaffino/Radiomics.jl`](https://github.com/pzaffino/Radiomics.jl)). One engine per run — see *Comparing radiomics engines*. |
+| `radiomicsFeatureClasses` | Comma-separated feature classes computed by whichever engine is selected, using engine-neutral pyradiomics-style names: `firstorder`, `shape`, `glcm`, `glrlm`, `glszm`, `ngtdm`, `gldm`, or `all`. Default `firstorder,shape`. Texture classes are much more expensive; unknown names are warned about and ignored. Recorded in `run_summary.json` as `radiomics_feature_classes`. |
 | `radiomicsMaxRoiMvox` | Skip radiomics (SEG still written) for any label whose ROI exceeds this many Mvoxels; default `5.0` (organs/lungs/liver are < ~3 Mvox, a whole-body mask is 10–60). Skipped labels are listed in the radiomics JSON with a `radiomics_skipped` reason and counted in `output_conversion_UsageMetrics.csv` / `run_summary.json`. `<= 0` disables. |
 | `outputConversionJuliaThreads` | Julia threads for the Radiomics.jl worker (`0` = all vCPUs). |
 | `inputUri` / `secretProject` | Private-GCS input (optional). |
@@ -180,8 +181,11 @@ JSON request per segmentation file over stdin/stdout, all labels at once) so the
 ~8–10 s Julia startup/JIT is paid once per workflow rather than once per
 (series × sub-model) — MOOSE emits 10 seg files per series — and Radiomics.jl can
 parallelise across labels on the VM's vCPUs. The one-shot CLI form is kept for
-manual use. Feature scope for each engine is a one-line edit:
-`PYRADIOMICS_FEATURE_CLASSES` in nb3, `FEATURES` in the `.jl` driver.
+manual use. Feature scope is the `radiomicsFeatureClasses` WDL input (papermill
+`-p radiomicsFeatureClasses "firstorder,shape,glcm"`): nb3 normalizes the names and
+maps them to pyradiomics feature classes or to Radiomics.jl symbols
+(`firstorder`→`:first_order`, `shape`→`:shape3d`, texture names are identical), which
+it sends to the worker with every request (`"features": [...]`).
 
 > **Cost note (pilot, Aug 2026).** Radiomics time scales with ROI voxels; MOOSE's
 > `clin_ct_body` (whole-body mask, 2 labels) alone took ~1170 s/series of the
@@ -190,11 +194,11 @@ manual use. Feature scope for each engine is a one-line edit:
 > `0` to compute everything.
 
 > **Feature-set caveat.** The two engines' feature *names/definitions* differ, so a
-> head-to-head only makes sense on matching feature classes. The pyradiomics config
-> defaults to first-order + shape; Radiomics.jl additionally offers texture matrices
-> (GLCM/GLSZM/GLRLM/NGTDM/GLDM). To compare a given class, enable it on **both**
-> sides (e.g. add `glcm`/`firstorder` to `PYRADIOMICS_FEATURE_CLASSES` and the
-> corresponding `:glcm`/`:first_order` to the driver's `FEATURES`).
+> head-to-head only makes sense on matching feature classes. Because
+> `radiomicsFeatureClasses` is engine-neutral, the same value (e.g.
+> `firstorder,shape,glcm`) enables the corresponding class in both engines; run the
+> two `radiomicsMethod` values with an identical `radiomicsFeatureClasses`. Note
+> the pilot cost numbers below were measured with the default first-order + shape.
 
 ## Estimating cost
 

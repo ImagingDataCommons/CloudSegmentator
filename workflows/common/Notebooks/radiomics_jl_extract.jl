@@ -14,15 +14,17 @@
 # Two modes:
 #
 #   1) one-shot (original CLI):
-#        julia radiomics_jl_extract.jl <ref_nifti> <seg_nifti> <label_id[,label_id...]>
-#      prints a JSON array of per-label feature objects to stdout.
+#        julia radiomics_jl_extract.jl <ref_nifti> <seg_nifti> <label_id[,label_id...]> [features]
+#      prints a JSON array of per-label feature objects to stdout. `features` is an
+#      optional comma-separated list of feature classes (default first_order,shape3d).
 #
 #   2) worker (what nb3 uses): ONE Julia process per output-conversion run, so the
 #      ~8-10 s of Julia startup + package load + JIT is paid once per workflow
 #      instead of once per (series x sub-model) -- MOOSE has 10 seg files per series.
 #        julia -t auto radiomics_jl_extract.jl --worker
 #      Reads one JSON request per line on stdin:
-#        {"id": 7, "ref": "<ref_nifti>", "seg": "<seg_nifti>", "labels": [1,2,3]}
+#        {"id": 7, "ref": "<ref_nifti>", "seg": "<seg_nifti>", "labels": [1,2,3],
+#         "features": ["first_order", "shape3d"]}          # optional; see DEFAULT_FEATURES
 #      and answers with exactly one line on stdout, prefixed by a sentinel so any
 #      chatter the library prints to stdout cannot corrupt the protocol:
 #        @@RESULT {"id": 7, "result": [ {"label_id": 1, ...}, ... ]}
@@ -39,10 +41,32 @@ using NIfTI
 using JSON
 using Radiomics
 
-# Which Radiomics.jl feature classes to compute (feature scope is intentionally
-# editable here — see plan "decide later"). Empty vector = all classes.
-# Options (3D data): :first_order, :glcm, :shape3d, :glszm, :ngtdm, :glrlm, :gldm
-const FEATURES = Symbol[:first_order, :shape3d]
+# Radiomics.jl feature classes. The caller (nb3, via the WDL `radiomicsFeatureClasses`
+# input) selects the scope per request with "features": [...]; DEFAULT_FEATURES is
+# used when a request / the CLI does not specify one. Empty list = all classes.
+# Options (3D data): first_order, shape3d, glcm, glrlm, glszm, ngtdm, gldm
+const KNOWN_FEATURES = Symbol[:first_order, :shape3d, :glcm, :glrlm, :glszm, :ngtdm, :gldm]
+const DEFAULT_FEATURES = Symbol[:first_order, :shape3d]
+
+"""Normalize a feature-class spec (JSON array of strings, comma-separated string,
+or `nothing`) to a Vector{Symbol}. Unknown names raise so the request errors
+visibly instead of silently computing a different scope."""
+function _parse_features(x)
+    x === nothing && return DEFAULT_FEATURES
+    names = x isa AbstractString ? split(x, ",") : x
+    out = Symbol[]
+    for n in names
+        s = lowercase(strip(String(n)))
+        isempty(s) && continue
+        s == "all" && return Symbol[]          # empty vector = all classes
+        s == "firstorder" && (s = "first_order")
+        s == "shape" && (s = "shape3d")
+        sym = Symbol(s)
+        sym in KNOWN_FEATURES || error("unknown Radiomics.jl feature class '$s' (valid: $(KNOWN_FEATURES))")
+        sym in out || push!(out, sym)
+    end
+    return isempty(out) ? DEFAULT_FEATURES : out
+end
 
 # keep_largest_only=false so no mask voxels are silently dropped (closer to the
 # pyradiomics behaviour, which does not prune disconnected components).
@@ -63,7 +87,8 @@ end
 
 """Extract features for `labels` of `seg_path` against `ref_path`.
 Returns a Vector of per-label Dicts (see contract above). Throws on error."""
-function extract(ref_path::AbstractString, seg_path::AbstractString, labels::Vector{Int})
+function extract(ref_path::AbstractString, seg_path::AbstractString, labels::Vector{Int},
+                 features::Vector{Symbol}=DEFAULT_FEATURES)
     out = Vector{Dict{String,Any}}()
     isempty(labels) && return out
 
@@ -83,7 +108,7 @@ function extract(ref_path::AbstractString, seg_path::AbstractString, labels::Vec
     # One call for all labels — Radiomics.jl handles multi-label internally (and
     # in parallel when JULIA_NUM_THREADS>1; nb3 starts the worker with -t auto).
     result = Radiomics.extract_radiomic_features(img, mask, spacing;
-                                                 features=FEATURES,
+                                                 features=features,
                                                  labels=labels,
                                                  keep_largest_only=KEEP_LARGEST_ONLY)
 
@@ -108,7 +133,7 @@ function _parse_labels(x)
 end
 
 function worker()
-    println(stderr, "radiomics_jl_extract.jl worker ready (threads=$(Threads.nthreads()), features=$(FEATURES))")
+    println(stderr, "radiomics_jl_extract.jl worker ready (threads=$(Threads.nthreads()), default features=$(DEFAULT_FEATURES))")
     for line in eachline(stdin)
         line = strip(line)
         isempty(line) && continue
@@ -117,7 +142,8 @@ function worker()
             req = JSON.parse(line)
             id = get(req, "id", nothing)
             labels = _parse_labels(get(req, "labels", Int[]))
-            res = extract(String(req["ref"]), String(req["seg"]), labels)
+            features = _parse_features(get(req, "features", nothing))
+            res = extract(String(req["ref"]), String(req["seg"]), labels, features)
             println(stdout, SENTINEL, JSON.json(Dict("id" => id, "result" => res)))
         catch err
             msg = sprint(showerror, err)
@@ -133,14 +159,15 @@ function main()
         return
     end
     if length(ARGS) < 3
-        println(stderr, "usage: julia radiomics_jl_extract.jl <ref_nifti> <seg_nifti> <label_id[,label_id...]>")
+        println(stderr, "usage: julia radiomics_jl_extract.jl <ref_nifti> <seg_nifti> <label_id[,label_id...]> [feature[,feature...]]")
         println(stderr, "       julia -t auto radiomics_jl_extract.jl --worker")
         exit(2)
     end
     ref_path, seg_path, label_arg = ARGS[1], ARGS[2], ARGS[3]
     labels = _parse_labels(label_arg)
     try
-        println(JSON.json(extract(ref_path, seg_path, labels)))
+        features = _parse_features(length(ARGS) >= 4 ? ARGS[4] : nothing)
+        println(JSON.json(extract(ref_path, seg_path, labels, features)))
     catch err
         println(stderr, "ERROR: ", sprint(showerror, err))
         exit(3)

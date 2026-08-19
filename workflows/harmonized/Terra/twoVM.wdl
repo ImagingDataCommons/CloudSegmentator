@@ -84,6 +84,13 @@ workflow Segmentator {
     #   "radiomicsjl"           - JuliaHealth Radiomics.jl (Julia)
     String radiomicsMethod = "pyradiomics"
 
+    # Radiomics feature classes to compute, comma-separated, applied to whichever
+    # engine radiomicsMethod selects (engine-neutral pyradiomics-style names):
+    #   firstorder, shape, glcm, glrlm, glszm, ngtdm, gldm   or   "all"
+    # Texture classes (glcm/glrlm/glszm/ngtdm/gldm) are considerably more
+    # expensive than firstorder+shape; unknown names are warned about and ignored.
+    String radiomicsFeatureClasses = "firstorder,shape"
+
     # Julia threads for the Radiomics.jl worker (radiomicsMethod=radiomicsjl only):
     # 0 = auto (all vCPUs of the output-conversion VM). One Julia process serves the
     # whole run; Radiomics.jl parallelises across labels when threads > 1.
@@ -175,6 +182,7 @@ workflow Segmentator {
       runRadiomics              = runRadiomics,
       runStructuredReport       = runStructuredReport,
       radiomicsMethod           = radiomicsMethod,
+      radiomicsFeatureClasses   = radiomicsFeatureClasses,
       juliaThreads              = outputConversionJuliaThreads,
       maxRoiMvox                = radiomicsMaxRoiMvox,
       docker                    = outputConversionDocker,
@@ -364,6 +372,7 @@ task outputConversion {
     Boolean runRadiomics
     Boolean runStructuredReport
     String  radiomicsMethod
+    String  radiomicsFeatureClasses
     Int     juliaThreads
     Float   maxRoiMvox
     String  docker
@@ -420,6 +429,7 @@ task outputConversion {
       -p runRadiomics ~{runRadiomics} \
       -p runStructuredReport ~{runStructuredReport} \
       -p radiomicsMethod "~{radiomicsMethod}" \
+      -p radiomicsFeatureClasses "~{radiomicsFeatureClasses}" \
       -p radiomicsJlThreads ~{juliaThreads} \
       -p radiomicsMaxRoiMvox ~{maxRoiMvox} \
       -p dicomSegBucketUri "~{dicomSegBucketUri}" \
