@@ -1,16 +1,16 @@
 # syntax=docker/dockerfile:1
 # ============================================================================
-# imagingdatacommons/inference_totalseg
+# imagingdatacommons/cloudsegmentator-inference-totalseg
 # ----------------------------------------------------------------------------
 # TotalSegmentator inference image for the harmonized Segmentator workflow.
-# Derives FROM segmentator-base and adds ONLY the TotalSegmentator framework +
+# Derives FROM cloudsegmentator-base and adds ONLY the TotalSegmentator framework +
 # baked nnU-Net weights. Conversion (nb1) / output conversion (nb3) tooling is
 # inherited from base; this image runs nb2 (inference) on the GPU VM.
 # ============================================================================
 # Registry/tag of the base image are build-args so the whole stack can be pushed
 # to a personal Docker Hub org during dev, e.g.
-#   --build-arg BASE_IMAGE=sunderlandkyl/segmentator-base
-ARG BASE_IMAGE=imagingdatacommons/segmentator-base
+#   --build-arg BASE_IMAGE=imagingdatacommons/cloudsegmentator-base
+ARG BASE_IMAGE=imagingdatacommons/cloudsegmentator-base
 ARG BASE_TAG=main
 FROM ${BASE_IMAGE}:${BASE_TAG}
 
@@ -19,7 +19,7 @@ ARG GIT_HASH
 LABEL MAINTAINER="IDC <idc-support@cancerimagingarchive.net>" \
       GIT_HASH=${GIT_HASH} \
       PATH_TO_DOCKERFILE="https://github.com/imagingdatacommons/CloudSegmentator/blob/${GIT_HASH}/workflows/models/totalseg/Dockerfile" \
-      IMAGE_NAME_ON_DOCKERHUB="imagingdatacommons/inference_totalseg"
+      IMAGE_NAME_ON_DOCKERHUB="imagingdatacommons/cloudsegmentator-inference-totalseg"
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV PIP_BREAK_SYSTEM_PACKAGES=1

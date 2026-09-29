@@ -18,10 +18,9 @@ Configuration (flag, else environment variable):
     --workspace  TERRA_WORKSPACE              <namespace>/<name> of the workspace
     --config     TERRA_METHOD_CONFIG          <namespace>/<name> of the method config
                                               (default: <workspace namespace>/SegmentatorTwoVmWorkflowOnTerra)
-    --registry   SEGMENTATOR_REGISTRY         Docker Hub namespace of the harmonized inference
-                                              images (<registry>/inference_<engine>:main); required.
-                                              NB imagingdatacommons/inference_{moose,totalseg}
-                                              are currently the legacy per-model images.
+    --registry   SEGMENTATOR_REGISTRY         Docker Hub namespace of the inference images
+                                              (<registry>/cloudsegmentator-inference-<engine>:main;
+                                              default: imagingdatacommons)
     --bucket     SEGMENTATOR_DELIVERY_BUCKET  dicomSegBucketUri; unset = leave the config's value
 
 dicomSegBucketUri deliveries overwrite per-file (same <uid>/<model>_<idx>[_sr].dcm
@@ -68,8 +67,9 @@ def main():
     add_workspace_arg(ap)
     ap.add_argument("--config", default=os.environ.get("TERRA_METHOD_CONFIG"),
                     help="method config <namespace>/<name> (default: $TERRA_METHOD_CONFIG)")
-    ap.add_argument("--registry", default=os.environ.get("SEGMENTATOR_REGISTRY"),
-                    help="Docker Hub namespace of the inference images (default: $SEGMENTATOR_REGISTRY)")
+    ap.add_argument("--registry", default=os.environ.get("SEGMENTATOR_REGISTRY", "imagingdatacommons"),
+                    help="Docker Hub namespace of the inference images "
+                         "(default: $SEGMENTATOR_REGISTRY, else imagingdatacommons)")
     ap.add_argument("--bucket", default=os.environ.get("SEGMENTATOR_DELIVERY_BUCKET"),
                     help="dicomSegBucketUri for SEG/SR delivery (default: leave config value)")
     ap.add_argument("--models", default=",".join(MODELS),
@@ -78,8 +78,6 @@ def main():
     args = ap.parse_args()
 
     ns, name = workspace(args)
-    if not args.registry:
-        ap.error("inference image registry not set: pass --registry or set $SEGMENTATOR_REGISTRY")
     cns, cname = split_ref(args.config or f"{ns}/{DEFAULT_CONFIG_NAME}",
                            "Method config", "--config", "TERRA_METHOD_CONFIG")
     cfg_path = f"/workspaces/{ns}/{name}/method_configs/{cns}/{cname}"
@@ -89,7 +87,7 @@ def main():
         spec = MODELS[model]
         cfg = api(cfg_path, tok)
         cfg["inputs"].update(spec["inputs"])
-        cfg["inputs"]["Segmentator.inferenceDocker"] = f'"{args.registry}/inference_{model}:main"'
+        cfg["inputs"]["Segmentator.inferenceDocker"] = f'"{args.registry}/cloudsegmentator-inference-{model}:main"'
         cfg["inputs"]["Segmentator.inferenceRAM"] = args.inference_ram or spec["ram"]
         if args.bucket:
             cfg["inputs"]["Segmentator.dicomSegBucketUri"] = f'"{args.bucket}"'

@@ -1,15 +1,15 @@
 # ============================================================================
-# imagingdatacommons/inference_moose
+# imagingdatacommons/cloudsegmentator-inference-moose
 # ----------------------------------------------------------------------------
 # MOOSE (moosez) inference image for the harmonized Segmentator workflow.
-# Derives FROM segmentator-base and adds ONLY the moosez framework + baked
+# Derives FROM cloudsegmentator-base and adds ONLY the moosez framework + baked
 # model weights. Conversion (nb1) / output conversion (nb3) tooling is inherited
 # from the base image; this image runs nb2 (inference) on the GPU VM.
 # ============================================================================
 # Registry/tag of the base image are build-args so the whole stack can be pushed
 # to a personal Docker Hub org during dev, e.g.
-#   --build-arg BASE_IMAGE=sunderlandkyl/segmentator-base
-ARG BASE_IMAGE=imagingdatacommons/segmentator-base
+#   --build-arg BASE_IMAGE=imagingdatacommons/cloudsegmentator-base
+ARG BASE_IMAGE=imagingdatacommons/cloudsegmentator-base
 ARG BASE_TAG=main
 FROM ${BASE_IMAGE}:${BASE_TAG}
 
@@ -18,7 +18,7 @@ ARG GIT_HASH
 LABEL MAINTAINER="IDC <idc-support@cancerimagingarchive.net>" \
       GIT_HASH=${GIT_HASH} \
       PATH_TO_DOCKERFILE="https://github.com/imagingdatacommons/CloudSegmentator/blob/${GIT_HASH}/workflows/models/moose/Dockerfile" \
-      IMAGE_NAME_ON_DOCKERHUB="imagingdatacommons/inference_moose"
+      IMAGE_NAME_ON_DOCKERHUB="imagingdatacommons/cloudsegmentator-inference-moose"
 
 ENV PIP_BREAK_SYSTEM_PACKAGES=1
 

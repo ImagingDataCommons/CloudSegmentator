@@ -11,7 +11,7 @@ cross-validating the harmonized workflow's radiomics engines (see
 `output_conversion` image (Julia 1.10 + Radiomics.jl 2.0.0):
 
 ```bash
-docker run --rm -v "$PWD:/work" <registry>/output_conversion \
+docker run --rm -v "$PWD:/work" <registry>/cloudsegmentator-output-conversion \
   julia /work/radiomicsjl_single_slice_mre.jl
 ```
 

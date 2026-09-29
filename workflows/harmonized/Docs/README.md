@@ -8,10 +8,9 @@ output conversion are shared.
 > **Status: pre-release.** The framework, contracts, Dockerfiles, unified SNOMED
 > mappings, WDL, and all three notebooks are in place, and the workflow has been run
 > end-to-end on Terra/GPU for both MOOSE and TotalSegmentator (Sep 2026 batches, all
-> succeeded). The images are currently published under the dev `sunderlandkyl/*`
-> namespace and the presets fetch notebooks from the `harmonized_models` dev branch;
-> both need moving to `imagingdatacommons` / `main` before release (see *Known gaps*).
-> The legacy `workflows/MOOSE` and `workflows/TotalSegmentator` pipelines remain the
+> succeeded). The four `imagingdatacommons/cloudsegmentator-*` images are **not yet
+> published**; until they are, override the image inputs with your own build (see
+> *Known gaps*). The legacy `workflows/MOOSE` and `workflows/TotalSegmentator` pipelines remain the
 > supported path until then.
 
 **More docs:** [operations.md](operations.md) — submitting, monitoring, triaging and
@@ -83,10 +82,9 @@ each paired SR is in a +50 block.
    - TotalSegmentator: [`models/totalseg/inputs.totalseg.json`](../../models/totalseg/inputs.totalseg.json) (`total` task)
    - TotalSegmentator lung vessels: [`models/totalseg/inputs.totalseg_lung_vessels.json`](../../models/totalseg/inputs.totalseg_lung_vessels.json) (`lung_vessels` task)
 
-   The presets currently point `gitRepo`/`gitBranch` at the dev fork
-   (`Sunderlandkyl/CloudSegmentator` / `harmonized_models`) and the images at
-   `sunderlandkyl/*:main`; the WDL defaults are `ImagingDataCommons/CloudSegmentator` /
-   `main` and `imagingdatacommons/output_conversion:main`.
+   The presets fetch the notebooks from `ImagingDataCommons/CloudSegmentator` / `main`
+   (`gitRepo` / `gitBranch` — override them to run a fork or a dev branch) and use the
+   `imagingdatacommons/cloudsegmentator-*:main` images, which are not published yet.
 3. Point `yamlListOfSeriesInstanceUIDs` at `this.SeriesInstanceUIDs` (or set `inputUri`
    + `secretProject` for a private GCS bucket — same HMAC/Secret-Manager setup as the
    legacy MOOSE workflow, see [`workflows/MOOSE/Docs/README.md`](../../MOOSE/Docs/README.md)).
@@ -98,7 +96,7 @@ To submit and monitor batches from the command line, see [operations.md](operati
 
 | Input | Purpose |
 |---|---|
-| `inferenceDocker` | Per-model GPU image (`imagingdatacommons/inference_<model>`). |
+| `inferenceDocker` | Per-model GPU image (`imagingdatacommons/cloudsegmentator-inference-<model>`). |
 | `inferenceNotebookPath` | Repo path to the model's nb2. |
 | `snomedMappingPath` | Repo path to the model's unified SNOMED CSV. |
 | `inferenceParamsYaml` | Generic papermill passthrough for model knobs — new models need **no WDL change**. See *Model knobs* below. |
@@ -150,7 +148,7 @@ and peak RAM). The attempt ledger is kept under the checkpoint prefix, so it nee
    mask + `label_map.json`, plus `engine_provenance.json` so the SEGs carry a versioned
    algorithm name). nb3's `SeriesNumber` table also needs a slot for the new model;
    without one it overflows to the next free slot.
-2. Write `models/<model>/Dockerfile` — `FROM imagingdatacommons/segmentator-base` and add
+2. Write `models/<model>/Dockerfile` — `FROM imagingdatacommons/cloudsegmentator-base` and add
    only the model framework + baked weights.
 3. Add `models/<model>/resources/snomed_mapping.csv` in the unified schema
    (`model,label_name,label_id,` + SNOMED columns; `label_id` may be blank — nb3 keys on
@@ -172,23 +170,23 @@ GIT_HASH=$(git rev-parse HEAD)
 
 # 1. CUDA base (convert + inference shared tooling: dcm2niix, s5cmd, papermill,
 #    idc-index, gcloud libs). Python 3.12.
-docker build -t imagingdatacommons/segmentator-base:main \
+docker build -t imagingdatacommons/cloudsegmentator-base:main \
   --build-arg GIT_HASH=$GIT_HASH workflows/common/Dockerfiles/base
 
 # 2. Per-model inference images (FROM the base + ML framework + weights)
-docker build -t imagingdatacommons/inference_moose:main \
+docker build -t imagingdatacommons/cloudsegmentator-inference-moose:main \
   --build-arg GIT_HASH=$GIT_HASH workflows/models/moose
-docker build -t imagingdatacommons/inference_totalseg:main \
+docker build -t imagingdatacommons/cloudsegmentator-inference-totalseg:main \
   --build-arg GIT_HASH=$GIT_HASH workflows/models/totalseg
 
 # 3. Output-conversion image (nb3: DICOM-SEG + pyradiomics + Radiomics.jl). Python
 #    3.11 for the DICOM-SEG/pyradiomics stack, plus a Julia 1.10 runtime with
 #    Radiomics.jl precompiled for the `radiomicsMethod=radiomicsjl` path.
-docker build -t imagingdatacommons/output_conversion:main \
+docker build -t imagingdatacommons/cloudsegmentator-output-conversion:main \
   --build-arg GIT_HASH=$GIT_HASH workflows/common/Dockerfiles/output_conversion
 ```
 
-nb1 (convert) runs on the model inference image (which is `FROM segmentator-base`);
+nb1 (convert) runs on the model inference image (which is `FROM cloudsegmentator-base`);
 nb3 (output conversion) runs on `output_conversion`. Each model image is base + one
 ML framework.
 
@@ -282,9 +280,12 @@ cheaper than pyradiomics on the same series.
 
 ## Known gaps
 
-- **Release images / presets**: images are built and in use under `sunderlandkyl/*`;
-  they still need pushing as `imagingdatacommons/*`, and the presets need repointing
-  from the dev fork/branch to `ImagingDataCommons/CloudSegmentator` / `main`.
+- **Release images**: all four images are built and in use, but only under a personal
+  dev namespace. They still need pushing as `imagingdatacommons/cloudsegmentator-{base,
+  inference-moose,inference-totalseg,output-conversion}:main`, which is what the WDL
+  defaults and the presets expect. The names deliberately differ from the legacy
+  `imagingdatacommons/inference_{moose,totalseg}`, which belong to the per-model
+  workflows and must not be overwritten.
 - **DICOM-store import** (`dicomStoreImportUri`) has never been exercised end-to-end.
 - **dcmqi `Invalid Value`**: ~2.4 % of series fail SEG conversion with this dcmqi error;
   they are recorded in `dicom_seg_error_file.txt` and the rest of the batch completes.

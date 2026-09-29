@@ -55,8 +55,8 @@ submission on a code change (commands in
 [README.md](README.md#verifying-the-contracts-locally)); that has been the
 validation path for every engine upgrade.
 
-- **Images**: `<registry>/inference_{moose,totalseg}:main` and
-  `<registry>/output_conversion:main`, or build them (see
+- **Images**: `<registry>/cloudsegmentator-inference-{moose,totalseg}:main` and
+  `<registry>/cloudsegmentator-output-conversion:main`, or build them (see
   [Docker build order](README.md#docker-build-order)).
 - nnU-Net passes tensors via `/dev/shm`: run containers with `--shm-size=8g`
   (Terra sizes shm from VM RAM).

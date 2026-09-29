@@ -1,5 +1,5 @@
 # ============================================================================
-# imagingdatacommons/output_conversion
+# imagingdatacommons/cloudsegmentator-output-conversion
 # ----------------------------------------------------------------------------
 # CPU-only image for the harmonized workflow's output-conversion step (nb3):
 #   DICOM-SEG (dcmqi itkimage2segimage) + pyradiomics + delivery.
@@ -10,7 +10,7 @@
 # used, with pyradiomics added so radiomics is produced for every model.
 #
 # The WDL targets this image via `outputConversionDocker`; nb1/nb2 run on the
-# CUDA segmentator-base instead.
+# CUDA cloudsegmentator-base instead.
 # ============================================================================
 FROM python:3.11-slim-bookworm
 
@@ -20,7 +20,7 @@ LABEL PYTHON_BASE_DOCKER_IMAGE="python:3.11-slim-bookworm" \
       MAINTAINER="IDC <idc-support@cancerimagingarchive.net>" \
       GIT_HASH=${GIT_HASH} \
       PATH_TO_DOCKERFILE="https://github.com/imagingdatacommons/CloudSegmentator/blob/${GIT_HASH}/workflows/common/Dockerfiles/output_conversion/Dockerfile" \
-      IMAGE_NAME_ON_DOCKERHUB="imagingdatacommons/output_conversion"
+      IMAGE_NAME_ON_DOCKERHUB="imagingdatacommons/cloudsegmentator-output-conversion"
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \

@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 # ============================================================================
-# imagingdatacommons/segmentator-base
+# imagingdatacommons/cloudsegmentator-base
 # ----------------------------------------------------------------------------
 # Shared CUDA base for the GPU side of the harmonized Segmentator workflow.
 # Holds only the tooling needed by input conversion (nb1) and inherited by each
@@ -9,8 +9,8 @@
 #   google-cloud-{storage,secret-manager}.
 #
 # - nb1 (convert) runs on this image (via the model inference image, which is
-#   FROM segmentator-base).
-# - Per-model inference images (nb2) derive `FROM segmentator-base` and add only
+#   FROM cloudsegmentator-base).
+# - Per-model inference images (nb2) derive `FROM cloudsegmentator-base` and add only
 #   their ML framework + baked weights — see workflows/models/<model>/Dockerfile.
 #
 # The DICOM-SEG / pyradiomics stack (dcmqi, pyradiomics, pinned pandas) is NOT
@@ -27,7 +27,7 @@ LABEL BASE_DOCKER_IMAGE="nvidia/cuda:12.5.1-base-ubuntu24.04" \
       MAINTAINER="IDC <idc-support@cancerimagingarchive.net>" \
       GIT_HASH=${GIT_HASH} \
       PATH_TO_DOCKERFILE="https://github.com/imagingdatacommons/CloudSegmentator/blob/${GIT_HASH}/workflows/common/Dockerfiles/base/Dockerfile" \
-      IMAGE_NAME_ON_DOCKERHUB="imagingdatacommons/segmentator-base"
+      IMAGE_NAME_ON_DOCKERHUB="imagingdatacommons/cloudsegmentator-base"
 
 ENV DEBIAN_FRONTEND=noninteractive
 # Ubuntu 24.04 enforces PEP 668 (externally-managed Python); allow pip in Docker.

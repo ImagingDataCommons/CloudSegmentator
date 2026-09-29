@@ -10,7 +10,7 @@ version 1.0
 #   Task 2 (CPU): nb3 output conversion (NIfTI seg -> DICOM-SEG + radiomics + SR)
 #
 # Select a model purely by inputs (no WDL edits):
-#   inferenceDocker        - per-model image, FROM imagingdatacommons/segmentator-base
+#   inferenceDocker        - per-model image, FROM imagingdatacommons/cloudsegmentator-base
 #   inferenceNotebookPath  - repo path to the model's nb2 inference notebook
 #   snomedMappingPath      - repo path to the model's unified SNOMED mapping CSV
 #   inferenceParamsYaml    - generic papermill params passthrough for model knobs
@@ -44,7 +44,7 @@ workflow Segmentator {
     # Short model identifier, embedded in the Boundary-B layout (<uid>/<model>/...)
     String modelName = ""
 
-    # Per-model GPU inference image (derived FROM segmentator-base).
+    # Per-model GPU inference image (derived FROM cloudsegmentator-base).
     String inferenceDocker
 
     # Repo path to the model's nb2 inference notebook (fetched from gitRepo/gitBranch).
@@ -135,7 +135,7 @@ workflow Segmentator {
     # ------------------------------------------------------------------------
     # OUTPUT-CONVERSION TASK (CPU-only) compute shape
     # ------------------------------------------------------------------------
-    String outputConversionDocker = "imagingdatacommons/output_conversion:main"
+    String outputConversionDocker = "imagingdatacommons/cloudsegmentator-output-conversion:main"
     Int    outputConversionPreemptibleTries = 3
     Int    outputConversionCpus   = 4
     Int    outputConversionRAM    = 16
@@ -382,7 +382,7 @@ YAML
 # ============================================================================
 # TASK: Output conversion (CPU) — nb3
 # Boundary-B segmentation archive -> DICOM-SEG (+ pyradiomics + DICOM SR).
-# Runs on the cheaper CPU-only segmentator-base image (AMD Rome / N2D).
+# Runs on the cheaper CPU-only cloudsegmentator-base image (AMD Rome / N2D).
 # ============================================================================
 task outputConversion {
   input {

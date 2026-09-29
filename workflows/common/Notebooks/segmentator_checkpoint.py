@@ -21,7 +21,7 @@ nb2 deletes the run's prefix (``cleanup()``) so the bucket does not accumulate s
 
 No-op when ``gcs_prefix`` is empty. Auth = the VM's service account (ADC); a Terra
 workspace bucket is writable by the pet SA. Requires ``google-cloud-storage`` (in the
-segmentator-base image).
+cloudsegmentator-base image).
 
 Usage (papermill parameters ``checkpoint_gcs`` / ``run_id`` come from the WDL)::
 
