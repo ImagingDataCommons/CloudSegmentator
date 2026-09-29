@@ -14,8 +14,8 @@ script takes its target from a flag or an environment variable:
 | Setting | Flag | Env var | What |
 |---|---|---|---|
 | Workspace | `--workspace` | `TERRA_WORKSPACE` | `<namespace>/<name>` |
-| Method config | `--config` | `TERRA_METHOD_CONFIG` | `<namespace>/<name>`; default `<workspace ns>/SegmentatorTwoVmWorkflowOnTerra` |
-| Image registry | `--registry` | `SEGMENTATOR_REGISTRY` | Docker Hub namespace of the `cloudsegmentator-inference-{moose,totalseg}:main` images; defaults to `imagingdatacommons` |
+| Method config | `--config` | `TERRA_METHOD_CONFIG` | `<namespace>/<name>` |
+| Image registry | `--registry` | `SEGMENTATOR_REGISTRY` | Docker Hub namespace of the `cloudsegmentator-inference-{moose,totalseg}:main` images |
 | Delivery bucket | `--bucket` | `SEGMENTATOR_DELIVERY_BUCKET` | `dicomSegBucketUri`; unset leaves the config's value |
 
 | Script | Does |

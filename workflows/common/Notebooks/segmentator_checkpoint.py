@@ -16,8 +16,10 @@ of the same workflow resume and different submissions never share state)::
                                                         output, written after each series
 
 On a retry: nb1 restores the bundle and skips download + dcm2niix for restored series;
-nb2 restores finished (series, model) outputs and skips their inference. On success
-nb2 deletes the run's prefix (``cleanup()``) so the bucket does not accumulate state.
+nb2 restores finished (series, model) outputs and skips their inference; nb3 restores
+finished series outputs. When output conversion succeeds, nb3 deletes the run's prefix
+(``cleanup()``) so the bucket does not accumulate state. nb2 does not: its task can
+still be preempted after the notebook ends, and a retry then restores from the prefix.
 
 No-op when ``gcs_prefix`` is empty. Auth = the VM's service account (ADC); a Terra
 workspace bucket is writable by the pet SA. Requires ``google-cloud-storage`` (in the
@@ -31,9 +33,9 @@ Usage (papermill parameters ``checkpoint_gcs`` / ``run_id`` come from the WDL)::
     ckpt.save_nifti_bundle(NIFTI_DIR)                      # nb1, after converting
     done = ckpt.restore_segs(SEG_DIR)                      # nb2: {(uid, model), ...}
     ckpt.save_seg(SEG_DIR, uid, model)                     # nb2, after each (uid, model)
-    ckpt.cleanup()                                         # nb2, on success
     done = ckpt.restore_series_outputs({"dicom_seg": D, "radiomics": R})   # nb3
     ckpt.save_series_output(uid, {"dicom_seg": D, "radiomics": R})        # nb3, per series
+    ckpt.cleanup()                                         # nb3, on success
 """
 import json
 import shlex

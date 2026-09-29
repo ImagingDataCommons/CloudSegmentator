@@ -1,4 +1,6 @@
 {
+  "Segmentator.yamlListOfSeriesInstanceUIDs": "this.SeriesInstanceUIDs",
+
   "Segmentator.modelName": "moose",
   "Segmentator.inferenceDocker": "imagingdatacommons/cloudsegmentator-inference-moose:main",
   "Segmentator.outputConversionDocker": "imagingdatacommons/cloudsegmentator-output-conversion:main",

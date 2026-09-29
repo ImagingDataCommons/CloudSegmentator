@@ -16,11 +16,10 @@ Usage:
 
 Configuration (flag, else environment variable):
     --workspace  TERRA_WORKSPACE              <namespace>/<name> of the workspace
-    --config     TERRA_METHOD_CONFIG          <namespace>/<name> of the method config
-                                              (default: <workspace namespace>/SegmentatorTwoVmWorkflowOnTerra)
+    --config     TERRA_METHOD_CONFIG          <namespace>/<name> of the method config; required
     --registry   SEGMENTATOR_REGISTRY         Docker Hub namespace of the inference images
-                                              (<registry>/cloudsegmentator-inference-<engine>:main;
-                                              default: imagingdatacommons)
+                                              (<registry>/cloudsegmentator-inference-<engine>:main);
+                                              required
     --bucket     SEGMENTATOR_DELIVERY_BUCKET  dicomSegBucketUri; unset = leave the config's value
 
 dicomSegBucketUri deliveries overwrite per-file (same <uid>/<model>_<idx>[_sr].dcm
@@ -30,8 +29,6 @@ import argparse
 import os
 
 from terra_common import add_workspace_arg, api, split_ref, token, workspace
-
-DEFAULT_CONFIG_NAME = "SegmentatorTwoVmWorkflowOnTerra"
 
 # inferenceRAM per engine (GB). TotalSegmentator lung_vessels peaks ~14 GiB on a
 # 320-Mvox series and LIVELOCKS a swapless 16 GB VM, so TotalSeg gets 26. Asking
@@ -67,9 +64,8 @@ def main():
     add_workspace_arg(ap)
     ap.add_argument("--config", default=os.environ.get("TERRA_METHOD_CONFIG"),
                     help="method config <namespace>/<name> (default: $TERRA_METHOD_CONFIG)")
-    ap.add_argument("--registry", default=os.environ.get("SEGMENTATOR_REGISTRY", "imagingdatacommons"),
-                    help="Docker Hub namespace of the inference images "
-                         "(default: $SEGMENTATOR_REGISTRY, else imagingdatacommons)")
+    ap.add_argument("--registry", default=os.environ.get("SEGMENTATOR_REGISTRY"),
+                    help="Docker Hub namespace of the inference images (default: $SEGMENTATOR_REGISTRY)")
     ap.add_argument("--bucket", default=os.environ.get("SEGMENTATOR_DELIVERY_BUCKET"),
                     help="dicomSegBucketUri for SEG/SR delivery (default: leave config value)")
     ap.add_argument("--models", default=",".join(MODELS),
@@ -78,8 +74,9 @@ def main():
     args = ap.parse_args()
 
     ns, name = workspace(args)
-    cns, cname = split_ref(args.config or f"{ns}/{DEFAULT_CONFIG_NAME}",
-                           "Method config", "--config", "TERRA_METHOD_CONFIG")
+    cns, cname = split_ref(args.config, "Method config", "--config", "TERRA_METHOD_CONFIG")
+    if not args.registry:
+        ap.error("image registry not set: pass --registry or set $SEGMENTATOR_REGISTRY")
     cfg_path = f"/workspaces/{ns}/{name}/method_configs/{cns}/{cname}"
     tok = token()
 

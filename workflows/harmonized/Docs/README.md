@@ -249,8 +249,11 @@ run** (`julia -t <outputConversionJuliaThreads|auto> radiomics_jl_extract.jl --w
 JSON request per segmentation file over stdin/stdout, all labels at once) so the
 ~8–10 s Julia startup/JIT is paid once per workflow rather than once per
 (series × sub-model) — MOOSE emits 10 seg files per series — and Radiomics.jl can
-parallelise across labels on the VM's vCPUs. The one-shot CLI form is kept for
-manual use. Feature scope is the `radiomicsFeatureClasses` WDL input (papermill
+parallelise across labels on the VM's vCPUs. Each request is capped by the nb3
+parameter `radiomicsJlTimeoutS` (default 1800 s): a hung request is killed and
+recorded as a radiomics error for that seg file, and the next request starts a new
+worker. The worker's stderr goes to `/tmp/radiomicsjl_worker_stderr.log`, whose tail
+is printed when a worker dies. The one-shot CLI form is kept for manual use. Feature scope is the `radiomicsFeatureClasses` WDL input (papermill
 `-p radiomicsFeatureClasses "firstorder,shape,glcm"`): nb3 normalizes the names and
 maps them to pyradiomics feature classes or to Radiomics.jl symbols
 (`firstorder`→`:first_order`, `shape`→`:shape3d`, texture names are identical), which
