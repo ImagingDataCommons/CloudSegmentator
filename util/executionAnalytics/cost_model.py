@@ -525,7 +525,7 @@ def cmd_batch(args):
         mvps = args.mvox_per_series
         src = "--mvox-per-series"
     elif args.manifest:
-        mf = load_manifest(args.manifest)
+        mf = prep_features(load_manifest(args.manifest))
         mvps = float(mf["Mvox"].sum() / max(mf["nSeries"].sum(), 1))
         src = args.manifest
     else:

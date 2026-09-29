@@ -139,7 +139,11 @@ and peak RAM). The attempt ledger is kept under the checkpoint prefix, so it nee
 `checkpointGcsPath`. The usage-metrics CSVs gain peak-RAM columns (append-only, so
 `util/executionAnalytics` stays compatible), and `run_summary.json` carries
 `phases_s`, `peak_mem_gb`, and prior-attempt counts (`prior_attempts`,
-`prior_preempted_attempts`, `prior_attempts_vm_s`).
+`prior_preempted_attempts`, `prior_attempts_vm_s`). nb3's summary also has a
+`delivery` block with the outcome of the GCS upload and DICOM-store import, which
+do not fail the task. When nb3 resumes from its checkpoint, the SEG / radiomics / SR
+errors of restored series are reported again, so the error counts and files cover
+the whole run.
 
 ## Adding a new model
 

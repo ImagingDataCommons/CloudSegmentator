@@ -88,6 +88,7 @@ Known failure signatures — check these before treating an error as new:
 | `body_composition: moose produced no output` | No L3 in the field of view — benign. |
 | `Radiomics.jl worker crashed twice` | nb3 RAM pressure on a very large series. |
 | Missing lungs / ribs / lung_vessels files for a series | Empty mask outside the field of view — by design. |
+| `delivery gcs_upload: failed` / `dicom_store_import: failed` (check_outputs.py) | Nothing, or only part, reached the bucket or store although the workflow Succeeded — usually IAM on the bucket or store. The import is `skipped` whenever the upload failed. |
 
 Terra's `cost` field is an estimate (it has been 3× off under preemption churn,
 and exact on calm days); measure with `util/executionAnalytics/submission_cost.py`
@@ -105,8 +106,11 @@ service account; no secrets needed), nb3 uploads every SEG and its TID1500 SR as
   replaces files in place, but a file the new run did not produce (e.g. an SR
   lost to a failed radiomics step) stays behind with old metadata. Judge
   freshness by object timestamp (`gcloud storage ls -l`), not by folder.
-- Upload failures only print `WARNING: GCS upload failed` in the output
-  notebook — spot-check the bucket after enabling it on a new config.
+- Upload and DICOM-store import failures do **not** fail the workflow. nb3
+  records each step's outcome (`ok` / `failed` / `timeout` / `skipped`, file
+  counts, error text) in the `delivery` block of `run_summary.json`, and
+  `check_outputs.py` prints it. Still spot-check the bucket after enabling it on
+  a new config.
 - Each SEG/SR is a new DICOM series inside the **source study**. Re-uploading
   creates new SOPInstanceUIDs, so a DICOM store that imported the old version
   keeps both.

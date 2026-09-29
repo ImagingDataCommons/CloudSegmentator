@@ -20,7 +20,9 @@ from terra_common import add_workspace_arg, api, token, workspace
 
 
 def gcs_cat(url):
-    return subprocess.run(["gcloud", "storage", "cat", url],
+    # One command string: with shell=True, a list runs only its first item on POSIX.
+    # shell=True itself is kept so Windows resolves gcloud.cmd.
+    return subprocess.run(f'gcloud storage cat "{url}"',
                           capture_output=True, text=True, shell=True).stdout
 
 
@@ -58,6 +60,14 @@ def main():
                       f"skipped_large={s.get('radiomics_labels_skipped_large')} "
                       f"engine={s.get('engine', '?')} v{s.get('engine_version', '?')} "
                       f"elapsed={s.get('total_elapsed_s', 0) / 60:.0f}m")
+                # nb3 records GCS upload / DICOM-store import outcomes here; a failed
+                # delivery does not fail the workflow, so this is the only signal.
+                for step, d in (s.get("delivery") or {}).items():
+                    if d.get("requested"):
+                        print(f"  delivery {step}: {d.get('status')}"
+                              + (f" ({d.get('dicom_seg_files', 0)} SEG, {d.get('sr_files', 0)} SR)"
+                                 if step == "gcs_upload" else "")
+                              + (f" -- {d['error']}" if d.get("error") else ""))
             elif "error" in k.lower():
                 txt = gcs_cat(v).strip()
                 lines = txt.splitlines()
