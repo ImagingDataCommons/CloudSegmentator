@@ -14,4 +14,17 @@ Icon
 #gcp service account keys
 gha-creds-*.json
 
+# Python bytecode
+__pycache__/
+*.py[cod]
 
+# Editor settings
+.vscode/
+
+# Terra billing exports (per-submission cost data; kept local)
+*_billing.csv
+
+# Per-submission outputs of util/executionAnalytics/submission_cost.py
+# (_cost, _series, _workflows, _cost_estimate, ...). Reference submissions
+# that are already committed stay tracked; add new ones with `git add -f`.
+submission_*.csv

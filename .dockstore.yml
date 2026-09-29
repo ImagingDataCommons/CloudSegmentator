@@ -1,5 +1,11 @@
 version: 1.2
 workflows:
+   - name: SegmentatorTwoVmWorkflowOnTerra
+     subclass: WDL
+     primaryDescriptorPath: /workflows/harmonized/Terra/twoVM.wdl
+     authors:
+      - name: ImagingDataCommons
+        email: vthiriveedhi@mgb.org
    - name: TotalSegmentatortwoVmWorkflowOnTerra
      subclass: WDL
      primaryDescriptorPath: /workflows/TotalSegmentator/Terra/splitWorkflow/twoVM.wdl

@@ -1,0 +1,903 @@
+{
+ "tier": "spot",
+ "shapes": {
+  "inference": {
+   "family": "N1_CUSTOM",
+   "vcpu": 4,
+   "ram_gb": 16,
+   "gpu": "T4",
+   "gpu_count": 1,
+   "disk_gb": 50,
+   "disk_type": "HDD",
+   "boot_disk_gb": 30
+  },
+  "outputConversion": {
+   "family": "N2D",
+   "vcpu": 4,
+   "ram_gb": 16,
+   "gpu": null,
+   "gpu_count": 0,
+   "disk_gb": 20,
+   "disk_type": "HDD",
+   "boot_disk_gb": 30
+  }
+ },
+ "rates": {
+  "inference": {
+   "africa-south1": {
+    "gpu_hr": 0.0412,
+    "vcpu_hr": 0.01316,
+    "ram_hr": 0.00704,
+    "disk_hr": 0.008095,
+    "total_hr": 0.069495
+   },
+   "asia-east1": {
+    "gpu_hr": 0.1898,
+    "vcpu_hr": 0.03144,
+    "ram_hr": 0.016848,
+    "disk_hr": 0.006849,
+    "total_hr": 0.244937
+   },
+   "asia-east2": {
+    "gpu_hr": 0.259,
+    "vcpu_hr": 0.03092,
+    "ram_hr": 0.01656,
+    "disk_hr": 0.007932,
+    "total_hr": 0.314412
+   },
+   "asia-northeast1": {
+    "gpu_hr": 0.1653,
+    "vcpu_hr": 0.07584,
+    "ram_hr": 0.040448,
+    "disk_hr": 0.008904,
+    "total_hr": 0.290492
+   },
+   "asia-northeast2": {
+    "gpu_hr": 0.0333,
+    "vcpu_hr": 0.09232,
+    "ram_hr": 0.049296,
+    "disk_hr": 0.008904,
+    "total_hr": 0.18382
+   },
+   "asia-northeast3": {
+    "gpu_hr": 0.2019,
+    "vcpu_hr": 0.09232,
+    "ram_hr": 0.049264,
+    "disk_hr": 0.008904,
+    "total_hr": 0.352388
+   },
+   "asia-south1": {
+    "gpu_hr": 0.1493,
+    "vcpu_hr": 0.049,
+    "ram_hr": 0.026272,
+    "disk_hr": 0.008219,
+    "total_hr": 0.232791
+   },
+   "asia-south2": {
+    "gpu_hr": 0.0378,
+    "vcpu_hr": 0.0382,
+    "ram_hr": 0.020464,
+    "disk_hr": 0.008219,
+    "total_hr": 0.104683
+   },
+   "asia-southeast1": {
+    "gpu_hr": 0.107,
+    "vcpu_hr": 0.04384,
+    "ram_hr": 0.02352,
+    "disk_hr": 0.007534,
+    "total_hr": 0.181894
+   },
+   "asia-southeast2": {
+    "gpu_hr": 0.1333,
+    "vcpu_hr": 0.02648,
+    "ram_hr": 0.014176,
+    "disk_hr": 0.008904,
+    "total_hr": 0.18286
+   },
+   "australia-southeast1": {
+    "gpu_hr": 0.1974,
+    "vcpu_hr": 0.09356,
+    "ram_hr": 0.050176,
+    "disk_hr": 0.009247,
+    "total_hr": 0.350383
+   },
+   "australia-southeast2": {
+    "gpu_hr": 0.0447,
+    "vcpu_hr": 0.03576,
+    "ram_hr": 0.0192,
+    "disk_hr": 0.009247,
+    "total_hr": 0.108907
+   },
+   "europe-central2": {
+    "gpu_hr": 0.2083,
+    "vcpu_hr": 0.05312,
+    "ram_hr": 0.028464,
+    "disk_hr": 0.00863,
+    "total_hr": 0.298514
+   },
+   "europe-southwest1": {
+    "gpu_hr": 0.0372,
+    "vcpu_hr": 0.01416,
+    "ram_hr": 0.007584,
+    "disk_hr": 0.008164,
+    "total_hr": 0.067108
+   },
+   "europe-west1": {
+    "gpu_hr": 0.1326,
+    "vcpu_hr": 0.08472,
+    "ram_hr": 0.045408,
+    "disk_hr": 0.006849,
+    "total_hr": 0.269577
+   },
+   "europe-west10": {
+    "gpu_hr": 0.0485,
+    "vcpu_hr": 0.0154,
+    "ram_hr": 0.008256,
+    "disk_hr": 0.010548,
+    "total_hr": 0.082704
+   },
+   "europe-west12": {
+    "gpu_hr": 0.0406,
+    "vcpu_hr": 0.01664,
+    "ram_hr": 0.008944,
+    "disk_hr": 0.008466,
+    "total_hr": 0.07465
+   },
+   "europe-west2": {
+    "gpu_hr": 0.1216,
+    "vcpu_hr": 0.06204,
+    "ram_hr": 0.033248,
+    "disk_hr": 0.008219,
+    "total_hr": 0.225107
+   },
+   "europe-west3": {
+    "gpu_hr": 0.1885,
+    "vcpu_hr": 0.08428,
+    "ram_hr": 0.045152,
+    "disk_hr": 0.008219,
+    "total_hr": 0.326151
+   },
+   "europe-west4": {
+    "gpu_hr": 0.189,
+    "vcpu_hr": 0.08768,
+    "ram_hr": 0.047008,
+    "disk_hr": 0.007534,
+    "total_hr": 0.331222
+   },
+   "europe-west6": {
+    "gpu_hr": 0.0943,
+    "vcpu_hr": 0.06644,
+    "ram_hr": 0.035616,
+    "disk_hr": 0.008904,
+    "total_hr": 0.20526
+   },
+   "europe-west8": {
+    "gpu_hr": 0.0365,
+    "vcpu_hr": 0.01396,
+    "ram_hr": 0.007456,
+    "disk_hr": 0.007945,
+    "total_hr": 0.065861
+   },
+   "europe-west9": {
+    "gpu_hr": 0.0365,
+    "vcpu_hr": 0.01396,
+    "ram_hr": 0.007456,
+    "disk_hr": 0.007945,
+    "total_hr": 0.065861
+   },
+   "me-central1": {
+    "gpu_hr": 0.0383,
+    "vcpu_hr": 0.0146,
+    "ram_hr": 0.007824,
+    "disk_hr": 0.008322,
+    "total_hr": 0.069046
+   },
+   "me-central2": {
+    "gpu_hr": 0.1585,
+    "vcpu_hr": 0.02068,
+    "ram_hr": 0.011072,
+    "disk_hr": 0.010959,
+    "total_hr": 0.201211
+   },
+   "me-west1": {
+    "gpu_hr": 0.1424,
+    "vcpu_hr": 0.0666,
+    "ram_hr": 0.03568,
+    "disk_hr": 0.007534,
+    "total_hr": 0.252214
+   },
+   "northamerica-northeast1": {
+    "gpu_hr": 0.1634,
+    "vcpu_hr": 0.08332,
+    "ram_hr": 0.044656,
+    "disk_hr": 0.007534,
+    "total_hr": 0.29891
+   },
+   "southamerica-east1": {
+    "gpu_hr": 0.2625,
+    "vcpu_hr": 0.0614,
+    "ram_hr": 0.032896,
+    "disk_hr": 0.010274,
+    "total_hr": 0.36707
+   },
+   "southamerica-west1": {
+    "gpu_hr": 0.045,
+    "vcpu_hr": 0.01712,
+    "ram_hr": 0.009184,
+    "disk_hr": 0.009795,
+    "total_hr": 0.081099
+   },
+   "us-central1": {
+    "gpu_hr": 0.2,
+    "vcpu_hr": 0.0754,
+    "ram_hr": 0.040416,
+    "disk_hr": 0.006849,
+    "total_hr": 0.322665
+   },
+   "us-east1": {
+    "gpu_hr": 0.2,
+    "vcpu_hr": 0.0754,
+    "ram_hr": 0.040416,
+    "disk_hr": 0.006849,
+    "total_hr": 0.322665
+   },
+   "us-east4": {
+    "gpu_hr": 0.1862,
+    "vcpu_hr": 0.05316,
+    "ram_hr": 0.028528,
+    "disk_hr": 0.007534,
+    "total_hr": 0.275422
+   },
+   "us-east5": {
+    "gpu_hr": 0.0315,
+    "vcpu_hr": 0.01672,
+    "ram_hr": 0.00896,
+    "disk_hr": 0.006849,
+    "total_hr": 0.064029
+   },
+   "us-south1": {
+    "gpu_hr": 0.0372,
+    "vcpu_hr": 0.01412,
+    "ram_hr": 0.007584,
+    "disk_hr": 0.008164,
+    "total_hr": 0.067068
+   },
+   "us-west1": {
+    "gpu_hr": 0.2,
+    "vcpu_hr": 0.0754,
+    "ram_hr": 0.040416,
+    "disk_hr": 0.006849,
+    "total_hr": 0.322665
+   },
+   "us-west2": {
+    "gpu_hr": 0.1406,
+    "vcpu_hr": 0.067,
+    "ram_hr": 0.035872,
+    "disk_hr": 0.008219,
+    "total_hr": 0.251691
+   },
+   "us-west3": {
+    "gpu_hr": 0.1109,
+    "vcpu_hr": 0.05848,
+    "ram_hr": 0.031376,
+    "disk_hr": 0.008219,
+    "total_hr": 0.208975
+   },
+   "us-west4": {
+    "gpu_hr": 0.1598,
+    "vcpu_hr": 0.05636,
+    "ram_hr": 0.03024,
+    "disk_hr": 0.007534,
+    "total_hr": 0.253934
+   },
+   "us-west8": {
+    "gpu_hr": 0.0551,
+    "vcpu_hr": 0.012,
+    "ram_hr": 0.0064,
+    "disk_hr": 0.006849,
+    "total_hr": 0.080349
+   }
+  },
+  "outputConversion": {
+   "africa-south1": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.05528,
+    "ram_hr": 0.029648,
+    "disk_hr": 0.005945,
+    "total_hr": 0.090873
+   },
+   "asia-east1": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.0764,
+    "ram_hr": 0.040976,
+    "disk_hr": 0.005205,
+    "total_hr": 0.122581
+   },
+   "asia-east2": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.07464,
+    "ram_hr": 0.039968,
+    "disk_hr": 0.005885,
+    "total_hr": 0.120493
+   },
+   "asia-northeast1": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.07964,
+    "ram_hr": 0.042528,
+    "disk_hr": 0.006767,
+    "total_hr": 0.128935
+   },
+   "asia-northeast2": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.03188,
+    "ram_hr": 0.017088,
+    "disk_hr": 0.006767,
+    "total_hr": 0.055735
+   },
+   "asia-northeast3": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.03512,
+    "ram_hr": 0.018832,
+    "disk_hr": 0.006767,
+    "total_hr": 0.060719
+   },
+   "asia-south1": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.04352,
+    "ram_hr": 0.02336,
+    "disk_hr": 0.006247,
+    "total_hr": 0.073127
+   },
+   "asia-south2": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.07928,
+    "ram_hr": 0.042496,
+    "disk_hr": 0.006247,
+    "total_hr": 0.128023
+   },
+   "asia-southeast1": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.02924,
+    "ram_hr": 0.01568,
+    "disk_hr": 0.005726,
+    "total_hr": 0.050646
+   },
+   "asia-southeast2": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.05816,
+    "ram_hr": 0.031184,
+    "disk_hr": 0.006767,
+    "total_hr": 0.096111
+   },
+   "australia-southeast1": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.09368,
+    "ram_hr": 0.050208,
+    "disk_hr": 0.007027,
+    "total_hr": 0.150915
+   },
+   "australia-southeast2": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.04616,
+    "ram_hr": 0.024752,
+    "disk_hr": 0.007027,
+    "total_hr": 0.077939
+   },
+   "europe-central2": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.07984,
+    "ram_hr": 0.042816,
+    "disk_hr": 0.006658,
+    "total_hr": 0.129314
+   },
+   "europe-north1": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.05732,
+    "ram_hr": 0.03072,
+    "disk_hr": 0.005726,
+    "total_hr": 0.093766
+   },
+   "europe-southwest1": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.07788,
+    "ram_hr": 0.04176,
+    "disk_hr": 0.006225,
+    "total_hr": 0.125865
+   },
+   "europe-west1": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.06064,
+    "ram_hr": 0.032512,
+    "disk_hr": 0.005205,
+    "total_hr": 0.098357
+   },
+   "europe-west10": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.02492,
+    "ram_hr": 0.013344,
+    "disk_hr": 0.008016,
+    "total_hr": 0.04628
+   },
+   "europe-west12": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.03204,
+    "ram_hr": 0.017136,
+    "disk_hr": 0.006345,
+    "total_hr": 0.055521
+   },
+   "europe-west2": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.07948,
+    "ram_hr": 0.042576,
+    "disk_hr": 0.006247,
+    "total_hr": 0.128303
+   },
+   "europe-west3": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.08504,
+    "ram_hr": 0.045584,
+    "disk_hr": 0.006247,
+    "total_hr": 0.136871
+   },
+   "europe-west4": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.059,
+    "ram_hr": 0.0316,
+    "disk_hr": 0.005726,
+    "total_hr": 0.096326
+   },
+   "europe-west6": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.07936,
+    "ram_hr": 0.042544,
+    "disk_hr": 0.006767,
+    "total_hr": 0.128671
+   },
+   "europe-west8": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.03004,
+    "ram_hr": 0.016128,
+    "disk_hr": 0.006038,
+    "total_hr": 0.052206
+   },
+   "europe-west9": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.04816,
+    "ram_hr": 0.02584,
+    "disk_hr": 0.006038,
+    "total_hr": 0.080038
+   },
+   "me-central1": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.05088,
+    "ram_hr": 0.027248,
+    "disk_hr": 0.006325,
+    "total_hr": 0.084453
+   },
+   "me-central2": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.03812,
+    "ram_hr": 0.020464,
+    "disk_hr": 0.008329,
+    "total_hr": 0.066913
+   },
+   "me-west1": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.0364,
+    "ram_hr": 0.019536,
+    "disk_hr": 0.005726,
+    "total_hr": 0.061662
+   },
+   "northamerica-northeast1": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.07248,
+    "ram_hr": 0.038848,
+    "disk_hr": 0.005726,
+    "total_hr": 0.117054
+   },
+   "northamerica-northeast2": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.06864,
+    "ram_hr": 0.036816,
+    "disk_hr": 0.005726,
+    "total_hr": 0.111182
+   },
+   "southamerica-east1": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.05268,
+    "ram_hr": 0.028224,
+    "disk_hr": 0.007808,
+    "total_hr": 0.088712
+   },
+   "southamerica-west1": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.039,
+    "ram_hr": 0.020912,
+    "disk_hr": 0.007444,
+    "total_hr": 0.067356
+   },
+   "us-central1": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.04664,
+    "ram_hr": 0.024992,
+    "disk_hr": 0.005205,
+    "total_hr": 0.076837
+   },
+   "us-east1": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.04664,
+    "ram_hr": 0.024992,
+    "disk_hr": 0.005205,
+    "total_hr": 0.076837
+   },
+   "us-east4": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.07436,
+    "ram_hr": 0.039856,
+    "disk_hr": 0.005726,
+    "total_hr": 0.119942
+   },
+   "us-east5": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.03592,
+    "ram_hr": 0.019248,
+    "disk_hr": 0.005205,
+    "total_hr": 0.060373
+   },
+   "us-south1": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.04716,
+    "ram_hr": 0.025264,
+    "disk_hr": 0.006225,
+    "total_hr": 0.078649
+   },
+   "us-west1": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.04664,
+    "ram_hr": 0.024992,
+    "disk_hr": 0.005205,
+    "total_hr": 0.076837
+   },
+   "us-west2": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.07928,
+    "ram_hr": 0.042496,
+    "disk_hr": 0.006247,
+    "total_hr": 0.128023
+   },
+   "us-west3": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.04832,
+    "ram_hr": 0.025904,
+    "disk_hr": 0.006247,
+    "total_hr": 0.080471
+   },
+   "us-west4": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.03712,
+    "ram_hr": 0.019904,
+    "disk_hr": 0.005726,
+    "total_hr": 0.06275
+   },
+   "us-west8": {
+    "gpu_hr": 0.0,
+    "vcpu_hr": 0.00992,
+    "ram_hr": 0.005312,
+    "disk_hr": 0.005205,
+    "total_hr": 0.020437
+   }
+  }
+ },
+ "gpu_zones": {
+  "asia-east1": [
+   "?"
+  ],
+  "asia-east2": [
+   "?"
+  ],
+  "asia-northeast1": [
+   "?"
+  ],
+  "asia-northeast3": [
+   "?"
+  ],
+  "asia-south1": [
+   "?"
+  ],
+  "asia-southeast1": [
+   "?"
+  ],
+  "asia-southeast2": [
+   "?"
+  ],
+  "australia-southeast1": [
+   "?"
+  ],
+  "europe-central2": [
+   "?"
+  ],
+  "europe-west1": [
+   "?"
+  ],
+  "europe-west2": [
+   "?"
+  ],
+  "europe-west3": [
+   "?"
+  ],
+  "europe-west4": [
+   "?"
+  ],
+  "me-west1": [
+   "?"
+  ],
+  "northamerica-northeast1": [
+   "?"
+  ],
+  "southamerica-east1": [
+   "?"
+  ],
+  "us-central1": [
+   "?"
+  ],
+  "us-east1": [
+   "?"
+  ],
+  "us-east4": [
+   "?"
+  ],
+  "us-west1": [
+   "?"
+  ],
+  "us-west2": [
+   "?"
+  ],
+  "us-west4": [
+   "?"
+  ]
+ },
+ "ranking": [
+  {
+   "region": "asia-southeast1",
+   "weighted_hr": 0.203644,
+   "compute_hr": 0.155644,
+   "egress_hr": 0.048,
+   "inference_hr": 0.181894,
+   "outputConversion_hr": 0.050646,
+   "gpu_zones": [
+    "?"
+   ]
+  },
+  {
+   "region": "asia-southeast2",
+   "weighted_hr": 0.21351,
+   "compute_hr": 0.16551,
+   "egress_hr": 0.048,
+   "inference_hr": 0.18286,
+   "outputConversion_hr": 0.096111,
+   "gpu_zones": [
+    "?"
+   ]
+  },
+  {
+   "region": "us-west4",
+   "weighted_hr": 0.215697,
+   "compute_hr": 0.215697,
+   "egress_hr": 0.0,
+   "inference_hr": 0.253934,
+   "outputConversion_hr": 0.06275,
+   "gpu_zones": [
+    "?"
+   ]
+  },
+  {
+   "region": "europe-west2",
+   "weighted_hr": 0.217746,
+   "compute_hr": 0.205746,
+   "egress_hr": 0.012,
+   "inference_hr": 0.225107,
+   "outputConversion_hr": 0.128303,
+   "gpu_zones": [
+    "?"
+   ]
+  },
+  {
+   "region": "us-west2",
+   "weighted_hr": 0.226957,
+   "compute_hr": 0.226957,
+   "egress_hr": 0.0,
+   "inference_hr": 0.251691,
+   "outputConversion_hr": 0.128023,
+   "gpu_zones": [
+    "?"
+   ]
+  },
+  {
+   "region": "us-east4",
+   "weighted_hr": 0.244326,
+   "compute_hr": 0.244326,
+   "egress_hr": 0.0,
+   "inference_hr": 0.275422,
+   "outputConversion_hr": 0.119942,
+   "gpu_zones": [
+    "?"
+   ]
+  },
+  {
+   "region": "europe-west1",
+   "weighted_hr": 0.247333,
+   "compute_hr": 0.235333,
+   "egress_hr": 0.012,
+   "inference_hr": 0.269577,
+   "outputConversion_hr": 0.098357,
+   "gpu_zones": [
+    "?"
+   ]
+  },
+  {
+   "region": "asia-south1",
+   "weighted_hr": 0.248858,
+   "compute_hr": 0.200858,
+   "egress_hr": 0.048,
+   "inference_hr": 0.232791,
+   "outputConversion_hr": 0.073127,
+   "gpu_zones": [
+    "?"
+   ]
+  },
+  {
+   "region": "me-west1",
+   "weighted_hr": 0.262104,
+   "compute_hr": 0.214104,
+   "egress_hr": 0.048,
+   "inference_hr": 0.252214,
+   "outputConversion_hr": 0.061662,
+   "gpu_zones": [
+    "?"
+   ]
+  },
+  {
+   "region": "asia-east1",
+   "weighted_hr": 0.268466,
+   "compute_hr": 0.220466,
+   "egress_hr": 0.048,
+   "inference_hr": 0.244937,
+   "outputConversion_hr": 0.122581,
+   "gpu_zones": [
+    "?"
+   ]
+  },
+  {
+   "region": "northamerica-northeast1",
+   "weighted_hr": 0.268539,
+   "compute_hr": 0.262539,
+   "egress_hr": 0.006,
+   "inference_hr": 0.29891,
+   "outputConversion_hr": 0.117054,
+   "gpu_zones": [
+    "?"
+   ]
+  },
+  {
+   "region": "us-central1",
+   "weighted_hr": 0.273499,
+   "compute_hr": 0.273499,
+   "egress_hr": 0.0,
+   "inference_hr": 0.322665,
+   "outputConversion_hr": 0.076837,
+   "gpu_zones": [
+    "?"
+   ]
+  },
+  {
+   "region": "us-west1",
+   "weighted_hr": 0.273499,
+   "compute_hr": 0.273499,
+   "egress_hr": 0.0,
+   "inference_hr": 0.322665,
+   "outputConversion_hr": 0.076837,
+   "gpu_zones": [
+    "?"
+   ]
+  },
+  {
+   "region": "us-east1",
+   "weighted_hr": 0.273499,
+   "compute_hr": 0.273499,
+   "egress_hr": 0.0,
+   "inference_hr": 0.322665,
+   "outputConversion_hr": 0.076837,
+   "gpu_zones": [
+    "?"
+   ]
+  },
+  {
+   "region": "europe-central2",
+   "weighted_hr": 0.276674,
+   "compute_hr": 0.264674,
+   "egress_hr": 0.012,
+   "inference_hr": 0.298514,
+   "outputConversion_hr": 0.129314,
+   "gpu_zones": [
+    "?"
+   ]
+  },
+  {
+   "region": "europe-west4",
+   "weighted_hr": 0.296243,
+   "compute_hr": 0.284243,
+   "egress_hr": 0.012,
+   "inference_hr": 0.331222,
+   "outputConversion_hr": 0.096326,
+   "gpu_zones": [
+    "?"
+   ]
+  },
+  {
+   "region": "europe-west3",
+   "weighted_hr": 0.300295,
+   "compute_hr": 0.288295,
+   "egress_hr": 0.012,
+   "inference_hr": 0.326151,
+   "outputConversion_hr": 0.136871,
+   "gpu_zones": [
+    "?"
+   ]
+  },
+  {
+   "region": "asia-northeast1",
+   "weighted_hr": 0.306181,
+   "compute_hr": 0.258181,
+   "egress_hr": 0.048,
+   "inference_hr": 0.290492,
+   "outputConversion_hr": 0.128935,
+   "gpu_zones": [
+    "?"
+   ]
+  },
+  {
+   "region": "asia-east2",
+   "weighted_hr": 0.323628,
+   "compute_hr": 0.275628,
+   "egress_hr": 0.048,
+   "inference_hr": 0.314412,
+   "outputConversion_hr": 0.120493,
+   "gpu_zones": [
+    "?"
+   ]
+  },
+  {
+   "region": "asia-northeast3",
+   "weighted_hr": 0.342054,
+   "compute_hr": 0.294054,
+   "egress_hr": 0.048,
+   "inference_hr": 0.352388,
+   "outputConversion_hr": 0.060719,
+   "gpu_zones": [
+    "?"
+   ]
+  },
+  {
+   "region": "australia-southeast1",
+   "weighted_hr": 0.358489,
+   "compute_hr": 0.310489,
+   "egress_hr": 0.048,
+   "inference_hr": 0.350383,
+   "outputConversion_hr": 0.150915,
+   "gpu_zones": [
+    "?"
+   ]
+  },
+  {
+   "region": "southamerica-east1",
+   "weighted_hr": 0.359398,
+   "compute_hr": 0.311398,
+   "egress_hr": 0.048,
+   "inference_hr": 0.36707,
+   "outputConversion_hr": 0.088712,
+   "gpu_zones": [
+    "?"
+   ]
+  }
+ ]
+}
