@@ -76,6 +76,11 @@ python ../terraOps/submit_wave.py twoVM_<name> <name>_all twoVM_<name>_set this.
   the submission keep their results.
 - nb3 runs on a 16 GB VM; series ≳300 Mvox can crash its Radiomics.jl worker,
   losing that (series, task)'s radiomics + SR (the SEG survives).
+- **Checkpoint storage**: a run's `<checkpointGcsPath>/<submissionId>_<workflowId>/`
+  prefix (NIfTIs plus every segmentation, often GBs per batch) is deleted only when
+  output conversion succeeds. Failed and aborted runs keep it, for recovery. Expire
+  old ones with a lifecycle rule on the bucket, e.g. delete objects under the
+  checkpoint prefix after 14 days.
 
 ## Triage
 
