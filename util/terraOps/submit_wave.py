@@ -17,10 +17,12 @@ Usage:
 Configuration (flag, else environment variable):
     --workspace  TERRA_WORKSPACE              <namespace>/<name> of the workspace
     --config     TERRA_METHOD_CONFIG          <namespace>/<name> of the method config; required
-    --registry   SEGMENTATOR_REGISTRY         Docker Hub namespace of the inference images
-                                              (<registry>/cloudsegmentator-inference-<engine>:main);
+    --registry   SEGMENTATOR_REGISTRY         Docker Hub namespace of the images
+                                              (<registry>/cloudsegmentator-inference-<engine>:main and
+                                              <registry>/cloudsegmentator-output-conversion:main);
                                               required
-    --bucket     SEGMENTATOR_DELIVERY_BUCKET  dicomSegBucketUri; unset = leave the config's value
+    --bucket     SEGMENTATOR_DELIVERY_BUCKET  dicomSegBucketUri; "none" = no delivery;
+                                              unset = leave the config's value
 
 dicomSegBucketUri deliveries overwrite per-file (same <uid>/<model>_<idx>[_sr].dcm
 names -> latest run wins).
@@ -65,9 +67,11 @@ def main():
     ap.add_argument("--config", default=os.environ.get("TERRA_METHOD_CONFIG"),
                     help="method config <namespace>/<name> (default: $TERRA_METHOD_CONFIG)")
     ap.add_argument("--registry", default=os.environ.get("SEGMENTATOR_REGISTRY"),
-                    help="Docker Hub namespace of the inference images (default: $SEGMENTATOR_REGISTRY)")
+                    help="Docker Hub namespace of the inference and output-conversion images "
+                         "(default: $SEGMENTATOR_REGISTRY)")
     ap.add_argument("--bucket", default=os.environ.get("SEGMENTATOR_DELIVERY_BUCKET"),
-                    help="dicomSegBucketUri for SEG/SR delivery (default: leave config value)")
+                    help="dicomSegBucketUri for SEG/SR delivery; 'none' disables delivery "
+                         "(default: leave config value)")
     ap.add_argument("--models", default=",".join(MODELS),
                     help="comma-separated engines to submit (default: all)")
     ap.add_argument("--inference-ram", help="override inferenceRAM (GB) for every engine")
@@ -85,9 +89,11 @@ def main():
         cfg = api(cfg_path, tok)
         cfg["inputs"].update(spec["inputs"])
         cfg["inputs"]["Segmentator.inferenceDocker"] = f'"{args.registry}/cloudsegmentator-inference-{model}:main"'
+        cfg["inputs"]["Segmentator.outputConversionDocker"] = f'"{args.registry}/cloudsegmentator-output-conversion:main"'
         cfg["inputs"]["Segmentator.inferenceRAM"] = args.inference_ram or spec["ram"]
         if args.bucket:
-            cfg["inputs"]["Segmentator.dicomSegBucketUri"] = f'"{args.bucket}"'
+            bucket = "" if args.bucket.strip().lower() == "none" else args.bucket
+            cfg["inputs"]["Segmentator.dicomSegBucketUri"] = f'"{bucket}"'
         cfg["inputs"]["Segmentator.dicomStoreImportUri"] = '""'
         cfg["rootEntityType"] = args.root_type
         api(cfg_path, tok, "PUT", cfg)
