@@ -51,13 +51,16 @@ convert_manifest.json
 <SeriesInstanceUID>/<model>/segmentations/*.nii.gz  # multilabel mask(s)
 <SeriesInstanceUID>/<model>/label_map.json          # {"model": ..., "model_id": ..., "labels": {label_id: label_name}}
 engine_provenance.json                              # {"engine": ..., "version": ...}
+snomed_mapping.csv                                  # optional: the engine's own SNOMED table, bundled by nb2
 ```
 `<model>` is one directory per sub-model: each MOOSE model (`clin_ct_organs`, …) or
 each TotalSegmentator task (`total`, `lung_vessels`).
 The `label_map.json` sidecar is emitted by nb2 **at inference time** (moosez's own
 `organ_indices`; TotalSegmentator's `class_map[<task>]`), so label IDs are always
 authoritative and never hand-transcribed. nb3 joins each `label_name` against the
-model's SNOMED CSV to build the dcmqi labelmap config. `model_id` names the model that
+SNOMED table — the engine's own table, bundled at the archive root by nb2, with the
+rows of the WDL-fetched `snomedMappingPath` CSV (if the preset sets one) overriding or
+adding entries per label — to build the dcmqi labelmap config. `model_id` names the model that
 actually ran — the directory name, except TotalSegmentator `total` with `fast=True`,
 which is `total_fast` (older archives without the field fall back to the directory name).
 
@@ -98,7 +101,7 @@ To submit and monitor batches from the command line, see [operations.md](operati
 |---|---|
 | `inferenceDocker` | Per-model GPU image (`imagingdatacommons/cloudsegmentator-inference-<model>`). |
 | `inferenceNotebookPath` | Repo path to the model's nb2. |
-| `snomedMappingPath` | Repo path to the model's unified SNOMED CSV. |
+| `snomedMappingPath` | Repo path to a SNOMED override CSV: its rows replace or add entries, per label, in the table nb2 bundles into the archive (the engine's own). Empty (the MOOSE presets) → the bundled table alone. nb3 prints and records in `run_summary.json` (`snomed_table`) how many rows were overridden, added, or redundant. |
 | `inferenceParamsYaml` | Generic papermill passthrough for model knobs — new models need **no WDL change**. See *Model knobs* below. |
 | `gitRepo` / `gitBranch` | Where notebooks + SNOMED CSV are fetched from (override for dev/fork branches). |
 | `runRadiomics` / `runStructuredReport` | Harmonized output toggles (nb3). `runStructuredReport` emits one DICOM SR (TID1500, dcmqi `tid1500writer`) per SEG object (`structured_reports_dicom.tar`, meta-JSONs in `structured_reports_json.tar`), encoding each feature that has an IBSI quantity code + UCUM units in [`common/resources/radiomicsFeaturesMaps.csv`](../../common/resources/radiomicsFeaturesMaps.csv) — currently the first-order + shape classes; uncoded features (texture classes, engine extras) stay JSON-only. Requires `runRadiomics=true`. |
@@ -150,13 +153,20 @@ the whole run.
 1. Write `models/<model>/Notebooks/inference.ipynb` — read `converted_nifti.tar.lz4`,
    run the model, emit `segmentations.tar.lz4` in the **Boundary-B** layout (multilabel
    mask + `label_map.json`, plus `engine_provenance.json` so the SEGs carry a versioned
-   algorithm name). nb3's `SeriesNumber` table also needs a slot for the new model;
-   without one it overflows to the next free slot.
+   algorithm name). If the engine ships a SNOMED table, copy it to the archive root as
+   `snomed_mapping.csv` (see `_bundle_*_snomed` in either nb2). nb3's `SeriesNumber`
+   table also needs a slot for the new model; without one it overflows to the next
+   free slot.
 2. Write `models/<model>/Dockerfile` — `FROM imagingdatacommons/cloudsegmentator-base` and add
    only the model framework + baked weights.
-3. Add `models/<model>/resources/snomed_mapping.csv` in the unified schema
-   (`model,label_name,label_id,` + SNOMED columns; `label_id` may be blank — nb3 keys on
-   `label_name`).
+3. Only if the engine ships no table, or some of its rows are wrong or missing
+   (TotalSegmentator: the `lung_vessels` rows): add
+   `models/<model>/resources/snomed_mapping.csv` holding just those rows, in the engine's
+   own table layout (TotalSegmentator: `Structure,<15 code columns>,DicomRGBColor`;
+   moosez: `model,label_name,label_id,<15 code columns>,recommendedDisplayRGBValue` —
+   nb3 reads both and keys on the label name), and set `snomedMappingPath` in the
+   preset. nb3 merges it over the bundled table per label, so an engine with no table
+   gets its whole table here.
 4. Add `models/<model>/inputs.<model>.json`.
 
 nb1, nb3, the base image, and the WDL are reused unchanged.
@@ -216,12 +226,16 @@ papermill common/Notebooks/outputConversionNotebook.ipynb out3.ipynb \
   -p segmentationArchivePath segmentations.tar.lz4 \
   -p modelName moose                                     # → dicom_seg.tar + radiomics.tar
 ```
-For MOOSE, `snomedMappingPath` is omitted: nb2 bundles moosez's own
-`moose_snomed_mapping.csv` into the archive and nb3 reads that bundled copy.
-Models that do not bundle a table into the archive (e.g. TotalSegmentator) instead
-pass a curated CSV, e.g. `-p snomedMappingPath models/totalseg/resources/snomed_mapping.csv`
-(derived from upstream's `totalsegmentator_snomed_mapping.csv`, plus rows for the
-v2 `lung_vessels` classes that upstream does not map).
+Both engines' nb2 bundle their package's SNOMED table into the archive (moosez's
+`moose_snomed_mapping.csv`, TotalSegmentator's `totalsegmentator_snomed_mapping.csv`),
+and nb3 uses that as the baseline. For MOOSE, `snomedMappingPath` is omitted. The
+TotalSegmentator presets pass
+`-p snomedMappingPath models/totalseg/resources/snomed_mapping.csv`, a 19-row override
+holding only what upstream's table lacks or gets wrong: the v2 `lung_vessels` rows, the
+#612 and `gluteus_minimus` code fixes and the "Morphologically Abnormal Structure"
+wording. As those land in a TotalSegmentator release, nb3 reports the matching rows
+as `redundant` and they can be deleted. Drop the input to exercise the bundled table alone; nb3 prints
+what it merged.
 Confirm each archive matches the layout in *Contracts* above, and that
 `dicom_seg.tar` imported into a Healthcare API store renders in OHIF
 (`itkimage2segimage` preserves the source `StudyInstanceUID`).

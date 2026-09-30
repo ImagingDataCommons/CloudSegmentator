@@ -49,7 +49,7 @@ MODELS = {
         "ram": "26",
         "inputs": {
             "Segmentator.inferenceNotebookPath": '"workflows/models/totalseg/Notebooks/inference.ipynb"',
-            "Segmentator.snomedMappingPath": '"workflows/models/totalseg/resources/snomed_mapping.csv"',
+            "Segmentator.snomedMappingPath": '"workflows/models/totalseg/resources/snomed_mapping.csv"',   # per-label override of the bundled package table (lung_vessels rows, code fixes)
             "Segmentator.inferenceParamsYaml": '"task: total,lung_vessels"',
             "Segmentator.modelName": '"totalseg"',
         },
