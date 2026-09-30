@@ -194,6 +194,13 @@ nb1 (convert) runs on the model inference image (which is `FROM cloudsegmentator
 nb3 (output conversion) runs on `output_conversion`. Each model image is base + one
 ML framework.
 
+In CI, [`.github/workflows/harmonized_images.yml`](../../../.github/workflows/harmonized_images.yml)
+builds the same four images. Pushes to `main` (tagged `main` and `sha-<commit>`)
+and `v*` tags push them to Docker Hub; pull requests only build them. An image is
+rebuilt when its own Dockerfile changes, and a base change rebuilds both model
+images on top of the new base (`BASE_TAG=sha-<commit>`). `workflow_dispatch`
+rebuilds all four.
+
 ## Verifying the contracts locally
 
 Each notebook runs standalone with papermill on a small IDC series list, so the

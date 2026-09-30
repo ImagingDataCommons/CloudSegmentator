@@ -1,0 +1,260 @@
+name: harmonized_images
+
+# Builds the four images of the harmonized Segmentator workflow
+# (workflows/harmonized/Docs/README.md, "Docker build order"):
+#
+#   imagingdatacommons/cloudsegmentator-base               (CUDA, py3.12)
+#   imagingdatacommons/cloudsegmentator-inference-moose    FROM base
+#   imagingdatacommons/cloudsegmentator-inference-totalseg FROM base
+#   imagingdatacommons/cloudsegmentator-output-conversion  (CPU, py3.11 + Julia)
+#
+# One workflow rather than one per image because the inference images derive
+# FROM the base: when the base changes, the model images must be rebuilt on top
+# of the new base. Each image is still only rebuilt when its own inputs change;
+# workflow_dispatch and v* tags rebuild all four.
+#
+# On push, the base is tagged with the branch/tag name and sha-<full sha>, and
+# the model images are built FROM that exact sha tag. On pull requests nothing
+# is pushed, so each inference job builds the base locally and builds on that.
+
+on:
+  push:
+    branches:
+      - "main"
+    paths:
+      - ".github/workflows/harmonized_images.yml"
+      - "workflows/common/Dockerfiles/base/**"
+      - "workflows/common/Dockerfiles/output_conversion/**"
+      - "workflows/models/*/Dockerfile"
+    tags:
+      - 'v*'
+  pull_request:
+    branches:
+      - "main"
+    paths:
+      - ".github/workflows/harmonized_images.yml"
+      - "workflows/common/Dockerfiles/base/**"
+      - "workflows/common/Dockerfiles/output_conversion/**"
+      - "workflows/models/*/Dockerfile"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      base: ${{ steps.select.outputs.base }}
+      output_conversion: ${{ steps.select.outputs.output_conversion }}
+      models: ${{ steps.select.outputs.models }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Detect changed images
+        id: filter
+        if: github.event_name != 'workflow_dispatch' && !startsWith(github.ref, 'refs/tags/')
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            base:
+              - ".github/workflows/harmonized_images.yml"
+              - "workflows/common/Dockerfiles/base/**"
+            output_conversion:
+              - ".github/workflows/harmonized_images.yml"
+              - "workflows/common/Dockerfiles/output_conversion/**"
+            moose:
+              - "workflows/models/moose/Dockerfile"
+            totalseg:
+              - "workflows/models/totalseg/Dockerfile"
+
+      - name: Select images to build
+        id: select
+        env:
+          BUILD_ALL: ${{ github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/') }}
+          BASE: ${{ steps.filter.outputs.base }}
+          OUTPUT_CONVERSION: ${{ steps.filter.outputs.output_conversion }}
+          MOOSE: ${{ steps.filter.outputs.moose }}
+          TOTALSEG: ${{ steps.filter.outputs.totalseg }}
+        run: |
+          if [ "$BUILD_ALL" = "true" ]; then
+            BASE=true; OUTPUT_CONVERSION=true; MOOSE=true; TOTALSEG=true
+          fi
+          # A new base means every model image must be rebuilt on top of it.
+          models=()
+          if [ "$BASE" = "true" ] || [ "$MOOSE" = "true" ]; then models+=('"moose"'); fi
+          if [ "$BASE" = "true" ] || [ "$TOTALSEG" = "true" ]; then models+=('"totalseg"'); fi
+          models_json="[$(IFS=,; echo "${models[*]}")]"
+          echo "base=${BASE:-false}" >> "$GITHUB_OUTPUT"
+          echo "output_conversion=${OUTPUT_CONVERSION:-false}" >> "$GITHUB_OUTPUT"
+          echo "models=$models_json" >> "$GITHUB_OUTPUT"
+          echo "base=${BASE:-false} output_conversion=${OUTPUT_CONVERSION:-false} models=$models_json"
+
+  base:
+    needs: changes
+    if: needs.changes.outputs.base == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v6
+        with:
+          images: |
+            imagingdatacommons/cloudsegmentator-base
+          tags: |
+            type=ref,event=branch
+            type=ref,event=tag
+            type=ref,event=pr
+            type=sha,format=long
+
+      - name: Login to Docker Hub
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v4
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and Push Docker image to Docker Hub
+        uses: docker/build-push-action@v7
+        with:
+          context: ./workflows/common/Dockerfiles/base
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          build-args: |
+            GIT_HASH=${{ github.sha }}
+
+  inference:
+    needs: [changes, base]
+    # Runs when the base job was skipped (only a model Dockerfile changed) as
+    # well as when it succeeded; never on top of a failed base.
+    if: >-
+      !cancelled()
+      && needs.changes.result == 'success'
+      && needs.changes.outputs.models != '[]'
+      && needs.base.result != 'failure'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        model: ${{ fromJSON(needs.changes.outputs.models) }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      # The model images are ~20 GB uncompressed (torch/nnunetv2 plus baked
+      # weights), which does not fit in the free space an ubuntu-latest runner
+      # ships with. Drop the preinstalled toolchains -- none are used here.
+      - name: Free up disk space
+        run: |
+          df -h /
+          sudo rm -rf \
+            /usr/local/lib/android \
+            /opt/hostedtoolcache \
+            /usr/share/dotnet \
+            /usr/share/swift \
+            /opt/ghc \
+            /usr/local/.ghcup \
+            /usr/local/share/boost
+          sudo docker image prune --all --force
+          df -h /
+
+      # Pull requests push nothing, so build the base into the local image
+      # store (default docker driver) and build the model image on top of it.
+      - name: Build base image locally
+        if: github.event_name == 'pull_request'
+        uses: docker/build-push-action@v7
+        with:
+          context: ./workflows/common/Dockerfiles/base
+          load: true
+          tags: cloudsegmentator-base:ci
+          build-args: |
+            GIT_HASH=${{ github.sha }}
+
+      - name: Select base image
+        env:
+          EVENT: ${{ github.event_name }}
+          BASE_BUILT: ${{ needs.base.result == 'success' }}
+        run: |
+          if [ "$EVENT" = "pull_request" ]; then
+            echo "BASE_IMAGE=cloudsegmentator-base" >> "$GITHUB_ENV"
+            echo "BASE_TAG=ci" >> "$GITHUB_ENV"
+          elif [ "$BASE_BUILT" = "true" ]; then
+            # The base this run just pushed.
+            echo "BASE_IMAGE=imagingdatacommons/cloudsegmentator-base" >> "$GITHUB_ENV"
+            echo "BASE_TAG=sha-${GITHUB_SHA}" >> "$GITHUB_ENV"
+          else
+            # Base unchanged: build on the published one.
+            echo "BASE_IMAGE=imagingdatacommons/cloudsegmentator-base" >> "$GITHUB_ENV"
+            echo "BASE_TAG=main" >> "$GITHUB_ENV"
+          fi
+
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v6
+        with:
+          images: |
+            imagingdatacommons/cloudsegmentator-inference-${{ matrix.model }}
+          tags: |
+            type=ref,event=branch
+            type=ref,event=tag
+            type=ref,event=pr
+            type=sha,format=long
+
+      - name: Login to Docker Hub
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v4
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and Push Docker image to Docker Hub
+        uses: docker/build-push-action@v7
+        with:
+          context: ./workflows/models/${{ matrix.model }}
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          build-args: |
+            GIT_HASH=${{ github.sha }}
+            BASE_IMAGE=${{ env.BASE_IMAGE }}
+            BASE_TAG=${{ env.BASE_TAG }}
+
+  output_conversion:
+    needs: changes
+    if: needs.changes.outputs.output_conversion == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v6
+        with:
+          images: |
+            imagingdatacommons/cloudsegmentator-output-conversion
+          tags: |
+            type=ref,event=branch
+            type=ref,event=tag
+            type=ref,event=pr
+            type=sha,format=long
+
+      - name: Login to Docker Hub
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v4
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and Push Docker image to Docker Hub
+        uses: docker/build-push-action@v7
+        with:
+          context: ./workflows/common/Dockerfiles/output_conversion
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          build-args: |
+            GIT_HASH=${{ github.sha }}
