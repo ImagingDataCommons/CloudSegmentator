@@ -21,7 +21,9 @@ Submissions spend money in someone's billing project.
 
 1. **Preflight** (operations.md → *Before any submission*): the branch the config
    fetches from is pushed, Dockstore has the WDL change, changed images are
-   rebuilt and pushed. Stop and tell the user if any of these isn't true.
+   rebuilt and pushed (upstream `main`: the `harmonized_images` Actions run has
+   finished; a fork: pushed to the `--registry` namespace). Stop and tell the user
+   if any of these isn't true.
 2. **Confirm the plan with the user** before submitting: series count, engines,
    workspace, and a cost estimate (`cost-analysis` skill, or ~$0.02–0.045 per
    series for both engines at 20 series per entity).

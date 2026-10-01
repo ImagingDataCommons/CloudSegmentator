@@ -35,8 +35,11 @@ script takes its target from a flag or an environment variable:
    ```
    curl -s "https://dockstore.org/api/ga4gh/trs/v2/tools/%23workflow%2Fgithub.com%2F<org>%2FCloudSegmentator%2FSegmentatorTwoVmWorkflowOnTerra/versions/<branch>/PLAIN-WDL/descriptor" | grep '<changed text>'
    ```
-3. If a Dockerfile changed, rebuild and push the image — configs pin `:main`,
-   so Terra runs whatever `:main` currently is.
+3. If a Dockerfile changed, make sure the image is rebuilt — configs pin `:main`,
+   so Terra runs whatever `:main` currently is. On upstream `main`,
+   `.github/workflows/harmonized_images.yml` rebuilds and pushes the affected images
+   automatically (wait for the run to finish; check the Actions tab). On a fork or dev
+   branch, build and push to your own registry and submit with `--registry`.
 4. Try risky changes on **one small entity** (~3 series, ~$0.10, 15–60 min)
    before a batch.
 

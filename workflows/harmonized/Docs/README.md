@@ -5,13 +5,14 @@ A single, model-agnostic Terra/WDL workflow that runs **any** segmentation model
 *inference* notebook and its Docker image are model-specific; input conversion and
 output conversion are shared.
 
-> **Status: pre-release.** The framework, contracts, Dockerfiles, unified SNOMED
-> mappings, WDL, and all three notebooks are in place, and the workflow has been run
-> end-to-end on Terra/GPU for both MOOSE and TotalSegmentator (Sep 2026 batches, all
-> succeeded). The four `imagingdatacommons/cloudsegmentator-*` images are **not yet
-> published**; until they are, override the image inputs with your own build (see
-> *Known gaps*). The legacy `workflows/MOOSE` and `workflows/TotalSegmentator` pipelines remain the
-> supported path until then.
+> **Status: runnable from upstream `main`.** The workflow is published on Dockstore
+> (`SegmentatorTwoVmWorkflowOnTerra`, version `main`), the four
+> `imagingdatacommons/cloudsegmentator-*:main` images are on Docker Hub (built by CI from
+> this repo), and the presets below run it unmodified. Validated end-to-end on Terra for
+> both MOOSE and TotalSegmentator (Sep 2026 batches, all succeeded; last on 2026-09-30
+> from `main` with the published images). The legacy `workflows/MOOSE` and
+> `workflows/TotalSegmentator` pipelines remain in the repo; keep changes to them separate.
+> Open items are listed under *Known gaps*.
 
 **More docs:** [operations.md](operations.md) — submitting, monitoring, triaging and
 checking delivered outputs; [development.md](development.md) — changing the notebooks
@@ -50,7 +51,7 @@ convert_manifest.json
 ```
 <SeriesInstanceUID>/<model>/segmentations/*.nii.gz  # multilabel mask(s)
 <SeriesInstanceUID>/<model>/label_map.json          # {"model": ..., "model_id": ..., "labels": {label_id: label_name}}
-engine_provenance.json                              # {"engine": ..., "version": ...}
+engine_provenance.json                              # {"engine": ..., "version": ..., "snomed_table": <bundled table path or null>}
 snomed_mapping.csv                                  # optional: the engine's own SNOMED table, bundled by nb2
 ```
 `<model>` is one directory per sub-model: each MOOSE model (`clin_ct_organs`, …) or
@@ -87,7 +88,8 @@ each paired SR is in a +50 block.
 
    The presets fetch the notebooks from `ImagingDataCommons/CloudSegmentator` / `main`
    (`gitRepo` / `gitBranch` — override them to run a fork or a dev branch) and use the
-   `imagingdatacommons/cloudsegmentator-*:main` images, which are not published yet.
+   published `imagingdatacommons/cloudsegmentator-*:main` images (override
+   `inferenceDocker` / `outputConversionDocker` to run your own build).
 3. Point `yamlListOfSeriesInstanceUIDs` at `this.SeriesInstanceUIDs` (or set `inputUri`
    + `secretProject` for a private GCS bucket — same HMAC/Secret-Manager setup as the
    legacy MOOSE workflow, see [`workflows/MOOSE/Docs/README.md`](../../MOOSE/Docs/README.md)).
@@ -209,7 +211,9 @@ builds the same four images. Pushes to `main` (tagged `main` and `sha-<commit>`)
 and `v*` tags push them to Docker Hub; pull requests only build them. An image is
 rebuilt when its own Dockerfile changes, and a base change rebuilds both model
 images on top of the new base (`BASE_TAG=sha-<commit>`). `workflow_dispatch`
-rebuilds all four.
+rebuilds all four. The image names deliberately differ from the legacy
+`imagingdatacommons/inference_{moose,totalseg}`, which belong to the per-model
+workflows and must not be overwritten.
 
 ## Verifying the contracts locally
 
@@ -308,12 +312,6 @@ cheaper than pyradiomics on the same series.
 
 ## Known gaps
 
-- **Release images**: all four images are built and in use, but only under a personal
-  dev namespace. They still need pushing as `imagingdatacommons/cloudsegmentator-{base,
-  inference-moose,inference-totalseg,output-conversion}:main`, which is what the WDL
-  defaults and the presets expect. The names deliberately differ from the legacy
-  `imagingdatacommons/inference_{moose,totalseg}`, which belong to the per-model
-  workflows and must not be overwritten.
 - **DICOM-store import** (`dicomStoreImportUri`) has never been exercised end-to-end.
 - **dcmqi `Invalid Value`**: ~2.4 % of series fail SEG conversion with this dcmqi error;
   they are recorded in `dicom_seg_error_file.txt` and the rest of the batch completes.
@@ -324,6 +322,10 @@ cheaper than pyradiomics on the same series.
 - **SR feature coverage**: only features with a coded row in
   `common/resources/radiomicsFeaturesMaps.csv` (first-order + shape) appear in the
   TID1500 SRs; texture-class features would need IBSI codes added to the CSV.
-- **Base-image pinning**: the base pins pip deps by `==` but the CUDA base tag is not
-  yet pinned by `@sha256` (follow the TotalSegmentator Dockerfile discipline before release).
+- **Image pinning**: the base image leaves its pip stack unpinned and the MOOSE image
+  installs `moosez` / `nnunetv2` unpinned (TotalSegmentator is pinned to `2.18.0`), and
+  the CUDA base tag is not pinned by `@sha256`. Since CI rebuilds an image whenever its
+  Dockerfile changes, an unrelated Dockerfile edit can silently move the engine version;
+  the SEGs record it (`SegmentAlgorithmName`, `engine_provenance.json`), so check it after
+  any rebuild, and pin before a release.
 - **CWL / SevenBridges** parity is out of scope for this iteration (WDL-first).
