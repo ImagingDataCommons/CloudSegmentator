@@ -284,6 +284,19 @@ maps them to pyradiomics feature classes or to Radiomics.jl symbols
 (`firstorder`→`:first_order`, `shape`→`:shape3d`, texture names are identical), which
 it sends to the worker with every request (`"features": [...]`).
 
+**CT padding.** Scanners fill pixels outside the reconstruction field of view with a
+padding value (GE −3024 HU via `PixelPaddingValue`; Toshiba an untagged −2048), and
+where the body extends past the field of view the models segment into it. nb3 finds
+the padding once per series — `PixelPaddingValue` (+ `PixelPaddingRangeLimit`) when
+tagged and below −1024 HU, otherwise the series minimum when it is below −1024 HU and
+covers ≥ 1000 voxels (real noise below −1024 HU occurs only as scattered voxels) — and,
+for a seg file whose labels touch it, computes `shape` on the full labels and every
+other class on the labels minus the padding. Affected rows carry
+`padding_voxels_excluded`, and the SR measurement group says so in
+`AlgorithmParameters`; a label lying entirely in padding gets shape features only. In
+the Sep 30 test delivery 9 of 11 series had padding and 7 % of measurement groups
+touched it.
+
 > **Cost note (pilot, Aug 2026).** Radiomics time scales with ROI voxels; MOOSE's
 > `clin_ct_body` (whole-body mask, 2 labels) alone took ~1170 s/series of the
 > ~1500 s/series MOOSE nb3 total, with only first-order + 3D shape enabled. This is
