@@ -104,6 +104,13 @@ workflow Segmentator {
     # Organs/lungs/liver are < ~3 Mvox, so 5 separates anatomy from "everything". <= 0 disables.
     Float radiomicsMaxRoiMvox = 5.0
 
+    # DICOM-SEG encoding (dcmqi itkimage2segimage):
+    #   "labelmap" (default) - Label Map Segmentation Storage, one frame per slice
+    #   "binary"             - Segmentation Storage, a 1-bit frame per segment and slice
+    String segmentationType = "labelmap"
+    # SEG PixelData compression: "deflate" (Deflated Explicit VR Little Endian) or "none".
+    String segmentationCompression = "deflate"
+
     # ------------------------------------------------------------------------
     # OPTIONAL: checkpoint/resume on preemption (inference task)
     # GCS prefix (e.g. the workspace bucket: gs://fc-<id>/segmentator_ckpt). nb1 bundles
@@ -191,6 +198,8 @@ workflow Segmentator {
       radiomicsFeatureClasses   = radiomicsFeatureClasses,
       juliaThreads              = outputConversionJuliaThreads,
       maxRoiMvox                = radiomicsMaxRoiMvox,
+      segmentationType          = segmentationType,
+      segmentationCompression   = segmentationCompression,
       docker                    = outputConversionDocker,
       preemptibleTries          = outputConversionPreemptibleTries,
       cpus                      = outputConversionCpus,
@@ -402,6 +411,8 @@ task outputConversion {
     String  radiomicsFeatureClasses
     Int     juliaThreads
     Float   maxRoiMvox
+    String  segmentationType
+    String  segmentationCompression
     String  docker
     Int     preemptibleTries
     Int     cpus
@@ -482,6 +493,8 @@ task outputConversion {
       -p radiomicsFeatureCodesPath "radiomicsFeaturesMaps.csv" \
       -p radiomicsJlThreads ~{juliaThreads} \
       -p radiomicsMaxRoiMvox ~{maxRoiMvox} \
+      -p segmentationType "~{segmentationType}" \
+      -p segmentationCompression "~{segmentationCompression}" \
       -p dicomSegBucketUri "~{dicomSegBucketUri}" \
       -p dicomStoreImportUri "~{dicomStoreImportUri}" \
       -p inferenceUsageMetricsCsvPath "~{inferenceUsageMetricsCsv}"       -p convertUsageMetricsCsvPath "~{default='' convertUsageMetricsCsv}" \

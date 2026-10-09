@@ -9,6 +9,7 @@ Usage:
     python submit_wave.py <rootEntityType> <entityName> [entityType] [expression]
                           [--workspace ns/name] [--config ns/name]
                           [--registry R] [--bucket gs://...] [--models moose,totalseg]
+                          [--seg-type binary|labelmap] [--seg-compression deflate|none]
 
     # one entity:            submit_wave.py twoVM_pilot 4
     # an entity set:         submit_wave.py twoVM_batch23 batch23_all \\
@@ -75,6 +76,10 @@ def main():
     ap.add_argument("--models", default=",".join(MODELS),
                     help="comma-separated engines to submit (default: all)")
     ap.add_argument("--inference-ram", help="override inferenceRAM (GB) for every engine")
+    ap.add_argument("--seg-type", choices=("binary", "labelmap"),
+                    help="segmentationType for every engine (default: leave config value)")
+    ap.add_argument("--seg-compression", choices=("deflate", "none"),
+                    help="segmentationCompression for every engine (default: leave config value)")
     args = ap.parse_args()
 
     ns, name = workspace(args)
@@ -95,6 +100,10 @@ def main():
             bucket = "" if args.bucket.strip().lower() == "none" else args.bucket
             cfg["inputs"]["Segmentator.dicomSegBucketUri"] = f'"{bucket}"'
         cfg["inputs"]["Segmentator.dicomStoreImportUri"] = '""'
+        if args.seg_type:
+            cfg["inputs"]["Segmentator.segmentationType"] = f'"{args.seg_type}"'
+        if args.seg_compression:
+            cfg["inputs"]["Segmentator.segmentationCompression"] = f'"{args.seg_compression}"'
         cfg["rootEntityType"] = args.root_type
         api(cfg_path, tok, "PUT", cfg)
         body = {

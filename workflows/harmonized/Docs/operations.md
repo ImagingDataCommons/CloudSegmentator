@@ -128,7 +128,7 @@ The metadata stamped on each object is described under
 
 ### Checking SEG metadata with pydicom
 
-dcmqi **labelmap** SEGs start with a background segment (SegmentNumber 0) whose
+dcmqi **labelmap** SEGs (`segmentationType=labelmap`) start with a background segment (SegmentNumber 0) whose
 `SegmentAlgorithmName` is empty and `SegmentAlgorithmType` is `MANUAL`. Skip it —
 reading `SegmentSequence[0]` wrongly suggests the metadata is missing:
 
@@ -151,5 +151,5 @@ successfully end-to-end. Prerequisites:
 4. The URI is the bare resource name
    `projects/P/locations/L/datasets/D/dicomStores/S` (no `https://`, no
    `/dicomWeb`). The import pattern `<bucket>/**.dcm` picks up SEGs and SRs.
-5. Deflate transfer syntax (used by the SEGs) is supported by the Healthcare API.
+5. Deflate transfer syntax (the SEGs' default, `segmentationCompression=deflate`) is supported by the Healthcare API.
 6. Import failures only warn in the output notebook — verify in the store.
