@@ -105,9 +105,11 @@ workflow Segmentator {
     Float radiomicsMaxRoiMvox = 5.0
 
     # DICOM-SEG encoding (dcmqi itkimage2segimage):
-    #   "labelmap" (default) - Label Map Segmentation Storage, one frame per slice
-    #   "binary"             - Segmentation Storage, a 1-bit frame per segment and slice
-    String segmentationType = "labelmap"
+    #   "binary"   (default) - Segmentation Storage, a 1-bit frame per segment and slice
+    #   "labelmap"           - Label Map Segmentation Storage, one frame per slice
+    # The TID1500 SRs reference label maps with the wrong SOP Class until dcmqi's
+    # DCMTK includes DCMTK PR #161, hence binary by default.
+    String segmentationType = "binary"
     # SEG PixelData compression: "deflate" (Deflated Explicit VR Little Endian) or "none".
     String segmentationCompression = "deflate"
 
