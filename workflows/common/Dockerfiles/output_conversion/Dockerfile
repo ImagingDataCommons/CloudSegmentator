@@ -42,7 +42,10 @@ RUN pip3 install --no-cache-dir --no-build-isolation pyradiomics==3.0.1
 
 # dcmqi provides itkimage2segimage. PyPI `dcmqi` 0.4.1 ships dcmqi binaries
 # v1.5.5 (first with --segmentationType labelmap). pandas==1.5.3 / numpy<2 are
-# the proven Python 3.11 pins from the previous post-process images.
+# the proven Python 3.11 pins from the previous post-process images. idc-index
+# reads its index with pyarrow, which needs NumPy 2 from 26.0 on (pip installs it
+# anyway and the import then fails), so pyarrow is pinned to 25.0.1, the version in
+# the last working image (Sep 30, 2026).
 RUN pip3 install --no-cache-dir \
     dcmqi==0.4.1 \
     google-auth==2.29.0 \
@@ -56,6 +59,7 @@ RUN pip3 install --no-cache-dir \
     nibabel==5.1.0 \
     pandas==1.5.3 \
     papermill==2.4.0 \
+    pyarrow==25.0.1 \
     pydicom==2.4.1 \
     requests==2.31.0 \
     SimpleITK==2.3.1 \
