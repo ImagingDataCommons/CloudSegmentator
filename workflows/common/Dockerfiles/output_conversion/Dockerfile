@@ -109,3 +109,20 @@ ENV JULIA_NUM_THREADS=auto
 # race (fixed upstream in PR #34). CUDA support is an optional weak dependency
 # that is not installed here, so this stays CPU-only.
 RUN julia -e 'import Pkg; Pkg.add([Pkg.PackageSpec(name="Radiomics", version="2.0.0"),Pkg.PackageSpec(name="NIfTI"), Pkg.PackageSpec(name="JSON")]); Pkg.precompile()'
+
+# TEMPORARY: local patch to Radiomics.jl 2.0.0 until it is fixed upstream; drop it
+# (and RADIOMICS_JL_VERSION) when bumping the pin. radiomicsjl-single-slice.patch:
+#  - a label of a 3D image whose bounding box is one slice thick was computed as 2D
+#    (no shape3d features, total_energy without the z spacing; regression since
+#    1.3.3). Only a genuinely 2D image (unit dimension in the full image) is squeezed now.
+#  - elongation/flatness of a zero minor/least axis (such flat ROIs) is 0, as in
+#    pyradiomics, instead of NaN.
+# Pkg.develop points the default environment at the patched copy. nb3 records
+# RADIOMICS_JL_VERSION as the engine version in the radiomics JSON and SRs.
+COPY radiomicsjl-single-slice.patch /tmp/
+RUN cp -r "$(julia -e 'import Radiomics; print(pkgdir(Radiomics))')" /opt/Radiomics.jl \
+  && chmod -R u+w /opt/Radiomics.jl \
+  && patch -d /opt/Radiomics.jl -p1 < /tmp/radiomicsjl-single-slice.patch \
+  && rm /tmp/radiomicsjl-single-slice.patch \
+  && julia -e 'import Pkg; Pkg.develop(path="/opt/Radiomics.jl"); Pkg.precompile()'
+ENV RADIOMICS_JL_VERSION=2.0.0+single-slice-patch

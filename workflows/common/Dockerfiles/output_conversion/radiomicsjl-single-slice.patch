@@ -1,0 +1,47 @@
+--- a/src/Radiomics.jl
++++ b/src/Radiomics.jl
+@@ -213,7 +213,13 @@
+                 push!(log_buffer, "Applying bounding box to Label $label...")
+                 local img_to_use
+                 img_to_use, mask_to_use = bounding_box(p.img, mask_to_use, p.verbose; log_buffer=log_buffer)
+-                img_to_use, mask_to_use, spacing_to_use = squeeze_unit_dimension(img_to_use, mask_to_use, p.spacing)
++                # Squeeze only genuinely 2D input (a unit dimension in the full image), not a
++                # label of a 3D image whose bounding box happens to be one slice thick.
++                if any(size(p.img) .== 1)
++                    img_to_use, mask_to_use, spacing_to_use = squeeze_unit_dimension(img_to_use, mask_to_use, p.spacing)
++                else
++                    spacing_to_use = p.spacing
++                end
+ 
+                 if compute_all
+                     push!(log_buffer, "Computing ALL features")
+@@ -327,7 +333,13 @@
+     end
+ 
+     img_to_use, mask_to_use = bounding_box(p.img, mask_to_use, p.verbose)
+-    img_to_use, mask_to_use, spacing_to_use = squeeze_unit_dimension(img_to_use, mask_to_use, p.spacing)
++    # Squeeze only genuinely 2D input (a unit dimension in the full image), not a
++    # label of a 3D image whose bounding box happens to be one slice thick.
++    if any(size(p.img) .== 1)
++        img_to_use, mask_to_use, spacing_to_use = squeeze_unit_dimension(img_to_use, mask_to_use, p.spacing)
++    else
++        spacing_to_use = p.spacing
++    end
+ 
+     total_start_time = time()
+     total_time_accumulated = 0.0
+--- a/src/shape_3D_features.jl
++++ b/src/shape_3D_features.jl
+@@ -345,8 +345,10 @@
+     l1, l2, l3 = max(0.0, ev[1]), max(0.0, ev[2]), max(0.0, ev[3])
+ 
+     axes = [4*sqrt(l) for l in (l1, l2, l3)]
+-    elong = (l3>0 && l2>0) ? sqrt(l2/l3) : NaN
+-    flat = (l3>0 && l1>0) ? sqrt(l1/l3) : NaN
++    # A zero minor/least axis (a line- or plane-shaped ROI, e.g. one slice thick) gives
++    # elongation/flatness 0, as in pyradiomics; only a zero major axis is undefined.
++    elong = l3>0 ? sqrt(l2/l3) : NaN
++    flat = l3>0 ? sqrt(l1/l3) : NaN
+     return axes, Float64(elong), Float64(flat)
+ end
+ """

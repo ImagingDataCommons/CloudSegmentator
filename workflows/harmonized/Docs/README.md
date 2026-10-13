@@ -330,10 +330,13 @@ cheaper than pyradiomics on the same series.
 - **DICOM-store import** (`dicomStoreImportUri`) has never been exercised end-to-end.
 - **dcmqi `Invalid Value`**: ~2.4 % of series fail SEG conversion with this dcmqi error;
   they are recorded in `dicom_seg_error_file.txt` and the rest of the batch completes.
-- **Radiomics.jl single-slice ROIs**: labels confined to one slice are computed as 2D
-  (no `shape3d` features; `total_energy` misses the z spacing) — an upstream regression
-  in 1.3.3 that 2.0.0 still has, independent of the thread count. Unreported upstream;
-  see `common/Docs/radiomicsjl-upstream-issues/`.
+- **Radiomics.jl single-slice ROIs**: upstream 1.3.3–2.0.0 compute labels confined to
+  one slice as 2D (no `shape3d` features; `total_energy` misses the z spacing). The
+  `output_conversion` image patches its 2.0.0 copy
+  (`common/Dockerfiles/output_conversion/radiomicsjl-single-slice.patch`, engine version
+  recorded as `2.0.0+single-slice-patch`), which also reports elongation/flatness 0
+  rather than NaN for such flat ROIs, matching pyradiomics. Unreported upstream; see
+  `common/Docs/radiomicsjl-upstream-issues/`.
 - **SR feature coverage**: only features with a coded row in
   `common/resources/radiomicsFeaturesMaps.csv` (first-order + shape) appear in the
   TID1500 SRs; texture-class features would need IBSI codes added to the CSV.
