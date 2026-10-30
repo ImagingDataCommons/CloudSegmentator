@@ -7,6 +7,9 @@ launching it, in any GCP region, and (4) check how well the prediction extrapola
 
 ```
 region_prices.py        Cloud Billing Catalog -> per-region $/h for the workflow's VM shapes; region ranking
+cohort_idc_index.py     case study 1's cohort SQL on idc-index + public DICOM headers -> UID list
+                        (no BigQuery; same 3,059 CMB/CPTAC series as cmbCptacCohort.sql)
+cohort_case_study_2.py  case study 2's exact cohort (IDC v24 pinned, checked against BigQuery's list)
 make_terra_manifest.py  idc-index cohort -> designed pilot TSV + full-run TSV (Terra data tables)
 submission_cost.py      one Terra submission -> per-task metadata, billing $, per-series timings + features
 idc_features.py         SeriesInstanceUID -> slices / rows / cols / voxels / MB / collection (idc-index)
@@ -16,7 +19,7 @@ radiomics_compare.py    2+ runs' radiomics outputs (any engine/vintage) -> metri
 ```
 
 All scripts are plain Python 3 (`pandas`, `numpy`, `idc-index`; `matplotlib` optional for
-figures) and authenticate with `gcloud auth print-access-token` (Terra API, Billing Catalog)
+figures; `cohort_idc_index.py` also needs `pydicom` and `requests`, but no credentials) and authenticate with `gcloud auth print-access-token` (Terra API, Billing Catalog)
 and `bq` (billing export). Run `gcloud auth login` once.
 
 ## The approach
