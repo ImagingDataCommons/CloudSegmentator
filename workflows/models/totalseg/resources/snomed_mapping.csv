@@ -15,6 +15,6 @@ pleural_effusion,SCT,49755003,Morphologically Abnormal Structure,SCT,41699000,Ef
 pericardial_effusion,SCT,49755003,Morphologically Abnormal Structure,SCT,41699000,Effusion,,,,SCT,25489000,Pericardial cavity,,,,"0,200,255"
 liver_tumor,SCT,49755003,Morphologically Abnormal Structure,SCT,108369006,Neoplasm,,,,SCT,10200004,Liver,,,,"255,0,200"
 lung_airways,SCT,123037004,Anatomical Structure,SCT,110726009,Trachea and bronchus,,,,SCT,39607008,Lung,,,,"190,190,190"
-lung_airways_wall,SCT,123037004,Anatomical Structure,SCT,110726009,Trachea and bronchus,,,,SCT,39607008,Lung,,,,"145,145,145"
+lung_airways_wall,SCT,123037004,Anatomical Structure,FMA,86618,Wall of tracheobronchial tree,,,,SCT,39607008,Lung,,,,"145,145,145"
 lung_arteries,SCT,123037004,Anatomical Structure,SCT,81040000,Pulmonary artery,,,,SCT,39607008,Lung,,,,"216,101,79"
 lung_veins,SCT,123037004,Anatomical Structure,SCT,122972007,Pulmonary vein,,,,SCT,39607008,Lung,,,,"0,122,171"
