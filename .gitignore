@@ -28,3 +28,9 @@ __pycache__/
 # (_cost, _series, _workflows, _cost_estimate, ...). Reference submissions
 # that are already committed stay tracked; add new ones with `git add -f`.
 submission_*.csv
+
+# paper/: rendered figures, and the example case's DICOM (~0.5 GB;
+# paper/example-case/README.md says how to fetch it)
+paper/out/
+paper/example-case/ct/
+paper/example-case/seg_sr/
