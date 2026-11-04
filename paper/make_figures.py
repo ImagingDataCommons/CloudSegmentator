@@ -8,7 +8,7 @@
 
 Writes vector PDF and 300 dpi PNG to paper/out/, plus a CSV of the plotted
 values for each figure. A figure's files, and the function that draws it, are named
-by its keyword in the manuscript; figures.csv maps keywords to figure numbers.
+by its keyword; README.md lists which figure of the paper each keyword is.
 SB-CGC is omitted throughout.
 
 Colour means the kind of VM a task ran on - blue GPU, orange CPU - in every

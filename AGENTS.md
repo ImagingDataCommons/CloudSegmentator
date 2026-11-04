@@ -43,5 +43,5 @@ Claude Code users get these as project skills in `.claude/skills/`
 - **`paper/` is exempt from "never guess cloud targets" and "no run data in git".**
   It records the paper's runs, so its scripts name their submissions, workspaces
   and buckets, and `paper/data/` holds the tables derived from them. Change it
-  only to correct the paper's analysis, and name figures by their keyword in
-  `paper/figures.csv`.
+  only to correct the paper's analysis, and name a figure's files and function by
+  its keyword, as `paper/README.md` describes.

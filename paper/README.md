@@ -1,8 +1,7 @@
 # Analysis and figures for the 2026 paper
 
-The scripts and tidy data behind the execution figures and numbers in the paper on running
-CloudSegmentator at scale on Terra (Thiriveedhi et al., in preparation, 2026). It has two case
-studies:
+The scripts and tidy data behind the figures in the paper on running CloudSegmentator at scale
+on Terra (Thiriveedhi et al., in preparation, 2026). It has two case studies:
 
 - **Case study 1:** TotalSegmentator on NLST CT series, in cohorts of 1k, 10k and 126,088
   series, Jun 2023 – Jan 2024 (`workflows/TotalSegmentator`). The 126k run fetched its
@@ -14,37 +13,35 @@ Unlike `util/`, this folder records fixed runs. Submission IDs, workspaces and b
 written into the scripts, and `data/` holds tables derived from those runs. `AGENTS.md` exempts
 the folder from the repository's rules on both.
 
-## Figures and their numbers
+## Figures
 
-The manuscript cites figures by keyword, as in "Figure [stage-times]" or
-"Figure [workflow-diagram]B", so that figures can be added, dropped or reordered without
-renumbering. Code uses the same keyword:
+Each figure has a keyword. Its outputs and the function that draws it are named after that
+keyword:
 
 - Outputs are written to `out/` as `<keyword>.pdf` and `<keyword>.png` (`.svg` too for the
   diagram). The `make_figures*.py` scripts also write `<keyword>_values.csv`, which holds every
   plotted number. Variants and intermediate files use the pattern `<keyword>_<variant>.*`.
 - The function that draws a figure has the keyword's name, with hyphens replaced by underscores.
-- [`figures.csv`](figures.csv) lists every keyword, the script that draws it, and its figure
-  number. A keyword with no number is not in the manuscript.
 
-The numbers in `figures.csv` follow the manuscript as numbered on 4 Nov 2026, and they answer
-the question "which code drew Figure 3?" for a reader of the published paper. Figure 8 is made
-of panels drawn separately, so three keywords share its number: `sample-result`, the top row,
-is a set of screenshots from the IDC viewer and 3D Slicer; `cs2-sample-result`, bottom left,
-is the two-row layout from [`example-case/`](example-case/); and `cs2-structures`, bottom
-right, is drawn by `make_figures_cs2.py`.
+Figure numbers follow the manuscript as numbered on 4 Nov 2026. Figure 8 is made of panels
+drawn separately.
 
-Once the manuscript cites figures by number, `number_figures.py` checks those citations
-against `figures.csv`. Before that, it can number the figures in order of first citation:
+| Figure | Keyword | Drawn by |
+|---|---|---|
+| 1 | `workflow-diagram` | `make_workflow_diagram.py` |
+| 2 | `stage-times` | `make_figures.py` |
+| 3 | `gpu-allocation` | `make_figures.py` |
+| 4 | `cost-breakdown` | `make_figures.py` |
+| 5 | `cs2-stage-times` | `make_figures_cs2.py` |
+| 6 | `cs2-cost-breakdown` | `make_figures_cs2.py` |
+| 7 | `cs2-peak-memory` | `make_figures_cs2.py` |
+| 8, top row | `sample-result` | not drawn here: screenshots from the IDC viewer and 3D Slicer |
+| 8, bottom left | `cs2-sample-result` | [`example-case/`](example-case/), the two-row layout, `cs2-sample-result_two-rows.png` |
+| 8, bottom right | `cs2-structures` | `make_figures_cs2.py` |
 
-```
-uv run paper/number_figures.py --manuscript manuscript.md            # check what it cites
-uv run paper/number_figures.py --manuscript manuscript.md --assign   # number by first citation
-uv run paper/number_figures.py --export submission/                  # figure-1.pdf, ...
-```
-
-To add a figure, add a row to `figures.csv` with a new keyword, and name its outputs and its
-function by that keyword.
+The scripts also draw figures that are not in the paper: `preemption-loss`,
+`configurations-1k`, `cost-breakdown-1k` and `cohorts-twovm` (`make_figures.py`), and
+`cs1-peak-memory` and `idc-structures` (`make_figures_cs2.py`).
 
 ## What runs with what
 
@@ -58,13 +55,10 @@ dependencies inline for `uv run`.
 | `make_figures.py` | case study 1 figures | `data/` |
 | `make_figures_cs2.py` | case study 2 figures, `cs1-peak-memory` and `idc-structures` | `data/` |
 | `make_workflow_diagram.py` | `workflow-diagram`, plus an editable `.drawio` copy | nothing |
-| `memory_comparison.py` | prints the comparison of peak memory between the case studies | `data/` |
-| `number_figures.py` | checks `figures.csv`, assigns numbers, exports numbered files | `out/` |
 | `build_data.py` | case study 1 tables, from Cromwell logs and BigQuery | `gcloud`, `bq`: case study 1 workspace bucket, `idc-external-025`; ~1 GB of logs, ~40 min |
 | `build_data_cs2.py` | case study 2 tables, from the Terra API, the workflows' metrics files and the billing export | `gcloud`: case study 2 workspace; `bq`: billing export; ~3 min. `--reruns-only` skips BigQuery |
 | `build_data_memory.py` | `cs1_peak_memory`, `cs2_series_order` | `gcloud`: both workspace buckets; `lz4`; ~15 min |
 | `build_series_geometry_cs2.py` | `cs2_series_geometry` | nothing (idc-index, IDC v25) |
-| `build_anatomy_coverage.py` | `remaining_series`; prints how much of IDC has anatomy segmented | nothing; `--refresh-cs2` needs `bq` on `idc-external-031` |
 | `build_data_structures_cs2.py` | `cs2_structures`, from the SEGs in the case study 2 DICOM store's BigQuery export | `bq` on `idc-external-031` |
 | `build_data_structures_idc.py` | `idc_structures`, `idc_structures_totals`, from IDC v25 in BigQuery and the case study 2 query | `bq` on `idc-external-031` |
 | `example-case/` | `cs2-sample-result` | 3D Slicer and the case's DICOM; see [its README](example-case/README.md) |
@@ -123,8 +117,6 @@ Every file is gzip-compressed CSV; pandas reads them as they are.
 | `cs2_series_geometry` | series: matrix, spacing, field of view, length, voxels as acquired and at 1.5 mm, peak RAM, memory failures | idc-index (IDC v25) |
 | `cs2_series_order` | series in each inference attempt with a memory-related failure: position, failures before it, restored from checkpoint | executed inference notebooks |
 | `cs1_peak_memory` | case study 1 series (twoVM 1k, 10k, 126k): peak RAM on the GPU VM, with geometry | each workflow's `inferenceUsageMetrics.lz4` |
-| `cs2_output_series` | source CT series with at least one case study 2 SEG | `ReferencedSeriesSequence` in `idc-external-031.not_a_challenge.idc-segmentations-20261014`, read 2 Nov 2026 |
-| `remaining_series` | IDC v25 CT, MR or PT series that can be segmented and has no whole-body anatomy | idc-index |
 | `cs2_structures` | structure (SNOMED segmented property type, left and right merged): the models that segment it, the CT series it was found in (any model, TotalSegmentator, MOOSE) and its segments | the SEGs in `idc-external-031.not_a_challenge.idc-segmentations-20261014`, read 30 Oct 2026 |
 | `idc_structures` | structure segmented in IDC v25 on CT, MR or PET, or by case study 2 (codes for one concept merged): its codes, names, IDC sources, segments, and the series it is in: in IDC (by modality, and case study 1's), in case study 2, added by case study 2, and the union | `bigquery-public-data.idc_v25` and the above, read 30 Oct 2026 |
 | `idc_structures_totals` | modality (CT, MR, PET): series with any segment in IDC, in case study 2 and in the union; SEG instances, segments and sources in IDC | as above |

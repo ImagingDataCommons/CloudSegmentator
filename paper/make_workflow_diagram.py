@@ -2,7 +2,7 @@
 # requires-python = ">=3.11"
 # dependencies = ["matplotlib>=3.9"]
 # ///
-"""Draw Figure [workflow-diagram], a generic version of the preprint's Figure 1.
+"""Draw workflow-diagram, the paper's Figure 1, a generic version of the preprint's Figure 1.
 
     uv run paper/make_workflow_diagram.py
 
