@@ -25,9 +25,17 @@ renumbering. Code uses the same keyword:
   plotted number. Variants and intermediate files use the pattern `<keyword>_<variant>.*`.
 - The function that draws a figure has the keyword's name, with hyphens replaced by underscores.
 - [`figures.csv`](figures.csv) lists every keyword, the script that draws it, and its figure
-  number. The `number` column is blank until submission.
+  number. A keyword with no number is not in the manuscript.
 
-Numbers are assigned once, at submission:
+The numbers in `figures.csv` follow the manuscript as numbered on 4 Nov 2026, and they answer
+the question "which code drew Figure 3?" for a reader of the published paper. Figure 7 is made
+of panels drawn separately, so two keywords share its number: `sample-result`, the top row, is
+a set of screenshots from the IDC viewer and 3D Slicer, and `cs2-sample-result`, bottom left,
+is the two-row layout from [`example-case/`](example-case/). Its bottom-right panel, a chart
+of the structures segmented in case study 2, is not drawn here.
+
+Once the manuscript cites figures by number, `number_figures.py` checks those citations
+against `figures.csv`. Before that, it can number the figures in order of first citation:
 
 ```
 uv run paper/number_figures.py --manuscript manuscript.md            # check what it cites
@@ -35,10 +43,8 @@ uv run paper/number_figures.py --manuscript manuscript.md --assign   # number by
 uv run paper/number_figures.py --export submission/                  # figure-1.pdf, ...
 ```
 
-After that, `figures.csv` answers the question "which code drew Figure 3?" for a reader of the
-published paper. To add a figure, add a row to `figures.csv` with a new keyword, and name its
-outputs and its function by that keyword. `sample-result` is a set of screenshots from the IDC
-viewer and is not drawn here.
+To add a figure, add a row to `figures.csv` with a new keyword, and name its outputs and its
+function by that keyword.
 
 ## What runs with what
 
