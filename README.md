@@ -1,133 +1,109 @@
-# Welcome to the CloudSegmentator repository. 
+# CloudSegmentator
 
-## This repository contains the complete source code used to develop workflows for analysis on FireCloud (Terra) or Seven Bridges Cancer Genomics Cloud.
+CloudSegmentator runs AI segmentation models on images from the
+[NCI Imaging Data Commons](https://imaging.datacommons.cancer.gov/) (IDC) on cloud VMs, and
+converts the results to standard DICOM that can be shared back through IDC:
 
-To learn more about the background for this study, see the preprint below
+- **Segmentations** of anatomy, as DICOM Segmentation (SEG) objects with each structure coded
+  in SNOMED CT.
+- **Radiomics features** of each segmented structure, as JSON and as DICOM Structured Reports
+  (TID 1500).
 
-> Thiriveedhi, V. K., Krishnaswamy, D., Clunie, D., Pieper, S., Kikinis, R. & Fedorov, A. Cloud-based large-scale curation of medical imaging data using AI segmentation. Research Square (2024). https://doi.org/10.21203/rs.3.rs-4351526/v1
-  
+The models are [TotalSegmentator](https://github.com/wasserth/TotalSegmentator) and
+[MOOSE](https://github.com/ENHANCE-PET/MOOSE). The workflows are written in WDL, run on
+[Terra](https://terra.bio), and are published on
+[Dockstore](https://dockstore.org/organizations/ImagingDataCommons/collections/CloudSegmentator).
+They read public IDC data directly, or DICOM from a private Google Cloud Storage bucket.
 
+## Results
 
-### What is this repo about?
-- There is more than 85TB of publicly available data on Imaging Data Commons (IDC) and even more on The Cancer Imaging Archive (TCIA)
-- Much of this data is not annotated due to various reasons such as lack of access to Radiologists or the data may be too large to annotate all by humans
-- This is where AI and deep learning models come into play to help annotate data. 
-- For instance, one of the most prominent segmentation models, TotalSegmentator, can segment up to 104 body parts (v1)
-- Most of the AI models leverage GPUs to perform inference quickly, which proves to be instrumental when dealing with TBs of data. 
-- However, this may also mean investing in expensive GPUs or blocking the shared resources on-premises clusters
-- Every research team may have their own workflow depending on the research question
-- Hundreds of publicly available workflows already exist to process BigData, for example, massively parallel sequencing data
-- Yet, as of writing this on 2024-01-03, not a single workflow related to radiology is on dockstore
-- That's why we aim to showcase the capabilities of Terra and Seven Bridges Cancer Genomics Cloud using the TotalSegmentator segmentation model as an example to process all 3D reconstructable CT volumes on ImagingDataCommons (more than 10TB!) in a matter of few days
+| When | Models and workflow | Images | Results |
+|---|---|---|---|
+| 2023–24 | TotalSegmentator; older workflow, release [v1.2.0](https://github.com/ImagingDataCommons/CloudSegmentator/releases/tag/v1.2.0) | 126,088 CT series from NLST | In IDC as [TotalSegmentator-CT-Segmentations](https://doi.org/10.5281/zenodo.8347011) |
+| Oct 2026 | TotalSegmentator and MOOSE; harmonized workflow | 3,059 CT series from CMB and CPTAC | On [Zenodo](https://doi.org/10.5281/zenodo.23825858), pending ingestion into IDC |
 
+## Which workflow to use
 
-### Background
-- FireCloud and Seven Bridges Cancer Genomics Cloud were both developed in partnership with National Cancer Institute (NCI) 
-  - They are entities of Cloud Resources Division of Cancer Research Data Commons. Read more about NCI Cloud Resources [here](https://datascience.cancer.gov/data-commons/cloud-resources)
-- Developed for running compute jobs on cloud computing resources for biomedical researchers
-- Abstracts the inticracries of cloud platforms, meaning you do not need to be a cloud engineer with expertise to get started
-- Uses open source maintained languages Workflow Description Language (WDL) and Common Workflow Language (CWL)
-    - One can run these workflows not only on the cloud but on computing platform with minimal changes 
-- In short, FireCloud and Seven Bridges Cancer Genomics Cloud can run reproducible and shareable workflows that can process BigData on Cloud
+For new runs, use the **harmonized workflow**. One WDL runs every supported model, and only the
+inference step is model-specific, so adding a model takes one notebook and one Docker image.
 
-- And we use Dockstore as it is a place where workflows are made avaialable to public by researchers
-- Users can import these workflows into a platform of their choice
+| Dockstore workflows | Models | Status | Docs |
+|---|---|---|---|
+| `SegmentatorTwoVmWorkflowOnTerra` | TotalSegmentator 2.18.0 (`total`, `lung_vessels`); MOOSE (10 `clin_ct_*` models) | Current. Validated on Terra in Sep 2026; used for the 2026 run | [Harmonized](workflows/harmonized/Docs/README.md) |
+| `TotalSegmentator*VmWorkflowOnTerra` | TotalSegmentator 1.5.6 | Older; used for the NLST run | [TotalSegmentator](workflows/TotalSegmentator/Docs/README.md) |
+| `Moose*VmWorkflowOnTerra` | MOOSE | Older; replaced by the harmonized workflow | [MOOSE](workflows/MOOSE/Docs/README.md) |
 
+The older workflows stay in the repository and on Dockstore so that past runs can be reproduced.
+Open issues with the harmonized workflow, such as its untested import into a DICOM store, are
+listed under [Known gaps](workflows/harmonized/Docs/README.md#known-gaps).
 
-<details close>
-<summary><b><h2>More on FireCloud and Seven Bridges Cancer Genomics Cloud</h2></b></summary>
+## How the harmonized workflow works
 
-- FireCloud
-    - is powered by Terra, a platform developed in conjunction with Microsoft, Verily and the Broad Institute
-    - can run up to **3000** workflows and up to **28,800** jobs concurrently!
-    - (we will refer FireCloud as Terra from this point on) 
+Each workflow instance processes one batch of series on two VMs. Every step is a Jupyter
+notebook, run by papermill inside a Docker image.
 
-- Seven Bridges Cancer Genomics Cloud (now Velsera) was developed by the partnership of NCI and SB
-    - can run up to **80** jobs concurrently and this limit can be increased by reaching out to SB-CGC tech support
-    - (we will refer Seven Bridges Cancer Genomics Cloud as SB-CGC from this point on)
+```
+GPU VM (preemptible)                         CPU VM
+  convert     DICOM → NIfTI (dcm2niix)         output conversion
+  inference   NIfTI → label maps        ──▶      NIfTI → DICOM SEG (dcmqi)
+              (one notebook and one              radiomics (pyradiomics or Radiomics.jl)
+               image per model)                  DICOM SR (TID 1500)
+                                                 optional upload to GCS and a DICOM store
+```
 
-</details>
+Finished work is checkpointed to a bucket, so a preempted VM resumes where it stopped. Each run
+records per-step timings, peak memory and errors per series, which
+[`util/executionAnalytics`](util/executionAnalytics/README.md) uses to measure what a run cost
+and to predict the cost of the next one.
 
-## How do I get started?
-- As with any new tool, there are few prerequisites and the following concepts need to be understood
-- While you do not need to know everything listed here, doing so would make you understand how the workflows work
+## Running on Terra
 
-- ### Dockstore
+You need a Terra account and a Google Cloud billing project. If Terra or Dockstore is new to you,
+start with [Terra's guides](https://support.terra.bio/hc/en-us/categories/360005881492-Getting-Started)
+and [Dockstore's](https://docs.dockstore.org/en/stable/getting-started/getting-started.html).
 
-    - [What is Dockstore](https://docs.dockstore.org/en/stable/dockstore-introduction.html) 
+1. Open [`SegmentatorTwoVmWorkflowOnTerra`](https://dockstore.org/workflows/github.com/ImagingDataCommons/CloudSegmentator/SegmentatorTwoVmWorkflowOnTerra:main)
+   on Dockstore, choose **Launch with → Terra**, and pick a workspace.
+2. Under **Data**, upload a data table with one row per batch and a `SeriesInstanceUIDs` column
+   listing the IDC series in that batch.
+   [`make_terra_manifest.py`](util/executionAnalytics/make_terra_manifest.py) builds one from
+   an IDC cohort; [here is a sample](workflows/TotalSegmentator/Docs/sampleManifests/terra_data_table_manifest_2024_01_09_20_38.tsv).
+3. Under **Workflows**, open the workflow, choose **Run workflow(s) with inputs defined by data
+   table**, and select the table and the rows to run.
+4. Under **Inputs**, upload the preset for a model ([MOOSE](workflows/models/moose/inputs.moose.json),
+   [TotalSegmentator](workflows/models/totalseg/inputs.totalseg.json),
+   [TotalSegmentator lung vessels](workflows/models/totalseg/inputs.totalseg_lung_vessels.json))
+   and set `yamlListOfSeriesInstanceUIDs` to `this.SeriesInstanceUIDs`. Under **Outputs**,
+   choose **Use defaults**, so the outputs are linked from the data table.
+5. Click **Run analysis**.
 
-    - [Introduction](https://docs.dockstore.org/en/stable/getting-started/getting-started.html)
+To submit and monitor many batches from the command line, use [`util/terraOps`](util/terraOps),
+described in [operations.md](workflows/harmonized/Docs/operations.md).
 
-        - Getting started with docker, CWL, and WDL
+## Repository contents
 
-    - [Optional: Video Tutorials](https://docs.dockstore.org/en/stable/videos.html) 
+| Path | Contents |
+|---|---|
+| [`workflows/harmonized/`](workflows/harmonized) | The harmonized workflow's WDL, and its docs: [overview and inputs](workflows/harmonized/Docs/README.md), [operations](workflows/harmonized/Docs/operations.md), [development](workflows/harmonized/Docs/development.md) |
+| [`workflows/common/`](workflows/common) | Its shared notebooks (convert, output conversion), the base and output-conversion Dockerfiles, and the codes for radiomics features |
+| [`workflows/models/`](workflows/models) | Per model: the inference notebook, Dockerfile, input presets and SNOMED overrides |
+| [`workflows/TotalSegmentator/`](workflows/TotalSegmentator), [`workflows/MOOSE/`](workflows/MOOSE) | The older per-model workflows: WDL, notebooks, Dockerfiles, cohort queries |
+| [`util/terraOps/`](util/terraOps) | Command-line tools to upload data tables, submit batches, watch them and check their outputs |
+| [`util/executionAnalytics/`](util/executionAnalytics) | Measure what a Terra run cost; fit a cost model on a pilot and predict a larger run |
+| `util/pricingOptimization/`, `util/downloadBenchmarking/`, `util/Monitoring/` | One-off notebooks and queries: GPU prices by region, download speed, GPU quota use |
+| [`paper/`](paper) | Scripts and data behind the figures of the 2026 paper; every figure can be redrawn without credentials |
+| [`.github/workflows/`](.github/workflows) | CI that builds the Docker images and pushes them to Docker Hub (`imagingdatacommons/cloudsegmentator-*` for the harmonized workflow) |
+| [`AGENTS.md`](AGENTS.md), [`.claude/skills/`](.claude/skills) | Notes and procedures for coding agents |
 
-- ### Terra
+## Citation
 
-    - [Getting Started on Terra](https://support.terra.bio/hc/en-us/categories/360005881492-Getting-Started)
+> Thiriveedhi VK, Krishnaswamy D, Clunie D, Pieper S, Kikinis R, Fedorov A. Cloud-based
+> large-scale curation of medical imaging data using AI segmentation. *Research Square* (2024).
+> https://doi.org/10.21203/rs.3.rs-4351526/v1
 
-        - All Overview articles except 'Interactive analysis apps: Galaxy, Jupyter notebooks and RStudio'
-        - All Registration and setup articles 
-        - Data Tables and Workflows Quickstart guides
+Release v1.2.0 is archived on Zenodo: https://doi.org/10.5281/zenodo.10712896. A paper covering
+both runs is in preparation.
 
-- ### SB-CGC
+## License
 
-    - [Quick start guide to SB-CGC ](https://docs.cancergenomicscloud.org/page/uncontrolled-data-quickstart-guide)
-
-    - [More comprehensive Getting Started guide](https://docs.cancergenomicscloud.org/docs/before-you-start)
-
-        - All articles in Get Started and Tutorials
-
-- ## Importing workflows in to Terra
-
-    - This sections assumes that you are now familiar with Terra, WDL and you or your team admin has access to a google cloud billing account
-    - Find a WDL  workflow from our [collection on dockstore](https://dockstore.org/organizations/ImagingDataCommons/collections/CloudSegmentator)
-    - For the purposes of this demo, pick [TotalSegmentatortwoVmWorkflowOnTerra:main](https://dockstore.org/workflows/github.com/ImagingDataCommons/CloudSegmentator/TotalSegmentatortwoVmWorkflowOnTerra:main)
-    - Find `Launch with` on the top right and pick a plaform of choice to import the workflow
-    - For the purposes of this demo, we pick Terra
-    - Name the workflow or go with the default name
-    - Pick or create a new workspace to import the workflow 
-
-- ## Running workflows on Terra
-
-    - Assuming that you were able to import the workflow in the above step, this step aims to show how to start running one on Terra
-    - One of the most useful features of Terra is that it uses a data table model for launching thousands of workflows at a time
-    - In addition, the data table helps data management well. It will be populated with links to the outputs generated in the workflow as they become available
-    - Find a sample data table to import [here](https://github.com/ImagingDataCommons/CloudSegmentator/tree/main/workflows/TotalSegmentator/Docs/sampleManifests)
-    - Find `DATA` tab in the blade and import the datatable
-    - Next, find the imported workflow in `WORKFLOWS` tab
-    - Choose the option `Run workflow(s) with inputs defined by data table`
-    - In `Step 1` `Select root entity type`, select the data table imported above. The entity id begins with `twoVM_`
-    - In `Step 2` `SELECT DATA`, select any one row for now
-    - Next, under `INPUTS` tab, provide the reference for `yamlListOfSeriesInstanceUIDs` variable. It should appear as `this.SeriesInstanceUIDs`
-    - All other inputs are optional, so we will leave them empty for now
-    - Next, under `OUTPUTS` tab, select `Use defaults` for the `Attribute` column
-    - The `RUN ANALYSIS` button should now be available, and you can click to start the workflow
-
-- ## Importing workflows in to SB-CGC
-
-    - This sections assumes that you are now familiar with SB-CGC, CWL and you or your team admin has access to atleast pilot funds
-    - Find a CWL  workflow from our [collection on dockstore](https://dockstore.org/organizations/ImagingDataCommons/collections/CloudSegmentator)
-    - For the purposes of this demo, pick [TotalSegmentatortwoVmWorkflowOnTerra:main](https://dockstore.org/workflows/github.com/ImagingDataCommons/CloudSegmentator/TotalSegmentatortwoVmWorkflowOnSB-CGC:main)
-    - Find `Launch with` on the top right and pick a plaform of choice to import the workflow
-    - For the purposes of this demo, we pick `CGC`
-    - Pick a project to import the workflow 
-
-- ## Running workflows on SB-CGC   
-
-    - Assuming that you were able to import the workflow in the above step, this step aims to show how to start running one on SB-CGC
-    - Find the imported workflow from the `Apps` tab 
-    - Click `Run`
-    - Unlike Terra, SB-CGC does not use a data table model.
-    - For the purposes of this demo, [download and provide this input file](https://raw.githubusercontent.com/ImagingDataCommons/CloudSegmentator/main/workflows/TotalSegmentator/Docs/sampleManifests/batch_1.yaml)   to `yamlListOfSeriesInstanceUIDs`
-    - Click `Run` on the top right to start the workflow
-
-- ## MOOSE workflow
-
-    - The steps above use TotalSegmentator as the running example, but apply the same way to the MOOSE workflow
-    - For MOOSE-specific documentation — full argument reference, downloading private (non-IDC) data and storing the required secrets, and setting up an output bucket — see [workflows/MOOSE/Docs/README.md](workflows/MOOSE/Docs/README.md)
-
-- ## Harmonized (multi-model) workflow
-
-    - A single, model-agnostic workflow where only the *inference* step is model-specific — input conversion and output conversion (DICOM-SEG, radiomics) are shared across MOOSE, TotalSegmentator, and future models. Adding a model means writing one inference notebook + one Docker image (`FROM` a shared base) and reusing everything else.
-    - Pre-release; see [workflows/harmonized/Docs/README.md](workflows/harmonized/Docs/README.md) for the architecture, the nb1/nb2/nb3 contracts, and how to add a model. The per-model `MOOSE` and `TotalSegmentator` workflows above remain the supported path until it is validated end-to-end.
+Apache 2.0; see [LICENSE](LICENSE).

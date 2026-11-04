@@ -5,8 +5,9 @@ CT segmentation on Terra. It downloads a DICOM series (from Imaging Data Commons
 a private GCS bucket), converts it to NIfTI, runs one or more `moosez` models, and
 converts the resulting masks to DICOM-SEG.
 
-See the root [README](../../../README.md) for general background on Dockstore/Terra
-and how to import a workflow into a workspace before following the steps below.
+For new runs, use the [harmonized workflow](../../harmonized/Docs/README.md), which
+runs MOOSE as well. See the root README's [Running on Terra](../../../README.md#running-on-terra)
+for how to import a workflow into a workspace before following the steps below.
 
 ## Which WDL to use
 
@@ -27,9 +28,9 @@ inference parameters (`yamlListOfSeriesInstanceUIDs`, `mooseModels`,
 
 ## Running the workflow on Terra
 
-1. Import [`MOOSEtwoVmWorkflowOnTerra`](https://dockstore.org/organizations/ImagingDataCommons/collections/CloudSegmentator)
-   into a Terra workspace (see the root README's *Importing workflows into Terra*
-   section).
+1. Import [`MooseTwoVmWorkflowOnTerra`](https://dockstore.org/workflows/github.com/ImagingDataCommons/CloudSegmentator/MooseTwoVmWorkflowOnTerra:main)
+   into a Terra workspace (see the root README's
+   [Running on Terra](../../../README.md#running-on-terra)).
 2. Import a data table of series to process. A sample manifest is at
    [`Docs/sampleManifests/batch_1.yaml`](sampleManifests/batch_1.yaml).
 3. Under `WORKFLOWS`, choose the imported workflow, then
