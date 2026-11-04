@@ -76,7 +76,7 @@ unsmoothed 3D surfaces, side by side, each labelled with its model and grouped b
 TotalSegmentator and the first three MOOSE models above, the other seven MOOSE models below.
 Each model has about twice the pixels of the one-row version, and the labels are larger (40 px
 against 26), so it suits a full-width figure better. It is the version in the manuscript, as
-the bottom-left panel of Figure 7, which is why `file` is set to `cs2-sample-result_two-rows`
+the bottom-left panel of Figure 8, which is why `file` is set to `cs2-sample-result_two-rows`
 in [`figures.csv`](../figures.csv).
 
 | File | Role |

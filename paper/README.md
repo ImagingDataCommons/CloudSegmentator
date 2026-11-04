@@ -28,7 +28,7 @@ renumbering. Code uses the same keyword:
   number. A keyword with no number is not in the manuscript.
 
 The numbers in `figures.csv` follow the manuscript as numbered on 4 Nov 2026, and they answer
-the question "which code drew Figure 3?" for a reader of the published paper. Figure 7 is made
+the question "which code drew Figure 3?" for a reader of the published paper. Figure 8 is made
 of panels drawn separately, so two keywords share its number: `sample-result`, the top row, is
 a set of screenshots from the IDC viewer and 3D Slicer, and `cs2-sample-result`, bottom left,
 is the two-row layout from [`example-case/`](example-case/). Its bottom-right panel, a chart
