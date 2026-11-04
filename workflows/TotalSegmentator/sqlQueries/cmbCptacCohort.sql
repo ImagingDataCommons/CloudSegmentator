@@ -2,7 +2,6 @@
 
 -- Case study 2 cohort (CMB and CPTAC CT, IDC v24): nonNlstCohort.sql with two changes,
 -- idc_v17 -> idc_v24 and the collection filter. Selects 3,059 series.
--- Without BigQuery: python util/executionAnalytics/cohort_case_study_2.py
 
 -- The point of this query is to remove the CT Image Series from nlst study which do not conform to
 -- geometrical checks generally required for NIFTI file converison
