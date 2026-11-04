@@ -2,8 +2,9 @@
 # requires-python = ">=3.11"
 # dependencies = ["pandas>=2.2", "matplotlib>=3.9", "numpy"]
 # ///
-"""Draw the case study 2 figures - cs2-stage-times, cs2-cost-breakdown and
-cs2-peak-memory - and cs1-peak-memory from paper/data/ (see build_data_cs2.py).
+"""Draw the case study 2 figures - cs2-stage-times, cs2-cost-breakdown, cs2-peak-memory and
+cs2-structures - and cs1-peak-memory and idc-structures from paper/data/ (see
+build_data_cs2.py and build_data_structures_*.py).
 
     uv run paper/make_figures_cs2.py
 
@@ -12,12 +13,20 @@ the kind of VM (blue GPU, orange CPU); boxes span the IQR with the median marked
 and printed; whiskers at 1.5 IQR with every batch beyond drawn, as in stage-times.
 """
 
+import textwrap
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from matplotlib.colors import to_rgb
+from matplotlib.legend_handler import HandlerTuple
+from matplotlib.patches import Patch
+from matplotlib.ticker import NullLocator
+from matplotlib.transforms import ScaledTranslation
 
-from make_figures import (CATEGORICAL, COST_CATS, DATA, FULL_W, INK, LABEL_BOX, MUTED, VM_COLOR,
-                          cost_share_bars, panel_label, range_bar, save, value_grid)
+from make_figures import (AXIS, CATEGORICAL, COST_CATS, DATA, FULL_W, INK, INK2, LABEL_BOX, MUTED,
+                          NEUTRAL, VM_COLOR, cost_share_bars, panel_label, range_bar, save,
+                          value_grid)
 
 MODELS = ["TotalSegmentator", "MOOSE"]
 TASKS = [("inference", "GPU", "Input conversion and inference (GPU VM)"),
@@ -38,6 +47,118 @@ LOG_TICKS = [(1, "1 min"), (10, "10 min"), (60, "1 h"), (600, "10 h")]
 # per-batch sums would mostly show batch size. Each point is one batch's mean.
 SERIES_COL = {"dicom_download_min": "convert_series", "dicom_to_nifti_min": "convert_series",
               "inference_min": "inference_series"}
+
+# The case study 2 cohort, as checked against the data.
+COHORT = {"CT series": 3059, "patients": 578, "collections": 18}
+# Every structure in cs2_structures, grouped by hand for the figure. Spine and ribs are
+# in anatomical order, so their bars trace the usual scan range; the other groups are
+# sorted by count.
+RIBS = ["First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth", "Ninth",
+        "Tenth", "Eleventh", "Twelfth"]
+STRUCTURE_GROUPS = {
+    "Body regions and tissue": ["Trunk", "Head", "Upper limb", "Lower limb",
+                                "Skeletal muscle structure", "Adipose tissue of abdomen",
+                                "Subcutaneous fat"],
+    "Organs": ["Brain", "Spinal cord", "Thyroid gland", "Esophagus", "Stomach", "Duodenum",
+               "Small Intestine", "Colon", "Liver", "Gallbladder", "Pancreas", "Spleen",
+               "Adrenal gland", "Kidney", "Kidney cyst", "Urinary bladder", "Prostate"],
+    "Lungs and airways": ["Trachea", "Trachea and bronchus", "Upper lobe of lung",
+                          "Middle lobe of right lung", "Lower lobe of lung"],
+    "Heart and vessels": ["Heart", "Myocardium", "Left atrium", "Right atrium",
+                          "Left ventricle of heart", "Right ventricle of heart",
+                          "Auricular appendage", "Aorta", "Pulmonary artery", "Pulmonary vein",
+                          "Superior vena cava", "Inferior vena cava", "Brachiocephalic artery",
+                          "Brachiocephalic vein", "Subclavian artery", "Common carotid artery",
+                          "Common iliac artery", "Common iliac vein",
+                          "Portal vein and splenic vein"],
+    "Muscles": ["Deep muscle of back", "Iliopsoas muscle", "Gluteus maximus muscle",
+                "Gluteus medius muscle", "Gluteus minimus muscle"],
+    "Spine": ([f"C{i} vertebra" for i in range(1, 8)] + [f"T{i} vertebra" for i in range(1, 13)]
+              + [f"L{i} vertebra" for i in range(1, 7)] + ["S1 vertebra", "Sacrum"]),
+    "Ribs and sternum": [f"{r} rib" for r in RIBS] + ["Costal cartilage", "Sternum"],
+    "Other bones": ["Skull", "Clavicle", "Scapula", "Humerus", "Radius", "Ulna", "Carpus",
+                    "Metacarpal bones", "Fingers", "Hip", "Femur", "Patella", "Tibia", "Fibula",
+                    "Tarsal bones", "Metatarsal", "Toe"],
+}
+ANATOMICAL_ORDER = {"Spine", "Ribs and sternum"}
+# A hue per group, in an order where neighbouring groups stay apart in colour-vision
+# deficiency too (dataviz validate_palette.js, light: all checks pass, worst pair ΔE 15.2).
+GROUP_COLOR = dict(zip(STRUCTURE_GROUPS, ["#6250d6", "#eb6834", "#2a78d6", "#e34948", "#eda100",
+                                          "#e87ba4", "#008300", "#1baf7a"]))
+# Two rows, to fill a half-width cell beside the two-row example case.
+STRUCTURE_ROWS = [["Body regions and tissue", "Organs", "Lungs and airways", "Heart and vessels",
+                   "Muscles"],
+                  ["Spine", "Ribs and sternum", "Other bones"]]
+# Bars named on the axis: the levels that orient the spine and ribs.
+STRUCTURE_TICKS = {"C1 vertebra": "C1", "T1 vertebra": "T1", "L1 vertebra": "L1",
+                   "S1 vertebra": "S1", "First rib": "1", "Twelfth rib": "12"}
+# Bars named above. Upright beside the bar where tall neighbours leave no room...
+STRUCTURE_CALLOUTS = ["Head", "Prostate", "Brain"]
+# ...and level, on a leader that rises and turns right (+1) or left (-1), where there is: below
+# the all-series line, or on one of two levels above it. Where two leaders share a span, the
+# one further back takes the upper level, so no leader crosses a name. L6 is an anatomical
+# variant, and only MOOSE segments it.
+ABOVE_LINE = (3400, 3880)
+STRUCTURE_ELBOWS = {
+    "Subcutaneous fat": ("Subcutaneous fat", ABOVE_LINE[1], 1),
+    "Liver": ("Liver", ABOVE_LINE[0], 1),
+    "Thyroid gland": ("Thyroid gland", ABOVE_LINE[1], 1),
+    "Trachea": ("Trachea", ABOVE_LINE[0], -1),
+    "Aorta": ("Aorta", ABOVE_LINE[0], 1),
+    "Iliopsoas muscle": ("Iliopsoas muscle", ABOVE_LINE[1], -1),
+    "L6 vertebra": ("L6", 2150, 1),
+    "Sternum": ("Sternum", ABOVE_LINE[0], 1),
+    "Femur": ("Femur", 2700, 1),
+    "Skull": ("Skull", 2250, 1),
+    "Fingers": ("Fingers", 1800, 1),
+    "Toe": ("Toe", 1350, 1),
+}
+
+# The same groups for every structure segmented in IDC, with what only IDC has. Kidney
+# cyst joins the lesions, which are not anatomy and so take no hue of their own. "Normal"
+# is normal-appearing peripheral zone, marked beside prostate lesions.
+LESIONS = "Lesions and findings"
+IDC_GROUPS = {g: [s for s in names if s != "Kidney cyst"] for g, names in STRUCTURE_GROUPS.items()}
+IDC_GROUPS["Body regions and tissue"] += ["Face", "upper arm"]
+IDC_GROUPS["Organs"] += ["Breast", "Breast Fibroglandular Tissue", "Fatty tissue of breast",
+                         "Peripheral zone of prostate", "Transition zone of prostate",
+                         "Anterior fibromuscular stroma of prostate", "Prostatic Urethra",
+                         "Brain ventricle", "Mediastinal lymph node", "abdominal lymph node"]
+IDC_GROUPS["Lungs and airways"] += ["Lung"]
+IDC_GROUPS["Heart and vessels"] += ["Abdominal aorta", "Portal vein", "Vein"]
+IDC_GROUPS[LESIONS] = ["Nodule", "Mass", "Lesion", "Neoplasm", "Neoplasm, Primary",
+                       "Morphologically Abnormal Structure", "Tissue", "FDG-Avid Tumor",
+                       "DWI Tumor", "Enhancing Lesion", "Edema", "Necrosis", "Glioma",
+                       "Residual tumor", "Excision of brain", "Kidney cyst", "Normal"]
+IDC_GROUP_COLOR = GROUP_COLOR | {LESIONS: NEUTRAL}
+IDC_ROWS = [STRUCTURE_ROWS[0], STRUCTURE_ROWS[1] + [LESIONS]]
+# Every bar is named on the axis, so long names are shortened there; the values table keeps
+# them whole.
+IDC_SHORT = ({f"{c}{i} vertebra": f"{c}{i}" for c, n in [("C", 7), ("T", 12), ("L", 6)]
+              for i in range(1, n + 1)}
+             | {f"{r} rib": f"Rib {i}" for i, r in enumerate(RIBS, 1)}
+             | {"S1 vertebra": "S1", "Skeletal muscle structure": "Skeletal muscle",
+                "Adipose tissue of abdomen": "Abdominal fat", "upper arm": "Upper arm",
+                "Small Intestine": "Small intestine", "Breast Fibroglandular Tissue":
+                "Fibroglandular tissue", "Fatty tissue of breast": "Breast fat",
+                "Peripheral zone of prostate": "Peripheral zone",
+                "Transition zone of prostate": "Transition zone",
+                "Anterior fibromuscular stroma of prostate": "Fibromuscular stroma",
+                "Prostatic Urethra": "Prostatic urethra",
+                "abdominal lymph node": "Abdominal lymph node",
+                "Upper lobe of lung": "Upper lobe", "Lower lobe of lung": "Lower lobe",
+                "Middle lobe of right lung": "Middle lobe",
+                "Left ventricle of heart": "Left ventricle",
+                "Right ventricle of heart": "Right ventricle",
+                "Portal vein and splenic vein": "Portal and splenic vein",
+                "Deep muscle of back": "Deep back muscle", "Iliopsoas muscle": "Iliopsoas",
+                "Gluteus maximus muscle": "Gluteus maximus",
+                "Gluteus medius muscle": "Gluteus medius",
+                "Gluteus minimus muscle": "Gluteus minimus",
+                "Neoplasm, Primary": "Primary neoplasm",
+                "Morphologically Abnormal Structure": "Abnormal structure",
+                "Enhancing Lesion": "Enhancing lesion"})
+FADED = 0.35  # share of the group hue in a bar's IDC part, the rest white
 
 
 def with_unit(x):
@@ -409,6 +530,160 @@ def cs1_peak_memory(cs1, peak, fail, geo, order):
     save(fig, "cs1-peak-memory", table)
 
 
+def lay_out(structures, groups, rows):
+    """A slot per structure, group after group along each row, two slots between groups.
+    Returns the structures with their group, row and slot; each group's (row, first slot,
+    last slot); and the slots in the longest row."""
+    listed = [s for names in groups.values() for s in names]
+    assert sorted(listed) == sorted(structures.meaning), set(listed) ^ set(structures.meaning)
+    assert [g for row in rows for g in row] == list(groups)
+    by_name = structures.set_index("meaning")
+    parts, spans, width = [], {}, 0
+    for i, row in enumerate(rows):
+        x0 = 0
+        for group in row:
+            g = by_name.loc[groups[group]].reset_index()
+            if group not in ANATOMICAL_ORDER:
+                g = g.sort_values("n_series", ascending=False, kind="stable")
+            g.insert(0, "group", group)
+            g["row"], g["x"] = i, np.arange(x0, x0 + len(g))
+            parts.append(g)
+            spans[group] = (i, x0, x0 + len(g) - 1)
+            x0 += len(g) + 2
+        width = max(width, x0 - 2)
+    return pd.concat(parts, ignore_index=True), spans, width
+
+
+def cs2_structures(structures):
+    """cs2-structures: for every structure either tool segments, the CT series it was found
+    in, both tools and all twelve models pooled. The values table is the full list, with
+    SNOMED codes and the count per tool."""
+    t, spans, width = lay_out(structures, STRUCTURE_GROUPS, STRUCTURE_ROWS)
+    at = {m: (r, x, n) for m, r, x, n in zip(t.meaning, t.row, t.x, t.n_series)}
+    height = {(r, x): n for r, x, n in zip(t.row, t.x, t.n_series)}
+    n_ct = COHORT["CT series"]
+
+    # Half the double-column width, shaped like the example case beside it.
+    fig, axs = plt.subplots(len(STRUCTURE_ROWS), 1, figsize=(FULL_W / 2, 2.88), sharey=True)
+    fig.subplots_adjust(left=0.13, right=0.995, top=0.875, bottom=0.11, hspace=0.62)
+    for i, ax in enumerate(axs):
+        r = t[t.row == i]
+        ax.bar(r.x, r.n_series, width=0.7, color=r.group.map(GROUP_COLOR), lw=0, zorder=2)
+        ax.axhline(n_ct, color=MUTED, lw=0.6, ls=(0, (3, 2)), zorder=1)
+        ax.set_xlim(-1, width)
+        ax.set_ylim(0, 4000)
+        ax.set_yticks([0, 1000, 2000, 3000], ["0", "1,000", "2,000", "3,000"])
+        value_grid(ax, "y")
+        ticks = [(at[s][1], lab) for s, lab in STRUCTURE_TICKS.items() if at[s][0] == i]
+        ax.set_xticks([x for x, _ in ticks], [lab for _, lab in ticks], fontsize=6)
+        # Groups as brackets under the axis, as in the example case beside it.
+        tr = ax.get_xaxis_transform() + ScaledTranslation(0, -11 / 72, fig.dpi_scale_trans)
+        end = 2 / 72 / (ax.get_position().height * fig.get_figheight())  # 2 pt, in axes units
+        for group, (row, a, b) in spans.items():
+            if row != i:
+                continue
+            ax.plot([a - 0.4, a - 0.4, b + 0.4, b + 0.4], [end, 0, 0, end], transform=tr,
+                    color=AXIS, lw=0.6, clip_on=False)
+            ax.annotate("\n".join(textwrap.wrap(group, 12)), ((a + b) / 2, 0), xycoords=tr,
+                        xytext=(0, -2), textcoords="offset points", ha="center", va="top",
+                        fontsize=6.5, color=INK2, annotation_clip=False)
+    # A name is wider than a bar, so it starts clear of the taller neighbour, with a leader.
+    leader = dict(arrowstyle="-", color=MUTED, lw=0.5, shrinkA=0, shrinkB=1)
+    for name in STRUCTURE_CALLOUTS:
+        i, x, n = at[name]
+        top = max(height.get((i, x + d), 0) for d in (-1, 0, 1))
+        axs[i].annotate(name, (x, n), xytext=(x, top + 60), textcoords="data", rotation=90,
+                        ha="center", va="bottom", fontsize=6, color=INK2,
+                        arrowprops=leader if top > n + 100 else None)
+    for name, (label, y, side) in STRUCTURE_ELBOWS.items():
+        i, x, n = at[name]
+        axs[i].annotate(label, (x, n), xytext=(x + side, y), textcoords="data",
+                        ha="left" if side > 0 else "right", va="center", fontsize=6, color=INK2,
+                        arrowprops=leader | dict(connectionstyle="angle,angleA=0,angleB=90,rad=0"))
+    # On the lower row, as the upper one has names above the line at the right.
+    axs[-1].annotate("all series", (1, n_ct), xycoords=("axes fraction", "data"),
+                    xytext=(0, 2), textcoords="offset points", ha="right", va="bottom",
+                    fontsize=6, color=MUTED)
+    fig.supylabel("CT series with the structure", x=0.01, fontsize=7.5, color=INK2)
+    fig.text(0.995, 0.995, f"{n_ct:,} CT series · {COHORT['patients']} patients · "
+             f"{COHORT['collections']} collections", ha="right", va="top", fontsize=7.5,
+             color=INK)
+    fig.text(0.995, 0.945, f"{len(t)} structures · {t.n_segments.sum():,} segments",
+             ha="right", va="top", fontsize=6.5, color=INK2)
+
+    table = pd.DataFrame({
+        "group": t.group, "structure": t.meaning.str.capitalize(), "snomed_code": t.code,
+        "models": t.models, "ct_series": t.n_series,
+        "ct_series_totalsegmentator": t.n_series_totalsegmentator,
+        "ct_series_moose": t.n_series_moose, "segments": t.n_segments})
+    save(fig, "cs2-structures", table)
+
+
+def idc_structures(structures, totals):
+    """idc-structures: for every structure segmented in IDC v25 on CT, MR or PET, or by case
+    study 2, the series it was segmented in, on a log axis. A bar's faded part is IDC before
+    case study 2; the solid part on top is the CT series case study 2 adds, those where no
+    SEG in IDC had the structure. The values table is the full list, with codes, the count
+    per modality and the IDC sources."""
+    t, spans, width = lay_out(structures, IDC_GROUPS, IDC_ROWS)
+    fade = lambda c: 1 - FADED * (1 - np.array(to_rgb(c)))  # noqa: E731
+    floor = 0.6  # a log axis has no zero; one series still shows
+
+    fig, axs = plt.subplots(len(IDC_ROWS), 1, figsize=(FULL_W, 5.2), sharey=True)
+    fig.subplots_adjust(left=0.07, right=0.995, top=0.885, bottom=0.135, hspace=0.95)
+    for i, ax in enumerate(axs):
+        r = t[t.row == i]
+        hue = r.group.map(IDC_GROUP_COLOR)
+        ax.bar(r.x, r.n_series - floor, bottom=floor, width=0.72, color=hue, lw=0, zorder=2)
+        idc = r[r.n_series_idc > 0]
+        ax.bar(idc.x, idc.n_series_idc - floor, bottom=floor, width=0.72, lw=0, zorder=3,
+               color=[fade(c) for c in idc.group.map(IDC_GROUP_COLOR)])
+        ax.set_yscale("log")
+        ax.set_ylim(floor, 4e5)
+        ax.set_yticks([10 ** k for k in range(6)], [f"{10 ** k:,}" for k in range(6)])
+        ax.yaxis.set_minor_locator(NullLocator())
+        value_grid(ax, "y")
+        ax.set_xlim(-1, width)
+        ax.set_xticks(r.x, [IDC_SHORT.get(m, m) for m in r.meaning], rotation=90, fontsize=5)
+        ax.tick_params(axis="x", pad=2)
+        # Groups named above, over a rule in their hue.
+        for group, (row, a, b) in spans.items():
+            if row != i:
+                continue
+            ax.plot([a - 0.4, b + 0.4], [1.03, 1.03], transform=ax.get_xaxis_transform(),
+                    color=IDC_GROUP_COLOR[group], lw=1, solid_capstyle="butt", clip_on=False)
+            ax.annotate(group, ((a + b) / 2, 1.03), xycoords=ax.get_xaxis_transform(),
+                        xytext=(0, 2), textcoords="offset points", ha="center", va="bottom",
+                        fontsize=6.5, color=INK2, annotation_clip=False)
+    fig.supylabel("Series with the structure", x=0.005, fontsize=7.5, color=INK2)
+
+    tot = totals.set_index("modality")
+    n_idc = tot.n_series_idc.sum()
+    added = tot.n_series.sum() - n_idc
+    hues = list(IDC_GROUP_COLOR.values())
+    fig.legend([tuple(Patch(color=fade(c)) for c in hues), tuple(Patch(color=c) for c in hues)],
+               ["Segmented in IDC v25", "Added by case study 2"],
+               handler_map={tuple: HandlerTuple(ndivide=None, pad=0)}, handlelength=4,
+               handleheight=0.8, loc="upper left", bbox_to_anchor=(0.06, 0.972), ncols=2,
+               columnspacing=1.5, borderaxespad=0)
+    fig.text(0.995, 0.995, f"{n_idc:,} series segmented in IDC v25 "
+             f"({tot.n_series_idc.CT:,} CT · {tot.n_series_idc.MR:,} MR · "
+             f"{tot.n_series_idc.PT:,} PET), {added:,} more CT series by case study 2",
+             ha="right", va="top", fontsize=7.5, color=INK)
+    fig.text(0.995, 0.965, f"{len(t)} structures · {tot.n_segments_idc.sum():,} segments in "
+             f"IDC, {t.n_segments_cs2.sum():,} from case study 2", ha="right", va="top",
+             fontsize=6.5, color=INK2)
+
+    table = pd.DataFrame({
+        "group": t.group, "structure": t.meaning.str[:1].str.upper() + t.meaning.str[1:],
+        "codes": t.codes, "series": t.n_series, "series_idc": t.n_series_idc,
+        "series_idc_ct": t.n_series_idc_ct, "series_idc_mr": t.n_series_idc_mr,
+        "series_idc_pet": t.n_series_idc_pt, "series_idc_case_study_1": t.n_series_cs1,
+        "series_case_study_2": t.n_series_cs2,
+        "series_added_by_case_study_2": t.n_series_cs2_new, "idc_sources": t.idc_sources})
+    save(fig, "idc-structures", table)
+
+
 def main():
     attempts = pd.read_csv(DATA / "cs2_task_attempts.csv.gz")
     steps = pd.read_csv(DATA / "cs2_step_times.csv.gz")
@@ -429,6 +704,11 @@ def main():
     cs2_peak_memory(peak, fail, geo, order, rerun_peak)
     # Case study 1 against case study 2.
     cs1_peak_memory(pd.read_csv(DATA / "cs1_peak_memory.csv.gz"), peak, fail, geo, order)
+    # Structures found, from build_data_structures_cs2.py.
+    cs2_structures(pd.read_csv(DATA / "cs2_structures.csv.gz", dtype={"code": str}))
+    # The same, over every structure segmented in IDC, from build_data_structures_idc.py.
+    idc_structures(pd.read_csv(DATA / "idc_structures.csv.gz"),
+                   pd.read_csv(DATA / "idc_structures_totals.csv.gz"))
 
 
 if __name__ == "__main__":

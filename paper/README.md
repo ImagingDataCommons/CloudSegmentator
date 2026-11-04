@@ -29,10 +29,10 @@ renumbering. Code uses the same keyword:
 
 The numbers in `figures.csv` follow the manuscript as numbered on 4 Nov 2026, and they answer
 the question "which code drew Figure 3?" for a reader of the published paper. Figure 8 is made
-of panels drawn separately, so two keywords share its number: `sample-result`, the top row, is
-a set of screenshots from the IDC viewer and 3D Slicer, and `cs2-sample-result`, bottom left,
-is the two-row layout from [`example-case/`](example-case/). Its bottom-right panel, a chart
-of the structures segmented in case study 2, is not drawn here.
+of panels drawn separately, so three keywords share its number: `sample-result`, the top row,
+is a set of screenshots from the IDC viewer and 3D Slicer; `cs2-sample-result`, bottom left,
+is the two-row layout from [`example-case/`](example-case/); and `cs2-structures`, bottom
+right, is drawn by `make_figures_cs2.py`.
 
 Once the manuscript cites figures by number, `number_figures.py` checks those citations
 against `figures.csv`. Before that, it can number the figures in order of first citation:
@@ -56,7 +56,7 @@ dependencies inline for `uv run`.
 | Script | Makes | Needs |
 |---|---|---|
 | `make_figures.py` | case study 1 figures | `data/` |
-| `make_figures_cs2.py` | case study 2 figures, and `cs1-peak-memory` | `data/` |
+| `make_figures_cs2.py` | case study 2 figures, `cs1-peak-memory` and `idc-structures` | `data/` |
 | `make_workflow_diagram.py` | `workflow-diagram`, plus an editable `.drawio` copy | nothing |
 | `memory_comparison.py` | prints the comparison of peak memory between the case studies | `data/` |
 | `number_figures.py` | checks `figures.csv`, assigns numbers, exports numbered files | `out/` |
@@ -65,6 +65,8 @@ dependencies inline for `uv run`.
 | `build_data_memory.py` | `cs1_peak_memory`, `cs2_series_order` | `gcloud`: both workspace buckets; `lz4`; ~15 min |
 | `build_series_geometry_cs2.py` | `cs2_series_geometry` | nothing (idc-index, IDC v25) |
 | `build_anatomy_coverage.py` | `remaining_series`; prints how much of IDC has anatomy segmented | nothing; `--refresh-cs2` needs `bq` on `idc-external-031` |
+| `build_data_structures_cs2.py` | `cs2_structures`, from the SEGs in the case study 2 DICOM store's BigQuery export | `bq` on `idc-external-031` |
+| `build_data_structures_idc.py` | `idc_structures`, `idc_structures_totals`, from IDC v25 in BigQuery and the case study 2 query | `bq` on `idc-external-031` |
 | `example-case/` | `cs2-sample-result` | 3D Slicer and the case's DICOM; see [its README](example-case/README.md) |
 
 `util/executionAnalytics/submission_cost.py` covers much of the same ground as
@@ -123,6 +125,9 @@ Every file is gzip-compressed CSV; pandas reads them as they are.
 | `cs1_peak_memory` | case study 1 series (twoVM 1k, 10k, 126k): peak RAM on the GPU VM, with geometry | each workflow's `inferenceUsageMetrics.lz4` |
 | `cs2_output_series` | source CT series with at least one case study 2 SEG | `ReferencedSeriesSequence` in `idc-external-031.not_a_challenge.idc-segmentations-20261014`, read 2 Nov 2026 |
 | `remaining_series` | IDC v25 CT, MR or PT series that can be segmented and has no whole-body anatomy | idc-index |
+| `cs2_structures` | structure (SNOMED segmented property type, left and right merged): the models that segment it, the CT series it was found in (any model, TotalSegmentator, MOOSE) and its segments | the SEGs in `idc-external-031.not_a_challenge.idc-segmentations-20261014`, read 30 Oct 2026 |
+| `idc_structures` | structure segmented in IDC v25 on CT, MR or PET, or by case study 2 (codes for one concept merged): its codes, names, IDC sources, segments, and the series it is in: in IDC (by modality, and case study 1's), in case study 2, added by case study 2, and the union | `bigquery-public-data.idc_v25` and the above, read 30 Oct 2026 |
+| `idc_structures_totals` | modality (CT, MR, PET): series with any segment in IDC, in case study 2 and in the union; SEG instances, segments and sources in IDC | as above |
 
 How case study 1's BigQuery tables were made, as far as can be told:
 
@@ -175,6 +180,42 @@ cache excluded. A unit of work that fails writes no metrics row. For a failure r
 memory, the unit is assigned the attempt's overall peak, but only where that peak exceeds every
 unit that finished in the same attempt. Case study 1's `MemoryMonitor` (`v1.2.0`) sampled
 psutil `total − available` once a second. Its values are converted from MB of 10⁶ bytes to GiB.
+
+**Structures** in `cs2-structures` and `idc-structures`:
+
+- **Structure:** a segmented property type, so left and right merge and the two tools pool
+  where they share a code. Case study 2 has 111 structures, or 155 counting laterality.
+  `idc-structures` also merges codes for one concept (`SAME_AS` in
+  `build_data_structures_idc.py`): legacy SNOMED RT codes join their SNOMED CT counterparts,
+  and a few others are mapped by hand. Background (DCM 125040) is dropped. That leaves 143
+  structures: 80 in both IDC and case study 2, 31 only in case study 2, and 32 only in IDC.
+- **Found:** the structure is a segment in a SEG for that series. A SEG lists only the segments
+  its model found, so any voxels count; there is no size threshold.
+- **Series:** from each SEG's referenced series. The ten case study 2 SEGs that lack one are
+  mapped from their bucket folder (`UNREFERENCED` in `build_data_structures_cs2.py`). In IDC,
+  1,030 SEGs lack one and are placed by frame of reference, each frame counting as one series;
+  two cannot be placed and are left out. A series counts once per structure, whatever the
+  number of SEGs on it.
+- **Scope of `idc-structures`:** every SEG in IDC v25 whose segmented series is CT, MR or PET,
+  which leaves out slide microscopy, and phantom collections. The faded part of a bar is the
+  series where a SEG in IDC has the structure; the solid part above is the CT series case
+  study 2 adds, where no SEG in IDC had it. On the log axis, its height is the factor by which
+  case study 2 multiplies the count.
+- **Groups, colours and names:** groups are made by hand (`STRUCTURE_GROUPS` and `IDC_GROUPS`
+  in `make_figures_cs2.py`). Spine and ribs are in anatomical order, the other groups sorted by
+  count. Each group has one hue, for identity only, kept across both figures; lesions are not
+  anatomy and are drawn in grey. Names are the SNOMED meanings, the shorter where the tools
+  differ, and TotalSegmentator's "Cyst" with anatomic region Kidney is shown as "Kidney cyst".
+- **L6:** the short bar inside the spine is the L6 vertebra, found in 261 series by MOOSE
+  (`clin_ct_vertebrae`) only. A sixth lumbar vertebra is an anatomical variant; whether these
+  are true L6 or mislabelled L5 or S1 is unchecked.
+
+A bar can fall short of the all-series line for two reasons the figures do not separate:
+the structure was outside the scan, or the model that segments it produced no output for that
+series. The second is not negligible. 24 series have no output at all, and
+`clin_ct_body_composition` has 2,800 SEGs against 2,895–3,033 for the other models, which is
+why its three tissues stop at about 2,800. The `cs2-structures` header counts the 3,059 series
+of the cohort; 3,035 of them have output.
 
 **Distributions** are drawn as a box spanning the interquartile range, with a bar at the median
 and whiskers at the 5th and 95th percentiles. In `stage-times` and `cs2-stage-times` the
