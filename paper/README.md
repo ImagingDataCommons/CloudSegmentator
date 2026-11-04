@@ -43,6 +43,10 @@ The scripts also draw figures that are not in the paper: `preemption-loss`,
 `configurations-1k`, `cost-breakdown-1k` and `cohorts-twovm` (`make_figures.py`), and
 `cs1-peak-memory` and `idc-structures` (`make_figures_cs2.py`).
 
+The scripts pin matplotlib to 3.11.2, the version the paper's figures were drawn with. Other
+versions lay out text slightly differently, so the images change size even though the plotted
+values stay the same.
+
 ## What runs with what
 
 Anyone can redraw every figure from `data/`, because the `make_*` scripts need no credentials.

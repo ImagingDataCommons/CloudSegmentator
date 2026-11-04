@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.11"
-# dependencies = ["pandas>=2.2", "matplotlib>=3.9", "numpy"]
+# dependencies = ["pandas>=2.2", "matplotlib==3.11.2", "numpy"]
 # ///
 """Draw the case study 1 execution-analytics figures from paper/data/ (see build_data.py).
 

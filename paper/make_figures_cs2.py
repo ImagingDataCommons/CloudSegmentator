@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.11"
-# dependencies = ["pandas>=2.2", "matplotlib>=3.9", "numpy"]
+# dependencies = ["pandas>=2.2", "matplotlib==3.11.2", "numpy"]
 # ///
 """Draw the case study 2 figures - cs2-stage-times, cs2-cost-breakdown, cs2-peak-memory and
 cs2-structures - and cs1-peak-memory and idc-structures from paper/data/ (see
