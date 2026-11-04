@@ -13,6 +13,8 @@ data in the cloud and converts the results to DICOM-SEG, radiomics and DICOM SR.
   workflows; keep changes to them separate.
 - `util/terraOps/` — command-line tools to submit and monitor Terra runs.
 - `util/executionAnalytics/` — cost measurement and prediction.
+- `paper/` — the scripts and data behind the 2026 paper's figures, a record of
+  fixed runs. Start at [`paper/README.md`](paper/README.md).
 
 ## Docs to read before acting
 
@@ -38,3 +40,8 @@ Claude Code users get these as project skills in `.claude/skills/`
   notebook, never commit outputs (see development.md).
 - **No run data in git**: per-submission CSVs, billing exports, manifests and
   figures from individual runs stay local (`.gitignore` covers the common ones).
+- **`paper/` is exempt from "never guess cloud targets" and "no run data in git".**
+  It records the paper's runs, so its scripts name their submissions, workspaces
+  and buckets, and `paper/data/` holds the tables derived from them. Change it
+  only to correct the paper's analysis, and name a figure's files and function by
+  its keyword, as `paper/README.md` describes.
