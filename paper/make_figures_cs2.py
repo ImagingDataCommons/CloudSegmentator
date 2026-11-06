@@ -305,10 +305,11 @@ def cs2_peak_memory(peak, fail, geo, order, rerun_peak):
     failed = set(zip(f.model, f.SeriesInstanceUID, f.unit))
     rr = rr[(rr.vm == "CPU")
             | np.array([k in failed for k in zip(rr.model, rr.SeriesInstanceUID, rr.unit)])]
-    fig = plt.figure(figsize=(FULL_W, 5.4))
+    fig = plt.figure(figsize=(FULL_W, 5.7))
     # Two grids, so the scatter row can use the width panel A gives to its row labels.
-    ax = fig.add_subplot(fig.add_gridspec(1, 1, left=0.3, right=0.98, top=0.97, bottom=0.6)[0])
-    gs = fig.add_gridspec(1, 3, left=0.09, right=0.98, top=0.45, bottom=0.14, wspace=0.1)
+    # The gap between them holds panel A's legend.
+    ax = fig.add_subplot(fig.add_gridspec(1, 1, left=0.3, right=0.98, top=0.97, bottom=0.62)[0])
+    gs = fig.add_gridspec(1, 3, left=0.09, right=0.98, top=0.425, bottom=0.13, wspace=0.1)
     table, ticks, labels, y = [], [], [], 0
     for i, (vm, model, unit, label) in enumerate(MEM_ROWS):
         if i in (0, 3):
@@ -316,8 +317,9 @@ def cs2_peak_memory(peak, fail, geo, order, rerun_peak):
                                            else "CPU VM: output conversion")
             y += 1
         v = peak[(peak.vm == vm) & (peak.model == model) & (peak.unit == unit)].peak_gb
+        # Median above the box: past the whisker it collides with the outliers and failures.
         s = range_bar(ax, y, v, VM_COLOR[vm], lambda x: f"{x:.1f} GiB", horizontal=True,
-                      width=0.5, tukey=True, seed=i, label="end")
+                      width=0.5, tukey=True, seed=i, label="above")
         ff = f[(f.model == model) & (f.unit == unit)] if vm == "GPU" else f.iloc[:0]
         ax.scatter(ff.run_peak_gb, np.full(len(ff), y), **FAIL_MARK)
         rv = rr[(rr.vm == vm) & (rr.model == model) & (rr.unit == unit)].peak_gb
@@ -344,10 +346,15 @@ def cs2_peak_memory(peak, fail, geo, order, rerun_peak):
     ax.spines["left"].set_visible(False)
     value_grid(ax, "x")
     ax.set_xlabel("Peak RAM in use on the VM (GiB), per series or per task")
-    ax.legend(handles=[plt.Line2D([], [], color=INK, lw=1.4, label="VM RAM"),
-                       plt.Line2D([], [], ls="", marker="x", color=INK, markeredgewidth=0.9,
-                                  markersize=4, label="failed, memory-related")],
-              loc="lower right", fontsize=6, frameon=False)
+    # Panel A has its own legend, so it keys every black mark it draws; the figure legend
+    # below reuses the same keys.
+    fail_key = plt.Line2D([], [], ls="", marker="x", color=INK, markeredgewidth=0.9,
+                          markersize=4, label="failed, memory-related")
+    rerun_key = plt.Line2D([], [], ls="", marker="o", markerfacecolor="none", color=INK,
+                           markeredgewidth=0.8, markersize=4, label="rerun with more RAM, succeeded")
+    # One row under the axis label, like the legend of B-D: inside the axes it crowds the marks.
+    ax.legend(handles=[plt.Line2D([], [], color=INK, lw=1.4, label="VM RAM"), fail_key, rerun_key],
+              loc="upper center", bbox_to_anchor=(0.5, -0.2), ncol=3, fontsize=6, frameon=False)
     panel_label(ax, "A", x=-0.36)
 
     # B-D: peak RAM against the size of the volume each model works on, from IDC geometry.
@@ -403,11 +410,7 @@ def cs2_peak_memory(peak, fail, geo, order, rerun_peak):
                         plt.Line2D([], [], ls="", marker="o", markerfacecolor="none",
                                    markeredgecolor=MUTED, markersize=3.5, markeredgewidth=0.6,
                                    label="finished, after a failure in the same attempt"),
-                        plt.Line2D([], [], ls="", marker="x", color=INK, markeredgewidth=0.9,
-                                   markersize=4, label="failed, memory-related"),
-                        plt.Line2D([], [], ls="", marker="o", markerfacecolor="none", color=INK,
-                                   markeredgewidth=0.8, markersize=4,
-                                   label="rerun with more RAM, succeeded"),
+                        fail_key, rerun_key,
                         plt.Line2D([], [], color=MUTED, lw=0.8, ls=(0, (3, 2)),
                                    label=f"case study 1 GPU VM, {CS1_GPU_RAM} GiB")],
                loc="lower center", ncol=5, fontsize=6, frameon=False, bbox_to_anchor=(0.5, -0.01))
