@@ -112,6 +112,11 @@ workflow Segmentator {
     String segmentationType = "binary"
     # SEG PixelData compression: "deflate" (Deflated Explicit VR Little Endian) or "none".
     String segmentationCompression = "deflate"
+    # DOI reserved (e.g. on Zenodo) for the dataset these results will be published as,
+    # e.g. "10.5281/zenodo.23825859". nb3 records it in every SEG and SR (Other Clinical
+    # Trial Protocol IDs Sequence, Issuer "DOI") with the source collection as Clinical
+    # Trial Sponsor Name and Protocol ID. Empty = none.
+    String analysisResultDoi = ""
 
     # ------------------------------------------------------------------------
     # OPTIONAL: checkpoint/resume on preemption (inference task)
@@ -202,6 +207,7 @@ workflow Segmentator {
       maxRoiMvox                = radiomicsMaxRoiMvox,
       segmentationType          = segmentationType,
       segmentationCompression   = segmentationCompression,
+      analysisResultDoi         = analysisResultDoi,
       docker                    = outputConversionDocker,
       preemptibleTries          = outputConversionPreemptibleTries,
       cpus                      = outputConversionCpus,
@@ -415,6 +421,7 @@ task outputConversion {
     Float   maxRoiMvox
     String  segmentationType
     String  segmentationCompression
+    String  analysisResultDoi
     String  docker
     Int     preemptibleTries
     Int     cpus
@@ -497,6 +504,7 @@ task outputConversion {
       -p radiomicsMaxRoiMvox ~{maxRoiMvox} \
       -p segmentationType "~{segmentationType}" \
       -p segmentationCompression "~{segmentationCompression}" \
+      -p analysisResultDoi "~{analysisResultDoi}" \
       -p dicomSegBucketUri "~{dicomSegBucketUri}" \
       -p dicomStoreImportUri "~{dicomStoreImportUri}" \
       -p inferenceUsageMetricsCsvPath "~{inferenceUsageMetricsCsv}"       -p convertUsageMetricsCsvPath "~{default='' convertUsageMetricsCsv}" \
