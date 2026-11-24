@@ -60,7 +60,7 @@ RUN pip3 install --no-cache-dir \
     pandas==1.5.3 \
     papermill==2.4.0 \
     pyarrow==25.0.1 \
-    pydicom==2.4.1 \
+    pydicom==3.0.2 \
     requests==2.31.0 \
     SimpleITK==2.3.1 \
     tqdm==4.65.0

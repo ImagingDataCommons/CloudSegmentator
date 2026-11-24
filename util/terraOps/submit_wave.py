@@ -80,6 +80,9 @@ def main():
                     help="segmentationType for every engine (default: leave config value)")
     ap.add_argument("--seg-compression", choices=("deflate", "none"),
                     help="segmentationCompression for every engine (default: leave config value)")
+    ap.add_argument("--doi",
+                    help="analysisResultDoi recorded in every SEG and SR, e.g. 10.5281/zenodo.23825859; "
+                         "'none' clears it (default: leave config value)")
     args = ap.parse_args()
 
     ns, name = workspace(args)
@@ -104,6 +107,9 @@ def main():
             cfg["inputs"]["Segmentator.segmentationType"] = f'"{args.seg_type}"'
         if args.seg_compression:
             cfg["inputs"]["Segmentator.segmentationCompression"] = f'"{args.seg_compression}"'
+        if args.doi:
+            doi = "" if args.doi.strip().lower() == "none" else args.doi.strip()
+            cfg["inputs"]["Segmentator.analysisResultDoi"] = f'"{doi}"'
         cfg["rootEntityType"] = args.root_type
         api(cfg_path, tok, "PUT", cfg)
         body = {
